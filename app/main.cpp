@@ -55,6 +55,7 @@ int main(int argc, char **argv)
         return 0;
     }
 
+    // Read files
     auto filename = std::string{};
     auto verbose = false;
 
