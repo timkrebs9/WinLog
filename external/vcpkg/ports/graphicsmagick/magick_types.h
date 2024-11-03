@@ -1,10 +1,10 @@
 /*
   Copyright (C) 2003 - 2012 GraphicsMagick Group
- 
+
   This program is covered by multiple licenses, which are described in
   Copyright.txt. You should have received a copy of Copyright.txt with this
   package; otherwise see http://www.graphicsmagick.org/www/Copyright.html.
- 
+
   GraphicsMagick types typedefs.
 
   GraphicsMagick is expected to compile with any C '89 ANSI C compiler
@@ -20,10 +20,11 @@
 #define _MAGICK_TYPES_H
 
 #if defined(__cplusplus) || defined(c_plusplus)
-extern "C" {
+extern "C"
+{
 #endif
 
-/*
+    /*
   Assign ANSI C stdint.h-like typedefs based on the sizes of native types
   magick_int8_t   --                       -128 to 127
   magick_uint8_t  --                          0 to 255
@@ -51,79 +52,79 @@ extern "C" {
                                               ? to SSIZE_MAX
 */
 
-#if (defined(WIN32) || defined(WIN64)) && \
-  !defined(__MINGW32__) && !defined(__MINGW64__)
+#if (defined(WIN32) || defined(WIN64)) && !defined(__MINGW32__) &&             \
+    !defined(__MINGW64__)
 
-  /* The following typedefs are used for WIN32 & WIN64 (without
+    /* The following typedefs are used for WIN32 & WIN64 (without
      configure) */
-  typedef signed char   magick_int8_t;
-  typedef unsigned char  magick_uint8_t;
+    typedef signed char magick_int8_t;
+    typedef unsigned char magick_uint8_t;
 
-  typedef signed short  magick_int16_t;
-  typedef unsigned short magick_uint16_t;
+    typedef signed short magick_int16_t;
+    typedef unsigned short magick_uint16_t;
 
-  typedef signed int  magick_int32_t;
-#  define MAGICK_INT32_F ""
-  typedef unsigned int magick_uint32_t;
-#  define MAGICK_UINT32_F ""
+    typedef signed int magick_int32_t;
+#define MAGICK_INT32_F ""
+    typedef unsigned int magick_uint32_t;
+#define MAGICK_UINT32_F ""
 
-  typedef signed __int64  magick_int64_t;
-# define MAGICK_INT64_F "I64"
-  typedef unsigned __int64 magick_uint64_t;
-# define MAGICK_UINT64_F "I64"
+    typedef signed __int64 magick_int64_t;
+#define MAGICK_INT64_F "I64"
+    typedef unsigned __int64 magick_uint64_t;
+#define MAGICK_UINT64_F "I64"
 
-  typedef magick_uint64_t magick_uintmax_t;
+    typedef magick_uint64_t magick_uintmax_t;
 
-#  if defined(WIN32)
-  typedef unsigned long magick_uintptr_t;
-#  define MAGICK_SIZE_T_F "l"
-#  define MAGICK_SIZE_T unsigned long
-#  define MAGICK_SSIZE_T_F "l"
-#  define MAGICK_SSIZE_T long
-#  elif defined(WIN64)
-  /* WIN64 uses the LLP64 model */
-  typedef unsigned long long magick_uintptr_t;
-#  define MAGICK_SIZE_T_F "I64"
-#  define MAGICK_SIZE_T unsigned __int64
-#  define MAGICK_SSIZE_T_F "I64"
-#  define MAGICK_SSIZE_T signed __int64
-#  endif
+#if defined(WIN32)
+    typedef unsigned long magick_uintptr_t;
+#define MAGICK_SIZE_T_F "l"
+#define MAGICK_SIZE_T unsigned long
+#define MAGICK_SSIZE_T_F "l"
+#define MAGICK_SSIZE_T long
+#elif defined(WIN64)
+    /* WIN64 uses the LLP64 model */
+    typedef unsigned long long magick_uintptr_t;
+#define MAGICK_SIZE_T_F "I64"
+#define MAGICK_SIZE_T unsigned __int64
+#define MAGICK_SSIZE_T_F "I64"
+#define MAGICK_SSIZE_T signed __int64
+#endif
 
 #else
 
-  /* The following typedefs are subtituted when using Unixish configure */
-  typedef signed char   magick_int8_t;
-  typedef unsigned char  magick_uint8_t;
+/* The following typedefs are subtituted when using Unixish configure */
+typedef signed char magick_int8_t;
+typedef unsigned char magick_uint8_t;
 
-  typedef signed short  magick_int16_t;
-  typedef unsigned short magick_uint16_t;
+typedef signed short magick_int16_t;
+typedef unsigned short magick_uint16_t;
 
-  typedef signed int  magick_int32_t;
-#  define MAGICK_INT32_F ""
-  typedef unsigned int magick_uint32_t;
-#  define MAGICK_UINT32_F ""
+typedef signed int magick_int32_t;
+#define MAGICK_INT32_F ""
+typedef unsigned int magick_uint32_t;
+#define MAGICK_UINT32_F ""
 
-  typedef signed long  magick_int64_t;
-#  define MAGICK_INT64_F "l"
-  typedef unsigned long magick_uint64_t;
-#  define MAGICK_UINT64_F "l"
+typedef signed long magick_int64_t;
+#define MAGICK_INT64_F "l"
+typedef unsigned long magick_uint64_t;
+#define MAGICK_UINT64_F "l"
 
-  typedef unsigned long magick_uintmax_t;
-#  define MAGICK_UINTMAX_F "l"
+typedef unsigned long magick_uintmax_t;
+#define MAGICK_UINTMAX_F "l"
 
-  typedef unsigned long magick_uintptr_t;
-#  define MAGICK_UINTPTR_F "l"
+typedef unsigned long magick_uintptr_t;
+#define MAGICK_UINTPTR_F "l"
 
-#  define MAGICK_SIZE_T_F "l"
-#  define MAGICK_SIZE_T unsigned long
+#define MAGICK_SIZE_T_F "l"
+#define MAGICK_SIZE_T unsigned long
 
-#  define MAGICK_SSIZE_T_F "l"
-#  define MAGICK_SSIZE_T signed long
+#define MAGICK_SSIZE_T_F "l"
+#define MAGICK_SSIZE_T signed long
 
 #endif
 
-  /* 64-bit file and blob offset type */
-  typedef magick_int64_t magick_off_t;
+    /* 64-bit file and blob offset type */
+    typedef magick_int64_t magick_off_t;
 #define MAGICK_OFF_F MAGICK_INT64_F
 
 #if defined(__cplusplus) || defined(c_plusplus)

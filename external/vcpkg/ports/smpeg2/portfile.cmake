@@ -10,7 +10,7 @@ vcpkg_extract_source_archive_ex(
     OUT_SOURCE_PATH SOURCE_PATH
     ARCHIVE ${ARCHIVE}
     REF ${VERSION}
-    PATCHES 
+    PATCHES
         "001-correct-sdl-headers-dir.patch"
         "002-use-SDL2-headers.patch"
         "003-fix-double-ptr-to-int-comparison.patch"

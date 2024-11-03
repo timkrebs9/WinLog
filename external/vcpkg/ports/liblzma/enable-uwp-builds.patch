@@ -4,7 +4,7 @@ index 4053ad0..c49db6d 100644
 +++ b/src/common/tuklib_physmem.c
 @@ -79,6 +79,13 @@ tuklib_physmem(void)
  	uint64_t ret = 0;
- 
+
  #if defined(_WIN32) || defined(__CYGWIN__)
 +#if defined (WINAPI_FAMILY_PARTITION) && !WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
 +	MEMORYSTATUSEX ms;
@@ -21,6 +21,6 @@ index 4053ad0..c49db6d 100644
  		ret = meminfo.dwTotalPhys;
  	}
 +#endif
- 
+
  #elif defined(__OS2__)
  	unsigned long mem;

@@ -3,7 +3,7 @@ index 6c86fb8..0634412 100644
 --- a/cmake/modules/packages/FindFreeXL.cmake
 +++ b/cmake/modules/packages/FindFreeXL.cmake
 @@ -37,7 +37,15 @@ include(SelectLibraryConfigurations)
- 
+
  find_package(PkgConfig QUIET)
  if(PKG_CONFIG_FOUND)
 -    pkg_check_modules(PC_FREEXL QUIET freexl)
@@ -17,14 +17,14 @@ index 6c86fb8..0634412 100644
 +        set_target_properties(FREEXL::freexl PROPERTIES INTERFACE_LINK_LIBRARIES PkgConfig::PC_FREEXL)
 +    endif()
  endif()
- 
+
  find_path(FREEXL_INCLUDE_DIR
 diff --git a/cmake/modules/packages/FindOpenJPEG.cmake b/cmake/modules/packages/FindOpenJPEG.cmake
 index c697484..6e83222 100644
 --- a/cmake/modules/packages/FindOpenJPEG.cmake
 +++ b/cmake/modules/packages/FindOpenJPEG.cmake
 @@ -32,9 +32,18 @@ endfunction()
- 
+
  find_package(PkgConfig QUIET)
  if(PKG_CONFIG_FOUND)
 -    pkg_check_modules(PC_OPENJPEG QUIET libopenjp2)
@@ -40,15 +40,15 @@ index c697484..6e83222 100644
 +        set_target_properties(OPENJPEG::OpenJPEG PROPERTIES INTERFACE_LINK_LIBRARIES PkgConfig::PC_OPENJPEG)
 +    endif()
 +endif()
- 
- 
+
+
  find_path(OPENJPEG_INCLUDE_DIR opj_config.h
 diff --git a/cmake/modules/packages/FindPoppler.cmake b/cmake/modules/packages/FindPoppler.cmake
 index 3807ec0..8059eb4 100644
 --- a/cmake/modules/packages/FindPoppler.cmake
 +++ b/cmake/modules/packages/FindPoppler.cmake
 @@ -42,11 +42,19 @@ This module defines the following variables:
- 
+
  find_package(PkgConfig QUIET)
  if(PKG_CONFIG_FOUND)
 -  pkg_check_modules(PC_Poppler QUIET poppler)
@@ -89,7 +89,7 @@ index 00612b0..6388719 100644
 --- a/cmake/modules/packages/FindSPATIALITE.cmake
 +++ b/cmake/modules/packages/FindSPATIALITE.cmake
 @@ -38,9 +38,17 @@ endif()
- 
+
  find_package(PkgConfig QUIET)
  if(PKG_CONFIG_FOUND)
 -    pkg_check_modules(PC_SPATIALITE QUIET spatialite)
@@ -104,6 +104,6 @@ index 00612b0..6388719 100644
 +        set_target_properties(SPATIALITE::SPATIALITE PROPERTIES INTERFACE_LINK_LIBRARIES PkgConfig::PC_SPATIALITE)
 +    endif()
 +endif()
- 
+
  find_path(SPATIALITE_INCLUDE_DIR
            NAMES spatialite.h

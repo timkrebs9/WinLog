@@ -4,7 +4,7 @@ index de03564..df3fcf6 100644
 +++ b/CMakeLists.txt
 @@ -1,11 +1,8 @@
  cmake_minimum_required(VERSION 2.8)
- 
+
 -#It seems Cmake does not set default bild type so we force it
 -if( NOT CMAKE_BUILD_TYPE )
 -    set( CMAKE_BUILD_TYPE Debug CACHE STRING "Debug" FORCE )
@@ -13,13 +13,13 @@ index de03564..df3fcf6 100644
  project(freeopcua)
 +set(CMAKE_CXX_STANDARD 11)
 +set(CMAKE_POSITION_INDEPENDENT_CODE ON)
- 
+
  option(BUILD_CLIENT "Build Client" ON)
  option(BUILD_SERVER "Build Server" ON)
 @@ -16,28 +13,6 @@ option(BUILD_PYTHON "Build Python bindings" ON)
  option(BUILD_TESTING "Build and run tests" OFF)
  OPTION(BUILD_SHARED_LIBS "Build shared libraries." ON)
- 
+
 -IF (NOT DEFINED CMAKE_INSTALL_LIBDIR)
 -    SET(CMAKE_INSTALL_LIBDIR lib)
 -ENDIF ()
@@ -70,12 +70,12 @@ index de03564..df3fcf6 100644
 +    add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 +    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
  endif()
- 
+
  if(WIN32)
 @@ -105,7 +66,7 @@ else(WIN32)
- 
+
  endif(WIN32)
- 
+
 -find_package( Boost COMPONENTS system program_options filesystem thread REQUIRED )
 +find_package( Boost COMPONENTS system program_options filesystem thread date_time REQUIRED )
  include_directories( ${Boost_INCLUDE_DIRS} )
@@ -84,7 +84,7 @@ index de03564..df3fcf6 100644
 @@ -185,14 +146,12 @@ add_library(opcuaprotocol
      src/protocol/subscriptions.cpp
  )
- 
+
 -if (NOT CMAKE_VERSION VERSION_LESS 2.8.12)
 -    target_compile_options(opcuaprotocol PUBLIC ${STATIC_LIBRARY_CXX_FLAGS})
 -endif ()
@@ -95,24 +95,24 @@ index de03564..df3fcf6 100644
                                LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 -                              ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static)
 +                              ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
- 
+
  generate_pkgconfig("libopcuaprotocol.pc")
- 
+
 @@ -227,10 +186,6 @@ if (BUILD_TESTING)
          gtest_main
      )
- 
+
 -    if (NOT CMAKE_VERSION VERSION_LESS 2.8.12)
 -        target_compile_options(test_opcuaprotocol PUBLIC ${EXECUTABLE_CXX_FLAGS})
 -    endif ()
 -
      add_test(NAME opcuaprotocol COMMAND test_opcuaprotocol)
  endif()
- 
+
 @@ -266,15 +221,12 @@ SET(opcuacore_SOURCES
- 
+
  add_library(opcuacore ${opcuacore_SOURCES})
- 
+
 -if (NOT CMAKE_VERSION VERSION_LESS 2.8.12)
 -    target_compile_options(opcuacore PUBLIC ${STATIC_LIBRARY_CXX_FLAGS})
 -endif ()
@@ -125,22 +125,22 @@ index de03564..df3fcf6 100644
                            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 -                          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static)
 +                          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
- 
+
  generate_pkgconfig("libopcuacore.pc")
- 
+
 @@ -306,7 +258,7 @@ if (BUILD_TESTING)
      )
- 
+
      if (NOT CMAKE_VERSION VERSION_LESS 2.8.12)
 -        target_compile_options(test_opcuacore PUBLIC ${D}DYNAMIC_ADDON_PATH="${DYNAMIC_ADDON_PATH}" ${D}TEST_CORE_CONFIG_PATH="${TEST_CORE_CONFIG_PATH}" ${EXECUTABLE_CXX_FLAGS})
 +        target_compile_options(test_opcuacore PUBLIC -DDYNAMIC_ADDON_PATH="${DYNAMIC_ADDON_PATH}" -DTEST_CORE_CONFIG_PATH="${TEST_CORE_CONFIG_PATH}" )
      endif ()
- 
+
      add_test(NAME opcuacore COMMAND test_opcuacore)
 @@ -327,9 +279,6 @@ if (BUILD_CLIENT)
      src/client/client.cpp
      )
- 
+
 -    if (NOT CMAKE_VERSION VERSION_LESS 2.8.12)
 -        target_compile_options(opcuaclient PUBLIC ${STATIC_LIBRARY_CXX_FLAGS})
 -    endif ()
@@ -148,30 +148,30 @@ index de03564..df3fcf6 100644
          opcuacore
          ${ADDITIONAL_LINK_LIBRARIES}
 @@ -338,8 +287,9 @@ if (BUILD_CLIENT)
- 
+
      target_include_directories(opcuaclient PUBLIC $<INSTALL_INTERFACE:include>)
      install(TARGETS opcuaclient EXPORT FreeOpcUa
 +                                RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
                                  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 -                                ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static)
 +                                ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
- 
+
      generate_pkgconfig("libopcuaclient.pc")
- 
+
 @@ -371,9 +321,6 @@ if (BUILD_CLIENT)
          opcuacore
      )
- 
+
 -    if (NOT CMAKE_VERSION VERSION_LESS 2.8.12)
 -        target_compile_options(opcuaclient PUBLIC ${EXECUTABLE_CXX_FLAGS})
 -    endif ()
  endif(BUILD_CLIENT)
- 
- 
+
+
 @@ -423,14 +370,12 @@ if(BUILD_SERVER)
          src/server/subscription_service_internal.cpp
          )
- 
+
 -    if (NOT CMAKE_VERSION VERSION_LESS 2.8.12)
 -        target_compile_options(opcuaserver PUBLIC ${STATIC_LIBRARY_CXX_FLAGS})
 -    endif ()
@@ -183,17 +183,17 @@ index de03564..df3fcf6 100644
                                  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 -                                ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static)
 +                                ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
- 
+
      generate_pkgconfig("libopcuaserver.pc")
- 
+
 @@ -481,7 +426,7 @@ if(BUILD_SERVER)
- 
+
          target_include_directories(test_opcuaserver PUBLIC .)
          if (NOT CMAKE_VERSION VERSION_LESS 2.8.12)
 -            target_compile_options(test_opcuaserver PUBLIC ${D}TEST_CORE_CONFIG_PATH="${TEST_CORE_CONFIG_PATH}" ${STATIC_LIBRARY_CXX_FLAGS})
 +            target_compile_options(test_opcuaserver PUBLIC -DTEST_CORE_CONFIG_PATH="${TEST_CORE_CONFIG_PATH}")
          endif ()
- 
+
          add_test(NAME opcuaserverapp COMMAND test_opcuaserver)
 @@ -510,9 +455,6 @@ if(BUILD_SERVER)
          opcuaserver
@@ -202,23 +202,23 @@ index de03564..df3fcf6 100644
 -    if (NOT CMAKE_VERSION VERSION_LESS 2.8.12)
 -        target_compile_options(opcuaserverapp PUBLIC ${EXECUTABLE_CXX_FLAGS})
 -    endif ()
- 
+
  endif(BUILD_SERVER)
- 
+
 @@ -533,9 +475,6 @@ if (BUILD_CLIENT)
          ${SSL_SUPPORT_LINK_LIBRARIES}
      )
- 
+
 -    if (NOT CMAKE_VERSION VERSION_LESS 2.8.12)
 -        target_compile_options(example_client PUBLIC ${EXECUTABLE_CXX_FLAGS})
 -    endif ()
- 
+
  endif (BUILD_CLIENT)
- 
+
 @@ -555,9 +494,6 @@ if(BUILD_SERVER)
      opcuaserver
      )
- 
+
 -    if (NOT CMAKE_VERSION VERSION_LESS 2.8.12)
 -        target_compile_options(example_server PUBLIC ${EXECUTABLE_CXX_FLAGS})
 -    endif ()
@@ -228,10 +228,10 @@ index de03564..df3fcf6 100644
 @@ -572,8 +508,8 @@ if (BUILD_PYTHON)
      add_subdirectory(python)
  endif (BUILD_PYTHON)
- 
+
 -install(EXPORT FreeOpcUa DESTINATION lib/cmake/FreeOpcUa FILE FreeOpcUaConfig.cmake)
 +install(EXPORT FreeOpcUa DESTINATION share/freeopcua FILE freeopcuaConfig.cmake)
- 
+
  SET(CPACK_GENERATOR "DEB")
 -SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "FreeOpcUa")
 +SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "freeopcua")

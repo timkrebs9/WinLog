@@ -14,15 +14,15 @@ index 33f1f34..64fb9f3 100644
 --- a/makefile.vc
 +++ b/makefile.vc
 @@ -20,7 +20,7 @@ EPSILON_EXE            =    epsilon.exe
- 
+
 -CFLAGS	=	/nologo -IC:\OSGeo4W\include -I.\lib -I.\lib\msvc \
 +CFLAGS	=	/nologo -I$(INSTALLED_ROOT)\include -I.\lib -I.\lib\msvc \
  			-I.\src -I..\popt\include \
 -			$(OPTFLAGS)
 +			$(OPTFLAGS) $(WARNFLAGS)
- 
+
  default:	all
- 
+
 diff --git a/nmake.opt b/nmake.opt
 index d5a51e2..d8088df 100644
 --- a/nmake.opt
@@ -69,13 +69,12 @@ index d5a51e2..d8088df 100644
 +OPTFLAGS=	$(PDB_FLAGS) /nologo $(CRT_FLAGS) /EHsc /D_CRT_SECURE_NO_DEPRECATE /D_CRT_NONSTDC_NO_DEPRECATE /DDEBUG
 +!ENDIF
 +!ENDIF
- 
+
 -# Uncomment the first for an optimized build, or the second for debug.
--OPTFLAGS=	/nologo /Ox /fp:precise /W3 /MD /D_CRT_SECURE_NO_WARNINGS 
+-OPTFLAGS=	/nologo /Ox /fp:precise /W3 /MD /D_CRT_SECURE_NO_WARNINGS
 -#OPTFLAGS=	/nologo /Zi /MD /Fdepsilon.pdb
- 
+
  # Set the version number for the DLL.  Normally we leave this blank since
  # we want software that is dynamically loading the DLL to have no problem
--- 
+--
 2.16.1
-

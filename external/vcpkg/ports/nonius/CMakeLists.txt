@@ -4,9 +4,9 @@ cmake_policy(VERSION ${CMAKE_VERSION}) # use default policies of current cmake v
 project(nonius)
 
 add_library(nonius INTERFACE)
-target_include_directories(nonius INTERFACE  
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> 
-    $<INSTALL_INTERFACE:include> 
+target_include_directories(nonius INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
 )
 
 if(NOT DISABLE_INSTALL_HEADERS)

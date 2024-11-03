@@ -12,5 +12,5 @@ index f12bd84a8..acc570fa9 100644
 -
 +#endif
  }  // namespace
- 
+
  class instance::impl {

@@ -9,5 +9,5 @@ index 6ba466f..f5de479 100644
 -#include <cblas.h>
 +#include <openblas/cblas.h>
  #endif
- 
+
  #ifdef HAVE_ACML

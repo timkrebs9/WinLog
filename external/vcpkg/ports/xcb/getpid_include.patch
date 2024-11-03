@@ -1,6 +1,6 @@
 diff --git a/src/xcb_auth.c b/src/xcb_auth.c
 index 8ebe9a437..9a1e459fc 100644
---- a/src/xcb_auth.c	
+--- a/src/xcb_auth.c
 +++ b/src/xcb_auth.c
 @@ -46,6 +46,9 @@
  #include <X11/Xwindows.h>

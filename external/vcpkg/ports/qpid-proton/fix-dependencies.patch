@@ -4,7 +4,7 @@ index 27b40e7..a3a5d38 100644
 +++ b/c/CMakeLists.txt
 @@ -377,11 +377,15 @@ if (PROACTOR STREQUAL "iocp" OR (NOT PROACTOR AND NOT PROACTOR_OK))
  endif()
- 
+
  if (PROACTOR STREQUAL "libuv" OR (NOT PROACTOR AND NOT PROACTOR_OK))
 -  find_package(Libuv)
 +  find_package(Libuv NAMES libuv CONFIG)
@@ -19,7 +19,7 @@ index 27b40e7..a3a5d38 100644
 +    endif()
    endif()
  endif()
- 
+
 @@ -727,11 +731,6 @@ install (FILES
    ${CMAKE_CURRENT_BINARY_DIR}/ProtonConfig.cmake
    ${CMAKE_CURRENT_BINARY_DIR}/ProtonConfigVersion.cmake
@@ -29,7 +29,7 @@ index 27b40e7..a3a5d38 100644
 -  ../tools/cmake/Modules/FindOpenSSL.cmake
 -  ../tools/cmake/Modules/FindThreads.cmake
 -  DESTINATION ${LIB_INSTALL_DIR}/cmake/Proton)
- 
+
  if (ENABLE_BENCHMARKS)
    add_subdirectory(benchmarks)
 diff --git a/c/src/ProtonConfig.cmake.in b/c/src/ProtonConfig.cmake.in
@@ -38,7 +38,7 @@ index 6bcc3c0..2f03dc4 100644
 +++ b/c/src/ProtonConfig.cmake.in
 @@ -23,7 +23,8 @@
  # URL: http://qpid.apache.org/proton/
- 
+
  @PACKAGE_INIT@
 -if (NOT Proton_USE_STATIC_LIBS)
 +include(CMakeFindDependencyMacro)
@@ -48,32 +48,32 @@ index 6bcc3c0..2f03dc4 100644
    include("${CMAKE_CURRENT_LIST_DIR}/ProtonTargetsStatic.cmake")
 @@ -32,24 +33,21 @@ endif()
  set(Proton_VERSION @PN_VERSION@)
- 
+
  # find dependencies, because static libs don't transitively pull them
 -if (Proton_USE_STATIC_LIBS)
 -    set(CMAKE_MODULE_PATH_OLD ${CMAKE_MODULE_PATH})
 -    set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
 +if (1)
- 
+
      set(CyrusSASL_FOUND @CyrusSASL_FOUND@)
      if (CyrusSASL_FOUND)
 -        find_package (CyrusSASL REQUIRED)
 +        find_dependency (CyrusSASL)
      endif()
- 
+
      set(OPENSSL_FOUND @OPENSSL_FOUND@)
      set(OpenSSL_FOUND @OpenSSL_FOUND@)
      if (OPENSSL_FOUND OR OpenSSL_FOUND)
 -        find_package (OpenSSL REQUIRED)
 +        find_dependency (OpenSSL)
      endif()
- 
+
 -    find_package (Threads REQUIRED)
 +    find_dependency (Threads)
- 
+
 -    set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH_OLD})
  endif()
- 
+
  set (Proton_INCLUDE_DIRS @PACKAGE_INCLUDE_INSTALL_DIR@)
 diff --git a/cpp/CMakeLists.txt b/cpp/CMakeLists.txt
 index 03fe80a..89c14ed 100644
@@ -81,7 +81,7 @@ index 03fe80a..89c14ed 100644
 +++ b/cpp/CMakeLists.txt
 @@ -26,12 +26,15 @@ find_package(Threads)
  include(versions.cmake)
- 
+
  # Check for JSON-CPP support for connection configuration
 -find_package(JsonCpp)
 -option(ENABLE_JSONCPP "Use jsoncpp parser for connection configuration" ${JsonCpp_FOUND})
@@ -105,7 +105,7 @@ index 74ddfaa..2fece73 100644
 +++ b/cpp/ProtonCppConfig.cmake.in
 @@ -23,7 +23,9 @@
  # URL: http://qpid.apache.org/proton/
- 
+
  @PACKAGE_INIT@
 -if (NOT ProtonCpp_USE_STATIC_LIBS)
 +include(CMakeFindDependencyMacro)

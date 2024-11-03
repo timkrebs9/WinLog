@@ -3,9 +3,9 @@ index 643ffcf3d7b4ce59285343f92a1407927c111881..382d3c6ed244e24dec9f144c02e0c345
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -156,10 +156,12 @@ install(
- 
+
  generate_export_header(alkimia BASE_NAME alk EXPORT_FILE_NAME alkimia/alk_export.h)
- 
+
 -if(WIN32)
 -    set_target_properties(alkimia PROPERTIES SUFFIX "-${ALKIMIA_LIB_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
 -else()

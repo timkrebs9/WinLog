@@ -10,4 +10,3 @@ index 4875b98..10bf365 100644
 +SDL_X11_SYM(int,_XData32,(Display *dpy,_Xconst register long *data,unsigned len),(dpy,data,len),return)
  SDL_X11_SYM(void,_XRead32,(Display *dpy,register long *data,long len),(dpy,data,len),)
  #endif
- 

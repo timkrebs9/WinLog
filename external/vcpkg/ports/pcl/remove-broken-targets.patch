@@ -14,7 +14,7 @@ index 5bfe6e94c..7abf3d746 100644
 @@ -123,15 +123,6 @@ target_link_libraries(pcl_concatenate_points_pcd pcl_common pcl_io)
  PCL_ADD_EXECUTABLE(pcl_poisson_reconstruction COMPONENT ${SUBSYS_NAME} SOURCES poisson_reconstruction.cpp)
  target_link_libraries(pcl_poisson_reconstruction pcl_common pcl_io pcl_surface)
- 
+
 -PCL_ADD_EXECUTABLE(pcl_train_linemod_template COMPONENT ${SUBSYS_NAME} SOURCES train_linemod_template.cpp)
 -target_link_libraries(pcl_train_linemod_template pcl_common pcl_io pcl_segmentation pcl_recognition)
 -
@@ -26,7 +26,6 @@ index 5bfe6e94c..7abf3d746 100644
 -
  PCL_ADD_EXECUTABLE(pcl_fast_bilateral_filter COMPONENT ${SUBSYS_NAME} SOURCES fast_bilateral_filter.cpp)
  target_link_libraries(pcl_fast_bilateral_filter pcl_common pcl_io pcl_filters)
- 
--- 
-2.32.0.windows.1
 
+--
+2.32.0.windows.1

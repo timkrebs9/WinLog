@@ -45,7 +45,7 @@ $VCPKG_ROOT/vcpkg install jsoncpp:$vcpkg_target_triplet
 #
 rm -rf build
 mkdir build
-cd build 
+cd build
 cmake .. \
   -DCMAKE_TOOLCHAIN_FILE=$vcpkg_toolchain_file \
   -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$android_toolchain_file \

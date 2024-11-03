@@ -8,6 +8,6 @@ index fb64c56..a43cc4d 100644
  # If you prefer to have the DLLs in the lib folder, then set this to NO instead.
 -MINGW_MOVEDLLSTOBINDIR = YES
 +MINGW_MOVEDLLSTOBINDIR = NO
- 
+
  # This file is similar to mh-mingw
  # Any changes made here may also need to be made in mh-mingw

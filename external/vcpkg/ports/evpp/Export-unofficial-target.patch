@@ -3,7 +3,7 @@ index d325df7..772da36 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -88,3 +88,17 @@ include (packages)
- 
+
  include (CPack)
  include (CTest)
 +
@@ -26,11 +26,11 @@ index f8cffa7..91663d6 100644
 --- a/apps/evmc/CMakeLists.txt
 +++ b/apps/evmc/CMakeLists.txt
 @@ -7,12 +7,13 @@ file(GLOB evmc_PUBLIC_HEADERS *.h)
- 
+
  add_library(evmc_static STATIC ${evmc_SRCS})
  target_link_libraries(evmc_static ${LIBRARIES})
 +target_include_directories(evmc_static INTERFACE $<INSTALL_INTERFACE:include>)
- 
+
  if (UNIX)
      if(BUILD_SHARED_LIBS)
      add_library(evmc SHARED ${evmc_SRCS})
@@ -41,7 +41,7 @@ index f8cffa7..91663d6 100644
      include (utils)
      include (packages)
 @@ -24,6 +25,8 @@ if (UNIX)
- 
+
      install (
        TARGETS evmc
 +      EXPORT  unofficial-evpp-target
@@ -50,7 +50,7 @@ index f8cffa7..91663d6 100644
        ARCHIVE DESTINATION lib)
      endif()
 @@ -31,6 +34,7 @@ endif (UNIX)
- 
+
  install (
    TARGETS evmc_static
 +  EXPORT  unofficial-evpp-target
@@ -62,11 +62,11 @@ index 65f15cd..7c9fbf5 100644
 --- a/apps/evnsq/CMakeLists.txt
 +++ b/apps/evnsq/CMakeLists.txt
 @@ -3,12 +3,13 @@ file(GLOB evnsq_PUBLIC_HEADERS *.h)
- 
+
  add_library(evnsq_static STATIC ${evnsq_SRCS})
  target_link_libraries(evnsq_static ${LIBRARIES})
 +target_include_directories(evnsq_static INTERFACE $<INSTALL_INTERFACE:include>)
- 
+
  if (UNIX)
      if(BUILD_SHARED_LIBS)
      add_library(evnsq SHARED ${evnsq_SRCS})
@@ -77,7 +77,7 @@ index 65f15cd..7c9fbf5 100644
      include (utils)
      include (packages)
 @@ -20,6 +21,8 @@ if (UNIX)
- 
+
      install (
        TARGETS evnsq
 +      EXPORT  unofficial-evpp-target
@@ -86,7 +86,7 @@ index 65f15cd..7c9fbf5 100644
        ARCHIVE DESTINATION lib)
      endif()
 @@ -27,6 +30,7 @@ endif (UNIX)
- 
+
  install (
    TARGETS evnsq_static
 +  EXPORT  unofficial-evpp-target
@@ -102,12 +102,12 @@ index c16d708..1c17f04 100644
  target_link_libraries(evpp_static ${DEPENDENT_LIBRARIES})
  target_compile_features(evpp_static PRIVATE cxx_std_11)
 +target_include_directories(evpp_static INTERFACE $<INSTALL_INTERFACE:include>)
- 
+
  add_library(evpp_lite_static STATIC ${evpp_lite_SRCS})
  target_link_libraries(evpp_lite_static ${DEPENDENT_LIBRARIES})
  target_compile_features(evpp_lite_static PRIVATE cxx_std_11)
 +target_include_directories(evpp_lite_static INTERFACE $<INSTALL_INTERFACE:include>)
- 
+
  if (UNIX)
      if(BUILD_SHARED_LIBS)
      add_library(evpp SHARED ${evpp_SRCS})
@@ -130,7 +130,7 @@ index c16d708..1c17f04 100644
      include (utils)
      include (packages)
 @@ -47,7 +49,7 @@ if (UNIX)
- 
+
      install (
        TARGETS evpp evpp_boost evpp_concurrentqueue
 -      EXPORT ${PACKAGE_NAME}
@@ -165,4 +165,3 @@ index c16d708..1c17f04 100644
 +      EXPORT  unofficial-evpp-target
        LIBRARY DESTINATION lib
        ARCHIVE DESTINATION lib)
- 

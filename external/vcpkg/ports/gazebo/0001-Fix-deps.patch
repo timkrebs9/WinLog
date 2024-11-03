@@ -4,7 +4,7 @@ index 4085b5aaeb..f89ac88333 100644
 +++ b/cmake/SearchForStuff.cmake
 @@ -179,7 +179,7 @@ if (PKG_CONFIG_FOUND)
    # (needed, at least, for MacOS)
- 
+
    # Use system installation on UNIX and Apple, and internal copy on Windows
 -  if (UNIX OR APPLE)
 +  if (true)
@@ -13,7 +13,7 @@ index 4085b5aaeb..f89ac88333 100644
    elseif(WIN32)
 @@ -225,7 +225,7 @@ if (PKG_CONFIG_FOUND)
    # (needed, at least, for MacOS)
- 
+
    # Use system installation on UNIX and Apple, and internal copy on Windows
 -  if (UNIX OR APPLE)
 +  if (true)
@@ -22,7 +22,7 @@ index 4085b5aaeb..f89ac88333 100644
    elseif(WIN32)
 @@ -513,7 +513,7 @@ if (PKG_CONFIG_FOUND)
    endif ()
- 
+
    if (libavutil_FOUND AND libavformat_FOUND AND libavcodec_FOUND AND
 -      libswscale_FOUND)
 +      libswscale_FOUND AND FFMPEG_FEATURE)
@@ -47,7 +47,7 @@ index 4085b5aaeb..f89ac88333 100644
    if (NOT BULLET_FOUND)
       pkg_check_modules(BULLET bullet2.82>=2.82)
    endif()
- 
+
    if (BULLET_FOUND)
      set (HAVE_BULLET TRUE)
 +    set(BULLET_VERSION ${BULLET_VERSION_STRING})
@@ -86,7 +86,7 @@ index b57a90dd76..63ce97095e 100644
 --- a/cmake/gazebo-config.cmake.in
 +++ b/cmake/gazebo-config.cmake.in
 @@ -99,12 +99,13 @@ list(APPEND @PKG_NAME@_CFLAGS -I${GAZEBO_INSTALL_INCLUDE_DIR}/gazebo-@GAZEBO_MAJ
- 
+
  if (GAZEBO_HAS_BULLET)
    if (PKG_CONFIG_FOUND)
 -    pkg_check_modules(BULLET bullet>=2.82)
@@ -94,7 +94,7 @@ index b57a90dd76..63ce97095e 100644
      if (NOT BULLET_FOUND)
         pkg_check_modules(BULLET bullet2.82>=2.82)
      endif()
- 
+
      if (BULLET_FOUND)
 +      set(BULLET_VERSION ${BULLET_VERSION_STRING})
        add_definitions(-DLIBBULLET_VERSION=${BULLET_VERSION})

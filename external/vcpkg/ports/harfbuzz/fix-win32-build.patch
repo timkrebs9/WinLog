@@ -5,7 +5,7 @@ index e336037..35af00e 100644
 @@ -349,6 +349,11 @@ hb_subset_sources = files(
    'hb-subset.hh',
  )
- 
+
 +extra_hb_cpp_args = []
 +if cpp.get_argument_syntax() == 'msvc'
 +  extra_hb_cpp_args += ['/bigobj']
@@ -15,9 +15,9 @@ index e336037..35af00e 100644
    'hb-subset.h',
    'hb-subset-repacker.h'
 @@ -472,8 +477,7 @@ defs_list = [harfbuzz_def]
- 
+
  version = '0.@0@.0'.format(hb_version_int)
- 
+
 -extra_hb_cpp_args = []
 -if cpp.get_id() == 'msvc'
 +if cpp.get_argument_syntax() == 'msvc'

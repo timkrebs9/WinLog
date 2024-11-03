@@ -5,7 +5,7 @@ index c4cc218..ff2b706 100644
 @@ -8,6 +8,8 @@ cmake_minimum_required(VERSION 3.2)
  option(BUILD_TESTS      "Build tests"    ON)
  option(BUILD_EXAMPLES   "Build examples" ON)
- 
+
 +find_package(nlohmann_json CONFIG REQUIRED)
 +
  # the library
@@ -14,7 +14,7 @@ index c4cc218..ff2b706 100644
 @@ -34,6 +36,13 @@ set_target_properties(nlohmann_json_schema_validator
  # because of the dependency to nlohmann_json.
  set(JSON_VALIDATOR_INSTALL ON)
- 
+
 +target_link_libraries(
 +    nlohmann_json_schema_validator
 +    PUBLIC
@@ -23,7 +23,7 @@ index c4cc218..ff2b706 100644
 +
 +if(0)
  # here we decice how nlohmann::json is found and used to build this project
- 
+
  # first, check whether a nlohmann_json::nlohmann_json target exists already
 @@ -92,7 +101,7 @@ else()
          set(nlohmann_json_DIR ${JSON_HPP})

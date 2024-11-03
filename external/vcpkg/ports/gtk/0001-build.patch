@@ -5,7 +5,7 @@ index 41cf592..cb4d638 100644
 @@ -897,24 +897,24 @@ subdir('po-properties')
  subdir('docs/tools')
  subdir('docs/reference')
- 
+
 -if not meson.is_cross_build()
 -  if meson.version().version_compare('>=0.57.0')
 -    gnome.post_install(
@@ -42,6 +42,6 @@ index 41cf592..cb4d638 100644
 +#else
 +#  message('Not executing post-install steps automatically when cross compiling')
 +#endif
- 
+
  if not meson.is_subproject()
      meson.add_dist_script('build-aux/meson/dist-data.py')

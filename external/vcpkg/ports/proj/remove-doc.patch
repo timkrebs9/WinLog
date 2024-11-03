@@ -11,18 +11,18 @@ index 4c9744e6..a6d5e4eb 100644
  if(BUILD_TESTING)
    add_subdirectory(test)
  endif()
- 
+
 -set(docfiles COPYING NEWS AUTHORS)
 -install(FILES ${docfiles}
 -        DESTINATION ${CMAKE_INSTALL_DOCDIR})
 +
- 
+
  ################################################################################
  # pkg-config support
 @@ -378,6 +392,7 @@ set(CPACK_SOURCE_IGNORE_FILES
- 
+
  include(CPack)
- 
+
 +if(0)
  # Simplify README.md to README
  add_custom_target(README

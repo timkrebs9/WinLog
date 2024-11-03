@@ -12,7 +12,7 @@ index 8d39b07..6289fa4 100644
              }
          }
 @@ -3085,7 +3085,7 @@ static avifResult avifDecoderPrepareSample(avifDecoder * decoder, avifDecodeSamp
- 
+
              avifDecoderItem * item = avifMetaFindItem(decoder->data->meta, sample->itemID);
              avifROData itemContents;
 -            avifResult readResult = avifDecoderItemRead(item, decoder->io, &itemContents, sample->offset, bytesToRead, &decoder->diag);

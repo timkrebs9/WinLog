@@ -8,7 +8,7 @@ index 320ccc6..414ac8e 100644
 -enable_testing()
 -include(CTest)
 +find_package(BLAS REQUIRED)
- 
+
  if(WIN32 AND NOT CYGWIN)
    set(SECOND_SRC  ${CLAPACK_SOURCE_DIR}/INSTALL/winsecond.c)
 @@ -11,7 +10,6 @@ else()
@@ -74,4 +74,3 @@ index ac4cce3..07dc8c7 100644
 +        RUNTIME DESTINATION bin
 +        LIBRARY DESTINATION lib
 +        ARCHIVE DESTINATION lib)
- 

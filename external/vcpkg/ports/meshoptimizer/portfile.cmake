@@ -10,7 +10,7 @@ vcpkg_from_github(
 
 # If we want basisu support in gltfpack we need a particular fork of basisu
 # We could modify this to support using the vcpkg version of basisu
-# but since this is only necessary for the gltfpack tool and not for the 
+# but since this is only necessary for the gltfpack tool and not for the
 # meshopt lib it shouldn't be too nasty to just grab this repo
 if ("gltfpack" IN_LIST FEATURES)
   vcpkg_from_github(

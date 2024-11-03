@@ -1,6 +1,6 @@
 diff --git a/src/gui/configure.json b/src/gui/configure.json
 index 5fceb1150..7702cb261 100644
---- a/src/gui/configure.json	
+--- a/src/gui/configure.json
 +++ b/src/gui/configure.json
 @@ -220,7 +220,10 @@
              "headers": "EGL/egl.h",

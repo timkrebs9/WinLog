@@ -12,7 +12,7 @@ The primary motivation of binary caching is to accelerate two broad scenarios in
 
 - Developer Environment Changes (first-time or branch change)
 
-We generally believe both of these scenarios are addressed with the same feature set, however when differences arise they will be discussed in the individual scenarios. 
+We generally believe both of these scenarios are addressed with the same feature set, however when differences arise they will be discussed in the individual scenarios.
 
 It should also be explicitly noted that this specification does not intend to propose a "Microsoft Sanctioned Public Binaries Service" such as nuget.org – we only intend to enable users to leverage services they already have access to, such as GitHub, local file shares, Azure Artifacts, etc.
 
@@ -145,7 +145,7 @@ To enable the 4-step flow, `vcpkg install` will take a command `--write-nuget-pa
 #### Example 4-step flow
 
 ```
-PS> vcpkg install --dry-run pkg1 pkg2 pkg3 --write-nuget-packages-config=packages.config 
+PS> vcpkg install --dry-run pkg1 pkg2 pkg3 --write-nuget-packages-config=packages.config
 ```
 
 An unspecified process, such as `nuget.exe restore packages.config -packagedirectory $packages` or the [ADO task][2], restores the packages to `$packages`.

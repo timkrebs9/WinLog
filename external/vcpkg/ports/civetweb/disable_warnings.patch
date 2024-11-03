@@ -19,7 +19,7 @@ index 1eb391f2c..2665fa73e 100644
    add_cxx_compiler_flag(-fvisibility=hidden)
    add_cxx_compiler_flag(-fstack-protector-strong RELEASE)
 @@ -403,6 +405,7 @@ endif()
- 
+
  if (NOT ZEPHYR)
    #Warnings: enable everything
 +  if(0)

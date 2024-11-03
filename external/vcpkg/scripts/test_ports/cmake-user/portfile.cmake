@@ -129,7 +129,7 @@ function(test_cmake_project)
             list(APPEND base_options "-DCMAKE_SYSTEM_VERSION=${VCPKG_CMAKE_SYSTEM_VERSION}")
         endif()
     endif()
-    
+
     if(VCPKG_LIBRARY_LINKAGE STREQUAL "dynamic")
         list(APPEND base_options -DBUILD_SHARED_LIBS=ON)
     else()

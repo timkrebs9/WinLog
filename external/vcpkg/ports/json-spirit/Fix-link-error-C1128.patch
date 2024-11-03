@@ -3,9 +3,9 @@ index 24b1caf..2aac0b0 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -60,7 +60,9 @@ endif()
- 
+
  message(${CMAKE_INSTALL_INCLUDEDIR})
- 
+
 -
 +if(MSVC)
 +add_definitions(/bigobj)

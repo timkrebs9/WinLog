@@ -7,6 +7,6 @@ index 05656da..468f43b 100644
  #include <thread>
  #include <unordered_map>
 +#include <ostream>
- 
+
  #ifndef _WIN32
  #include <libgen.h>

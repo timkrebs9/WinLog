@@ -5,7 +5,7 @@ index 0e33263..299b373 100644
 @@ -101,17 +101,9 @@ endif()
  find_package(Threads QUIET)
  list(APPEND CERES_LIBRARY_PUBLIC_DEPENDENCIES Threads::Threads)
- 
+
 -if (NOT MINIGLOG AND GLOG_FOUND)
 -  list(APPEND CERES_LIBRARY_PUBLIC_DEPENDENCIES ${GLOG_LIBRARIES})
 -  if (gflags_FOUND)
@@ -20,6 +20,6 @@ index 0e33263..299b373 100644
 +if (NOT MINIGLOG)
 +  list(APPEND CERES_LIBRARY_PUBLIC_DEPENDENCIES glog::glog)
 +endif (NOT MINIGLOG)
- 
+
  if (SUITESPARSE AND SuiteSparse_FOUND)
    # Define version information for use in Solver::FullReport.

@@ -3,7 +3,7 @@ function(qt_fix_makefile_install BUILD_DIR)
     #Fix the installation location
     file(TO_NATIVE_PATH "${CURRENT_INSTALLED_DIR}" NATIVE_INSTALLED_DIR)
     file(TO_NATIVE_PATH "${CURRENT_PACKAGES_DIR}" NATIVE_PACKAGES_DIR)
-    
+
     if(WIN32)
         string(SUBSTRING "${NATIVE_INSTALLED_DIR}" 2 -1 INSTALLED_DIR_WITHOUT_DRIVE)
         string(SUBSTRING "${NATIVE_PACKAGES_DIR}" 2 -1 PACKAGES_DIR_WITHOUT_DRIVE)
@@ -18,7 +18,7 @@ function(qt_fix_makefile_install BUILD_DIR)
 
     file(TO_NATIVE_PATH "${CURRENT_INSTALLED_DIR}" NATIVE_INSTALLED_DIR)
     file(TO_NATIVE_PATH "${CURRENT_PACKAGES_DIR}" NATIVE_PACKAGES_DIR)
-    
+
     file(GLOB_RECURSE MAKEFILES "${BUILD_DIR}/*Makefile*")
 
     foreach(MAKEFILE ${MAKEFILES})

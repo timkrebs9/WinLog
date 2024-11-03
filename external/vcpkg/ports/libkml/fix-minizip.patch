@@ -5,7 +5,7 @@ index 9728ead..028f50a 100644
 @@ -110,9 +110,9 @@ else()
    list(APPEND MINIZIP_DEPENDS ZLIB)
  endif()
- 
+
 -find_package(MiniZip)
 +find_package(MINIZIP NAMES minizip REQUIRED)
  if(MINIZIP_FOUND)
@@ -24,7 +24,7 @@ index 3e295f4..97826df 100644
 +
  # Compute paths
  get_filename_component(LIBKML_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
- 
+
 diff --git a/src/kml/base/contrib/minizip/iomem_simple.c b/src/kml/base/contrib/minizip/iomem_simple.c
 index be89226..6be61d5 100644
 --- a/src/kml/base/contrib/minizip/iomem_simple.c
@@ -32,7 +32,7 @@ index be89226..6be61d5 100644
 @@ -219,7 +219,7 @@ int ZCALLBACK mem_error (opaque, stream)
      return 0;
  }
- 
+
 -ZEXTERN void* ZEXPORT mem_simple_create_file(zlib_filefunc_def* api, void* buffer, size_t buf_len)
 +extern void* mem_simple_create_file(zlib_filefunc_def* api, void* buffer, size_t buf_len)
  {
@@ -48,7 +48,7 @@ index ec11396..515e24e 100644
   */
 -extern void* ZEXPORT mem_simple_create_file(zlib_filefunc_def* pzlib_filefunc_def, void* buffer, size_t buflen);
 +extern void* mem_simple_create_file(zlib_filefunc_def* pzlib_filefunc_def, void* buffer, size_t buflen);
- 
+
  #ifdef __cplusplus
  }
 diff --git a/src/kml/base/contrib/minizip/unzip.c b/src/kml/base/contrib/minizip/unzip.c
@@ -67,6 +67,6 @@ index a062863..fb69189 100644
 +#  undef ZEXTERN
 +#endif
 +#define ZEXTERN extern
- 
+
  #ifdef STDC
  #  include <stddef.h>

@@ -16,14 +16,13 @@ index bcfb941..1895a0f 100644
 @@ -68,10 +68,6 @@
  #include <stdlib.h>
  #include <string.h>
- 
+
 -#ifndef NOUNCRYPT
 -        #define NOUNCRYPT
 -#endif
 -
  #include "zlib.h"
  #include "unzip.h"
- 
--- 
-2.24.3 (Apple Git-128)
 
+--
+2.24.3 (Apple Git-128)

@@ -11,4 +11,3 @@ index 716a2b3c6..d570e19e4 100644
 +#endif
  #include <X11/StringDefs.h>	/* for XtRString. */
  #include <X11/ShellP.h>		/* for Application Shell Widget class. */
- 

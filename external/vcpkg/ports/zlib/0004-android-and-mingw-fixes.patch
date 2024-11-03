@@ -5,7 +5,7 @@ index 6fa5575..7c345db 100644
 @@ -56,7 +56,7 @@ endif()
  #
  check_include_file(unistd.h Z_HAVE_UNISTD_H)
- 
+
 -if(MSVC)
 +if(WIN32)
      set(CMAKE_DEBUG_POSTFIX "d")
@@ -14,7 +14,7 @@ index 6fa5575..7c345db 100644
 @@ -133,7 +133,7 @@ file(READ ${CMAKE_CURRENT_SOURCE_DIR}/zlib.h _zlib_h_contents)
  string(REGEX REPLACE ".*#define[ \t]+ZLIB_VERSION[ \t]+\"([-0-9A-Za-z.]+)\".*"
      "\\1" ZLIB_FULL_VERSION ${_zlib_h_contents})
- 
+
 -if(MINGW)
 +if(MINGW AND NOT ANDROID)
      # This gets us DLL resource information when compiling on MinGW.
@@ -26,6 +26,6 @@ index 6fa5575..7c345db 100644
      endif()
 -endif(MINGW)
 +endif(MINGW AND NOT ANDROID)
- 
+
  add_library(zlib ${ZLIB_SRCS} ${ZLIB_ASMS} ${ZLIB_DLL_SRCS} ${ZLIB_PUBLIC_HDRS} ${ZLIB_PRIVATE_HDRS})
  if (BUILD_SHARED_LIBS)

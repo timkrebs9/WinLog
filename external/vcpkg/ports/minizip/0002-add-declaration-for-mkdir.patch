@@ -16,7 +16,7 @@ index 3d65401..5341af2 100644
 @@ -12,6 +12,10 @@
           Copyright (C) 2009-2010 Mathias Svensson ( http://result42.com )
  */
- 
+
 +#if !defined(_WIN32)
 +#include <sys/stat.h>
 +#endif
@@ -24,6 +24,5 @@ index 3d65401..5341af2 100644
  #if (!defined(_WIN32)) && (!defined(WIN32)) && (!defined(__APPLE__))
          #ifndef __USE_FILE_OFFSET64
                  #define __USE_FILE_OFFSET64
--- 
+--
 2.24.3 (Apple Git-128)
-

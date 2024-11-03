@@ -5,7 +5,7 @@ index d8679fb..6dc6501 100644
 @@ -244,7 +249,7 @@ set_target_properties(
  	VERSION ${PROJECT_VERSION}
  )
- 
+
 -if(MSVC)
 +if(0) # Never add suffixes which are not added by the autotools build or the nmake makefiles
  	if(BUILD_SHARED_LIBS)
@@ -14,7 +14,7 @@ index d8679fb..6dc6501 100644
 @@ -327,7 +332,7 @@ set_target_properties(
  	VERSION ${LIBEXSLT_VERSION}
  )
- 
+
 -if(MSVC)
 +if(0) # same reason as above
  	if(BUILD_SHARED_LIBS)

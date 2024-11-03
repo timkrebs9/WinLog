@@ -5,7 +5,7 @@ index 5baf0fdb1..185abfffd 100644
 @@ -15,13 +15,14 @@ foreach(_module_dep ${_Qt5$${CMAKE_PLUGIN_NAME}_MODULE_DEPENDENCIES})
      endif()
  endforeach()
- 
+
 -!!IF !isEmpty(CMAKE_RELEASE_TYPE)
  !!IF isEmpty(CMAKE_LIB_DIR_IS_ABSOLUTE)
 -_qt5_$${CMAKE_MODULE_NAME}_process_prl_file(
@@ -28,7 +28,7 @@ index 5baf0fdb1..185abfffd 100644
  )
  !!ENDIF
 -!!ENDIF
- 
+
 -!!IF !isEmpty(CMAKE_DEBUG_TYPE)
  !!IF isEmpty(CMAKE_LIB_DIR_IS_ABSOLUTE)
 -_qt5_$${CMAKE_MODULE_NAME}_process_prl_file(
@@ -51,12 +51,12 @@ index 5baf0fdb1..185abfffd 100644
  )
  !!ENDIF
 -!!ENDIF
- 
+
  set_property(TARGET Qt5::$$CMAKE_PLUGIN_NAME PROPERTY INTERFACE_SOURCES
      \"${CMAKE_CURRENT_LIST_DIR}/Qt5$${CMAKE_MODULE_NAME}_$${CMAKE_PLUGIN_NAME}_Import.cpp\"
  )
  !!ENDIF
- 
+
 -!!IF !isEmpty(CMAKE_RELEASE_TYPE)
 -_populate_$${CMAKE_MODULE_NAME}_plugin_properties($$CMAKE_PLUGIN_NAME RELEASE \"$${CMAKE_PLUGIN_LOCATION_RELEASE}\" $${CMAKE_DEBUG_AND_RELEASE})
 -!!ENDIF
@@ -69,6 +69,6 @@ index 5baf0fdb1..185abfffd 100644
 +if(EXISTS \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/debug/$${CMAKE_PLUGIN_DIR}$${CMAKE_PLUGIN_LOCATION_DEBUG}\")
 +    _populate_$${CMAKE_MODULE_NAME}_plugin_properties($$CMAKE_PLUGIN_NAME DEBUG \"$${CMAKE_PLUGIN_LOCATION_DEBUG}\" $${CMAKE_DEBUG_AND_RELEASE})
 +endif()
- 
+
  list(APPEND Qt5$${CMAKE_MODULE_NAME}_PLUGINS Qt5::$$CMAKE_PLUGIN_NAME)
  set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY QT_ALL_PLUGINS_$${CMAKE_PLUGIN_TYPE_ESCAPED} Qt5::$${CMAKE_PLUGIN_NAME})

@@ -9,5 +9,5 @@ index e6c6054..2c4b757 100644
 +elseif(MSVC)
 +  add_definitions(-D_CRT_SECURE_NO_WARNINGS)
  endif()
- 
+
  function(transform_sources_list INPUT_FILE OUTPUT_FILE)

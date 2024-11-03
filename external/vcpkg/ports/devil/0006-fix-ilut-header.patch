@@ -7,6 +7,6 @@ index 398d3c1..617c8d8 100644
  )
  install (FILES ../include/IL/ilut.h DESTINATION include/IL)
 +install (FILES ../include/IL/ilut_config.h DESTINATION include/IL)
- 
+
  install(FILES
      ${CMAKE_CURRENT_BINARY_DIR}/ILUT.pc

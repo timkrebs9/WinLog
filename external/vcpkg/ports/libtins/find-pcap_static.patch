@@ -4,10 +4,9 @@ index 388b30b..f5264c3 100644
 +++ b/cmake/Modules/FindPCAP.cmake
 @@ -38,7 +38,7 @@ if (${CMAKE_SIZEOF_VOID_P} EQUAL 8 AND WIN32)
  endif ()
- 
+
  find_library(PCAP_LIBRARY
 -    NAMES pcap wpcap
 +    NAMES pcap wpcap pcap_static NAMES_PER_DIR
      HINTS ${HINT_DIR}
  )
- 

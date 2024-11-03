@@ -12,8 +12,8 @@ index db9c5d06..f198e3ef 100644
 --- a/external/python/jinja2/utils.py
 +++ b/external/python/jinja2/utils.py
 @@ -639,4 +639,8 @@ def __repr__(self):
- 
- 
+
+
  # Imported here because that's where it was in the past
 -from markupsafe import Markup, escape, soft_unicode
 +from markupsafe import Markup, escape

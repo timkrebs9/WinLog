@@ -4,7 +4,7 @@ index 16f0798..12fc0e8 100644
 +++ b/src/podofo/CMakeLists.txt
 @@ -1,5 +1,7 @@
  CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
- 
+
 +set(CMAKE_CXX_STANDARD 14)
 +
  IF(NOT PODOFO_MAIN_CMAKELISTS_READ)

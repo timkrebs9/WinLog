@@ -85,13 +85,13 @@ index b2634da6..0d846877 100644
 +set(HAVE_WMEMCMP 1)
 +set(HAVE_WMEMCPY 1)
 +set(HAVE_WMEMMOVE 1)
- 
+
  CMAKE_POP_CHECK_STATE()	# Restore the state of the variables
- 
+
 @@ -1449,6 +1434,9 @@ CHECK_C_SOURCE_COMPILES(
    "#include <sys/sysmacros.h>\nint main() { return major(256); }"
    MAJOR_IN_SYSMACROS)
- 
+
 +CMAKE_PUSH_CHECK_STATE()
 +SET(CMAKE_REQUIRED_INCLUDES ${LIBLZMA_INCLUDE_DIR})
 +SET(CMAKE_REQUIRED_LIBRARIES ${LIBLZMA_LIBRARIES})
@@ -103,7 +103,7 @@ index b2634da6..0d846877 100644
    SET(HAVE_LZMA_STREAM_ENCODER_MT 0)
  ENDIF(ENABLE_LZMA)
 +CMAKE_POP_CHECK_STATE()
- 
+
  IF(HAVE_STRERROR_R)
    SET(HAVE_DECL_STRERROR_R 1)
 @@ -2018,7 +2007,7 @@ INCLUDE(CreatePkgConfigFile)
@@ -121,7 +121,7 @@ index 9389bbc9..c34a42b2 100644
 +++ b/libarchive/CMakeLists.txt
 @@ -236,28 +236,22 @@ ELSEIF(ARCHIVE_ACL_SUNOS)
  ENDIF()
- 
+
  # Libarchive is a shared library
 -ADD_LIBRARY(archive SHARED ${libarchive_SOURCES} ${include_HEADERS})
 +ADD_LIBRARY(archive ${libarchive_SOURCES} ${include_HEADERS})
@@ -143,7 +143,7 @@ index 9389bbc9..c34a42b2 100644
 -  SET_TARGET_PROPERTIES(archive_static PROPERTIES OUTPUT_NAME archive)
 -ENDIF(NOT WIN32 OR CYGWIN)
 +ENDIF()
- 
+
  IF(ENABLE_INSTALL)
    # How to install the libraries
 -  INSTALL(TARGETS archive archive_static
@@ -154,4 +154,3 @@ index 9389bbc9..c34a42b2 100644
 -  INSTALL_MAN(${libarchive_MANS})
    INSTALL(FILES ${include_HEADERS} DESTINATION include)
  ENDIF()
- 

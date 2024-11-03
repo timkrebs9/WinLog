@@ -5,7 +5,7 @@ index b87af66..10ec58f 100644
 @@ -87,9 +87,26 @@ if(UNIX AND NOT APPLE)
      target_link_libraries (hpdf ${M_LIB})
  endif()
- 
+
 +if(LIBHPDF_SHARED)
 +  if(WIN32 AND NOT CYGWIN)
 +    set_target_properties(hpdf PROPERTIES DEFINE_SYMBOL HPDF_DLL_MAKE)

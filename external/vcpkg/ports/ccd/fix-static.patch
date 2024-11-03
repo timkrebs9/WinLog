@@ -5,7 +5,7 @@ index e898d41..c6aa5fb 100644
 @@ -1,7 +1,7 @@
  #ifndef CCD_EXPORT_H
  #define CCD_EXPORT_H
- 
+
 -#ifdef CCD_STATIC_DEFINE
 +#if 1
  #  define CCD_EXPORT

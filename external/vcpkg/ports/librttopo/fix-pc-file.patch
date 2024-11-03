@@ -5,5 +5,5 @@ index 86c71dc..4064506 100644
 @@ -10,3 +10,4 @@ Description: the RT Topology library
  Version: @VERSION@
  Libs: -L${libdir} -lrttopo -lm
- Cflags: -I${includedir} 
+ Cflags: -I${includedir}
 +Requires.private: geos

@@ -37,7 +37,7 @@ vcpkg_configure_make(
 )
 
 vcpkg_install_make(OPTIONS "CCAS=${VCPKG_DETECTED_CMAKE_ASM_COMPILER}")
-vcpkg_fixup_pkgconfig() 
+vcpkg_fixup_pkgconfig()
 vcpkg_copy_pdbs()
 
 if(NOT VCPKG_CROSSCOMPILING)

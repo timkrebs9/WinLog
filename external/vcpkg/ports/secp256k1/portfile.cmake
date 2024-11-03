@@ -33,11 +33,11 @@ if (BUILD_TOOLS OR BUILD_EXAMPLES)
     if (BUILD_TOOLS)
         list(APPEND SECP256K1_TOOLS bench bench_internal bench_ecmult)
     endif()
-    
+
     if (BUILD_EXAMPLES)
         list(APPEND SECP256K1_TOOLS ecdsa_example ecdh_example schnorr_example)
     endif()
-    
+
     vcpkg_copy_tools(TOOL_NAMES ${SECP256K1_TOOLS} AUTO_CLEAN)
 endif()
 

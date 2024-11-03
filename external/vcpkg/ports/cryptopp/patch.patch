@@ -26,7 +26,7 @@ index da27de22..9703f77d 100644
  #endif
 @@ -126,6 +126,7 @@
  #endif
- 
+
  #ifdef CRYPTOPP_WIN32_AVAILABLE
 +#include <winapifamily.h>
  # if !defined(WINAPI_FAMILY)

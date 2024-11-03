@@ -15,7 +15,7 @@ index f9daeac..48eea0e 100644
 @@ -17,6 +17,8 @@ if(NOT CMAKE_BUILD_TYPE)
        FORCE)
  endif(NOT CMAKE_BUILD_TYPE)
- 
+
 +# An option to disable the executable target list_cpu_features.
 +option(BUILD_EXECUTABLE "Build list_cpu_features executable." ON)
  # BUILD_TESTING is a standard CMake variable, but we declare it here to make it
@@ -24,7 +24,7 @@ index f9daeac..48eea0e 100644
 @@ -157,9 +159,11 @@ add_library(CpuFeature::cpu_features ALIAS cpu_features)
  # program : list_cpu_features
  #
- 
+
 -add_executable(list_cpu_features ${PROJECT_SOURCE_DIR}/src/utils/list_cpu_features.c)
 -target_link_libraries(list_cpu_features PRIVATE cpu_features)
 -add_executable(CpuFeature::list_cpu_features ALIAS list_cpu_features)
@@ -33,17 +33,17 @@ index f9daeac..48eea0e 100644
 +  target_link_libraries(list_cpu_features PRIVATE cpu_features)
 +  add_executable(CpuFeature::list_cpu_features ALIAS list_cpu_features)
 +endif()
- 
+
  #
  # ndk_compat
 @@ -223,17 +227,26 @@ if(BUILD_TESTING)
  endif()
- 
+
  #
 -# Install cpu_features and list_cpu_features
 +# Install cpu_features and optionally list_cpu_features
  #
- 
+
  include(GNUInstallDirs)
 -install(TARGETS cpu_features list_cpu_features
 +install(TARGETS cpu_features
@@ -65,6 +65,5 @@ index f9daeac..48eea0e 100644
  install(EXPORT CpuFeaturesTargets
    NAMESPACE CpuFeatures::
    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/CpuFeatures
--- 
+--
 2.25.1
-

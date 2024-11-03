@@ -20,5 +20,5 @@ index 86eb383af..cc204fba2 100644
 -#include "vtkmConfigFilters.h" // for VTKM_ENABLE_TBB
 +//#include "vtkmConfigFilters.h" // for VTKM_ENABLE_TBB
  #endif
- 
+
  #if defined(VTKM_ENABLE_TBB) && VTK_MODULE_ENABLE_VTK_AcceleratorsVTKmFilters

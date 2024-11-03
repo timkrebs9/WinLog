@@ -21,7 +21,7 @@ x_vcpkg_get_python_packages(
 Python version to be used. Either 2 or 3
 
 ### PYTHON_EXECUTABLE
-Full path to the python executable 
+Full path to the python executable
 
 ### REQUIREMENTS_FILE
 Requirement file with the list of python packages

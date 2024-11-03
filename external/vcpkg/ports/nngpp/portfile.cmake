@@ -24,4 +24,3 @@ file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/lib)
 
 # Handle copyright
 file(INSTALL ${SOURCE_PATH}/license.txt DESTINATION ${CURRENT_PACKAGES_DIR}/share/${PORT} RENAME copyright)
-

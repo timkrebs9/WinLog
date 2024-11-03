@@ -5,7 +5,7 @@ index 24fd87e..974064c 100644
 @@ -382,7 +382,7 @@ else()
      usFunctionCheckCompilerFlags(-fstack-protector-all US_CXX_FLAGS)
    endif()
- 
+
 -  foreach(_cxxflag  -Werror -Wall -Wextra -Wpointer-arith -Winvalid-pch -Wcast-align
 +  foreach(_cxxflag  -Wall -Wextra -Wpointer-arith -Winvalid-pch -Wcast-align
                      -Wwrite-strings -Woverloaded-virtual -Wnon-virtual-dtor -Wold-style-cast

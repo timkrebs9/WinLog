@@ -5,7 +5,7 @@ index e1248c7..4656c3a 100644
 @@ -91,13 +91,14 @@ AC_MSG_ERROR([[
        mini_nettle=$withval,
        mini_nettle=no)
- 
+
 +  PKG_CHECK_MODULES(GMP, [gmp], [], [AC_MSG_ERROR([[gmp is required]])])
    AC_ARG_VAR(GMP_CFLAGS, [C compiler flags for gmp])
    AC_ARG_VAR(GMP_LIBS, [linker flags for gmp])

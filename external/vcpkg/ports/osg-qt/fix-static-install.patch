@@ -3,7 +3,7 @@ index eb26ba2..14b8bca 100644
 --- a/CMakeModules/ModuleInstall.cmake
 +++ b/CMakeModules/ModuleInstall.cmake
 @@ -40,10 +40,10 @@
-     ARCHIVE DESTINATION ${INSTALL_ARCHIVEDIR} COMPONENT libopenscenegraph-dev    
+     ARCHIVE DESTINATION ${INSTALL_ARCHIVEDIR} COMPONENT libopenscenegraph-dev
  )
 
 -IF(MSVC AND NOT CMAKE_BUILD_TYPE STREQUAL "Release")

@@ -7,7 +7,7 @@ vcpkg_from_github(
     SHA512 5ce962e31b3c07b7110cbc645458dba9c0e26e693fbe3b4a7ffe8a28563827049a22fc5596a911fbcea4d88a9adbef3f82000ff61027ff4387f40e4a4045c26d
     HEAD_REF master
     PATCHES
-        disable_warnings.patch # cl will simply ignore the other invalid options. 
+        disable_warnings.patch # cl will simply ignore the other invalid options.
 )
 
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS

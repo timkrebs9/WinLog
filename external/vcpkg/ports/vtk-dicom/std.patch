@@ -1,6 +1,6 @@
 diff --git a/Source/vtkScancoCTReader.cxx b/Source/vtkScancoCTReader.cxx
 index a71f2e46e..afe202ffc 100644
---- a/Source/vtkScancoCTReader.cxx	
+--- a/Source/vtkScancoCTReader.cxx
 +++ b/Source/vtkScancoCTReader.cxx
 @@ -176,7 +176,7 @@ int vtkScancoCTReader::CheckVersion(const char header[16])
  //----------------------------------------------------------------------------
@@ -8,12 +8,12 @@ index a71f2e46e..afe202ffc 100644
  {
 -  ifstream infile(filename, ios::in | ios::binary);
 +  std::ifstream infile(filename, ios::in | ios::binary);
- 
+
    bool canRead = false;
    if (infile.good())
 @@ -409,7 +409,7 @@ void vtkScancoCTReader::StripString(char *dest, const char *cp, size_t l)
  }
- 
+
  //----------------------------------------------------------------------------
 -int vtkScancoCTReader::ReadISQHeader(ifstream *file, unsigned long bytesRead)
 +int vtkScancoCTReader::ReadISQHeader(std::ifstream *file, unsigned long bytesRead)
@@ -22,7 +22,7 @@ index a71f2e46e..afe202ffc 100644
    {
 @@ -620,7 +620,7 @@ int vtkScancoCTReader::ReadISQHeader(ifstream *file, unsigned long bytesRead)
  }
- 
+
  //----------------------------------------------------------------------------
 -int vtkScancoCTReader::ReadAIMHeader(ifstream *file, unsigned long bytesRead)
 +int vtkScancoCTReader::ReadAIMHeader(std::ifstream *file, unsigned long bytesRead)
@@ -32,7 +32,7 @@ index a71f2e46e..afe202ffc 100644
 @@ -987,7 +987,7 @@ int vtkScancoCTReader::RequestInformation(
    const char *ufilename = filename;
  #endif
- 
+
 -  ifstream infile(ufilename, ios::in | ios::binary);
 +  std::ifstream infile(ufilename, ios::in | ios::binary);
    if (!infile.good())
@@ -40,7 +40,7 @@ index a71f2e46e..afe202ffc 100644
      vtkErrorMacro("Cannot open file " << filename);
 @@ -1115,7 +1115,7 @@ int vtkScancoCTReader::RequestData(
      static_cast<unsigned char *>(data->GetScalarPointer());
- 
+
    // open the file
 -  ifstream infile(filename, ios::in | ios::binary);
 +  std::ifstream infile(filename, ios::in | ios::binary);
@@ -49,26 +49,26 @@ index a71f2e46e..afe202ffc 100644
      vtkErrorMacro("Cannot open file " << filename);
 diff --git a/Source/vtkScancoCTReader.h b/Source/vtkScancoCTReader.h
 index ca31d7572..240d532f2 100644
---- a/Source/vtkScancoCTReader.h	
+--- a/Source/vtkScancoCTReader.h
 +++ b/Source/vtkScancoCTReader.h
 @@ -34,6 +34,7 @@
  #ifndef vtkScancoCTReader_h
  #define vtkScancoCTReader_h
- 
+
 +#include <iosfwd>
  #include "vtkImageReader2.h"
  #include "vtkDICOMModule.h" // For export macro
  #include "vtkDICOMConfig.h" // For configuration details
 @@ -185,10 +186,10 @@ protected:
    void InitializeHeader();
- 
+
    //! Read an ISQ header.
 -  int ReadISQHeader(ifstream *file, unsigned long bytesRead);
 +  int ReadISQHeader(std::ifstream *file, unsigned long bytesRead);
- 
+
    //! Read AIM header.
 -  int ReadAIMHeader(ifstream *file, unsigned long bytesRead);
 +  int ReadAIMHeader(std::ifstream *file, unsigned long bytesRead);
- 
+
    //! Check the file header to see what type of file it is.
    /*!

@@ -4,9 +4,9 @@ index 09f1f9b..d58b972 100644
 +++ b/CMakeLists.txt
 @@ -53,15 +53,10 @@ endif()
  include_directories("${CMAKE_SOURCE_DIR}/include")
- 
+
  # TBB Library
--find_package( TBB ) 
+-find_package( TBB )
 -if( TBB_FOUND )
 -  option(GRPPI_TBB_ENABLE "Require TBB library" ON)
 -  message(STATUS "TBB found")
@@ -19,6 +19,6 @@ index 09f1f9b..d58b972 100644
 +if(GRPPI_TBB_ENABLE)
 +  find_package(TBB CONFIG REQUIRED)
 +endif()
- 
+
  message( STATUS "TBB: " ${GRPPI_TBB_ENABLE} )
  if( GRPPI_TBB_ENABLE )

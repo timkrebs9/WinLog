@@ -34,13 +34,13 @@ index 5d7306c22..75692128d 100644
 --- a/mpn/Makeasm.am
 +++ b/mpn/Makeasm.am
 @@ -31,8 +31,9 @@
- 
+
  # COMPILE minus CC.
  #
 +# Only used with CCAS
  COMPILE_FLAGS = $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 -	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) $(ASMFLAGS)
 +	$(CPPFLAGS) $(ASMFLAGS)
- 
+
  # Flags used for preprocessing (in ansi2knr rules).
  #

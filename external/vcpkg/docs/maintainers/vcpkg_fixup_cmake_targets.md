@@ -10,8 +10,8 @@ Additionally corrects common issues with targets, such as absolute paths and inc
 
 ## Usage
 ```cmake
-vcpkg_fixup_cmake_targets([CONFIG_PATH <share/${PORT}>] 
-                          [TARGET_PATH <share/${PORT}>] 
+vcpkg_fixup_cmake_targets([CONFIG_PATH <share/${PORT}>]
+                          [TARGET_PATH <share/${PORT}>]
                           [TOOLS_PATH <tools/${PORT}>]
                           [DO_NOT_DELETE_PARENT_CONFIG_PATH])
 ```

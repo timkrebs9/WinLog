@@ -17,7 +17,7 @@ endfunction()
 
 function(z_vcpkg_get_visual_studio_generator)
     cmake_parse_arguments(PARSE_ARGV 0 arg "" "OUT_GENERATOR;OUT_ARCH" "")
-    
+
     if (NOT DEFINED arg_OUT_GENERATOR)
         message(FATAL_ERROR "OUT_GENERATOR must be defined.")
     endif()
@@ -59,7 +59,7 @@ function(z_vcpkg_get_visual_studio_generator)
 endfunction()
 
 function(z_vcpkg_select_default_vcpkg_chainload_toolchain)
-    # Try avoiding adding more defaults here. 
+    # Try avoiding adding more defaults here.
     # Set VCPKG_CHAINLOAD_TOOLCHAIN_FILE explicitly in the triplet.
     if(DEFINED Z_VCPKG_CHAINLOAD_TOOLCHAIN_FILE)
         set(VCPKG_CHAINLOAD_TOOLCHAIN_FILE "${Z_VCPKG_CHAINLOAD_TOOLCHAIN_FILE}")
@@ -268,13 +268,13 @@ function(vcpkg_configure_cmake)
     endif()
 
     vcpkg_list(SET rel_command
-        "${CMAKE_COMMAND}" "${arg_SOURCE_PATH}" 
+        "${CMAKE_COMMAND}" "${arg_SOURCE_PATH}"
         -G "${generator}"
         "-DCMAKE_BUILD_TYPE=Release"
         "-DCMAKE_INSTALL_PREFIX=${CURRENT_PACKAGES_DIR}"
         ${arg_OPTIONS} ${arg_OPTIONS_RELEASE})
     vcpkg_list(SET dbg_command
-        "${CMAKE_COMMAND}" "${arg_SOURCE_PATH}" 
+        "${CMAKE_COMMAND}" "${arg_SOURCE_PATH}"
         -G "${generator}"
         "-DCMAKE_BUILD_TYPE=Debug"
         "-DCMAKE_INSTALL_PREFIX=${CURRENT_PACKAGES_DIR}/debug"
@@ -314,7 +314,7 @@ function(vcpkg_configure_cmake)
             LOGNAME "${arg_LOGNAME}"
             SAVE_LOG_FILES ../../${TARGET_TRIPLET}-dbg/CMakeCache.txt ../CMakeCache.txt
         )
-        
+
         vcpkg_list(APPEND config_logs
             "${CURRENT_BUILDTREES_DIR}/${arg_LOGNAME}-out.log"
             "${CURRENT_BUILDTREES_DIR}/${arg_LOGNAME}-err.log")
@@ -347,7 +347,7 @@ function(vcpkg_configure_cmake)
                 "${CURRENT_BUILDTREES_DIR}/${arg_LOGNAME}-rel-err.log")
         endif()
     endif()
-    
+
     # Check unused variables
     vcpkg_list(SET all_unused_variables)
     foreach(config_log IN LISTS config_logs)

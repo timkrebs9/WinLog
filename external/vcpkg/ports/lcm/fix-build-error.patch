@@ -3,15 +3,15 @@ index e22acd6..b9c7e69 100644
 --- a/lcm/windows/WinPorting.cpp
 +++ b/lcm/windows/WinPorting.cpp
 @@ -1,8 +1,8 @@
- 
+
  #define _WIN32_WINNT 0x0501
 -#include <Mswsock.h>
  #include <stdio.h>
  #include <winsock2.h>
 +#include <Mswsock.h>
- 
+
  #include "WinPorting.h"
- 
+
 diff --git a/lcmgen/emit_go.c b/lcmgen/emit_go.c
 index c520044..b5be56a 100644
 --- a/lcmgen/emit_go.c
@@ -29,4 +29,3 @@ index c520044..b5be56a 100644
 +#define F_OK 0
  #define __STDC_FORMAT_MACROS  // Enable integer types
  #endif
- 

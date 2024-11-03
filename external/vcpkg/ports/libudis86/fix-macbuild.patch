@@ -5,13 +5,13 @@ index e039c4e..8459012 100644
 @@ -34,6 +34,10 @@
  # endif
  #endif /* !__UD_STANDALONE__ */
- 
+
 +#if defined(__APPLE__)
 +#  include <string.h>
 +#endif
 +
  static void ud_inp_init(struct ud *u);
- 
+
  /* =============================================================================
 diff --git a/udcli/udcli.c b/udcli/udcli.c
 index 9b044ca..ad1e4ab 100644
@@ -32,6 +32,6 @@ index 9b044ca..ad1e4ab 100644
 +#ifdef HAVE_CONFIG_H
 +# include <config.h>
 +#endif /* HAVE_CONFIG_H */
- 
+
  #if defined(__APPLE__)
- # define FMT64 "ll" 
+ # define FMT64 "ll"

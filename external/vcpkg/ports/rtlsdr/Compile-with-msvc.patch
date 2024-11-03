@@ -85,4 +85,3 @@ index 562198f..b4bfa51 100644
 +#include <ws2tcpip.h>
  #include "getopt/getopt.h"
  #endif
-

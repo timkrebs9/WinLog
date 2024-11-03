@@ -14,7 +14,7 @@ index 9b43066..c1cc11f 100644
 +    set(OPENEXR_VERSION "${OpenEXR_VERSION}")
 +    set(OPENEXR_FOUND 1)
    endif()
- 
+
    if(NOT OPENEXR_FOUND)
 diff --git a/modules/highgui/src/grfmt_exr.cpp b/modules/highgui/src/grfmt_exr.cpp
 index 399e586..b8cd270 100644
@@ -27,4 +27,3 @@ index 399e586..b8cd270 100644
 +#include <ImfFrameBuffer.h>
  #include <half.h>
  #include "grfmt_exr.hpp"
- 

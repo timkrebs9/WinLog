@@ -9,12 +9,12 @@ index fffb92c..f45a7dc 100644
 -        $<INSTALL_INTERFACE:include>)
 +        $<INSTALL_INTERFACE:include>
 +        $<INSTALL_INTERFACE:include/stduuid>)
- 
+
  # Using system uuid generator
  if (UUID_SYSTEM_GENERATOR)
 @@ -44,7 +45,7 @@ if (NOT UUID_USING_CXX20_SPAN)
  endif ()
- 
+
  # Install step and imported target
 -install(FILES include/uuid.h DESTINATION include)
 +install(FILES include/uuid.h DESTINATION include/stduuid)

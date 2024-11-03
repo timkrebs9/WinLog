@@ -5,7 +5,7 @@ index 39f269d51..ff53ca32d 100644
 @@ -357,7 +357,7 @@ if(${use_installed_dependencies})
          set(CMAKE_INSTALL_LIBDIR "lib")
      endif()
- 
+
 -    install(TARGETS ${provisioning_libs} EXPORT azure_prov_sdksTargets
 +    install(TARGETS ${provisioning_libs} EXPORT azure_iot_sdksTargets
          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}

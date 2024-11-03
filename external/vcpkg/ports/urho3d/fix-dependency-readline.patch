@@ -5,7 +5,7 @@ index ad5fbd0..f1ee2e8 100644
 @@ -48,4 +48,8 @@ endif ()
  include (FindPackageHandleStandardArgs)
  find_package_handle_standard_args (Readline REQUIRED_VARS READLINE_LIBRARIES READLINE_INCLUDE_DIRS FAIL_MESSAGE "Could NOT find Readline development library")
- 
+
 +if (READLINE_FOUND)
 +    set(READLINE_LIBRARIES ${READLINE_LIBRARIES} curses)
 +endif()

@@ -5,7 +5,7 @@ index ffb1db3dc..a82ed8619 100644
 @@ -273,7 +273,7 @@ install(
      DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
  )
- 
+
 -if (UNIX OR MINGW OR CYGWIN)
 +if (1)
      SET(prefix ${CMAKE_INSTALL_PREFIX})

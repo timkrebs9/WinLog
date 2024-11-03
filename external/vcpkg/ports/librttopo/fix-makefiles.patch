@@ -8,6 +8,5 @@ index 1f790f0..f78d0c9 100644
  	src\rtpsurface.obj src\rtspheroid.obj src\rtstroke.obj src\rttin.obj src\rttree.obj \
 -	src\rttriangle.obj src\rtutil.obj src\stringbuffer.obj src\varint.obj
 +	src\rttriangle.obj src\rtutil.obj src\stringbuffer.obj src\varint.obj src\rtt_tpsnap.obj
- 
+
  LIBRTTOPO_DLL	 	       =	librttopo$(VERSION).dll
- 

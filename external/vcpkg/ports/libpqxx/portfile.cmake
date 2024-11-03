@@ -2,7 +2,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO jtv/libpqxx
     REF 90768b07f7feb55a9bd70cfaacb5543bfd074022 # 7.7.3
-    SHA512 cbb21b148135d9426acd8006bfab872997bae65cfaa7af414083a8d219f099edcc83de7bde5e36016c1f8333f1e4d03fc401a4e741dfd0881afda3e1a20009ff 
+    SHA512 cbb21b148135d9426acd8006bfab872997bae65cfaa7af414083a8d219f099edcc83de7bde5e36016c1f8333f1e4d03fc401a4e741dfd0881afda3e1a20009ff
     HEAD_REF master
     PATCHES
         fix_build_with_vs2017.patch

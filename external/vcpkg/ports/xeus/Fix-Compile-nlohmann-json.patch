@@ -7,6 +7,5 @@ index 1ab9544..5a14ba0 100644
  #include <string>
  #include <utility>
 +#include <ciso646>
- 
+
  #include "nlohmann/json.hpp"
- 

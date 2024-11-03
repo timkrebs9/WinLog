@@ -4,11 +4,11 @@ function(configure_qt)
     if(NOT _csc_TARGET_PLATFORM)
         message(FATAL_ERROR "configure_qt requires a TARGET_PLATFORM argument.")
     endif()
-    
+
     if(DEFINED _csc_HOST_PLATFORM)
         list(APPEND _csc_OPTIONS -platform ${_csc_HOST_PLATFORM})
     endif()
-    
+
     if(DEFINED _csc_HOST_TOOLS_ROOT)
         ## vcpkg internal file struture assumed here!
         message(STATUS "Building Qt with prepared host tools from ${_csc_HOST_TOOLS_ROOT}!")
@@ -154,8 +154,8 @@ function(configure_qt)
                 -hostprefix ${CURRENT_INSTALLED_DIR}/tools/qt5${_path_suffix_${_buildname}}
                 #-hostprefix ${CURRENT_INSTALLED_DIR}/tools/qt5
                 -hostlibdir ${CURRENT_INSTALLED_DIR}/tools/qt5${_path_suffix_${_buildname}}/lib # could probably be move to manual-link
-                -hostbindir ${CURRENT_INSTALLED_DIR}/tools/qt5${_path_suffix_${_buildname}}/bin 
-                #-hostbindir ${CURRENT_INSTALLED_DIR}/tools/qt5/bin 
+                -hostbindir ${CURRENT_INSTALLED_DIR}/tools/qt5${_path_suffix_${_buildname}}/bin
+                #-hostbindir ${CURRENT_INSTALLED_DIR}/tools/qt5/bin
                 # Qt VS Plugin requires a /bin subfolder with the executables in the root dir. But to use the wizard a correctly setup lib folder is also required
                 # So with the vcpkg layout there is no way to make it work unless all dll are are copied to tools/qt5/bin and all libs to tools/qt5/lib
                 -archdatadir ${CURRENT_INSTALLED_DIR}/tools/qt5${_path_suffix_${_buildname}}
@@ -168,7 +168,7 @@ function(configure_qt)
                 -libdir ${CURRENT_INSTALLED_DIR}${_path_suffix_${_buildname}}/lib
                 -I ${CURRENT_INSTALLED_DIR}/include
                 -I ${CURRENT_INSTALLED_DIR}/include/qt5
-                -L ${CURRENT_INSTALLED_DIR}${_path_suffix_${_buildname}}/lib 
+                -L ${CURRENT_INSTALLED_DIR}${_path_suffix_${_buildname}}/lib
                 -L ${CURRENT_INSTALLED_DIR}${_path_suffix_${_buildname}}/lib/manual-link
                 -platform ${_csc_TARGET_PLATFORM}
             )
@@ -190,9 +190,9 @@ function(configure_qt)
             )
         endif()
 
-        # Note archdatadir and datadir are required to be prefixed with the hostprefix? 
+        # Note archdatadir and datadir are required to be prefixed with the hostprefix?
         message(STATUS "Configuring ${_build_triplet} done")
-        
+
         # Copy configuration dependent qt.conf
         file(TO_CMAKE_PATH "${CURRENT_PACKAGES_DIR}" CMAKE_CURRENT_PACKAGES_DIR_PATH)
         file(TO_CMAKE_PATH "${CURRENT_INSTALLED_DIR}" CMAKE_CURRENT_INSTALLED_DIR_PATH)

@@ -4,7 +4,7 @@ index ad52cf2..ed7ff28 100644
 +++ b/cmake_modules/ThirdpartyToolchain.cmake
 @@ -145,7 +145,7 @@ endif ()
  # Zstd
- 
+
  if (1)
 -  find_package (ZSTD CONFIG REQUIRED)
 +  find_package (zstd CONFIG REQUIRED)
@@ -12,7 +12,7 @@ index ad52cf2..ed7ff28 100644
  else ()
    set(ZSTD_HOME "${THIRDPARTY_DIR}/zstd_ep-install")
 @@ -338,6 +338,7 @@ endif ()
- 
+
  if (1)
    find_package (Protobuf CONFIG REQUIRED)
 +  include_directories(${Protobuf_INCLUDE_DIRS})

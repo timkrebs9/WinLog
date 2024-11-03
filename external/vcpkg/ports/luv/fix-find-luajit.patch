@@ -18,7 +18,7 @@ index 0d0786e..7121e06 100644
 @@ -23,8 +23,12 @@
  #  LUA_VERSION_MINOR  - the minor version of Lua
  #  LUA_VERSION_PATCH  - the patch version of Lua
- 
+
 -FIND_PATH(LUAJIT_INCLUDE_DIR NAMES lua.h PATH_SUFFIXES luajit-2.0 luajit-2.1)
 -FIND_LIBRARY(LUAJIT_LIBRARIES NAMES luajit-5.1 luajit)
 +FIND_PATH(LUAJIT_INCLUDE_DIR NAMES luajit.h PATH_SUFFIXES luajit-2.0 luajit-2.1 luajit)
@@ -27,7 +27,6 @@ index 0d0786e..7121e06 100644
 +  list(APPEND LUAJIT_LIB_NAMES lua51)
 +endif()
 +FIND_LIBRARY(LUAJIT_LIBRARIES NAMES ${LUAJIT_LIB_NAMES})
- 
+
  if (LUAJIT_INCLUDE_DIR AND EXISTS "${LUAJIT_INCLUDE_DIR}/lua.h")
      # At least 5.[012] have different ways to express the version
-

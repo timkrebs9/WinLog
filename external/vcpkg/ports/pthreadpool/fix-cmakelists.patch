@@ -4,7 +4,7 @@ index 09d57b2..57d3a2c 100644
 +++ b/CMakeLists.txt
 @@ -4,8 +4,6 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
  PROJECT(pthreadpool C CXX)
- 
+
  # ---[ Options.
 -SET(PTHREADPOOL_LIBRARY_TYPE "default" CACHE STRING "Type of library (shared, static, or default) to build")
 -SET_PROPERTY(CACHE PTHREADPOOL_LIBRARY_TYPE PROPERTY STRINGS default static shared)
@@ -22,7 +22,7 @@ index 09d57b2..57d3a2c 100644
  ELSE()
 @@ -36,7 +34,8 @@ MACRO(PTHREADPOOL_TARGET_ENABLE_CXX11 target)
  ENDMACRO()
- 
+
  # ---[ Download deps
 -IF(NOT DEFINED FXDIV_SOURCE_DIR)
 +find_path(FXDIV_INCLUDE_DIRS "fxdiv.h")
@@ -32,7 +32,7 @@ index 09d57b2..57d3a2c 100644
    EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
 @@ -87,21 +86,13 @@ ELSE()
  ENDIF()
- 
+
  ADD_LIBRARY(pthreadpool_interface INTERFACE)
 -TARGET_INCLUDE_DIRECTORIES(pthreadpool_interface INTERFACE include)
 +TARGET_INCLUDE_DIRECTORIES(pthreadpool_interface INTERFACE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
@@ -40,7 +40,7 @@ index 09d57b2..57d3a2c 100644
    TARGET_COMPILE_DEFINITIONS(pthreadpool_interface INTERFACE PTHREADPOOL_NO_DEPRECATED_API=1)
  ENDIF()
  INSTALL(FILES include/pthreadpool.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
- 
+
 -IF(PTHREADPOOL_LIBRARY_TYPE STREQUAL "default")
 -  ADD_LIBRARY(pthreadpool ${PTHREADPOOL_SRCS})
 -ELSEIF(PTHREADPOOL_LIBRARY_TYPE STREQUAL "shared")
@@ -51,12 +51,12 @@ index 09d57b2..57d3a2c 100644
 -  MESSAGE(FATAL_ERROR "Unsupported library type ${PTHREADPOOL_LIBRARY_TYPE}")
 -ENDIF()
 +ADD_LIBRARY(pthreadpool ${PTHREADPOOL_SRCS})
- 
+
  IF(PTHREADPOOL_SYNC_PRIMITIVE STREQUAL "condvar")
    TARGET_COMPILE_DEFINITIONS(pthreadpool PRIVATE PTHREADPOOL_USE_FUTEX=0)
 @@ -150,18 +141,22 @@ IF(CMAKE_SYSTEM_NAME STREQUAL "Linux")
  ENDIF()
- 
+
  # ---[ Configure FXdiv
 -IF(NOT TARGET fxdiv)
 +IF(FALSE)
@@ -68,7 +68,7 @@ index 09d57b2..57d3a2c 100644
  ENDIF()
 -TARGET_LINK_LIBRARIES(pthreadpool PRIVATE fxdiv)
 +TARGET_INCLUDE_DIRECTORIES(pthreadpool PRIVATE ${FXDIV_INCLUDE_DIRS})
- 
+
 -INSTALL(TARGETS pthreadpool
 +INSTALL(TARGETS pthreadpool pthreadpool_interface
 +  EXPORT unofficial-pthreadpool-config
@@ -77,6 +77,6 @@ index 09d57b2..57d3a2c 100644
    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 +install(EXPORT unofficial-pthreadpool-config NAMESPACE unofficial::
 +  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/unofficial-${PROJECT_NAME}) # share/unofficial-pthreadpool
- 
+
  IF(PTHREADPOOL_BUILD_TESTS)
    # ---[ Build google test

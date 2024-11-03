@@ -4,7 +4,7 @@ index f6dab85..0bbdf47 100644
 +++ b/plugins/compress/CMakeLists.txt
 @@ -12,7 +12,7 @@ REGISTER_PLUGIN(TARGET zlib
                  SOURCES ${COMPRESS_PLUGIN_DIR}/c_zlib.c)
- 
+
  #zstd compression
 -IF(${ZSTD_FOUND})
 +IF(${WITH_ZSTD})

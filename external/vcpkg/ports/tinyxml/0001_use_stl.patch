@@ -14,7 +14,7 @@ index a3589e5..7195033 100644
 @@ -43,6 +43,10 @@ distribution.
  #define DEBUG
  #endif
- 
+
 +#ifndef TIXML_USE_STL
 +#define TIXML_USE_STL
 +#endif
@@ -22,6 +22,5 @@ index a3589e5..7195033 100644
  #ifdef TIXML_USE_STL
  	#include <string>
   	#include <iostream>
--- 
+--
 2.12.2.windows.2
-

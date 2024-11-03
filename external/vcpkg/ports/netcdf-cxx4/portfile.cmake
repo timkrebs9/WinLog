@@ -8,7 +8,7 @@ vcpkg_from_github(
     REF f8882188267488ef801691e69ad072e3eb217ad8 # v4.3.1
     SHA512 9816acf221d196e21af19d4c3d85484934916e7c018e9b2c96aab9f5660b2f08c5db9cd8254ba3fa5f0aa5f5c5ad7bd3a3aaba559e5e640c5349d44e07a20ed3
     HEAD_REF master
-    PATCHES 
+    PATCHES
         fix-dependecy-hdf5.patch
         export-cmake-targets.patch
 )

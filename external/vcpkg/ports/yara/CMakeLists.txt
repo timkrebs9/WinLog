@@ -67,7 +67,7 @@ set(
   libyara/object.c
   libyara/parser.c
   libyara/proc.c
-  ${PROC_PLATFORM_SOURCE}  
+  ${PROC_PLATFORM_SOURCE}
   libyara/re.c
   libyara/re_grammar.c
   libyara/re_lexer.c
@@ -99,9 +99,9 @@ set( yarac_sources
 find_package(Threads REQUIRED)
 
 set(
-  libyara_dependencies 
+  libyara_dependencies
   OpenSSL::SSL
-  OpenSSL::Crypto 
+  OpenSSL::Crypto
   Threads::Threads
   ${JANSSON_LIBRARY}
 )

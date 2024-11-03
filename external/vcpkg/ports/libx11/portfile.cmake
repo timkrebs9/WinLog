@@ -19,14 +19,14 @@ vcpkg_from_gitlab(
             ${PATCHES}
             vcxserver.patch
             add_dl_pc.patch
-) 
+)
 
 set(ENV{ACLOCAL} "aclocal -I \"${CURRENT_INSTALLED_DIR}/share/xorg/aclocal/\"")
 
 set(OPTIONS "")
 if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
     set(ENV{CPP} "cl_cpp_wrapper")
-    list(APPEND OPTIONS 
+    list(APPEND OPTIONS
                 --enable-loadable-i18n=no #Pointer conversion errors
                 --enable-unix-transport=no
                 --disable-thread-safety-constructor
@@ -34,7 +34,7 @@ if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
     )
 endif()
 if(VCPKG_TARGET_IS_WINDOWS)
-    list(APPEND OPTIONS 
+    list(APPEND OPTIONS
         --enable-malloc0returnsnull=yes      #Configure fails to run the test for some reason
         --enable-ipv6
         --enable-hyperv
@@ -62,7 +62,7 @@ vcpkg_find_acquire_program(PERL)
 vcpkg_configure_make(
     SOURCE_PATH "${SOURCE_PATH}"
     AUTOCONFIG
-    OPTIONS 
+    OPTIONS
         ${OPTIONS}
 )
 
@@ -98,4 +98,3 @@ endif()
 
 configure_file("${CMAKE_CURRENT_LIST_DIR}/vcpkg-cmake-wrapper.cmake"
     "${CURRENT_PACKAGES_DIR}/share/x11/vcpkg-cmake-wrapper.cmake" @ONLY)
-

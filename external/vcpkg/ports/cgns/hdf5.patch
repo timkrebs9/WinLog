@@ -5,7 +5,7 @@ index 60f9de4..e980ef7 100644
 @@ -261,51 +261,12 @@ if (CGNS_ENABLE_HDF5)
       cmake_policy(SET CMP0074 NEW)
    endif()
- 
+
 -  find_package (HDF5 NAMES ${SEARCH_PACKAGE_NAME} COMPONENTS ${FIND_HDF_COMPONENTS})
 -  message (STATUS "HDF5 C libs:${HDF5_FOUND} static:${HDF5_static_C_FOUND} and shared:${HDF5_shared_C_FOUND}")
 -  if (HDF5_FOUND)
@@ -23,14 +23,14 @@ index 60f9de4..e980ef7 100644
 -      find_package (HDF5 NAMES ${SEARCH_PACKAGE_NAME} COMPONENTS ${FIND_HDF_COMPONENTS} REQUIRED)
 -      message (STATUS "HDF5 libs:${HDF5_FOUND} C:${HDF5_C_${CG_HDF5_LINK_TYPE_UPPER}_LIBRARY}")
 -    endif()
-- 
+-
 -    set(LINK_LIBS ${HDF5_C_${CG_HDF5_LINK_TYPE_UPPER}_LIBRARY})
 -  else ()
 -    find_package (HDF5) # Legacy find
--    
+-
 -    #Legacy find_package does not set HDF5_TOOLS_DIR, so we set it here
 -    set(HDF5_TOOLS_DIR ${HDF5_LIBRARY}/../bin)
--    
+-
 -    #Legacy find_package does not set HDF5_BUILD_SHARED_LIBS, so we set it here
 -    set(GUESS_SHARED "${HDF5_LIBRARY}/libhdf5${CMAKE_SHARED_LIBRARY_SUFFIX}")
 -    foreach (ITEM ${HDF5_LIBRARIES})
@@ -56,6 +56,6 @@ index 60f9de4..e980ef7 100644
 +    set (LINK_LIBS ${LINK_LIBS} hdf5::hdf5-static)
    endif ()
 -  set (HDF5_PACKAGE_NAME ${SEARCH_PACKAGE_NAME})
- 
+
    if (HDF5_FOUND)
      if (NOT DEFINED HDF5_INCLUDE_DIRS)

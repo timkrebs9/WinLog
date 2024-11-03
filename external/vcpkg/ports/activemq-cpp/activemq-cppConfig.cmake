@@ -20,17 +20,17 @@ macro(_activemq_cpp_windows_dependencies)
     find_file(ACTIVEMQ_CPP_DLLMSWSOCK MsWsock.dll)
     if(ACTIVEMQ_CPP_LIBWS2 AND ACTIVEMQ_CPP_DLLWS2 AND ACTIVEMQ_CPP_LIBRPCRT4 AND ACTIVEMQ_CPP_DLLRPCRT4 AND ACTIVEMQ_CPP_LIBMSWSOCK AND ACTIVEMQ_CPP_DLLMSWSOCK)
         add_library(unofficial::activemq-cpp::ws2 SHARED IMPORTED)
-        set_target_properties(unofficial::activemq-cpp::ws2 
+        set_target_properties(unofficial::activemq-cpp::ws2
                               PROPERTIES
-                                  IMPORTED_LOCATION "${ACTIVEMQ_CPP_DLLWS2}" 
-                                  IMPORTED_IMPLIB "${ACTIVEMQ_CPP_LIBWS2}" 
+                                  IMPORTED_LOCATION "${ACTIVEMQ_CPP_DLLWS2}"
+                                  IMPORTED_IMPLIB "${ACTIVEMQ_CPP_LIBWS2}"
                                   IMPORTED_CONFIGURATIONS "RELEASE;DEBUG"
                               )
         add_library(unofficial::activemq-cpp::rpcrt4 SHARED IMPORTED)
         set_target_properties(unofficial::activemq-cpp::rpcrt4
-                              PROPERTIES 
-                                  IMPORTED_LOCATION "${ACTIVEMQ_CPP_DLLRPCRT4}" 
-                                  IMPORTED_IMPLIB "${ACTIVEMQ_CPP_LIBRPCRT4}" 
+                              PROPERTIES
+                                  IMPORTED_LOCATION "${ACTIVEMQ_CPP_DLLRPCRT4}"
+                                  IMPORTED_IMPLIB "${ACTIVEMQ_CPP_LIBRPCRT4}"
                                   IMPORTED_CONFIGURATIONS "RELEASE;DEBUG"
                               )
         add_library(unofficial::activemq-cpp::mswsock SHARED IMPORTED)
@@ -171,7 +171,7 @@ if (ACTIVEMQ_CPP_DLL_RELEASE)
             endif()
         else()
             set(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE "Activemq-cpp vcpkg install dependency failure: apr vcpkg port not found in ${_IMPORT_PREFIX}.")
-            foreach(_MISSING 
+            foreach(_MISSING
                         ${_ACTIVEMQ_CPP_APR_LIB_RELEASE_MISSING}
                         ${_ACTIVEMQ_CPP_APR_DLL_RELEASE_MISSING}
                         ${_ACTIVEMQ_CPP_APR_LIB_DEBUG_MISSING}
@@ -184,7 +184,7 @@ if (ACTIVEMQ_CPP_DLL_RELEASE)
         endif()
     else()
         set(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE "Activemq-cpp vcpkg install error: Found ${_IMPORT_PREFIX}debug/bin/activemq-cppd.dll.")
-        foreach(_MISSING 
+        foreach(_MISSING
                     ${_ACTIVEMQ_CPP_LIB_RELEASE_MISSING}
                     ${_ACTIVEMQ_CPP_DLL_DEBUG_MISSING}
                     ${_ACTIVEMQ_CPP_LIB_DEBUG_MISSING})
@@ -192,7 +192,7 @@ if (ACTIVEMQ_CPP_DLL_RELEASE)
         endforeach()
         set(${CMAKE_FIND_PACKAGE_NAME}_FOUND FALSE)
     endif()
-else() 
+else()
     #
     # not Windows shared install
     #

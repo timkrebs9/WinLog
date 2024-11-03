@@ -1,10 +1,10 @@
 diff --git a/src/tools/msvc/Solution.pm b/src/tools/msvc/Solution.pm
 index 51711c2bf..d33fdc3b0 100644
---- a/src/tools/msvc/Solution.pm	
+--- a/src/tools/msvc/Solution.pm
 +++ b/src/tools/msvc/Solution.pm
 @@ -63,17 +63,21 @@ sub DeterminePlatform
  	my $self = shift;
- 
+
  	if ($^O eq "MSWin32")
  	{
  		# Examine CL help output to determine if we are in 32 or 64-bit mode.

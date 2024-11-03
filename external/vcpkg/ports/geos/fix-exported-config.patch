@@ -19,19 +19,19 @@ index a8c034fb2..a5cd14c13 100644
    endif()
    list(JOIN EXTRA_LIBS " " EXTRA_LIBS)
 +  set(EXTRA_LIBS "${EXTRA_LIBS}" PARENT_SCOPE) # for geos-config
- 
+
    configure_file(
      ${CMAKE_CURRENT_SOURCE_DIR}/geos.pc.in
 @@ -77,9 +84,9 @@ function(configure_install_geos_pc)
      DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
  endfunction()
- 
+
 +configure_install_geos_pc()
  if(NOT MSVC)
    configure_install_geos_config()
 -  configure_install_geos_pc()
  endif()
- 
+
  option(BUILD_ASTYLE "Build astyle (Artistic Style) tool" OFF)
 diff --git a/tools/geos-config.in b/tools/geos-config.in
 index 6eff1eb14..8827f6ac6 100644
@@ -39,7 +39,7 @@ index 6eff1eb14..8827f6ac6 100644
 +++ b/tools/geos-config.in
 @@ -1,9 +1,11 @@
  #!/bin/sh
- 
+
 -prefix=@prefix@
 -exec_prefix=@exec_prefix@
 -includedir=@includedir@
@@ -50,7 +50,7 @@ index 6eff1eb14..8827f6ac6 100644
 +exec_prefix=${prefix}
 +includedir=${prefix}/include
 +libdir=${prefix}${TOOLS##*/geos}/lib
- 
+
  usage()
  {
 @@ -47,16 +49,16 @@ while test $# -gt 0; do

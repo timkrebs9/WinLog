@@ -13,7 +13,7 @@ index a6830b4..da3d635 100644
 +  elseif (TARGET hdf5::hdf5-static)
 +      SET(HDF5_LIBRARIES hdf5::hdf5-static)
 +  endif()
-   
+
    IF (LIBMINC_USE_SYSTEM_NIFTI)
      FIND_PACKAGE(NIFTI)
 @@ -515,12 +520,8 @@ IF(SUPERBUILD_STAGING_PREFIX)

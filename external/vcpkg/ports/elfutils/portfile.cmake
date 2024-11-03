@@ -16,7 +16,7 @@ vcpkg_add_to_path(PREPEND "${BISON_DIR}")
 vcpkg_configure_make(
     SOURCE_PATH ${SOURCE_PATH}
     AUTOCONFIG
-    OPTIONS --disable-debuginfod 
+    OPTIONS --disable-debuginfod
             --enable-libdebuginfod=dummy
             --with-zlib
             --with-bzlib
@@ -28,7 +28,7 @@ vcpkg_configure_make(
 )
 
 vcpkg_install_make()
-file(REMOVE "${CURRENT_PACKAGES_DIR}/debug/lib/pkgconfig/libdebuginfod.pc" "${CURRENT_PACKAGES_DIR}/lib/pkgconfig/libdebuginfod.pc") #--disable-debuginfod 
+file(REMOVE "${CURRENT_PACKAGES_DIR}/debug/lib/pkgconfig/libdebuginfod.pc" "${CURRENT_PACKAGES_DIR}/lib/pkgconfig/libdebuginfod.pc") #--disable-debuginfod
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/etc/debuginfod" "${CURRENT_PACKAGES_DIR}/etc/debuginfod")
 
 vcpkg_fixup_pkgconfig(SYSTEM_LIBRARIES pthread)
@@ -51,7 +51,7 @@ file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/etc")
 
 vcpkg_replace_string("${CURRENT_PACKAGES_DIR}/tools/elfutils/bin/eu-make-debug-archive" "${CURRENT_INSTALLED_DIR}" "`dirname $0`/../../..")
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/tools/elfutils/debug")
- 
+
 # # Handle copyright
 file(INSTALL "${SOURCE_PATH}/COPYING" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME copyright)
 

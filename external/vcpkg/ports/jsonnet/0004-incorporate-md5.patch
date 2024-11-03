@@ -9,7 +9,7 @@ index a152fa9..e8a0efa 100644
 -    vm.h)
 +    vm.h
 +    ../third_party/md5/md5.h)
- 
+
  set(LIBJSONNET_SOURCE
      desugarer.cpp
 @@ -26,12 +27,13 @@ set(LIBJSONNET_SOURCE
@@ -19,14 +19,14 @@ index a152fa9..e8a0efa 100644
 -    vm.cpp)
 +    vm.cpp
 +    ../third_party/md5/md5.cpp)
- 
+
  if (BUILD_SHARED_BINARIES)
  add_library(libjsonnet ${LIBJSONNET_HEADERS} ${LIBJSONNET_SOURCE})
 -add_dependencies(libjsonnet md5 stdlib)
 -target_link_libraries(libjsonnet md5 nlohmann_json::nlohmann_json ryml)
 +add_dependencies(libjsonnet stdlib)
 +target_link_libraries(libjsonnet nlohmann_json::nlohmann_json ryml)
- 
+
  file(STRINGS ${CMAKE_CURRENT_SOURCE_DIR}/../include/libjsonnet.h JSONNET_VERSION_DEF
       REGEX "[#]define[ \t]+LIB_JSONNET_VERSION[ \t]+")
 @@ -56,8 +58,8 @@ endif()

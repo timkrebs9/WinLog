@@ -18,7 +18,7 @@ index 4c7e690..4b391b5 100644
 +if (OMPLAPP_WITH_PYTHON)
  find_package(Python)
  find_boost_python()
- 
+
 @@ -105,55 +108,76 @@ find_python_module(OpenGL)
  if (NOT OPENGL_FOUND OR NOT PY_OPENGL)
      message(WARNING "Both OpenGL and the Python OpenGL module need to be installed to use the GUI")
@@ -97,9 +97,9 @@ index 4c7e690..4b391b5 100644
 +if (OMPLAPP_WITH_DOXYGEN)
  find_package(Doxygen)
 +endif()
- 
+
  enable_testing()
- 
+
 @@ -177,9 +201,7 @@ include_directories(SYSTEM "${Boost_INCLUDE_DIR}")
  include_directories(
      "${OMPLAPP_INCLUDE_DIRS}"
@@ -108,7 +108,7 @@ index 4c7e690..4b391b5 100644
 -    "${FCL_INCLUDE_DIRS}"
 -    "${ASSIMP_INCLUDE_DIRS}")
 +    "${FCL_INCLUDE_DIRS}")
- 
+
  # ROS installs fcl in /usr. In /usr/include/fcl/config.h it says octomap was
  # enabled. Octomap is installed in /opt/ros/${ROS_DISTRO}/include (most
 @@ -242,12 +264,14 @@ endif()
@@ -123,6 +123,6 @@ index 4c7e690..4b391b5 100644
      set(OMPLAPP_LIBRARIES ${OMPLAPP_LIBRARIES} ${PQP_LIBRARY})
  endif()
 +endif()
- 
+
  add_subdirectory(ompl/doc)
  add_subdirectory(ompl/src)

@@ -14,7 +14,7 @@ vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
     OPTIONS_RELEASE -DINSTALL_HEADERS=ON
     OPTIONS_DEBUG -DINSTALL_HEADERS=OFF
-    
+
 )
 
 vcpkg_cmake_install()

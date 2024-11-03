@@ -5,7 +5,7 @@ index 16da646..ada6be0 100644
 @@ -1,7 +1,11 @@
  #ifndef NV_CONFIG
  #define NV_CONFIG
- 
+
 +#if NV_OS_DARWIN & !NV_OS_IOS
 +#cmakedefine01 HAVE_UNISTD_H
 +#else

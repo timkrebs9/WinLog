@@ -14,7 +14,7 @@ vcpkg_extract_source_archive_ex(
 
 vcpkg_configure_meson(
     SOURCE_PATH "${SOURCE_PATH}"
-    OPTIONS 
+    OPTIONS
         -Dbuild-documentation=false
         -Dvalidation=false # Validate the tutorial XML file
         -Dbuild-examples=false

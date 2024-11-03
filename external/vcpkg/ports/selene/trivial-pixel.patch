@@ -2,12 +2,12 @@
 +++ b/selene/img/pixel/Pixel.hpp
 @@ -45,6 +45,6 @@
    constexpr Pixel() noexcept = default;  ///< Default constructor. Pixel values are uninitialized.
- 
+
 -  template <typename... Args, typename = std::enable_if_t<sizeof...(Args) == nr_channels_>>
 -  constexpr Pixel(Args... args) noexcept;
 +  template <typename Arg1, typename... Args, typename = std::enable_if_t<sizeof...(Args) + 1 == nr_channels_>>
 +  constexpr Pixel(Arg1 arg1, Args... args) noexcept;
- 
+
    constexpr explicit Pixel(const std::array<T, nr_channels>& arr) noexcept;
 @@ -216,8 +216,8 @@
  template <typename T, std::size_t nr_channels_, PixelFormat pixel_format_>

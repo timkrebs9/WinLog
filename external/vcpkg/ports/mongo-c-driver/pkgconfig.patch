@@ -5,7 +5,7 @@ index 1b32e6c..2e1f854 100644
 @@ -1207,6 +1207,22 @@ set (VERSION "${MONGOC_VERSION}")
  set (prefix "${CMAKE_INSTALL_PREFIX}")
  set (libdir "\${prefix}/${CMAKE_INSTALL_LIBDIR}")
- 
+
 +set(MONGOC_REQUIRES_PRIVATE zlib)
 +set(ZLIB_LIBRARIES "")
 +if(ENABLE_SSL STREQUAL "OPENSSL")

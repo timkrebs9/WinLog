@@ -43,4 +43,3 @@ Component.prototype.createOperations = function()
                                 " --uninstall");
     }
 }
-

@@ -84,7 +84,7 @@ vcpkg_replace_string(
 )
 endforeach()
 
-# patch hogweed, gpm, nettle, zlib libraries file names; inject RuntimeLibrary property to control CRT linkage 
+# patch hogweed, gpm, nettle, zlib libraries file names; inject RuntimeLibrary property to control CRT linkage
 foreach(VCXPROJ IN ITEMS
 "${SOURCE_PATH}/SMP/libgnutls.vcxproj"
 "${SOURCE_PATH}/SMP/libgnutls_winrt.vcxproj")

@@ -3,7 +3,7 @@ index 27dbc87..1059a72 100644
 --- a/zbar/symbol.c
 +++ b/zbar/symbol.c
 @@ -100,40 +100,29 @@ const char *zbar_get_orientation_name (zbar_orientation_t orient)
- 
+
  int _zbar_get_symbol_hash (zbar_symbol_type_t sym)
  {
 -    static const signed char hash[ZBAR_CODE128 + 1] = {
@@ -64,7 +64,7 @@ index 27dbc87..1059a72 100644
 +		case ZBAR_CODABAR:     return 19;
 +	}
  }
- 
+
  void _zbar_symbol_free (zbar_symbol_t *sym)
 diff --git a/zbar/window/win.c b/zbar/window/win.c
 index b949f65..7edcfa2 100644
@@ -72,7 +72,7 @@ index b949f65..7edcfa2 100644
 +++ b/zbar/window/win.c
 @@ -194,7 +194,7 @@ int _zbar_window_draw_polygon (zbar_window_t *w,
      win_set_rgb(hdc, rgb);
- 
+
      point_t org = w->scaled_offset;
 -    POINT gdipts[npts + 1];
 +    POINT* gdipts = malloc((npts + 1) * sizeof(POINT));
@@ -81,9 +81,8 @@ index b949f65..7edcfa2 100644
          point_t p = window_scale_pt(w, pts[i]);
 @@ -204,6 +204,7 @@ int _zbar_window_draw_polygon (zbar_window_t *w,
      gdipts[npts] = gdipts[0];
- 
+
      Polyline(hdc, gdipts, npts + 1);
 +    free(gdipts);
      return(0);
  }
- 

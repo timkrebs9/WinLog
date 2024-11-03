@@ -5,7 +5,7 @@ diff --git a/crc32.cpp b/crc32.cpp
 +++ b/crc32.cpp
 @@ -7,8 +7,10 @@
  #include "crc32.h"
- 
+
  // big endian architectures need #define __BYTE_ORDER __BIG_ENDIAN
 -#ifndef _MSC_VER
 -#include <endian.h>
@@ -14,14 +14,14 @@ diff --git a/crc32.cpp b/crc32.cpp
 +#elif !defined(_MSC_VER)
 +  #include <endian.h>
  #endif
- 
- 
+
+
 diff --git a/keccak.cpp b/keccak.cpp
 --- a/keccak.cpp
 +++ b/keccak.cpp
 @@ -7,8 +7,10 @@
  #include "keccak.h"
- 
+
  // big endian architectures need #define __BYTE_ORDER __BIG_ENDIAN
 -#ifndef _MSC_VER
 -#include <endian.h>
@@ -30,15 +30,15 @@ diff --git a/keccak.cpp b/keccak.cpp
 +#elif !defined(_MSC_VER)
 +  #include <endian.h>
  #endif
- 
- 
+
+
 diff --git a/md5.cpp b/md5.cpp
 --- a/md5.cpp
 +++ b/md5.cpp
 @@ -6,8 +6,10 @@
- 
+
  #include "md5.h"
- 
+
 -#ifndef _MSC_VER
 -#include <endian.h>
 +#if defined(__APPLE__)
@@ -46,14 +46,14 @@ diff --git a/md5.cpp b/md5.cpp
 +#elif !defined(_MSC_VER)
 +  #include <endian.h>
  #endif
- 
- 
+
+
 diff --git a/sha1.cpp b/sha1.cpp
 --- a/sha1.cpp
 +++ b/sha1.cpp
 @@ -7,8 +7,10 @@
  #include "sha1.h"
- 
+
  // big endian architectures need #define __BYTE_ORDER __BIG_ENDIAN
 -#ifndef _MSC_VER
 -#include <endian.h>
@@ -62,14 +62,14 @@ diff --git a/sha1.cpp b/sha1.cpp
 +#elif !defined(_MSC_VER)
 +  #include <endian.h>
  #endif
- 
- 
+
+
 diff --git a/sha256.cpp b/sha256.cpp
 --- a/sha256.cpp
 +++ b/sha256.cpp
 @@ -7,8 +7,10 @@
  #include "sha256.h"
- 
+
  // big endian architectures need #define __BYTE_ORDER __BIG_ENDIAN
 -#ifndef _MSC_VER
 -#include <endian.h>
@@ -78,14 +78,14 @@ diff --git a/sha256.cpp b/sha256.cpp
 +#elif !defined(_MSC_VER)
 +  #include <endian.h>
  #endif
- 
- 
+
+
 diff --git a/sha3.cpp b/sha3.cpp
 --- a/sha3.cpp
 +++ b/sha3.cpp
 @@ -7,8 +7,10 @@
  #include "sha3.h"
- 
+
  // big endian architectures need #define __BYTE_ORDER __BIG_ENDIAN
 -#ifndef _MSC_VER
 -#include <endian.h>
@@ -94,5 +94,5 @@ diff --git a/sha3.cpp b/sha3.cpp
 +#elif !defined(_MSC_VER)
 +  #include <endian.h>
  #endif
- 
+
  #include <iostream>

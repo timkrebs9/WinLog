@@ -4,7 +4,7 @@ index 854214c..9c4d98a 100644
 +++ b/CMakeLists.txt
 @@ -124,7 +124,7 @@ if("${CMAKE_INSTALL_PREFIX}" STREQUAL "/usr" OR "${CMAKE_INSTALL_PREFIX}" STREQU
  endif()
- 
+
  # Installation paths
 -if(UNIX AND SYSTEM_DIR_INSTALL)
 +if(1)

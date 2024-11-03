@@ -15,4 +15,3 @@ function deployOpenNI2([string]$targetBinaryDir, [string]$installedDir, [string]
         }
     }
 }
-

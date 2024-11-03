@@ -5,7 +5,7 @@ index 0a23f44..7020804 100644
 @@ -23,6 +23,10 @@ if (NOT @BUILD_SHARED_LIBS@)
      find_dependency(Qt5Xml @REQUIRED_QT_VERSION@)
      find_dependency(Qt5Gui @REQUIRED_QT_VERSION@)
- 
+
 +    if (@HAVE_LIBMOUNT@)
 +        find_dependency(LibMount)
 +    endif()

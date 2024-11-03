@@ -4,7 +4,7 @@ index 50442cd..fdc82f2 100644
 +++ b/CMakeLists.txt
 @@ -28,24 +28,32 @@ LIST ( SORT			ly_unittest_sources )
  INCLUDE_DIRECTORIES( BEFORE ${ly_inc_dir} )
- 
+
  # this creates the static library (.a)
 +if (NOT BUILD_SHARED_LIBS)
  ADD_LIBRARY				( ${ly_lib_static} STATIC ${ly_source_files} )
@@ -26,7 +26,7 @@ index 50442cd..fdc82f2 100644
 +else()
 +    TARGET_LINK_LIBRARIES   ( yuvconvert ${ly_lib_static} )
 +endif()
- 
+
  INCLUDE ( FindJPEG )
  if (JPEG_FOUND)
 -  include_directories( ${JPEG_INCLUDE_DIR} )
@@ -41,10 +41,10 @@ index 50442cd..fdc82f2 100644
 +  target_link_libraries(yuvconvert ${JPEG_LIBRARY})
    add_definitions( -DHAVE_JPEG )
  endif()
- 
+
 @@ -88,11 +96,13 @@ endif()
- 
- 
+
+
  # install the conversion tool, .so, .a, and all the header files
 -INSTALL ( TARGETS yuvconvert DESTINATION bin )
 +INSTALL ( TARGETS yuvconvert DESTINATION tools )
@@ -58,5 +58,5 @@ index 50442cd..fdc82f2 100644
 +    INSTALL ( TARGETS ${ly_lib_shared} EXPORT libyuv-targets LIBRARY DESTINATION lib RUNTIME DESTINATION bin )
 +endif()
  INSTALL( EXPORT libyuv-targets DESTINATION share/cmake/libyuv/ EXPORT_LINK_INTERFACE_LIBRARIES )
- 
+
  # create the .deb and .rpm packages using cpack

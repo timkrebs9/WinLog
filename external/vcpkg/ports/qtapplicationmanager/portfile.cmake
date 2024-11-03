@@ -1,7 +1,7 @@
 set(SCRIPT_PATH "${CURRENT_INSTALLED_DIR}/share/qtbase")
 include("${SCRIPT_PATH}/qt_install_submodule.cmake")
 
-set(${PORT}_PATCHES 
+set(${PORT}_PATCHES
         bump-cmake-version.patch
         wrapper-fixes.patch
         stack-walker-arm64.patch
@@ -23,7 +23,7 @@ endif()
 
 set(qt_plugindir ${QT6_DIRECTORY_PREFIX}plugins)
 set(qt_qmldir ${QT6_DIRECTORY_PREFIX}qml)
-qt_cmake_configure(${_opt} 
+qt_cmake_configure(${_opt}
                    OPTIONS
                         -DCMAKE_FIND_PACKAGE_TARGETS_GLOBAL=ON
                         -DINPUT_libarchive=system
@@ -47,7 +47,7 @@ qt_fixup_and_cleanup(TOOL_NAMES ${TOOL_NAMES})
 
 qt_install_copyright("${SOURCE_PATH}")
 
-# Switch to a more complicated script due to the one post-build script which needed fixing after configure. 
+# Switch to a more complicated script due to the one post-build script which needed fixing after configure.
 # If somebody finds out how/where post-build.bat gets generated please fix it there instead.
 #qt_install_submodule(PATCHES    ${${PORT}_PATCHES}
 #                     TOOL_NAMES ${TOOL_NAMES}

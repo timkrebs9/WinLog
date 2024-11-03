@@ -14,7 +14,7 @@ index ab2d756..2c36ec4 100644
 +  coded_stream.SetTotalBytesLimit(1024LL << 20);
    return proto->ParseFromCodedStream(&coded_stream);
  }
- 
+
 @@ -155,7 +154,7 @@ bool ReadProtoFromBinaryFile(const char* filename, MessageLite* proto) {
    std::unique_ptr<CodedInputStream> coded_input(
        new CodedInputStream(raw_input.get()));

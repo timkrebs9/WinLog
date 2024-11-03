@@ -7,4 +7,3 @@ The package geos provides CMake targets:
     # C++ API (will likely change across versions)
     find_package(GEOS CONFIG REQUIRED)
     target_link_libraries(main PRIVATE GEOS::geos)
-

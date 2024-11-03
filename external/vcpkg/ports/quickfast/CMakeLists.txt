@@ -6,7 +6,7 @@ option(BUILD_SHARED_LIBS "Build shared instead of static library" ON)
 find_package(Boost REQUIRED COMPONENTS thread)
 find_package(XercesC REQUIRED)
 
-file(GLOB SOURCES 
+file(GLOB SOURCES
 	quickfast/Application/*.cpp
 	quickfast/Common/*.cpp
 	quickfast/Codecs/*.cpp
@@ -37,11 +37,11 @@ target_include_directories(quickfast PUBLIC
 )
 
 target_link_libraries(quickfast PRIVATE
-	${Boost_LIBRARIES} 
+	${Boost_LIBRARIES}
 	XercesC::XercesC
 )
 
-install(TARGETS quickfast EXPORT quickfast-config 
+install(TARGETS quickfast EXPORT quickfast-config
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib

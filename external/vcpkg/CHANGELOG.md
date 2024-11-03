@@ -4719,7 +4719,7 @@ vcpkg (2020.11.03 - 2021.04.30)
 vcpkg (2020.11.03)
 ---
 #### Total port count: 1519
-#### Total port count per triplet (tested): 
+#### Total port count per triplet (tested):
 |triplet|ports available|
 |---|---|
 |**x64-windows**|1374|
@@ -4759,7 +4759,7 @@ vcpkg (2020.11.03)
 vcpkg (2020.11.01)
 ---
 #### Total port count: 1519
-#### Total port count per triplet (tested): 
+#### Total port count per triplet (tested):
 |triplet|ports available|
 |---|---|
 |**x64-windows**|1374|
@@ -5363,13 +5363,13 @@ vcpkg (2020.11.01)
     - [(#14003)](https://github.com/microsoft/vcpkg/pull/14003) [vcpkg baseline] [vs-yasm] Build yasm instead of downloading it to work around memory corruption bugs in yasm itself.
 
 - asio `1.12.2-2#0` -> `1.18.0#0`
-    - [(#14167)](https://github.com/microsoft/vcpkg/pull/14167) [asio] update to version 1.18.0 (#14095) 
+    - [(#14167)](https://github.com/microsoft/vcpkg/pull/14167) [asio] update to version 1.18.0 (#14095)
 
 - opendnp3 `2.3.2#0` -> `3.1.0#0`
-    - [(#14167)](https://github.com/microsoft/vcpkg/pull/14167) [asio] update to version 1.18.0 (#14095) 
+    - [(#14167)](https://github.com/microsoft/vcpkg/pull/14167) [asio] update to version 1.18.0 (#14095)
 
 - restbed `4.16-07-28-2018-2#0` -> `4.7#0`
-    - [(#14167)](https://github.com/microsoft/vcpkg/pull/14167) [asio] update to version 1.18.0 (#14095) 
+    - [(#14167)](https://github.com/microsoft/vcpkg/pull/14167) [asio] update to version 1.18.0 (#14095)
 
 - sqlitecpp `3.1.1#0` -> `3.1.1#1,`
     - [(#14029)](https://github.com/microsoft/vcpkg/pull/14029) [sqlitecpp] Additions for sqlcipher port
@@ -5846,12 +5846,12 @@ vcpkg (2020.06.16 - 2020.7.31)
     - [(#12051)](https://github.com/microsoft/vcpkg/pull/12051) [SObjectizer] update to v.5.7.1.
 
 - field3d `1.7.2` -> `1.7.3`
-    - [(#11747)](https://github.com/microsoft/vcpkg/pull/11747) [hdf5] Update HDF5 to 1.12 
+    - [(#11747)](https://github.com/microsoft/vcpkg/pull/11747) [hdf5] Update HDF5 to 1.12
     - [(#11130)](https://github.com/microsoft/vcpkg/pull/11130) [opencv4] update to v4.3
     - [(#12342)](https://github.com/microsoft/vcpkg/pull/12342) [qt5-base] Add zstd as a dependency
 
 - hdf5 `1.10.5-12` -> `1.12.0`
-    - [(#11747)](https://github.com/microsoft/vcpkg/pull/11747) [hdf5] Update HDF5 to 1.12 
+    - [(#11747)](https://github.com/microsoft/vcpkg/pull/11747) [hdf5] Update HDF5 to 1.12
 
 - freerdp `2.0.0-1` -> `2.1.1-1`
     - [(#12050)](https://github.com/microsoft/vcpkg/pull/12050) [freerdp] Update to version 2.1.1
@@ -5913,7 +5913,7 @@ vcpkg (2020.06.16 - 2020.7.31)
     - [(#12157)](https://github.com/microsoft/vcpkg/pull/12157) [many ports] Remove _find_package guards that break *_FOUND
     - [(#12635)](https://github.com/microsoft/vcpkg/pull/12635) [ffmpeg] fix FindFFMPEG.cmake to work properly even without avresample
     - [(#12843)](https://github.com/microsoft/vcpkg/pull/12843) [ffmpeg] Some libraries in ffmpeg can be optional
-    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora. 
+    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora.
     - [(#13004)](https://github.com/microsoft/vcpkg/pull/13004) [ffmpeg] fix cmake module
 
 - imgui `1.76-1` -> `1.78`
@@ -5927,7 +5927,7 @@ vcpkg (2020.06.16 - 2020.7.31)
 
 - x265 `3.2-3` -> `3.4`
     - [(#11903)](https://github.com/microsoft/vcpkg/pull/11903) [x265] Delete the bin directory if the platform is Linux
-    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora. 
+    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora.
     - [(#13048)](https://github.com/microsoft/vcpkg/pull/13048) [x265] Update source and version
 
 - wtl `10.0-5` -> `10.0.10077`
@@ -5963,7 +5963,7 @@ vcpkg (2020.06.16 - 2020.7.31)
 
 - ffnvcodec `9.1.23.1` -> `9.1.23.1-1`
     - [(#12080)](https://github.com/microsoft/vcpkg/pull/12080) Fix bootstrapping MSYS2 pacman (#11499)
-    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora. 
+    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora.
 
 - libpq `12.2-2` -> `12.2-3`
     - [(#12080)](https://github.com/microsoft/vcpkg/pull/12080) Fix bootstrapping MSYS2 pacman (#11499)
@@ -6580,7 +6580,7 @@ vcpkg (2020.06.16 - 2020.7.31)
 - zlib `1.2.11-6` -> `1.2.11`
     - [(#12133)](https://github.com/microsoft/vcpkg/pull/12133) [zlib] Add pkgconfig file
     - [(#12753)](https://github.com/microsoft/vcpkg/pull/12753) [zlib, libpng] Fix pkg-config for mingw
-    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora. 
+    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora.
 
 - libmupdf `1.16.1-1` -> `1.17.0`
     - [(#12483)](https://github.com/microsoft/vcpkg/pull/12483) [libmupdf] Update libmupdf to 1.17.0
@@ -6740,7 +6740,7 @@ vcpkg (2020.06.16 - 2020.7.31)
 
 - wavpack `5.2.0` -> `5.2.0`
     - [(#12742)](https://github.com/microsoft/vcpkg/pull/12742) [wavpack] Fix failure on linux and osx
-    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora. 
+    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora.
 
 - shapelib `1.4.1-2` -> `1.5.0`
     - [(#12737)](https://github.com/microsoft/vcpkg/pull/12737) [shapelib] Update to 1.5.0
@@ -6772,11 +6772,11 @@ vcpkg (2020.06.16 - 2020.7.31)
     - [(#11800)](https://github.com/microsoft/vcpkg/pull/11800) [sfml][imgui-sfml] Push SFML_STATIC_LIBRARIES setting into `sfml`
 
 - fmt `6.2.1` -> `7.0.3`
-    - [(#12312)](https://github.com/microsoft/vcpkg/pull/12312) [fmt] Update to 7.0.2 + [spdlog] Update to 1.7.0 
+    - [(#12312)](https://github.com/microsoft/vcpkg/pull/12312) [fmt] Update to 7.0.2 + [spdlog] Update to 1.7.0
     - [(#12806)](https://github.com/microsoft/vcpkg/pull/12806) [fmt] Update to 7.0.3
 
 - spdlog `1.6.1` -> `1.7.0`
-    - [(#12312)](https://github.com/microsoft/vcpkg/pull/12312) [fmt] Update to 7.0.2 + [spdlog] Update to 1.7.0 
+    - [(#12312)](https://github.com/microsoft/vcpkg/pull/12312) [fmt] Update to 7.0.2 + [spdlog] Update to 1.7.0
 
 - armadillo `2019-04-16-8` -> `2019-04-16`
     - [(#12464)](https://github.com/microsoft/vcpkg/pull/12464) [lapack] add metaport lapack to switch lapack impl with an overlay
@@ -6923,17 +6923,17 @@ vcpkg (2020.06.16 - 2020.7.31)
     - [(#12972)](https://github.com/microsoft/vcpkg/pull/12972) [xlnt] Upgrade xlnt to 1.5.0
 
 - fdk-aac `2018-07-08-1` -> `2018-07-08-2`
-    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora. 
+    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora.
 
 - opus `1.3.1-3` -> `1.3.1`
-    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora. 
+    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora.
     - [(#12886)](https://github.com/microsoft/vcpkg/pull/12886) [many ports] Fix various problems with mingw
 
 - sdl2 `2.0.12-1` -> `2.0.12`
-    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora. 
+    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora.
 
 - speex `1.2.0-4` -> `1.2.0`
-    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora. 
+    - [(#11277)](https://github.com/microsoft/vcpkg/pull/11277) [ffmpeg] Add feature support for zlib, iconv, fdk-aac, mp3lame, opus, soxr, theora.
 
 - pcl `1.9.1-13` -> `1.11.0`
     - [(#10042)](https://github.com/microsoft/vcpkg/pull/10042) [pcl] Update to 1.10.0
@@ -7003,7 +7003,7 @@ vcpkg (2020.06.16 - 2020.7.31)
 vcpkg (2020.04.20 - 2020.06.15)
 ---
 #### Total port count: 1402
-#### Total port count per triplet (tested): 
+#### Total port count per triplet (tested):
 |triplet|ports available|
 |---|---|
 |**x64-windows**|1282|
@@ -8520,7 +8520,7 @@ vcpkg (2020.04.01 - 2020.04.20)
 ---
 #### Total port count: 1322
 
-#### Total port count per triplet (tested): 
+#### Total port count per triplet (tested):
 |triplet|ports available|
 |---|---|
 |**x64-windows**|1218|
@@ -8622,7 +8622,7 @@ vcpkg (2020.04.01 - 2020.04.20)
 - qt5-base `5.12.5-11` -> `5.12.5-13`
     - [(#10641)](https://github.com/microsoft/vcpkg/pull/10641) [qt5-base] Fix EGL absolute path on Linux
     - [(#10746)](https://github.com/microsoft/vcpkg/pull/10746) [qt5] fix some remaining absolute paths.
-    - [(#9705)](https://github.com/microsoft/vcpkg/pull/9705) [qt5-base, qt5-imageformat] fix issues on osx 
+    - [(#9705)](https://github.com/microsoft/vcpkg/pull/9705) [qt5-base, qt5-imageformat] fix issues on osx
 
 - nana `1.7.2` -> `1.7.2-1`
     - [(#10605)](https://github.com/microsoft/vcpkg/pull/10605) [nana] Add Xorg dependency libxcursor-dev and modify deprecated functions
@@ -8636,11 +8636,11 @@ vcpkg (2020.04.01 - 2020.04.20)
     - [(#10469)](https://github.com/microsoft/vcpkg/pull/10469) [libffi] Check return value of execute_process()
 
 - fribidi `2019-02-04-2` -> `2019-02-04-3`
-    - [(#10395)](https://github.com/microsoft/vcpkg/pull/10395) [vcpkg] Make configure meson sane and work for all targets. 
+    - [(#10395)](https://github.com/microsoft/vcpkg/pull/10395) [vcpkg] Make configure meson sane and work for all targets.
     - [(#10713)](https://github.com/microsoft/vcpkg/pull/10713) [fribidi] Updated to v1.0.9
 
 - libepoxy `1.5.3-2` -> `1.5.3-3`
-    - [(#10395)](https://github.com/microsoft/vcpkg/pull/10395) [vcpkg] Make configure meson sane and work for all targets. 
+    - [(#10395)](https://github.com/microsoft/vcpkg/pull/10395) [vcpkg] Make configure meson sane and work for all targets.
 
 - egl-registry `2019-08-08` -> `2020-02-03`
     - [(#9965)](https://github.com/microsoft/vcpkg/pull/9965) [angle] Improve port
@@ -8667,10 +8667,10 @@ vcpkg (2020.04.01 - 2020.04.20)
     - [(#10688)](https://github.com/microsoft/vcpkg/pull/10688) [jsoncons] update to v0.150.0
 
 - osg-qt `Qt4` -> `Qt4-1`
-    - [(#9705)](https://github.com/microsoft/vcpkg/pull/9705) [qt5-base, qt5-imageformat] fix issues on osx 
+    - [(#9705)](https://github.com/microsoft/vcpkg/pull/9705) [qt5-base, qt5-imageformat] fix issues on osx
 
 - qt5-imageformats `5.12.5-2` -> `5.12.5-3`
-    - [(#9705)](https://github.com/microsoft/vcpkg/pull/9705) [qt5-base, qt5-imageformat] fix issues on osx 
+    - [(#9705)](https://github.com/microsoft/vcpkg/pull/9705) [qt5-base, qt5-imageformat] fix issues on osx
 
 - libpng `1.6.37-6` -> `1.6.37-7`
     - [(#6275)](https://github.com/microsoft/vcpkg/pull/6275) Add initial iOS support
@@ -8748,7 +8748,7 @@ vcpkg (2020.04.01 - 2020.04.20)
     - [(#10664)](https://github.com/microsoft/vcpkg/pull/10664) [flatbuffers] Update to 1.12.0
 
 - curl `7.68.0-2` -> `7.68.0-3`
-    - [(#10659)](https://github.com/microsoft/vcpkg/pull/10659) [curl] Fix cmake configure error 
+    - [(#10659)](https://github.com/microsoft/vcpkg/pull/10659) [curl] Fix cmake configure error
 
 - ismrmrd `1.4.1` -> `1.4.2`
     - [(#10618)](https://github.com/microsoft/vcpkg/pull/10618) [ismrmrd] updated to version 1.4.2
@@ -8801,7 +8801,7 @@ vcpkg (2020.04.01 - 2020.04.20)
 vcpkg (2020.01.31)
 ---
 #### Total port count: 1295
-#### Total port count per triplet (tested): 
+#### Total port count per triplet (tested):
 |triplet|ports available|
 |---|---|
 |**x64-windows**|1195|
@@ -9058,7 +9058,7 @@ vcpkg (2020.01.31)
 
 - hdf5 `1.10.5-8` -> `1.10.5-9`
     - [(#9043)](https://github.com/microsoft/vcpkg/pull/9043) [hdf5] Fix static builds when building dynamic builds
-    - [(#9413)](https://github.com/microsoft/vcpkg/pull/9413) [HDF5] Correct SZIP linkage, modernize portfile 
+    - [(#9413)](https://github.com/microsoft/vcpkg/pull/9413) [HDF5] Correct SZIP linkage, modernize portfile
 
 - cgicc `3.2.19-3` -> `3.2.19-4`
     - [(#9123)](https://github.com/microsoft/vcpkg/pull/9123) [many ports] Add mirror
@@ -11678,7 +11678,7 @@ vcpkg (2019.09.30)
 vcpkg (2019.08.31)
 ---
 #### Total port count: 1169
-#### Total port count per triplet (tested): 
+#### Total port count per triplet (tested):
 |triplet|ports available|
 |---|---|
 |**x64-windows**|1099|
@@ -11692,7 +11692,7 @@ vcpkg (2019.08.31)
 
 #### The following commands and options have been updated:
 - `depend-info`
-    - `--max-recurse` ***[NEW OPTION]***: Set the max depth of recursion for listing dependencies 
+    - `--max-recurse` ***[NEW OPTION]***: Set the max depth of recursion for listing dependencies
     - `--sort` ***[NEW OPTION]***: Sort the list of dependencies by  `lexicographical`, `topological`, and `reverse` (topological) order
     - `--show-depth` ***[NEW OPTION]***: Display the depth of each dependency in the list
       - [(#7643)](https://github.com/microsoft/vcpkg/pull/7643) [depend-info] Fix bugs, add `--sort`, `--show-depth` and `--max-recurse` options
@@ -11737,11 +11737,11 @@ vcpkg (2019.08.31)
   - The `Build-Depends` field now supports logical expressions as well as line breaks
     - [(#7508)](https://github.com/microsoft/vcpkg/pull/7508) Improve logical evaluation of dependency qualifiers
     - [(#7863)](https://github.com/microsoft/vcpkg/pull/7863) Fix list parsing logic and add error messages
-- Quality-of-Life improvements for portfile maintainers 
+- Quality-of-Life improvements for portfile maintainers
   - [(#7601)](https://github.com/microsoft/vcpkg/pull/7601) [vcpkg/cmake] Added a function to fail from portfiles in a default way
   - [(#7600)](https://github.com/microsoft/vcpkg/pull/7600) [vcpkg] QoL: add target dependent library prefix/suffix variables and enable find_library for portfiles
   - [(#7773)](https://github.com/microsoft/vcpkg/pull/7773) [vcpkg] QoL: Make find_library useable without errors to console.
-  - [(#7599)](https://github.com/microsoft/vcpkg/pull/7599) [vcpkg] QoL: add host/target dependent variables for executable suffixes 
+  - [(#7599)](https://github.com/microsoft/vcpkg/pull/7599) [vcpkg] QoL: add host/target dependent variables for executable suffixes
 
 #### The following *additional* changes have been made to vcpkg's infrastructure:
 - [(#4572)](https://github.com/microsoft/vcpkg/pull/4572) Change CMakeLists.txt in toolsrc to allow compiling with llvm toolset
@@ -12492,7 +12492,7 @@ vcpkg (2019.08.31)
 vcpkg (2019.7.31)
 ---
 #### Total port count: 1105
-#### Total port count per triplet (tested): 
+#### Total port count per triplet (tested):
 |triplet|ports available|
 |---|---|
 |**x64-windows**|1039|

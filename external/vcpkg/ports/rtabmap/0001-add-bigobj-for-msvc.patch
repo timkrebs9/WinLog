@@ -6,5 +6,5 @@
    endif()
 +  add_compile_options("/bigobj")
  endif()
- 
- # [Eclipse] Automatic Discovery of Include directories (Optional, but handy) 
+
+ # [Eclipse] Automatic Discovery of Include directories (Optional, but handy)

@@ -12,6 +12,6 @@ index ccbf182..de819fb 100644
 +#else
      const unsigned int SSE2_SHUFF = 0x1bU;
 +#endif
- 
+
      __m128i x = a->si;
      __m128i z = _mm_slli_epi64(x, SL1);

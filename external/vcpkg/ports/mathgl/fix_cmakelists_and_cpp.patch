@@ -11,7 +11,7 @@ index 1649104..eeec1c1 100644
 +		target_link_libraries(mgllab mgl mgl-fltk mgl-fltk-static mgl-static getopt-static ${FLTK_LIBRARIES})
 +	else(WIN32)
 +		target_link_libraries(mgllab mgl mgl-fltk ${FLTK_LIBRARIES})
-+	endif(WIN32)	
++	endif(WIN32)
  	install(
  		TARGETS mgllab
  		RUNTIME DESTINATION bin	)

@@ -3,7 +3,7 @@ index f922d5ab..6eb0a7fb 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -134,6 +134,7 @@ endif()
- 
+
  if(MSVC)
  	configure_file(include/win32config.h config.h COPYONLY)
 +	add_compile_options(/wd4996)

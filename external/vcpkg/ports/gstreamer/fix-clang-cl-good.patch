@@ -5,7 +5,7 @@ index 64705379f..0c55b9732 100644
 @@ -30,7 +30,7 @@ plugins = []
  cc = meson.get_compiler('c')
  host_system = host_machine.system()
- 
+
 -if cc.get_id() == 'msvc'
 +if cc.get_argument_syntax() == 'msvc'
    msvc_args = [

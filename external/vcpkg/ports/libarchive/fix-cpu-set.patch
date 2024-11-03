@@ -12,4 +12,3 @@ index 65ea691..63217ec 100644
 +#endif
  #include <pthread.h>
  #endif
- 

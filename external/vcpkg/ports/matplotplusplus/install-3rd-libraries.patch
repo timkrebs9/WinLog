@@ -11,5 +11,3 @@ index bef0c08..e7521a7 100644
 +      LIBRARY DESTINATION lib
 +      ARCHIVE DESTINATION lib)
  endif()
- 
- 

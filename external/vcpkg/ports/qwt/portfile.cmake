@@ -3,7 +3,7 @@ vcpkg_from_git(
     URL "https://git.code.sf.net/p/qwt/git"
     REF "06d6822b595b70c9fd567a4fe0d835759bf271fe"
     FETCH_REF qwt-6.2
-    PATCHES 
+    PATCHES
         config.patch
         fix_dll_install.patch
 )

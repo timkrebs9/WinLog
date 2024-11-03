@@ -39,20 +39,20 @@
 
 /* Ultrix botches type-ahead when switching from canonical to
    non-canonical mode, at least through version 4.3 */
-#if !defined (HAVE_TERMIOS_H) || !defined (HAVE_TCGETATTR) || defined (ultrix)
-#  define TERMIOS_MISSING
+#if !defined(HAVE_TERMIOS_H) || !defined(HAVE_TCGETATTR) || defined(ultrix)
+#define TERMIOS_MISSING
 #endif
 
-#if defined (STRCOLL_BROKEN)
-#  define HAVE_STRCOLL 1
+#if defined(STRCOLL_BROKEN)
+#define HAVE_STRCOLL 1
 #endif
 
-#if defined (__STDC__) && defined (HAVE_STDARG_H)
-#  define PREFER_STDARG
-#  define USE_VARARGS
+#if defined(__STDC__) && defined(HAVE_STDARG_H)
+#define PREFER_STDARG
+#define USE_VARARGS
 #else
-#  if defined (HAVE_VARARGS_H)
-#    define PREFER_VARARGS
-#    define USE_VARARGS
-#  endif
+#if defined(HAVE_VARARGS_H)
+#define PREFER_VARARGS
+#define USE_VARARGS
+#endif
 #endif

@@ -38,8 +38,8 @@ vcpkg_check_features(
 vcpkg_configure_cmake(
     SOURCE_PATH ${SOURCE_PATH}
     PREFER_NINJA
-    OPTIONS 
-        ${FL_DEFAULT_VCPKG_CMAKE_FLAGS} 
+    OPTIONS
+        ${FL_DEFAULT_VCPKG_CMAKE_FLAGS}
         ${FEATURE_OPTIONS}
     OPTIONS_DEBUG
         -DFL_INSTALL_CMAKE_DIR=${CURRENT_PACKAGES_DIR}/debug/share/flashlight

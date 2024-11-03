@@ -13,7 +13,7 @@ index 9c34d72..9e68d9b 100644
 +#endif
      promise.get_future().wait();
    }
- 
+
 @@ -372,7 +376,11 @@ void OpcTcpServer::Shutdown()
     */
    typedef std::promise<void> Promise;
@@ -26,4 +26,3 @@ index 9c34d72..9e68d9b 100644
 +#endif
    promise.get_future().wait();
  }
- 

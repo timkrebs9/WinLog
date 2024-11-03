@@ -4,13 +4,13 @@ index 829fe38de..e01ad8884 100644
 +++ b/glib/gconvert.c
 @@ -32,7 +32,8 @@
  #include <stdlib.h>
- 
+
  #ifdef G_OS_WIN32
 -#include "win_iconv.c"
 +#define USE_LIBICONV_GNU
 +#include <iconv.h>
  #endif
- 
+
  #ifdef G_PLATFORM_WIN32
 diff --git a/meson.build b/meson.build
 index d465253af..34ce69e4d 100644

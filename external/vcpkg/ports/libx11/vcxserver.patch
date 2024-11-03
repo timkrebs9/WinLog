@@ -3,9 +3,9 @@ index 5faf83b..c6c63a3 100644
 --- a/include/X11/Xlib.h
 +++ b/include/X11/Xlib.h
 @@ -79,7 +79,7 @@ _Xmblen(
- 
+
  typedef char *XPointer;
- 
+
 -#define Bool int
 -#define Status int
 +typedef int Bool;
@@ -28,7 +28,7 @@ index 460660f..510ff5d 100644
  typedef void *XModuleType;
  #endif
 +#endif
- 
+
  #ifndef LIBXCURSOR
  #define LIBXCURSOR "libXcursor.so.1"
 @@ -70,8 +76,12 @@ open_library (void)
@@ -53,19 +53,19 @@ index c9222a2..c6e1b25 100644
       * then load that file.
       */
 -
-+     
++
      if (dpy->xdefaults == NULL) {
 +	#ifdef _MSC_VER
 +	const char *slashDotXdefaults = ".Xdefaults";
 +	#else
  	const char *slashDotXdefaults = "/.Xdefaults";
 +	#endif
- 
+
  	(void) GetHomeDir (fname, (int) (PATH_MAX - strlen (slashDotXdefaults) - 1));
  	(void) strcat (fname, slashDotXdefaults);
 @@ -149,7 +154,11 @@ InitDefaults(
      }
- 
+
      if (!(xenv = getenv ("XENVIRONMENT"))) {
 +	#ifdef _MSC_VER
 +	const char *slashDotXdefaultsDash = ".Xdefaults-";
@@ -73,7 +73,7 @@ index c9222a2..c6e1b25 100644
  	const char *slashDotXdefaultsDash = "/.Xdefaults-";
 +	#endif
  	int len;
- 
+
  	(void) GetHomeDir (fname, (int) (PATH_MAX - strlen (slashDotXdefaultsDash) - 1));
     diff --git a/src/SetLocale.c b/src/SetLocale.c
 index 81f4a7c..cb52f11 100644
@@ -83,10 +83,10 @@ index 81f4a7c..cb52f11 100644
  #include <X11/Xlocale.h>
  #include <X11/Xos.h>
  #include "XlcPubI.h"
- 
+
  #define MAXLOCALE	64	/* buffer size of locale name */
- 
- 
+
+
 -#if defined(__APPLE__) || defined(__CYGWIN__)
 +#if defined(__APPLE__) || defined(__CYGWIN__) || defined(_MSC_VER)
  char *
@@ -97,7 +97,7 @@ index be77a93..6967bcc 100644
 --- a/src/StrKeysym.c
 +++ b/src/StrKeysym.c
 @@ -39,12 +39,12 @@ in this Software without prior written authorization from The Open Group.
- 
+
  #ifndef KEYSYMDB
  #ifndef XKEYSYMDB
 -#define KEYSYMDB "/usr/lib/X11/XKeysymDB"
@@ -106,7 +106,7 @@ index be77a93..6967bcc 100644
  #define KEYSYMDB XKEYSYMDB
  #endif
  #endif
- 
+
  static Bool initialized;
  static XrmDatabase keysymdb;
  static XrmQuark Qkeysym[2];
@@ -116,12 +116,12 @@ index 3821bff..a50aa70 100644
 +++ b/src/xlibi18n/lcDynamic.c
 @@ -51,7 +51,7 @@ from The Open Group.
  #include "Xlcint.h"
- 
+
  #ifndef XLOCALEDIR
 -#define XLOCALEDIR "/usr/lib/X11/locale"
 +#define XLOCALEDIR "locale"
  #endif
- 
+
  #define LCLIBNAME    "xi18n.so"
 diff --git a/src/xlibi18n/lcFile.c b/src/xlibi18n/lcFile.c
 index 25cabd5..819ac89 100644
@@ -129,10 +129,10 @@ index 25cabd5..819ac89 100644
 +++ b/src/xlibi18n/lcFile.c
 @@ -195,7 +192,7 @@ _XlcParsePath(
  }
- 
+
  #ifndef XLOCALEDIR
 -#define XLOCALEDIR "/usr/lib/X11/locale"
 +#define XLOCALEDIR "locale"
  #endif
- 
+
  void

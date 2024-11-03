@@ -4,7 +4,7 @@ index d9bf7b5..eb2692c 100644
 +++ b/CMakeLists.txt
 @@ -60,7 +60,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND
  endif()
- 
+
  hunter_add_package(thrift)
 -find_package(thrift ${hunter_config} REQUIRED)
 +find_package(Thrift CONFIG REQUIRED)
@@ -27,6 +27,5 @@ index d9bf7b5..eb2692c 100644
  #   * <prefix>/include/
 -set(config_install_dir "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 +set(config_install_dir "${CMAKE_INSTALL_DATAROOTDIR}/jaeger-client-cpp")
- 
+
  set(generated_dir "${CMAKE_CURRENT_BINARY_DIR}/generated")
- 

@@ -2,7 +2,7 @@
 
 # this is an advanced patch to fix building v5.38
 # see for details
-# this patch should be removed with the next version 
+# this patch should be removed with the next version
 diff --git a/src/compress.c b/src/compress.c
 index 33ce2bc..f172eda 100644
 --- a/src/compress.c
@@ -19,7 +19,7 @@ index 33ce2bc..f172eda 100644
 @@ -386,7 +386,7 @@
  	if (fd == STDIN_FILENO)
  		goto nocheck;
- 
+
 -#ifdef FIONREAD
 +#if defined(FIONREAD) && !defined(__MINGW32__) && !defined(WIN32)
  	if (canbepipe && (ioctl(fd, FIONREAD, &t) == -1 || t == 0)) {

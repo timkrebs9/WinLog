@@ -5,7 +5,7 @@ index 3b7afda..a152fa9 100644
 @@ -28,6 +28,7 @@ set(LIBJSONNET_SOURCE
      string_utils.cpp
      vm.cpp)
- 
+
 +if (BUILD_SHARED_BINARIES)
  add_library(libjsonnet ${LIBJSONNET_HEADERS} ${LIBJSONNET_SOURCE})
  add_dependencies(libjsonnet md5 stdlib)
@@ -15,7 +15,7 @@ index 3b7afda..a152fa9 100644
  target_include_directories(libjsonnet INTERFACE
    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>)
 +endif()
- 
+
  if (BUILD_STATIC_LIBS)
      # Static library for jsonnet command-line tool.
 @@ -106,3 +108,5 @@ if (BUILD_TESTS)
@@ -31,13 +31,13 @@ index eb7686c..326125c 100644
 @@ -8,9 +8,9 @@ set(LIBJSONNETPP_SOURCE
      libjsonnet++.cpp
  )
- 
+
 +if (BUILD_SHARED_BINARIES)
  add_library(libjsonnet++ SHARED ${LIBJSONNETPP_HEADERS} ${LIBJSONNETPP_SOURCE})
 -add_dependencies(libjsonnet++ jsonnet)
 -# target_link_libraries(libjsonnet libjsonnet)
 +target_link_libraries(libjsonnet libjsonnet)
- 
+
  # CMake prepends CMAKE_SHARED_LIBRARY_PREFIX to shared libraries, so without
  # this step the output would be |liblibjsonnet|.
 @@ -24,6 +24,7 @@ install(TARGETS libjsonnet++
@@ -45,13 +45,13 @@ index eb7686c..326125c 100644
  target_include_directories(libjsonnet++ INTERFACE
    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>)
 +endif()
- 
+
  if (BUILD_STATIC_LIBS)
      # Static library for jsonnet command-line tool.
 @@ -42,6 +43,7 @@ else()
      add_library(libjsonnet++_for_binaries ALIAS libjsonnet++_static)
  endif()
- 
+
 +install(FILES ${LIBJSONNETPP_HEADERS} DESTINATION include)
  # Tests
  function(add_test_executablepp test_name)

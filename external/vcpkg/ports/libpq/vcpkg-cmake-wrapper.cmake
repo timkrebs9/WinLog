@@ -28,7 +28,7 @@ if(PostgreSQL_FOUND AND "@VCPKG_LIBRARY_LINKAGE@" STREQUAL "static")
                 APPEND PROPERTY INTERFACE_LINK_LIBRARIES "\$<\$<NOT:\$<CONFIG:DEBUG>>:${PostgreSQL_${LIB_ITEM}_LIBRARY_RELEASE}>"
             )
         endif()
-        
+
         find_library(PostgreSQL_${LIB_ITEM}_LIBRARY_DEBUG
             NAMES ${LIB_ITEM}
             PATHS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/debug/lib" NO_DEFAULT_PATH
@@ -39,7 +39,7 @@ if(PostgreSQL_FOUND AND "@VCPKG_LIBRARY_LINKAGE@" STREQUAL "static")
                 APPEND PROPERTY INTERFACE_LINK_LIBRARIES "\$<\$<CONFIG:DEBUG>:${PostgreSQL_${LIB_ITEM}_LIBRARY_DEBUG}>"
             )
         endif()
-        
+
         if (PostgreSQL_${LIB_ITEM}_LIBRARY_RELEASE OR PostgreSQL_${LIB_ITEM}_LIBRARY_DEBUG)
             select_library_configurations(PostgreSQL_${LIB_ITEM})
             list(APPEND PostgreSQL_LIBRARIES ${PostgreSQL_${LIB_ITEM}_LIBRARY})

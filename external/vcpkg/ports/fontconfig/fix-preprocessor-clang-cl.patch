@@ -1,6 +1,6 @@
 diff --git a/src/meson.build b/src/meson.build
 index 9a6ba2021..5d04f7360 100644
---- a/src/meson.build	
+--- a/src/meson.build
 +++ b/src/meson.build
 @@ -33,7 +33,7 @@ fc_sources = [
  cpp = cc.cmd_array()

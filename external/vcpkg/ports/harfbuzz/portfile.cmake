@@ -57,15 +57,15 @@ vcpkg_copy_pdbs()
 vcpkg_fixup_pkgconfig()
 
 if(VCPKG_TARGET_IS_WINDOWS)
-	file(GLOB PC_FILES 
-		"${CURRENT_PACKAGES_DIR}/debug/lib/pkgconfig/*.pc" 
+	file(GLOB PC_FILES
+		"${CURRENT_PACKAGES_DIR}/debug/lib/pkgconfig/*.pc"
 		"${CURRENT_PACKAGES_DIR}/lib/pkgconfig/*.pc")
-	
+
 	foreach(PC_FILE IN LISTS PC_FILES)
 		file(READ "${PC_FILE}" PC_FILE_CONTENT)
-		string(REGEX REPLACE 
-			"\\$\\{prefix\}\\/lib\\/([a-zA-Z0-9\-]*)\\.lib" 
-			"-l\\1" PC_FILE_CONTENT 
+		string(REGEX REPLACE
+			"\\$\\{prefix\}\\/lib\\/([a-zA-Z0-9\-]*)\\.lib"
+			"-l\\1" PC_FILE_CONTENT
 			"${PC_FILE_CONTENT}")
 		file(WRITE "${PC_FILE}" ${PC_FILE_CONTENT})
 	endforeach()

@@ -11,7 +11,7 @@ vcpkg_from_gitlab(
     SHA512 ecd1876b62c1345ce3c06ac525f1af4f59dcce3c8d76003c59dd64c80f7787d6d2754c481e585507d6bcaf443026a7aa22ab9eac28b5153eff78d216e53eb29f
     HEAD_REF master # branch name
     PATCHES pthread.patch # required since this port directly depends on pthread functions. So it has to directly link it!
-) 
+)
 file(TOUCH "${SOURCE_PATH}/m4/dummy")
 set(ENV{ACLOCAL} "aclocal -I \"${CURRENT_INSTALLED_DIR}/share/xorg/aclocal/\"")
 

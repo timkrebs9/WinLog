@@ -6,7 +6,7 @@ vcpkg_from_github(
     REF e8bdd5531ed79c30ccef2fd71e070f5ab9f1222a #v3.18.00
     SHA512 3e5d97a77b8610a2efdb9156b47c91e8a8dd5629ff95ea6d2c65016b067ab645df5beddc8c7f93d89c3d1a6f404ff71282efc6db9885a6e6240fa444fe2be79c
     HEAD_REF master
-    PATCHES 
+    PATCHES
         fix_cmake_install.patch
         Fix-error-C2338.patch
         fix-error-C2039.diff

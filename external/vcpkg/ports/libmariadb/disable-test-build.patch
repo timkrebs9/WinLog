@@ -3,9 +3,9 @@ index e3ba18b..48c4f1d 100644
 --- a/unittest/libmariadb/CMakeLists.txt
 +++ b/unittest/libmariadb/CMakeLists.txt
 @@ -48,6 +48,7 @@ ENDIF()
- 
+
  ADD_LIBRARY(ma_getopt ma_getopt.c)
- 
+
 +if(0)
  FOREACH(API_TEST ${API_TESTS})
    IF (NOT TARGET ${API_TEST})

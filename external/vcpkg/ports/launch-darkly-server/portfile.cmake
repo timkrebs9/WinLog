@@ -26,7 +26,7 @@ endif()
 file(REMOVE_RECURSE
 	"${CURRENT_PACKAGES_DIR}/debug/include"
 	)
-    
+
 vcpkg_copy_pdbs()
 
 # Handle copyright

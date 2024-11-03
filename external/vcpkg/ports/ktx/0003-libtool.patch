@@ -28,5 +28,5 @@ index d19e7dbc2..2b0e31751 100644
 -        COMMAND libtool -static -o $<TARGET_FILE:ktx> $<TARGET_FILE:ktx> $<TARGET_FILE:${ASTC_LIB_TARGET}>
 +        COMMAND libtool ${LIBTOOL_ARGS}
      )
- 
+
      # Don't know libtool equivalent on Windows or Emscripten. Applications

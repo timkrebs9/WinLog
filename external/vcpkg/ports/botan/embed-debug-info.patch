@@ -4,14 +4,13 @@ index 2306a4485..977e2e958 100644
 +++ b/src/build-data/cc/msvc.txt
 @@ -17,10 +17,10 @@ optimization_flags "/O2 /Oi"
  size_optimization_flags "/O1 /Os"
- 
+
  # for debug info in the object file:
 -#debug_info_flags "/Z7"
 +debug_info_flags "/Z7"
- 
+
  # for using a PDB file:
 -debug_info_flags "/Zi /FS"
 +#debug_info_flags "/Zi /FS"
- 
+
  preproc_flags "/nologo /EP"
- 

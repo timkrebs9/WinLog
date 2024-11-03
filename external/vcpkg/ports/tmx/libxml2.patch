@@ -5,8 +5,7 @@ index abb5e18..30b88c5 100644
 @@ -48,7 +48,6 @@ else()
      message("Zlib not wanted")
  endif()
- 
+
 -include(FindLibXml2)
  find_package(LibXml2 REQUIRED)
  target_link_libraries(tmx LibXml2::LibXml2)
- 

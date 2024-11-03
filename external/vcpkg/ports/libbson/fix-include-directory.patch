@@ -4,12 +4,12 @@ index 88de79a..c3cfd7e 100644
 +++ b/src/libbson/CMakeLists.txt
 @@ -347,7 +347,7 @@ if (ENABLE_EXAMPLES)
  endif () # ENABLE_EXAMPLES
- 
+
  set (BSON_HEADER_INSTALL_DIR
 -   "${CMAKE_INSTALL_INCLUDEDIR}/libbson-${BSON_API_VERSION}"
 +   "${CMAKE_INSTALL_INCLUDEDIR}"
  )
- 
+
  if (MONGOC_ENABLE_STATIC_INSTALL)
 diff --git a/src/libbson/src/libbson-1.0.pc.in b/src/libbson/src/libbson-1.0.pc.in
 index b65abbc..33346f3 100644

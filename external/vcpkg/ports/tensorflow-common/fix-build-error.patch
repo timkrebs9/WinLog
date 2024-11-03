@@ -3,7 +3,7 @@ diff --git a/tensorflow/core/platform/default/logging.h b/tensorflow/core/platfo
 +++ b/tensorflow/core/platform/default/logging.h
 @@ -104,13 +104,13 @@ class LogMessageNull : public std::basic_ostringstream<char> {
  };
- 
+
  #define _TF_LOG_INFO \
 -  ::tensorflow::internal::LogMessage(__FILE__, __LINE__, ::tensorflow::INFO)
 +  tensorflow::internal::LogMessage(__FILE__, __LINE__, tensorflow::INFO)
@@ -16,6 +16,5 @@ diff --git a/tensorflow/core/platform/default/logging.h b/tensorflow/core/platfo
  #define _TF_LOG_FATAL \
 -  ::tensorflow::internal::LogMessageFatal(__FILE__, __LINE__)
 +  tensorflow::internal::LogMessageFatal(__FILE__, __LINE__)
- 
+
  #define _TF_LOG_QFATAL _TF_LOG_FATAL
- 

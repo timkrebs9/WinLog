@@ -5,7 +5,7 @@ index 7df07c1..d7317aa 100644
 @@ -56,4 +56,4 @@ add_executable(CppUTestTests ${CppUTestTests_src})
  cpputest_normalize_test_output_location(CppUTestTests)
  target_link_libraries(CppUTestTests CppUTest ${THREAD_LIB})
- 
+
 -cpputest_buildtime_discover_tests(CppUTestTests)
 +#cpputest_buildtime_discover_tests(CppUTestTests)
 diff --git a/tests/CppUTestExt/CMakeLists.txt b/tests/CppUTestExt/CMakeLists.txt

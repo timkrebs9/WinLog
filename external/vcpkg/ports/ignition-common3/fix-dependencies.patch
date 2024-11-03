@@ -12,21 +12,21 @@ index 73920fe..8bee7fe 100644
      PRIVATE_FOR graphics)
  else()
 @@ -70,13 +70,13 @@ if(NOT MSVC)
- 
+
    #------------------------------------
    # Find uuid
 -  ign_find_package(UUID REQUIRED PRETTY uuid)
 +  ign_find_package(UUID REQUIRED PRETTY uuid REQUIRED_BY graphics)
- 
+
  endif()
- 
+
  #------------------------------------
  # Find Freeimage
 -ign_find_package(FreeImage VERSION 3.9
 +ign_find_package(freeimage EXTRA_ARGS CONFIG
    REQUIRED_BY graphics
    PRIVATE_FOR graphics)
- 
+
 @@ -84,6 +84,7 @@ ign_find_package(FreeImage VERSION 3.9
  # Find GNU Triangulation Surface Library
  ign_find_package(
@@ -34,7 +34,7 @@ index 73920fe..8bee7fe 100644
 +  BY_PKGCONFIG gts
    REQUIRED_BY graphics
    PRIVATE_FOR graphics)
- 
+
 diff --git a/graphics/src/CMakeLists.txt b/graphics/src/CMakeLists.txt
 index 000a0ce..f6e1831 100644
 --- a/graphics/src/CMakeLists.txt
@@ -47,9 +47,9 @@ index 000a0ce..f6e1831 100644
 -    FreeImage::FreeImage)
 +    ${GTS_LINK_LIBRARIES}
 +    freeimage::FreeImage)
-+    
++
 +target_include_directories(${graphics_target} PRIVATE ${GTS_INCLUDE_DIRS})
- 
+
  ign_build_tests(TYPE UNIT SOURCES ${gtest_sources}
    LIB_DEPS ${graphics_target})
 @@ -28,13 +30,13 @@ if(USE_EXTERNAL_TINYXML2)
@@ -58,7 +58,7 @@ index 000a0ce..f6e1831 100644
      PRIVATE
 -      TINYXML2::TINYXML2)
 +      tinyxml2::tinyxml2)
- 
+
      # The collada exporter test uses tinyxml2, so we must link it if we're using
      # an external copy. The graphics target considers tinyxml2 to be a private
      # dependency, so it will not automatically get linked to this test.
@@ -66,10 +66,10 @@ index 000a0ce..f6e1831 100644
 -      target_link_libraries(UNIT_ColladaExporter_TEST TINYXML2::TINYXML2)
 +      target_link_libraries(UNIT_ColladaExporter_TEST tinyxml2::tinyxml2)
      endif()
- 
+
  else()
 @@ -62,8 +64,8 @@ endif()
- 
+
  # define of tinxml2 major version >= 6
  # https://github.com/ignitionrobotics/ign-common/issues/28
 -if (NOT TINYXML2_VERSION VERSION_LESS "6.0.0")

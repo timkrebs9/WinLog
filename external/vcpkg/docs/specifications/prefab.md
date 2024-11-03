@@ -2,11 +2,11 @@
 
 **Note: this is the feature as it was initially specified and does not necessarily reflect the current behavior.**
 
-Vcpkg can export android archives ([AAR files](https://developer.android.com/studio/projects/android-library)). Once an archive is created, it can imported in Android Studio as a native dependent.  The archive is automatically consumed using [android studio's prefab tool](https://github.com/google/prefab). 
+Vcpkg can export android archives ([AAR files](https://developer.android.com/studio/projects/android-library)). Once an archive is created, it can imported in Android Studio as a native dependent.  The archive is automatically consumed using [android studio's prefab tool](https://github.com/google/prefab).
 
 For more information on Prefab, refer to:
 * The [official prefab documentation](https://google.github.io/prefab).
-* a blog post from Android developers blog: [Native Dependencies in Android Studio 4.0](https://android-developers.googleblog.com/2020/02/native-dependencies-in-android-studio-40.html) 
+* a blog post from Android developers blog: [Native Dependencies in Android Studio 4.0](https://android-developers.googleblog.com/2020/02/native-dependencies-in-android-studio-40.html)
 
 _Note for Android Studio users: prefab packages are supported on Android Studio 4+_
 
@@ -102,7 +102,7 @@ In gradle.properties
     android.enableParallelJsonGen=false
     android.prefabVersion=${prefab.version}
 
-Successfully exported jsoncpp. Checkout .../vcpkg/prefab 
+Successfully exported jsoncpp. Checkout .../vcpkg/prefab
 
 ```
 

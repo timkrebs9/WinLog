@@ -35,7 +35,7 @@ Users will be able to keep unmodified versions of the ports shipped with `vcpkg`
 
 This document proposes allowing additional locations to search for ports during package installation that will override and complement the set of ports provided by `vcpkg` (ports under the `<vcpkg_root>/ports` directory).`
 
-A new option `--overlay-ports` will be added to the `vcpkg install`, `vcpkg update`, `vcpkg upgrade`, `vcpkg export`, and `vcpkg depend-info` commands to specify additional paths containing ports. 
+A new option `--overlay-ports` will be added to the `vcpkg install`, `vcpkg update`, `vcpkg upgrade`, `vcpkg export`, and `vcpkg depend-info` commands to specify additional paths containing ports.
 
 From a user experience perspective, a user expresses interest in adding additional lookup locations by passing the `--overlay-ports` option followed by a path to:
 
@@ -47,11 +47,11 @@ From a user experience perspective, a user expresses interest in adding addition
 
 * a file listing paths to the former two.
   > NOTE: Reading paths from a text file is not available in the current implementation, some revisions to this part of the specification are being made and will be implemented in a future date.
-  
+
   * `vcpkg install sqlite3 --overlay-ports=..\port-repos.txt`
 
     _port-repos.txt_
-    
+
     ```
     .\experimental-ports\sqlite3
     C:\custom-ports
@@ -60,16 +60,16 @@ From a user experience perspective, a user expresses interest in adding addition
     ```
     *Relative paths inside this file are resolved relatively to the file's location. In this case a `experimental-ports` directory should exist at the same level as the `port-repos.txt` file.*
 
-_NOTE: It is not the goal of this document to discuss library versioning or project dependency management solutions, which require the ability to install multiple versions of a same library side-by-side._ 
+_NOTE: It is not the goal of this document to discuss library versioning or project dependency management solutions, which require the ability to install multiple versions of a same library side-by-side._
 
-### Multiple additional paths 
+### Multiple additional paths
 
 Users can provide multiple additional paths by repeating the `--overlay-ports` option.
 
 ```
-vcpkg install sqlite3 
-    --overlay-ports="..\experimental-ports\sqlite3" 
-    --overlay-ports="C:\custom-ports" 
+vcpkg install sqlite3
+    --overlay-ports="..\experimental-ports\sqlite3"
+    --overlay-ports="C:\custom-ports"
     --overlay-ports="\\share\team\custom-ports
 ```
 
@@ -115,12 +115,12 @@ Given the following directory structure:
   Results in `my-ports/sqlite3` getting installed as that location appears first in the command line arguments.
 
 * #### Example #2:
-  
+
   A specific version of a port can be given priority by adding its path first in the list of arguments:
 
   ```
-  vcpkg/vcpkg.exe install sqlite3 rapidjson curl 
-      --overlay-ports=my-ports/rapidjson 
+  vcpkg/vcpkg.exe install sqlite3 rapidjson curl
+      --overlay-ports=my-ports/rapidjson
       --overlay-ports=vcpkg/ports/curl
       --overlay-ports=team-ports
   ```
@@ -133,7 +133,7 @@ Given the following directory structure:
 * #### Example #3:
 
   > NOTE: Reading paths from a text file is not available in the current implementation, some revisions to this part of the specification are being made and will be implemented in a future date.
-  
+
   Given the content of `preferred-ports.txt` as:
 
   ```
@@ -155,16 +155,16 @@ Given the following directory structure:
 
 ### i. User wants to preserve an older version of a port
 
-Developer Alice and her team use `vcpkg` to acquire **OpenCV** and some other packages. She has even contributed many patches to add features to the **OpenCV 3** port in `vcpkg`. But, one day, she notices that a PR to update **OpenCV** to the next major version has been merged. 
+Developer Alice and her team use `vcpkg` to acquire **OpenCV** and some other packages. She has even contributed many patches to add features to the **OpenCV 3** port in `vcpkg`. But, one day, she notices that a PR to update **OpenCV** to the next major version has been merged.
 
-Alice wants to update some packages available in `vcpkg`. Unfortunately, updating her project to use the latest **OpenCV** is not immediately possible. 
+Alice wants to update some packages available in `vcpkg`. Unfortunately, updating her project to use the latest **OpenCV** is not immediately possible.
 
 Alice creates a private GitHub repository and checks in the set of ports that she wants to preserve. Then provides her teammates with the link to clone her private ports repository.
 
 ```
 mkdir vcpkg-custom-ports
 cd vcpkg-custom-ports
-git init 
+git init
 cp -r %VCPKG_ROOT%/ports/opencv .
 git add .
 git commit -m "[opencv] Add OpenCV 3 port"
@@ -172,12 +172,12 @@ git remote add origin https://github.com/<Alice's GitHub username>/vcpkg-custom-
 git push -u origin master
 ```
 
-Now her team is able to use: 
+Now her team is able to use:
 
 ```
 git clone https://github.com/<Alice's GitHub username>/vcpkg-custom-ports.git
 vcpkg update --overlay-ports=./vcpkg-custom-ports
 vcpkg upgrade --no-dry-run --overlay-ports=./vcpkg-custom-ports
-``` 
+```
 
 to upgrade their packages and preserve the old version of **OpenCV** they require.

@@ -28,7 +28,7 @@ if("@VCPKG_TARGET_IS_LINUX@" STREQUAL "ON" OR "@VCPKG_TARGET_IS_ANDROID@" STREQU
     elseif(VCPKG_TARGET_ARCHITECTURE STREQUAL "x86" OR VCPKG_TARGET_ARCHITECTURE STREQUAL "x64")
         list(APPEND B2_OPTIONS
             abi=sysv
-        )  
+        )
     endif()
     list(APPEND B2_OPTIONS
         binary-format=elf

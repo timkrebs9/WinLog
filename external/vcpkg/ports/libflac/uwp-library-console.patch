@@ -5,7 +5,7 @@ index bbb6a74a..8b20bbb7 100644
 @@ -110,7 +110,11 @@ int get_utf8_argv(int *argc, char ***argv)
  	char **utf8argv;
  	int ret, i;
- 
+
 +#if defined (WINAPI_FAMILY_PARTITION) && !WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
 +	if ((handle = LoadPackagedLibrary("msvcrt.dll", 0)) == NULL) return 1;
 +#else
@@ -30,12 +30,12 @@ index bbb6a74a..8b20bbb7 100644
  	return width;
 +#endif
  }
- 
+
  /* print functions */
 @@ -197,6 +205,10 @@ static int wprint_console(FILE *stream, const wchar_t *text, size_t len)
  	DWORD out;
  	int ret;
- 
+
 +#if defined (WINAPI_FAMILY_PARTITION) && !WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
 +	// disabled for UWP as there's no alternative:
 +	// https://docs.microsoft.com/en-us/uwp/win32-and-com/alternatives-to-windows-apis-uwp
@@ -48,6 +48,6 @@ index bbb6a74a..8b20bbb7 100644
  		}
  	} while(0);
 +#endif
- 
+
  	ret = fputws(text, stream);
  	if (ret < 0)

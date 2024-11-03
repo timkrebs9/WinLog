@@ -27,5 +27,5 @@ endforeach()
 find_package(ZLIB REQUIRED)
 target_link_libraries(crashpad INTERFACE ZLIB::ZLIB)
 
-target_include_directories(crashpad 
+target_include_directories(crashpad
         INTERFACE ${_IMPORT_PREFIX}/include/crashpad)

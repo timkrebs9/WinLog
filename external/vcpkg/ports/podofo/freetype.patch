@@ -15,4 +15,3 @@ index 41114798f..0911dc092 100644
 +  include/freetype2
    NO_CMAKE_SYSTEM_PATH
  )
- 

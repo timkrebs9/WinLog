@@ -10,7 +10,7 @@ vcpkg_from_gitlab(
     SHA512 c7ee07478bcc5db18e47a5a7b8965d89172bbab733f60fb13b9527b7888445fdd86d5d99aa67d6436fc2ef3ea0bd8d9c6e4f10fbef351f229de982bd6f21f9c9
     HEAD_REF master
     PATCHES no-undefined.patch
-) 
+)
 
 set(ENV{ACLOCAL} "aclocal -I \"${CURRENT_INSTALLED_DIR}/share/xorg/aclocal/\"")
 

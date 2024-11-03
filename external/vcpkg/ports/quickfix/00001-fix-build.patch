@@ -4,12 +4,12 @@ index 48908ead..90c17759 100644
 +++ b/CMakeLists.txt
 @@ -92,13 +92,13 @@ include_directories(${PYTHON_INCLUDE_DIRS})
  endif ()
- 
+
  if( WIN32 OR ${CMAKE_SYSTEM_NAME} STREQUAL "Linux" )
 -add_subdirectory(UnitTest++)
 +#add_subdirectory(UnitTest++)
  endif()
- 
+
  add_subdirectory(src)
 -add_subdirectory(examples)
 +#add_subdirectory(examples)
@@ -17,7 +17,7 @@ index 48908ead..90c17759 100644
 -add_subdirectory(test)
 +#add_subdirectory(test)
  endif()
- 
+
  install(DIRECTORY ${CMAKE_SOURCE_DIR}/spec/ DESTINATION share/quickfix
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index cb4a60c6..d21fa995 100644
@@ -25,12 +25,12 @@ index cb4a60c6..d21fa995 100644
 +++ b/src/CMakeLists.txt
 @@ -1,6 +1,6 @@
  add_subdirectory(C++)
- 
+
 -if( WIN32 OR ${CMAKE_SYSTEM_NAME} STREQUAL "Linux" )
 +if(0)
- 
+
  add_executable(at at.cpp getopt.c)
- 
+
 diff --git a/src/C++/CMakeLists.txt b/src/C++/CMakeLists.txt
 index 07774c97..27692631 100644
 --- a/src/C++/CMakeLists.txt
@@ -41,7 +41,7 @@ index 07774c97..27692631 100644
  set(quickfix_VERSION_MINOR 0)
  set(quickfix_VERSION_PATCH 1)
 @@ -64,19 +65,22 @@ endif()
- 
+
  if (WIN32)
    add_library(${PROJECT_NAME} STATIC  ${quickfix_SOURCES})
 -  set_target_properties (${PROJECT_NAME} PROPERTIES DEBUG_POSTFIX d)
@@ -52,13 +52,13 @@ index 07774c97..27692631 100644
 +  add_library(${PROJECT_NAME} STATIC  ${quickfix_SOURCES})
    target_link_libraries(${PROJECT_NAME} ${OPENSSL_LIBRARIES} ${MYSQL_CLIENT_LIBS} ${PostgreSQL_LIBRARIES} pthread)
  endif()
- 
+
  target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/src ${CMAKE_SOURCE_DIR}/src/C++)
 +target_include_directories(${PROJECT_NAME} PUBLIC $<INSTALL_INTERFACE:include>)
- 
+
  set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${quickfix_VERSION} SOVERSION ${quickfix_VERSION_MAJOR} )
 +target_compile_definitions(${PROJECT_NAME} PUBLIC HAVE_STD_UNIQUE_PTR HAVE_STD_SHARED_PTR HAVE_SSL=1)
- 
+
 -install(TARGETS ${PROJECT_NAME} DESTINATION lib)
 +install(TARGETS ${PROJECT_NAME} EXPORT quickfix-config DESTINATION lib)
  install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/C++/ DESTINATION include/quickfix
@@ -73,7 +73,7 @@ index 0aa2cd3e..2829e110 100644
 @@ -242,4 +242,10 @@ using std::strtol;
  using std::strerror;
  #endif
- 
+
 +#ifdef __cpp_noexcept_function_type
 +#define QUICKFIX_THROW(...) noexcept(false)
 +#else

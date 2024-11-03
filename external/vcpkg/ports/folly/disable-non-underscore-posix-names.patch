@@ -5,7 +5,7 @@ index 86fd0f9..ccad11e 100644
 @@ -32,24 +32,17 @@
  // disabled to ensure all of the normal names get declared properly.
  #include <stdio.h>
- 
+
 -#ifndef __STDC__
 -/* nolint */
 -#define __STDC__ 1
@@ -29,6 +29,6 @@ index 86fd0f9..ccad11e 100644
 -#include <direct.h> // @manual nolint
 -#include <io.h> // @manual nolint
 -#endif
- 
+
  #if defined(min) || defined(max)
  #error Windows.h needs to be included by this header, or else NOMINMAX needs \

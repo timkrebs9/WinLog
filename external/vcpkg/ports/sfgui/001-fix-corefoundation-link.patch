@@ -14,7 +14,7 @@ index c0af720..774e2d8 100644
 -			IMPORTED_LOCATION "${COREFOUNDATION_LIBRARY}"
 -			INTERFACE_INCLUDE_DIRECTORIES "/System/Library/Frameworks/CoreFoundation.framework/Headers"
 -	)
--	
+-
 -	target_link_libraries( ${TARGET} PUBLIC CoreFoundation )
 +
 +	target_link_libraries( ${TARGET} PUBLIC ${COREFOUNDATION_LIBRARY} )

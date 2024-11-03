@@ -5,14 +5,14 @@ index 8d0acd2..2246442 100644
 @@ -37,13 +37,13 @@ CONFIG(debug, debug|release) {
      TARGET = qscintilla2_qt$${QT_MAJOR_VERSION}
  }
- 
+
 -macx:!CONFIG(staticlib) {
 +macx:!CONFIG(static) {
      QMAKE_POST_LINK += install_name_tool -id @rpath/$(TARGET1) $(TARGET)
  }
- 
+
  INCLUDEPATH += . ../scintilla/include ../scintilla/lexlib ../scintilla/src
- 
+
 -!CONFIG(staticlib) {
 +!CONFIG(static) {
      DEFINES += QSCINTILLA_MAKE_DLL
@@ -20,7 +20,7 @@ index 8d0acd2..2246442 100644
  DEFINES += SCINTILLA_QT SCI_LEXER INCLUDE_DEPRECATED_FEATURES
 @@ -82,7 +82,7 @@ qsci.files = ../qsci
  INSTALLS += qsci
- 
+
  features.path = $$[QT_HOST_DATA]/mkspecs/features
 -CONFIG(staticlib) {
 +CONFIG(static) {

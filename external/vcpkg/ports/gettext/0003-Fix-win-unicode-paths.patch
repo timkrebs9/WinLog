@@ -5,7 +5,7 @@ index 63351523..c078de3f 100644
 @@ -388,6 +388,55 @@ char *alloca ();
  # define munmap(addr, len)	__munmap (addr, len)
  #endif
- 
+
 +#ifdef _WIN32
 +/* Provide wrapper of "open" for Windows that supports UTF-8 filenames. */
 +# ifndef WIN32_LEAN_AND_MEAN

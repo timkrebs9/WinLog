@@ -40,7 +40,7 @@ if(@TENSORFLOW_HAS_DEBUG@)
 				"${TENSORFLOW_INSTALL_PREFIX}/debug/lib/@TF_LIB_NAME@"
 		)
 	endif()
-	
+
 	set_property(TARGET tensorflow@TF_LIB_SUFFIX@::tensorflow@TF_LIB_SUFFIX@
 		APPEND PROPERTY IMPORTED_CONFIGURATIONS
 			DEBUG

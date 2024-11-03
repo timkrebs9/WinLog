@@ -3,7 +3,7 @@ index c3a05ec..0d44ef2 100644
 --- a/cmake/install_macros.cmake
 +++ b/cmake/install_macros.cmake
 @@ -100,7 +100,7 @@ ENDFUNCTION()
- 
+
  FUNCTION(MYSQL_INSTALL_TARGETS)
    MYSQL_PARSE_ARGUMENTS(ARG
 -    "DESTINATION;COMPONENT"
@@ -45,7 +45,7 @@ index 5481fae..3fa58da 100644
 +    MYSQL_INSTALL_TARGETS(${TARGET} EXPORT unofficial-libmysql DESTINATION "${INSTALL_LIBDIR}" ${COMP})
    ENDIF()
  ENDMACRO()
- 
+
 @@ -372,7 +372,7 @@ MACRO(MERGE_CONVENIENCE_LIBRARIES)
        SET(COMP COMPONENT ${ARG_COMPONENT})
      ENDIF()
@@ -62,7 +62,7 @@ index 605288d..c5d0f5d 100644
 @@ -245,8 +245,16 @@ ENDIF()
  # LDAP authentication SASL client plugin
  ADD_SUBDIRECTORY(authentication_ldap)
- 
+
 +IF (BUILD_SHARED_LIBS)
 +  set(INSTALL_SHARED )
 +  set(INSTALL_STATIC SKIP_INSTALL)
@@ -75,7 +75,7 @@ index 605288d..c5d0f5d 100644
 -MERGE_CONVENIENCE_LIBRARIES(mysqlclient ${LIBS_TO_MERGE} COMPONENT Development)
 +MERGE_CONVENIENCE_LIBRARIES(mysqlclient ${LIBS_TO_MERGE} ${INSTALL_STATIC} COMPONENT Development)
  TARGET_LINK_LIBRARIES(mysqlclient PRIVATE ${LIBS_TO_LINK})
- 
+
  # Visual Studio users need debug  static library for debug projects
 @@ -283,6 +291,7 @@ ENDIF()
  # Merge several convenience libraries into one big mysqlclient

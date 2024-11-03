@@ -18,6 +18,6 @@ index 59cfe20..b936dad 100644
    endif(BUILD_SHARED_LIBS)
 -  target_link_libraries(wxPLViewer plplotwxwidgets plplotcxx ${wxwidgets_LINK_FLAGS} ${MATH_LIB} ${RT_LIB})
 +  target_link_libraries(wxPLViewer plplotwxwidgets plplotcxx ${wxwidgets_LINK_FLAGS} ${MATH_LIB} ${RT_LIB} ${JPEG_LIBRARIES} ${TIFF_LIBRARIES})
- 
+
    if(USE_RPATH)
      # Assume that plplotwxwidgets and plplotcxx have the same install location as plplot

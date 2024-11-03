@@ -56,7 +56,7 @@ if(VCPKG_TARGET_IS_WINDOWS)
     endforeach()
 endif()
 
-find_library(ASSIMP_REL NAMES assimp ${REL_NAMES} PATHS "${CURRENT_PACKAGES_DIR}/lib" NO_DEFAULT_PATH) 
+find_library(ASSIMP_REL NAMES assimp ${REL_NAMES} PATHS "${CURRENT_PACKAGES_DIR}/lib" NO_DEFAULT_PATH)
 find_library(ASSIMP_DBG NAMES assimp assimpd ${DBG_NAMES} PATHS "${CURRENT_PACKAGES_DIR}/debug/lib" NO_DEFAULT_PATH)
 if(ASSIMP_REL)
     get_filename_component(ASSIMP_NAME_REL "${ASSIMP_REL}" NAME_WLE)

@@ -5,12 +5,12 @@ index 1a709ad..3029c25 100644
 @@ -4,6 +4,10 @@
  #  ARPACK_FOUND        - system has ARPACK
  #  ARPACK_LIBRARY      - Link this to use ARPACK
- 
+
 +if(CMAKE_DISABLE_FIND_PACKAGE_ARPACK)
 +  set(ARPACK_FOUND NO)
 +  return()
 +endif()
- 
+
  find_library(ARPACK_LIBRARY
    NAMES arpack
 diff --git a/cmake_aux/Modules/ARMA_FindATLAS.cmake b/cmake_aux/Modules/ARMA_FindATLAS.cmake
@@ -33,7 +33,7 @@ index 38f6675..4702ab4 100644
 @@ -6,6 +6,11 @@
  ## the link below explains why we're linking only with mkl_rt
  ## https://software.intel.com/en-us/articles/a-new-linking-model-single-dynamic-library-mkl_rt-since-intel-mkl-103
- 
+
 +if(CMAKE_DISABLE_FIND_PACKAGE_MKL)
 +  set(MKL_FOUND NO)
 +  return()
@@ -49,7 +49,7 @@ index 88dcb9c..16a26b8 100644
 @@ -5,6 +5,11 @@
  #  SuperLU_LIBRARY      - Link this to use SuperLU
  #  SuperLU_INCLUDE_DIR  - directory of SuperLU headers
- 
+
 +if(CMAKE_DISABLE_FIND_PACKAGE_SuperLU)
 +  set(SuperLU_FOUND OFF)
 +  return()

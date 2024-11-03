@@ -3,7 +3,7 @@ index f025bd8..f5881b1 100644
 --- a/drivers/wxwidgets_dev.cpp
 +++ b/drivers/wxwidgets_dev.cpp
 @@ -31,6 +31,7 @@
- 
+
  // Headers needed for Rand
  #ifdef WIN32
 +#define _WINSOCKAPI_

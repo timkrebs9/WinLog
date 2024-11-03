@@ -4,7 +4,7 @@ index 1c816165e..8da68aa23 100644
 +++ b/include/X11/extensions/XRes.h
 @@ -6,7 +6,10 @@
  #define _XRES_H
- 
+
  #include <X11/Xfuncproto.h>
 -
 +#if defined(_MSC_VER)
@@ -12,5 +12,5 @@ index 1c816165e..8da68aa23 100644
 +    typedef int pid_t;
 +#endif
  /* v1.0 */
- 
+
  typedef struct {

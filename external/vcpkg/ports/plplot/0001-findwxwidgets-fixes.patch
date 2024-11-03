@@ -40,7 +40,7 @@ index 4d3a2d1..c83d8a6 100644
 @@ -583,6 +593,13 @@ if(wxWidgets_FIND_STYLE STREQUAL "win32")
        endforeach()
        DBG_MSG_V("WX_CONFIGURATION_LIST=${WX_CONFIGURATION_LIST}")
- 
+
 +      if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 +        set(WX_CONFIGURATION "mswud")
 +      else()
@@ -50,10 +50,10 @@ index 4d3a2d1..c83d8a6 100644
 +
        if(WX_CONFIGURATION)
          set(wxWidgets_FOUND TRUE)
- 
+
 @@ -616,6 +633,8 @@ if(wxWidgets_FIND_STYLE STREQUAL "win32")
          WX_GET_NAME_COMPONENTS(${wxWidgets_CONFIGURATION} UNV UCD DBG)
- 
+
          # Set wxWidgets lib setup include directory.
 +        set(wxWidgets_INCLUDE_DIRS "${wxWidgets_ROOT_DIR}/include")
 +        if(0)

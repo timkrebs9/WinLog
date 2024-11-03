@@ -3,9 +3,9 @@ index 1a6411653..526dfcf60 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1077,13 +1077,17 @@ if(NOT WIN32 OR ROCKSDB_INSTALL_ON_WINDOWS)
- 
+
    install(DIRECTORY "${PROJECT_SOURCE_DIR}/cmake/modules" COMPONENT devel DESTINATION ${package_config_destination})
- 
+
 -  install(
 -    TARGETS ${ROCKSDB_STATIC_LIB}
 -    EXPORT RocksDBTargets
@@ -24,6 +24,6 @@ index 1a6411653..526dfcf60 100644
 +  else()
 +    set_target_properties(${ROCKSDB_STATIC_LIB} PROPERTIES EXCLUDE_FROM_ALL TRUE)
 +  endif()
- 
+
    if(ROCKSDB_BUILD_SHARED)
      install(

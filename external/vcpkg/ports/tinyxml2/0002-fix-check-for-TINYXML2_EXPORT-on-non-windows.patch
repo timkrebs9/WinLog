@@ -20,6 +20,5 @@ index cfb1053..5a36901 100755
  #   define TINYXML2_LIB __attribute__((visibility("default")))
  #else
  #   define TINYXML2_LIB
--- 
+--
 2.37.3.windows.1
-

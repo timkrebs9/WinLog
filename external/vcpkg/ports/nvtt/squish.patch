@@ -4,7 +4,7 @@ index 65a5dd3..d093ce5 100644
 +++ b/src/nvtt/squish/CMakeLists.txt
 @@ -21,3 +21,8 @@ SET(SQUISH_SRCS
  	simd_ve.h)
- 
+
  ADD_LIBRARY(nvsquish STATIC ${SQUISH_SRCS})
 +
 +INSTALL(TARGETS nvsquish

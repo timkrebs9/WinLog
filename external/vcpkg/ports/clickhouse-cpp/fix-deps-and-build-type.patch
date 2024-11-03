@@ -5,7 +5,7 @@ index 31cd8a5..d8ee404 100644
 @@ -29,11 +29,12 @@ PROJECT (CLICKHOUSE-CLIENT)
      INCLUDE_DIRECTORIES (.)
      INCLUDE_DIRECTORIES (contrib)
- 
+
 +    find_package(absl CONFIG REQUIRED)
 +    find_package(cityhash CONFIG REQUIRED)
 +    find_package(lz4 CONFIG REQUIRED)
@@ -16,7 +16,7 @@ index 31cd8a5..d8ee404 100644
 -        contrib/cityhash
 -        contrib/lz4
      )
- 
+
      IF (BUILD_BENCHMARK)
 diff --git a/clickhouse/CMakeLists.txt b/clickhouse/CMakeLists.txt
 index d96ff88..ad1cb0d 100644
@@ -25,7 +25,7 @@ index d96ff88..ad1cb0d 100644
 @@ -36,19 +36,21 @@ IF (WITH_OPENSSL)
      LIST(APPEND clickhouse-cpp-lib-src base/sslsocket.cpp)
  ENDIF ()
- 
+
 -ADD_LIBRARY (clickhouse-cpp-lib SHARED ${clickhouse-cpp-lib-src})
 -SET_TARGET_PROPERTIES(clickhouse-cpp-lib PROPERTIES LINKER_LANGUAGE CXX)
 -TARGET_LINK_LIBRARIES (clickhouse-cpp-lib
@@ -55,7 +55,7 @@ index d96ff88..ad1cb0d 100644
 +    cityhash
 +    lz4::lz4
  )
- 
+
  IF (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 @@ -68,12 +70,11 @@ IF (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
          # /usr/bin/ld: CMakeFiles/simple-test.dir/main.cpp.o: undefined reference to symbol '_Unwind_Resume@@GCC_3.0'
@@ -66,7 +66,7 @@ index d96ff88..ad1cb0d 100644
 +        TARGET_LINK_LIBRARIES (${LIB_NAME} gcc_s)
      ENDIF ()
  ENDIF ()
- 
+
 -INSTALL (TARGETS clickhouse-cpp-lib clickhouse-cpp-lib-static
 +INSTALL (TARGETS ${LIB_NAME}
      ARCHIVE DESTINATION lib
@@ -74,13 +74,13 @@ index d96ff88..ad1cb0d 100644
  )
 @@ -123,11 +124,9 @@ INSTALL(FILES types/type_parser.h DESTINATION include/clickhouse/types/)
  INSTALL(FILES types/types.h DESTINATION include/clickhouse/types/)
- 
+
  IF (WITH_OPENSSL)
 -    TARGET_LINK_LIBRARIES (clickhouse-cpp-lib OpenSSL::SSL)
 -    TARGET_LINK_LIBRARIES (clickhouse-cpp-lib-static OpenSSL::SSL)
 +    TARGET_LINK_LIBRARIES (${LIB_NAME} OpenSSL::SSL)
  ENDIF ()
- 
+
  IF (WIN32 OR MINGW)
 -    TARGET_LINK_LIBRARIES (clickhouse-cpp-lib wsock32 ws2_32)
 -    TARGET_LINK_LIBRARIES (clickhouse-cpp-lib-static wsock32 ws2_32)

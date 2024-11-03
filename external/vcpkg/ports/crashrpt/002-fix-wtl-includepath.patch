@@ -5,7 +5,7 @@ index ed9e3d3..d842aa7 100644
 @@ -122,7 +122,7 @@ if(NOT TINYXML_INCLUDE_DIR)
    message(FATAL_ERROR "tinyxml include dir not found")
  endif()
- 
+
 -find_path(WTL_INCLUDE_DIR wtl/atlapp.h)
 +find_path(WTL_INCLUDE_DIR atlapp.h)
  if(NOT WTL_INCLUDE_DIR)
@@ -21,18 +21,18 @@ index e12b8e9..a08f63e 100644
  //
 -#include "wtl/atlres.h"
 +#include "atlres.h"
- 
+
  /////////////////////////////////////////////////////////////////////////////
  #undef APSTUDIO_READONLY_SYMBOLS
 @@ -32,7 +32,7 @@ END
- 
- 2 TEXTINCLUDE 
+
+ 2 TEXTINCLUDE
  BEGIN
 -    "#include ""wtl/atlres.h""\r\n"
 +    "#include ""atlres.h""\r\n"
      "\0"
  END
- 
+
 diff --git a/processing/crashrptprobe/stdafx.h b/processing/crashrptprobe/stdafx.h
 index 0b60659..2b027b2 100644
 --- a/processing/crashrptprobe/stdafx.h
@@ -40,17 +40,17 @@ index 0b60659..2b027b2 100644
 @@ -70,13 +70,13 @@ namespace ATL
  };
  #endif // _WTL_SUPPORT_SDK_ATL3
- 
+
 -#include <wtl/atlapp.h>
 +#include <atlapp.h>
  extern CAppModule _Module;
  #include <atlwin.h>
- 
+
  // CString-related includes
  #define _WTL_USE_CSTRING
 -#include <wtl/atlmisc.h>
 +#include <atlmisc.h>
- 
+
  #if _MSC_VER<1400
  #define WCSNCPY_S(strDest, sizeInBytes, strSource, count) wcsncpy(strDest, strSource, count)
 diff --git a/reporting/crashrpt/CrashRpt.rc b/reporting/crashrpt/CrashRpt.rc
@@ -63,18 +63,18 @@ index a8c821b..95e7502 100644
  //
 -#include "wtl/atlres.h"
 +#include "atlres.h"
- 
+
  /////////////////////////////////////////////////////////////////////////////
  #undef APSTUDIO_READONLY_SYMBOLS
 @@ -32,7 +32,7 @@ END
- 
- 2 TEXTINCLUDE 
+
+ 2 TEXTINCLUDE
  BEGIN
 -    "#include ""wtl/atlres.h""\r\n"
 +    "#include ""atlres.h""\r\n"
      "\0"
  END
- 
+
 diff --git a/reporting/crashrpt/StdAfx.h b/reporting/crashrpt/StdAfx.h
 index 13bbe50..3ed0a55 100644
 --- a/reporting/crashrpt/StdAfx.h
@@ -82,7 +82,7 @@ index 13bbe50..3ed0a55 100644
 @@ -54,12 +54,12 @@ namespace ATL
  };
  #endif // _WTL_SUPPORT_SDK_ATL3
- 
+
 -#include <wtl/atlapp.h>
 +#include <atlapp.h>
  extern CAppModule _Module;
@@ -104,18 +104,18 @@ index e10e269..0502962 100644
  //
 -#include "wtl/atlres.h"
 +#include "atlres.h"
- 
+
  /////////////////////////////////////////////////////////////////////////////
  #undef APSTUDIO_READONLY_SYMBOLS
 @@ -243,7 +243,7 @@ END
- 
- 2 TEXTINCLUDE 
+
+ 2 TEXTINCLUDE
  BEGIN
 -    "#include ""wtl/atlres.h""\r\n"
 +    "#include ""atlres.h""\r\n"
      "\0"
  END
- 
+
 diff --git a/reporting/crashsender/stdafx.h b/reporting/crashsender/stdafx.h
 index 4494d3a..9bbbe3a 100644
 --- a/reporting/crashsender/stdafx.h
@@ -123,14 +123,14 @@ index 4494d3a..9bbbe3a 100644
 @@ -61,19 +61,19 @@ namespace ATL
  };
  #endif // _WTL_SUPPORT_SDK_ATL3
- 
+
 -#include <wtl/atlapp.h>
 +#include <atlapp.h>
- 
+
  extern CAppModule _Module;
- 
+
  #include <atlwin.h>
- 
+
 -#include <wtl/atlframe.h>
 -#include <wtl/atlctrls.h>
 -#include <wtl/atldlgs.h>
@@ -139,10 +139,10 @@ index 4494d3a..9bbbe3a 100644
 +#include <atlctrls.h>
 +#include <atldlgs.h>
 +#include <atlctrlx.h>
- 
+
  #define _WTL_USE_CSTRING
 -#include <wtl/atlmisc.h>
 +#include <atlmisc.h>
- 
+
  #include <string>
  #include <vector>

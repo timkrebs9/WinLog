@@ -41,4 +41,3 @@ vcpkg_replace_string("${CURRENT_PACKAGES_DIR}/include/graphqlparser/parser.tab.h
 
 # Handle copyright
 configure_file("${SOURCE_PATH}/LICENSE" "${CURRENT_PACKAGES_DIR}/share/graphqlparser/copyright" COPYONLY)
-

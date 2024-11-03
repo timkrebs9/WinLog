@@ -9,5 +9,5 @@ index 4dd92f0..bfa697d 100644
 -  find_package(OpenMP)
 +  find_package(OpenMP REQUIRED)
  endif ()
- 
+
  if (OPENMP_FOUND)

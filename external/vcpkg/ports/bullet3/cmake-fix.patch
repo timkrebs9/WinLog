@@ -47,7 +47,7 @@ index a695b71..607edde 100644
 @@ -489,7 +489,14 @@ IF (BUILD_UNIT_TESTS)
  	SUBDIRS(test)
  ENDIF()
- 
+
 -set (BULLET_CONFIG_CMAKE_PATH lib${LIB_SUFFIX}/cmake/bullet )
 +include(CMakePackageConfigHelpers)
 +write_basic_package_version_file(
@@ -76,7 +76,7 @@ index a695b71..607edde 100644
 +	INSTALL_DESTINATION ${BULLET_CONFIG_CMAKE_PATH}
 +)
  OPTION(INSTALL_CMAKE_FILES "Install generated CMake files" ON)
- 
+
  IF (INSTALL_CMAKE_FILES)
  	install ( FILES ${CMAKE_CURRENT_SOURCE_DIR}/UseBullet.cmake
  		${CMAKE_CURRENT_BINARY_DIR}/BulletConfig.cmake
@@ -90,38 +90,38 @@ index d2ab423..dabb504 100644
 +++ b/Extras/BulletRobotics/CMakeLists.txt
 @@ -282,7 +282,7 @@ SET_TARGET_PROPERTIES(BulletRobotics PROPERTIES VERSION ${BULLET_VERSION})
  SET_TARGET_PROPERTIES(BulletRobotics PROPERTIES SOVERSION ${BULLET_VERSION})
- 
+
  IF (BUILD_SHARED_LIBS)
 -	TARGET_LINK_LIBRARIES(BulletRobotics BulletInverseDynamicsUtils BulletWorldImporter BulletFileLoader BulletSoftBody BulletDynamics BulletCollision BulletInverseDynamics LinearMath Bullet3Common)
 +	TARGET_LINK_LIBRARIES(BulletRobotics PUBLIC BulletInverseDynamicsUtils BulletWorldImporter BulletFileLoader BulletSoftBody BulletDynamics BulletCollision BulletInverseDynamics LinearMath Bullet3Common)
  ENDIF (BUILD_SHARED_LIBS)
- 
-   
+
+
 diff --git a/Extras/BulletRoboticsGUI/CMakeLists.txt b/Extras/BulletRoboticsGUI/CMakeLists.txt
 index 57ab97f..27b9992 100644
 --- a/Extras/BulletRoboticsGUI/CMakeLists.txt
 +++ b/Extras/BulletRoboticsGUI/CMakeLists.txt
 @@ -166,7 +166,7 @@ SET_TARGET_PROPERTIES(BulletRoboticsGUI PROPERTIES VERSION ${BULLET_VERSION})
  SET_TARGET_PROPERTIES(BulletRoboticsGUI PROPERTIES SOVERSION ${BULLET_VERSION})
- 
+
  IF (BUILD_SHARED_LIBS)
 -	TARGET_LINK_LIBRARIES(BulletRoboticsGUI  BulletExampleBrowserLib BulletRobotics  BulletInverseDynamicsUtils BulletWorldImporter BulletFileLoader BulletSoftBody BulletDynamics BulletCollision BulletInverseDynamics LinearMath Bullet3Common)
 +	TARGET_LINK_LIBRARIES(BulletRoboticsGUI PUBLIC BulletExampleBrowserLib BulletRobotics  BulletInverseDynamicsUtils BulletWorldImporter BulletFileLoader BulletSoftBody BulletDynamics BulletCollision BulletInverseDynamics LinearMath Bullet3Common)
  ENDIF (BUILD_SHARED_LIBS)
- 
-   
+
+
 diff --git a/Extras/ConvexDecomposition/CMakeLists.txt b/Extras/ConvexDecomposition/CMakeLists.txt
 index 132a336..62babb0 100644
 --- a/Extras/ConvexDecomposition/CMakeLists.txt
 +++ b/Extras/ConvexDecomposition/CMakeLists.txt
 @@ -39,7 +39,7 @@ SET_TARGET_PROPERTIES(ConvexDecomposition PROPERTIES VERSION ${BULLET_VERSION})
  SET_TARGET_PROPERTIES(ConvexDecomposition PROPERTIES SOVERSION ${BULLET_VERSION})
- 
+
  IF (BUILD_SHARED_LIBS)
 -  TARGET_LINK_LIBRARIES(ConvexDecomposition BulletCollision LinearMath)
 +  TARGET_LINK_LIBRARIES(ConvexDecomposition PUBLIC BulletCollision LinearMath)
  ENDIF (BUILD_SHARED_LIBS)
- 
+
  IF (INSTALL_EXTRA_LIBS)
 diff --git a/Extras/InverseDynamics/CMakeLists.txt b/Extras/InverseDynamics/CMakeLists.txt
 index 22e953a..59b733d 100644
@@ -129,12 +129,12 @@ index 22e953a..59b733d 100644
 +++ b/Extras/InverseDynamics/CMakeLists.txt
 @@ -22,7 +22,7 @@ SET_TARGET_PROPERTIES(BulletInverseDynamicsUtils PROPERTIES VERSION ${BULLET_VER
  SET_TARGET_PROPERTIES(BulletInverseDynamicsUtils PROPERTIES SOVERSION ${BULLET_VERSION})
- 
+
  IF (BUILD_SHARED_LIBS)
 -	TARGET_LINK_LIBRARIES(BulletInverseDynamicsUtils BulletInverseDynamics BulletDynamics BulletCollision Bullet3Common LinearMath)
 +	TARGET_LINK_LIBRARIES(BulletInverseDynamicsUtils PUBLIC BulletInverseDynamics BulletDynamics BulletCollision Bullet3Common LinearMath)
  ENDIF (BUILD_SHARED_LIBS)
- 
+
  IF (INSTALL_EXTRA_LIBS)
 diff --git a/Extras/Serialize/BulletFileLoader/CMakeLists.txt b/Extras/Serialize/BulletFileLoader/CMakeLists.txt
 index 9b5dce7..2f30385 100644
@@ -142,12 +142,12 @@ index 9b5dce7..2f30385 100644
 +++ b/Extras/Serialize/BulletFileLoader/CMakeLists.txt
 @@ -21,7 +21,7 @@ btBulletFile.h
  ADD_LIBRARY(BulletFileLoader ${BulletFileLoader_SRCS} ${BulletFileLoader_HDRS})
- 
+
  IF (BUILD_SHARED_LIBS)
 -	TARGET_LINK_LIBRARIES(BulletFileLoader LinearMath)
 +	TARGET_LINK_LIBRARIES(BulletFileLoader PUBLIC LinearMath)
  ENDIF (BUILD_SHARED_LIBS)
- 
+
  SET_TARGET_PROPERTIES(BulletFileLoader PROPERTIES VERSION ${BULLET_VERSION})
 diff --git a/Extras/Serialize/BulletWorldImporter/CMakeLists.txt b/Extras/Serialize/BulletWorldImporter/CMakeLists.txt
 index b56b39a..1684651 100644
@@ -155,12 +155,12 @@ index b56b39a..1684651 100644
 +++ b/Extras/Serialize/BulletWorldImporter/CMakeLists.txt
 @@ -16,7 +16,7 @@ SET_TARGET_PROPERTIES(BulletWorldImporter PROPERTIES VERSION ${BULLET_VERSION})
  SET_TARGET_PROPERTIES(BulletWorldImporter PROPERTIES SOVERSION ${BULLET_VERSION})
- 
+
  IF (BUILD_SHARED_LIBS)
 -	TARGET_LINK_LIBRARIES(BulletWorldImporter BulletDynamics BulletCollision BulletFileLoader LinearMath)
 +	TARGET_LINK_LIBRARIES(BulletWorldImporter PUBLIC BulletDynamics BulletCollision BulletFileLoader LinearMath)
  ENDIF (BUILD_SHARED_LIBS)
- 
+
  IF (INSTALL_EXTRA_LIBS)
 diff --git a/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt b/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt
 index 9fd125e..889c30e 100644
@@ -168,12 +168,12 @@ index 9fd125e..889c30e 100644
 +++ b/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt
 @@ -18,7 +18,7 @@ SET_TARGET_PROPERTIES(BulletXmlWorldImporter  PROPERTIES VERSION ${BULLET_VERSIO
  SET_TARGET_PROPERTIES(BulletXmlWorldImporter PROPERTIES SOVERSION ${BULLET_VERSION})
- 
+
  IF (BUILD_SHARED_LIBS)
 -	TARGET_LINK_LIBRARIES(BulletXmlWorldImporter BulletWorldImporter BulletDynamics BulletCollision BulletFileLoader LinearMath)
 +	TARGET_LINK_LIBRARIES(BulletXmlWorldImporter PUBLIC BulletWorldImporter BulletDynamics BulletCollision BulletFileLoader LinearMath)
  ENDIF (BUILD_SHARED_LIBS)
- 
+
  IF (INSTALL_EXTRA_LIBS)
 diff --git a/src/Bullet3Collision/CMakeLists.txt b/src/Bullet3Collision/CMakeLists.txt
 index 130095c..661a461 100644
@@ -193,7 +193,7 @@ index 130095c..661a461 100644
  					ARCHIVE DESTINATION lib${LIB_SUFFIX})
 @@ -89,5 +90,7 @@ DESTINATION ${INCLUDE_INSTALL_DIR} FILES_MATCHING PATTERN "*.h"  PATTERN
  			#SET_PROPERTY(SOURCE ${Bullet3CollisionBroadPhase_HDRS} PROPERTY MACOSX_PACKAGE_LOCATION Headers/BroadPhaseCollision)
- 
+
  		ENDIF (APPLE AND BUILD_SHARED_LIBS AND FRAMEWORK)
 +		INSTALL(EXPORT Bullet3CollisionTargets
 +			DESTINATION ${BULLET_CONFIG_CMAKE_PATH})
@@ -208,7 +208,7 @@ index e899e67..e990b16 100644
  SET_TARGET_PROPERTIES(Bullet3Common PROPERTIES VERSION ${BULLET_VERSION})
  SET_TARGET_PROPERTIES(Bullet3Common PROPERTIES SOVERSION ${BULLET_VERSION})
 +TARGET_INCLUDE_DIRECTORIES(Bullet3Common INTERFACE $<INSTALL_INTERFACE:include/bullet>)
- 
+
  IF (INSTALL_LIBS)
  	IF (NOT INTERNAL_CREATE_DISTRIBUTABLE_MSVC_PROJECTFILES)
  		#FILES_MATCHING requires CMake 2.6
@@ -292,8 +292,8 @@ index 1da58d4..c1b21df 100644
 -  TARGET_LINK_LIBRARIES(Bullet3OpenCL_clew LinearMath Bullet3Dynamics ${CMAKE_DL_LIBS})
 +  TARGET_LINK_LIBRARIES(Bullet3OpenCL_clew PUBLIC LinearMath Bullet3Dynamics ${CMAKE_DL_LIBS})
  ENDIF (BUILD_SHARED_LIBS)
- 
- 
+
+
 @@ -53,9 +53,13 @@ IF (INSTALL_LIBS)
  		#INSTALL of other files requires CMake 2.6
  		IF (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} GREATER 2.5)
@@ -312,7 +312,7 @@ index 1da58d4..c1b21df 100644
  				INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 @@ -73,5 +77,8 @@ DESTINATION ${INCLUDE_INSTALL_DIR} FILES_MATCHING PATTERN "*.h" PATTERN ".svn" E
  			SET_PROPERTY(SOURCE ${BroadphaseCollision_HDRS} PROPERTY MACOSX_PACKAGE_LOCATION Headers/BroadphaseCollision)
- 
+
  		ENDIF (APPLE AND BUILD_SHARED_LIBS AND FRAMEWORK)
 +
 +		INSTALL(EXPORT Bullet3OpenCLTargets
@@ -357,8 +357,8 @@ index f5d7255..d857637 100644
 -  TARGET_LINK_LIBRARIES(BulletCollision LinearMath)
 +  TARGET_LINK_LIBRARIES(BulletCollision PUBLIC LinearMath)
  ENDIF (BUILD_SHARED_LIBS)
- 
- 
+
+
 @@ -266,9 +266,13 @@ IF (INSTALL_LIBS)
  		#INSTALL of other files requires CMake 2.6
  		IF (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} GREATER 2.5)
@@ -369,7 +369,7 @@ index f5d7255..d857637 100644
 +					DESTINATION .)
  			ELSE (APPLE AND BUILD_SHARED_LIBS AND FRAMEWORK)
 -				INSTALL(TARGETS BulletCollision RUNTIME DESTINATION bin
-+				INSTALL(TARGETS BulletCollision 
++				INSTALL(TARGETS BulletCollision
 +								EXPORT BulletCollisionTargets
 +								RUNTIME DESTINATION bin
  								LIBRARY DESTINATION lib${LIB_SUFFIX}
@@ -377,7 +377,7 @@ index f5d7255..d857637 100644
  				INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 @@ -290,5 +294,8 @@ DESTINATION ${INCLUDE_INSTALL_DIR}/BulletCollision)
  			SET_PROPERTY(SOURCE ${NarrowPhaseCollision_HDRS} PROPERTY MACOSX_PACKAGE_LOCATION Headers/NarrowPhaseCollision)
- 
+
  		ENDIF (APPLE AND BUILD_SHARED_LIBS AND FRAMEWORK)
 +
 +		INSTALL(EXPORT BulletCollisionTargets
@@ -396,7 +396,7 @@ index 3332440..d1a1147 100644
 +	TARGET_LINK_LIBRARIES(BulletDynamics PUBLIC BulletCollision)
  ENDIF (BUILD_SHARED_LIBS)
 +TARGET_LINK_LIBRARIES(BulletDynamics PUBLIC LinearMath)
- 
+
  IF (INSTALL_LIBS)
  	IF (NOT INTERNAL_CREATE_DISTRIBUTABLE_MSVC_PROJECTFILES)
  		IF (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} GREATER 2.5)
@@ -408,7 +408,7 @@ index 3332440..d1a1147 100644
  			ELSE (APPLE AND BUILD_SHARED_LIBS AND FRAMEWORK)
 -				INSTALL(TARGETS BulletDynamics RUNTIME DESTINATION bin
 +				INSTALL(TARGETS BulletDynamics
-+								EXPORT BulletDynamicsTargets 
++								EXPORT BulletDynamicsTargets
 +								RUNTIME DESTINATION bin
  								LIBRARY DESTINATION lib${LIB_SUFFIX}
  								ARCHIVE DESTINATION lib${LIB_SUFFIX})
@@ -433,8 +433,8 @@ index 3331c27..d4fad26 100644
 -  TARGET_LINK_LIBRARIES(BulletInverseDynamics Bullet3Common LinearMath)
 +  TARGET_LINK_LIBRARIES(BulletInverseDynamics PUBLIC Bullet3Common LinearMath)
  ENDIF (BUILD_SHARED_LIBS)
- 
- 
+
+
 @@ -42,9 +42,13 @@ IF (INSTALL_LIBS)
  		#INSTALL of other files requires CMake 2.6
  		IF (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} GREATER 2.5)
@@ -445,7 +445,7 @@ index 3331c27..d4fad26 100644
 +					DESTINATION .)
  			ELSE (APPLE AND BUILD_SHARED_LIBS AND FRAMEWORK)
 -				INSTALL(TARGETS BulletInverseDynamics RUNTIME DESTINATION bin
-+				INSTALL(TARGETS BulletInverseDynamics 
++				INSTALL(TARGETS BulletInverseDynamics
 +								EXPORT BulletInverseDynamicsTargets
 +								RUNTIME DESTINATION bin
  								LIBRARY DESTINATION lib${LIB_SUFFIX}
@@ -453,7 +453,7 @@ index 3331c27..d4fad26 100644
  				INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 @@ -62,5 +66,8 @@ DESTINATION ${INCLUDE_INSTALL_DIR}/BulletInverseDynamics)
  			SET_PROPERTY(SOURCE ${BulletInverseDynamicsDetails_HDRS} PROPERTY MACOSX_PACKAGE_LOCATION Headers/details)
- 
+
  		ENDIF (APPLE AND BUILD_SHARED_LIBS AND FRAMEWORK)
 +
 +		INSTALL(EXPORT BulletInverseDynamicsTargets
@@ -474,7 +474,7 @@ index 9452768..5068a30 100644
 +					DESTINATION .)
  			ELSE (APPLE AND BUILD_SHARED_LIBS AND FRAMEWORK)
 -			INSTALL(TARGETS BulletSoftBody RUNTIME DESTINATION bin
-+			INSTALL(TARGETS BulletSoftBody 
++			INSTALL(TARGETS BulletSoftBody
 +							EXPORT BulletSoftBodyTargets
 +							RUNTIME DESTINATION bin
  							LIBRARY DESTINATION lib${LIB_SUFFIX}

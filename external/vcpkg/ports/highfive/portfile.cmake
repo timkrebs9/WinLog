@@ -4,7 +4,7 @@ vcpkg_from_github(
     REF v2.3
     SHA512 5bf8bc6d3a57be39a4fd15f28f8c839706e2c8d6e2270f45ea39c28a2ac1e3c7f31ed2f48390a45a868c714c85f03f960a0bc8fad945c80b41f495e6f4aca36a
     HEAD_REF master
-    PATCHES 
+    PATCHES
         fix-dependency-hdf5.patch
         fix-error-C1128.patch
         fix_compiler_flags.patch
@@ -31,7 +31,7 @@ vcpkg_cmake_install()
 
 if("tests" IN_LIST FEATURES)
     vcpkg_copy_tools(
-        TOOL_NAMES 
+        TOOL_NAMES
             tests_high_five_base
             tests_high_five_easy
             tests_high_five_multi_dims

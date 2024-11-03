@@ -3,7 +3,7 @@ index 65c4776..5d4086a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -60,12 +60,12 @@ ENDIF()
- 
+
  IF(CMAKE_BUILD_TYPE STREQUAL "Debug")
      SET(MY_CMAKE_FLAGS "${MY_CMAKE_FLAGS} -O0 -g3")
 -    IF(CMAKE_C_COMPILER MATCHES "clang" AND

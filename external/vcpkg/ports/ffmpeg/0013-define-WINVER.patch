@@ -5,7 +5,7 @@ index eeabd0c..ea3a03b 100644
 @@ -22,6 +22,11 @@
  #define _WIN32_WINNT 0x0602
  #endif
- 
+
 +#if !defined(WINVER) || WINVER < 0x0602
 +#undef WINVER
 +#define WINVER 0x0602
@@ -13,4 +13,3 @@ index eeabd0c..ea3a03b 100644
 +
  #include "mf_utils.h"
  #include "libavutil/pixdesc.h"
- 

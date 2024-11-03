@@ -4,7 +4,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 @@ -51,8 +51,15 @@ set(SRC_FILES
      src/CascRootFile_WoW.cpp
  )
- 
+
 +if(WIN32)
 +    set(SRC_FILES ${SRC_FILES}
 +        src/DllMain.c

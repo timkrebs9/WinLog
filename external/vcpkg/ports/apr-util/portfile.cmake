@@ -63,7 +63,7 @@ else()
     )
 
     if ("crypto" IN_LIST FEATURES)
-        set(CRYPTO_OPTIONS 
+        set(CRYPTO_OPTIONS
             "--with-crypto=yes"
             "--with-openssl=${CURRENT_INSTALLED_DIR}")
     else()

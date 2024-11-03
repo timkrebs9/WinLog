@@ -4,7 +4,7 @@ index 2d241fe..b79454d 100644
 +++ b/CMakeLists.txt
 @@ -244,7 +244,7 @@ else (CUDA)
  endif (CUDA)
- 
+
  if (LAPACK)
 -  find_package(LAPACK QUIET)
 +  find_package(LAPACK REQUIRED)
@@ -13,7 +13,7 @@ index 2d241fe..b79454d 100644
    else (LAPACK_FOUND)
 @@ -266,7 +266,8 @@ if (SUITESPARSE)
    # built with SuiteSparse support.
- 
+
    # Check for SuiteSparse and dependencies.
 -  find_package(SuiteSparse 4.0 COMPONENTS CHOLMOD SPQR)
 +  find_package(suitesparse CONFIG REQUIRED)
@@ -24,7 +24,7 @@ index 2d241fe..b79454d 100644
 @@ -274,11 +275,11 @@ if (SUITESPARSE)
      message("-- Found SuiteSparse ${SuiteSparse_VERSION}, "
              "building with SuiteSparse.")
- 
+
 -    if (SuiteSparse_NO_CMAKE OR NOT SuiteSparse_DIR)
 +    if (0)
        install(FILES ${Ceres_SOURCE_DIR}/cmake/FindSuiteSparse.cmake
@@ -47,7 +47,7 @@ index 2d241fe..b79454d 100644
 @@ -302,10 +303,10 @@ if (CXSPARSE)
      message("-- Found CXSparse version: ${CXSparse_VERSION}, "
        "building with CXSparse.")
- 
+
 -    if (CXSparse_NO_CMAKE OR NOT CXSparse_DIR)
 +    if (0)
        install(FILES ${Ceres_SOURCE_DIR}/cmake/FindCXSparse.cmake
@@ -71,7 +71,7 @@ index 2d241fe..b79454d 100644
      else()
        message("-- Detected version of gflags: ${gflags_VERSION} does not define "
 @@ -420,7 +422,7 @@ set_ceres_threading_model("${CERES_THREADING_MODEL}")
- 
+
  if (BUILD_BENCHMARKS)
    # Version 1.3 was first to provide import targets
 -  find_package(benchmark 1.3 QUIET)
@@ -81,7 +81,7 @@ index 2d241fe..b79454d 100644
    else()
 @@ -611,7 +613,7 @@ create_ceres_config("${CERES_COMPILE_OPTIONS}"
  add_subdirectory(internal/ceres)
- 
+
  if (BUILD_DOCUMENTATION)
 -  find_package(Sphinx)
 +  find_package(Sphinx REQUIRED)
@@ -101,12 +101,12 @@ index 299b373..33d41d8 100644
 +  list(APPEND CERES_LIBRARY_PRIVATE_DEPENDENCIES SuiteSparse::cholmod
 +    SuiteSparse::spqr)
  endif (SUITESPARSE AND SuiteSparse_FOUND)
- 
+
  if (CXSPARSE AND CXSparse_FOUND)
    # Define version information for use in Solver::FullReport.
    add_definitions(-DCERES_CXSPARSE_VERSION="${CXSparse_VERSION}")
 -  list(APPEND CERES_LIBRARY_PRIVATE_DEPENDENCIES CXSparse::CXSparse)
 +  list(APPEND CERES_LIBRARY_PRIVATE_DEPENDENCIES ${CXSparse_LIBRARIES})
  endif (CXSPARSE AND CXSparse_FOUND)
- 
+
  if (ACCELERATESPARSE AND AccelerateSparse_FOUND)

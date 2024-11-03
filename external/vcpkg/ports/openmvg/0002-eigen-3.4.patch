@@ -10,4 +10,3 @@
 
  add_library(openMVG_multiview_test_data ${MULTIVIEWTESTDATA})
  target_link_libraries(openMVG_multiview_test_data PRIVATE openMVG_numeric openMVG_multiview)
- 

@@ -66,19 +66,19 @@ if (VCPKG_TARGET_IS_WINDOWS)
     else()
         message(FATAL_ERROR "Unsupported architecture: ${VCPKG_TARGET_ARCHITECTURE}")
     endif()
-    
+
     vcpkg_build_msbuild(
         PROJECT_PATH ${SOURCE_PATH}/PCBuild/pythoncore.vcxproj
         PLATFORM ${BUILD_ARCH}
     )
 
     vcpkg_copy_pdbs()
-    
+
     file(GLOB HEADERS ${SOURCE_PATH}/Include/*.h)
     file(COPY ${HEADERS} ${SOURCE_PATH}/PC/pyconfig.h DESTINATION ${CURRENT_PACKAGES_DIR}/include/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR})
-    
+
     file(COPY ${SOURCE_PATH}/Lib DESTINATION ${CURRENT_PACKAGES_DIR}/share/python${PYTHON_VERSION_MAJOR})
-    
+
     file(COPY ${SOURCE_PATH}/PCBuild/${OUT_DIR}/python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}.lib DESTINATION ${CURRENT_PACKAGES_DIR}/lib)
     file(COPY ${SOURCE_PATH}/PCBuild/${OUT_DIR}/python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}_d.lib DESTINATION ${CURRENT_PACKAGES_DIR}/debug/lib)
     if (VCPKG_LIBRARY_LINKAGE STREQUAL dynamic)
@@ -89,10 +89,10 @@ else()
     vcpkg_configure_make(
         SOURCE_PATH ${SOURCE_PATH}
     )
-    
+
     vcpkg_install_make()
     vcpkg_fixup_pkgconfig()
-    
+
     file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include" "${CURRENT_PACKAGES_DIR}/debug/share")
 endif()
 
@@ -102,7 +102,7 @@ if (NOT VCPKG_TARGET_IS_WINDOWS)
         if(NOT EXISTS "${python_config_file}")
             continue()
         endif()
-        
+
         file(READ "${python_config_file}" contents)
 
         string(PREPEND contents "import os\n_base = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n")

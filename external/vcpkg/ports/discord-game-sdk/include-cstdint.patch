@@ -14,12 +14,11 @@ index 8c7cc2b..122dc71 100644
 @@ -3,6 +3,8 @@
  #include "ffi.h"
  #include "event.h"
- 
+
 +#include <cstdint>
 +
  namespace discord {
- 
- enum class Result {
--- 
-2.26.2
 
+ enum class Result {
+--
+2.26.2

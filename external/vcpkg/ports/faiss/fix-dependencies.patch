@@ -5,7 +5,7 @@ index 43ea9d4..437a7f8 100644
 @@ -4,4 +4,7 @@
  # This source code is licensed under the BSD-style license found in the
  # LICENSE file in the root directory of this source tree.
- 
+
 +find_dependency(OpenMP REQUIRED)
 +find_dependency(BLAS REQUIRED)
 +find_dependency(LAPACK REQUIRED)
@@ -16,7 +16,7 @@ index 30d573f..9af8baf 100644
 +++ b/faiss/CMakeLists.txt
 @@ -212,17 +212,17 @@ target_link_libraries(faiss PRIVATE OpenMP::OpenMP_CXX)
  target_link_libraries(faiss_avx2 PRIVATE OpenMP::OpenMP_CXX)
- 
+
  find_package(MKL)
 -if(MKL_FOUND)
 +if(0)
@@ -28,12 +28,12 @@ index 30d573f..9af8baf 100644
 -  target_link_libraries(faiss_avx2 PRIVATE ${BLAS_LIBRARIES})
 +  target_link_libraries(faiss PRIVATE BLAS::BLAS)
 +  target_link_libraries(faiss_avx2 PRIVATE BLAS::BLAS)
- 
+
    find_package(LAPACK REQUIRED)
 -  target_link_libraries(faiss PRIVATE ${LAPACK_LIBRARIES})
 -  target_link_libraries(faiss_avx2 PRIVATE ${LAPACK_LIBRARIES})
 +  target_link_libraries(faiss PRIVATE LAPACK::LAPACK)
 +  target_link_libraries(faiss_avx2 PRIVATE LAPACK::LAPACK)
  endif()
- 
+
  install(TARGETS faiss

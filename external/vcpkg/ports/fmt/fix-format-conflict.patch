@@ -12,4 +12,3 @@ index f44df01c..59cc4559 100644
 +  fmt::format_to(it, FMT_STRING("{}{}"), ERROR_STR, error_code);
    FMT_ASSERT(out.size() <= inline_buffer_size, "");
  }
- 

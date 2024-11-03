@@ -9,7 +9,7 @@ index 0aff593..9e419ce 100644
 -          DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
 +          DESTINATION lib/pkgconfig)
  endif()
- 
+
  # CMake Find helper
 -if (NOT WIN32 AND NOT APPLE)
 +if (1)
@@ -19,7 +19,7 @@ index 0aff593..9e419ce 100644
 -          DESTINATION ${SHARE_INSTALL_DIR}/cmake/Modules)
 +          DESTINATION share/${PROJECT_NAME})
  endif()
- 
+
  # Define the library itself
 @@ -50,8 +50,13 @@ if(NOT WIN32)
    target_link_libraries(modman dl)
@@ -34,6 +34,6 @@ index 0aff593..9e419ce 100644
 +    ARCHIVE DESTINATION lib
 +)
 +install(FILES   module_manager.hpp module.hpp DESTINATION include/${PROJECT_NAME})
- 
+
  ### Tests
  add_testdirectory(test)

@@ -6,7 +6,7 @@ index dd3d8eb..c08cad9 100644
    set(CMAKE_REQUIRED_LIBRARIES "")
    # TODO: This not the symbol we're looking for. What is the symbol?
    check_library_exists(ws2 fopen "" HAVE_WS2)
-+  
++
 +  check_cxx_symbol_exists(CryptAcquireContext "windows.h;wincrypt.h" HAVE_ADVAPI32)
  else()
    check_cxx_symbol_exists(if_nametoindex net/if.h HAVE_IF_NAMETOINDEX)
@@ -15,22 +15,22 @@ index dd3d8eb..c08cad9 100644
    elseif(HAVE_WS2)
      target_link_libraries(libzmq ws2)
    endif()
-+  
++
 +  if (HAVE_ADVAPI32)
 +    target_link_libraries(libzmq advapi32)
 +  endif()
- 
+
    if(HAVE_RPCRT4)
      target_link_libraries(libzmq rpcrt4)
 @@ -1497,6 +1503,10 @@ if(BUILD_STATIC)
    elseif(HAVE_WS2)
      target_link_libraries(libzmq-static ws2)
    endif()
-+  
++
 +  if (HAVE_ADVAPI32)
 +    target_link_libraries(libzmq-static advapi32)
 +  endif()
- 
+
    if(HAVE_RPCRT4)
      target_link_libraries(libzmq-static rpcrt4)
 diff --git a/src/clock.cpp b/src/clock.cpp

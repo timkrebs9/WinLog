@@ -43,10 +43,10 @@ if ("hut" IN_LIST FEATURES)
     set(NEED_ASIOSDK ON)
   endif()
 endif()
-    
+
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
-    OPTIONS    
+    OPTIONS
         -DNEED_CATCH2=${NEED_CATCH2}
         -DLINK_BUILD_ASIO=${NEED_ASIOSDK}
 )
@@ -71,7 +71,7 @@ endif()
 # We must not correct the CMake include path before build
 vcpkg_apply_patches(
     SOURCE_PATH "${SOURCE_PATH}"
-    PATCHES 
+    PATCHES
         correct_cmake_include_directory.patch
 )
 

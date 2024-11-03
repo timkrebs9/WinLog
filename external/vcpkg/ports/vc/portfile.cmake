@@ -4,7 +4,7 @@ vcpkg_from_github(
     REF 1.4.3
     SHA512 7c0c4ccf8c7c4585334482135f2daf1a5bc088114b880093893583bdcea1fbfcec02485da6059304c510c8b1bb1b768ef04fd7ac8ccb21b9ebbad5d0d5babaef
     HEAD_REF 1.4
-    PATCHES 
+    PATCHES
        correct_cmake_config_path.patch
        Fix-internal-func-export.patch #remove it in next version
 )

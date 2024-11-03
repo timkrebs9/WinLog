@@ -18,7 +18,7 @@ function(vcpkg_from_sourceforge)
     if(arg_DISABLE_SSL)
         message(WARNING "DISABLE_SSL has been deprecated and has no effect")
     endif()
-    
+
     set(sourceforge_host "https://sourceforge.net/projects")
 
     if(arg_REPO MATCHES "^([^/]*)$") # just one element
@@ -32,7 +32,7 @@ function(vcpkg_from_sourceforge)
     - an organization name without any slashes, or
     - an organization name followed by a repository name separated by a single slash")
     endif()
-    
+
     if(DEFINED arg_REF)
         set(url "${sourceforge_host}/${org_name}/files/${repo_name}/${arg_REF}/${arg_FILENAME}")
     elseif(DEFINED repo_name)
@@ -40,7 +40,7 @@ function(vcpkg_from_sourceforge)
     else()
         set(url "${sourceforge_host}/${org_name}/files/${arg_FILENAME}")
     endif()
-        
+
     string(SUBSTRING "${arg_SHA512}" 0 10 sanitized_ref)
 
     set(sourceforge_mirrors
@@ -79,7 +79,7 @@ function(vcpkg_from_sourceforge)
     foreach(mirror IN LISTS sourceforge_mirrors)
         list(APPEND all_urls "${url}/download?use_mirror=${mirror}")
     endforeach()
-    
+
     vcpkg_download_distfile(ARCHIVE
         URLS ${all_urls}
         SHA512 "${arg_SHA512}"

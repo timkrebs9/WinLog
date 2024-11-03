@@ -1,4 +1,4 @@
-if(VCPKG_TARGET_IS_WINDOWS) 
+if(VCPKG_TARGET_IS_WINDOWS)
     if(VCPKG_LIBRARY_LINKAGE STREQUAL static)
        set(win_patch "static-linking-for-windows.patch")
     endif()

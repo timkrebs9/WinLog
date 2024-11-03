@@ -6,8 +6,8 @@ index 146bc5f..8d6ae23 100644
 -cmake_minimum_required(VERSION 2.8)
 +cmake_minimum_required(VERSION 3.22)
  project(ParMETIS C)
- 
- 
+
+
 @@ -24,20 +24,16 @@ include(./conf/gkbuild.cmake)
  # i.e., the -I equivalent
  include_directories(include)
@@ -26,7 +26,7 @@ index 146bc5f..8d6ae23 100644
 -add_subdirectory(include)
  add_subdirectory(libparmetis)
 -add_subdirectory(programs)
- 
+
  # This is for testing during development and is not being distributed
  #add_subdirectory(test)
 +
@@ -42,7 +42,7 @@ index afcafdd..3040b09 100644
 --- a/conf/gkbuild.cmake
 +++ b/conf/gkbuild.cmake
 @@ -15,7 +15,6 @@ option(GKRAND "enable GKRAND support" OFF)
- 
+
  # Add compiler flags.
  if(MSVC)
 -  set(GK_COPTS "/Ox")
@@ -66,9 +66,9 @@ index afcafdd..3040b09 100644
 +elseif(0)
    set(GK_COPTS "-O3")
  endif(GDB)
- 
+
 @@ -135,4 +134,3 @@ endif()
- 
+
  # Finally set the official C flags.
  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${GK_COPTIONS} ${GK_COPTS}")
 -
@@ -79,7 +79,7 @@ index e8c3213..dcdf64e 100644
 @@ -4,10 +4,14 @@ include_directories(.)
  # Find sources.
  file(GLOB parmetis_sources *.c)
- 
+
 +find_package(GKlib CONFIG REQUIRED)
 +find_package(metis CONFIG REQUIRED)
 +find_package(MPI REQUIRED)

@@ -21,7 +21,7 @@ diff -urN a/config/cmake/SZIPMacros.cmake b/config/cmake/SZIPMacros.cmake
      else ()
 @@ -164,7 +164,7 @@
    endif ()
- 
+
    #----- Use MSVC Naming conventions for Shared Libraries
 -  if (MINGW AND ${libtype} MATCHES "SHARED")
 +  if (FALSE AND MINGW AND ${libtype} MATCHES "SHARED")

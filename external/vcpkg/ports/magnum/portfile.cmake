@@ -111,24 +111,24 @@ file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/share")
 
 # Special handling for plugins.
 #
-# For static plugins, in order to make MSBuild auto-linking magic work, where 
-# the linker implicitly takes everything from the root lib/ folder, the 
+# For static plugins, in order to make MSBuild auto-linking magic work, where
+# the linker implicitly takes everything from the root lib/ folder, the
 # static libraries have to be moved out of lib/magnum/blah/ directly to lib/.
 # Possibly would be enough to do this just for Windows, doing it also on other
 # platforms for consistency.
 #
-# For dynamic plugins, auto-linking is not desirable as those are meant to be 
-# loaded dynamically at runtime instead. In order to prevent that, on Windows 
-# the *.lib files corresponding to the plugin *.dlls are removed. However, we 
-# cannot remove the *.lib files entirely here, as plugins from magnum-plugins 
-# are linked to them on Windows (e.g. AssimpImporter depends on 
-# AnyImageImporter). Thus the Any* plugin lib files are kept, but also not 
-# moved to the root lib/ folder, to prevent autolinking. A consequence of the 
+# For dynamic plugins, auto-linking is not desirable as those are meant to be
+# loaded dynamically at runtime instead. In order to prevent that, on Windows
+# the *.lib files corresponding to the plugin *.dlls are removed. However, we
+# cannot remove the *.lib files entirely here, as plugins from magnum-plugins
+# are linked to them on Windows (e.g. AssimpImporter depends on
+# AnyImageImporter). Thus the Any* plugin lib files are kept, but also not
+# moved to the root lib/ folder, to prevent autolinking. A consequence of the
 # *.lib file removal is that downstream projects can't implement Magnum plugins
-# that would depend on (and thus link to) these, but that's considered a very 
+# that would depend on (and thus link to) these, but that's considered a very
 # rare use case and so it's fine.
 #
-# See https://github.com/microsoft/vcpkg/pull/1235#issuecomment-308805989 for 
+# See https://github.com/microsoft/vcpkg/pull/1235#issuecomment-308805989 for
 # futher info.
 if(VCPKG_LIBRARY_LINKAGE STREQUAL "static")
     file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/bin")

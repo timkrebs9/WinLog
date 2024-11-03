@@ -41,13 +41,13 @@ Next, looking at the above logs (build-xxx-out.log and build-xxx-err.log).
 ...
 "D:\src\vcpkg\buildtrees\libpng\x64-uwp-rel\ALL_BUILD.vcxproj" (default target) (1) ->
 "D:\src\vcpkg\buildtrees\libpng\x64-uwp-rel\png.vcxproj" (default target) (3) ->
-(ClCompile target) -> 
+(ClCompile target) ->
   D:\src\vcpkg\buildtrees\libpng\src\v1.6.37-c993153cdf\pngerror.c(775): warning C4013: 'ExitProcess' undefined; assuming extern returning int [D:\src\vcpkg\buildtrees\libpng\x64-uwp-rel\png.vcxproj]
 
 
 "D:\src\vcpkg\buildtrees\libpng\x64-uwp-rel\ALL_BUILD.vcxproj" (default target) (1) ->
 "D:\src\vcpkg\buildtrees\libpng\x64-uwp-rel\png.vcxproj" (default target) (3) ->
-(Link target) -> 
+(Link target) ->
   pngerror.obj : error LNK2019: unresolved external symbol _ExitProcess referenced in function _png_longjmp [D:\src\vcpkg\buildtrees\libpng\x64-uwp-rel\png.vcxproj]
   D:\src\vcpkg\buildtrees\libpng\x64-uwp-rel\Release\libpng16.dll : fatal error LNK1120: 1 unresolved externals [D:\src\vcpkg\buildtrees\libpng\x64-uwp-rel\png.vcxproj]
 
@@ -147,7 +147,7 @@ Finally, we need to apply the patch after extracting the source.
 vcpkg_extract_source_archive_ex(
   OUT_SOURCE_PATH SOURCE_PATH
   ARCHIVE ${ARCHIVE}
-  PATCHES 
+  PATCHES
     "use-abort-on-all-platforms.patch"
 )
 

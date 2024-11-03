@@ -12,7 +12,7 @@ index 29abf35..4051fcf 100644
 +  return pset1<PacketType>(zero);
 +}
 +
- 
+
  /* For products the default is 1 */
  template<typename PacketType,typename Scalar>
  EIGEN_DEVICE_FUNC
@@ -21,6 +21,6 @@ index 29abf35..4051fcf 100644
 +  return pset1<PacketType>(Scalar(1));
 +}
 +
- 
+
  /* Perform the actual reduction */
  template<typename Func, typename Evaluator,

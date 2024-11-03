@@ -1,7 +1,7 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO redboltz/mqtt_cpp
-    REF v13.1.0    
+    REF v13.1.0
     SHA512
     71907ba013d844d3b00c932b8598480067c0b2a2088ea95ae6d65a548145b851f6a25135f4e3c1e61cfc3831b024308e872f194bc9af7febe0036edc2e63b9d4
     HEAD_REF master

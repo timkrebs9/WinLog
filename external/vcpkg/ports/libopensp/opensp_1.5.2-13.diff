@@ -12,7 +12,7 @@
 +          char *realOutputDir;
 +#endif
            char *outputDir = strdup(outputDir_);
- 
+
 +#ifdef MAXPATHLEN
            realpath((const char *)dirname(dirs), realDirs);
            realpath((const char *)dirname(outputDir), realOutputDir);
@@ -20,13 +20,13 @@
 +          realDirs = realpath((const char *)dirname(dirs), NULL);
 +          realOutputDir = realpath((const char *)dirname(outputDir), NULL);
 +#endif
- 
+
            if (strncmp(realDirs, realOutputDir, strlen (realOutputDir)) != 0) {
              app_->message(XmlOutputMessages::pathOutsideOutputDirectory,
 @@ -1214,6 +1224,11 @@
              }
            }
- 
+
 +#ifndef MAXPATHLEN
 +	  free(realDirs);
 +	  free(realOutputDir);
@@ -34,4 +34,3 @@
 +
  	  // Make the necessary directories
  	  maybeCreateDirectories(dirname(dirs));
- 

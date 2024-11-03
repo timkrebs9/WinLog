@@ -1,11 +1,11 @@
 diff --git a/meson.build b/meson.build
 index 1a93dbb95..2f5f7c891 100644
---- a/meson.build	
+--- a/meson.build
 +++ b/meson.build
 @@ -55,7 +55,7 @@ conf = configuration_data()
  common_cflags = []
  common_ldflags = []
- 
+
 -if cc.get_id() == 'msvc'
 +if cc.get_argument_syntax() == 'msvc'
    # Make MSVC more pedantic, this is a recommended pragma list
@@ -13,7 +13,7 @@ index 1a93dbb95..2f5f7c891 100644
    # glib's msvc_recommended_pragmas.h--please see that file for
 @@ -117,7 +117,7 @@ endif
  common_cflags = cc.get_supported_arguments(test_cflags)
- 
+
  # MSVC: Let C4819 error out if we do not have the -utf-8 compiler flag
 -if cc.get_id() == 'msvc'
 +if cc.get_argument_syntax() == 'msvc'

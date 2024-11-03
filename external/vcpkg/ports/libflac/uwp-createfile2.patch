@@ -31,10 +31,10 @@ index 8b20bbb7..058295fa 100644
  		return CreateFileA(lpFileName, dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
  	} else {
 @@ -169,6 +190,7 @@ HANDLE WINAPI CreateFile_utf8(const char *lpFileName, DWORD dwDesiredAccess, DWO
- 
+
  		return handle;
  	}
 +#endif
  }
- 
+
  /* return number of characters in the UTF-8 string */

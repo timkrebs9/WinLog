@@ -46,7 +46,7 @@ index 1cec227..1b07ca8 100644
 -  endif
 +  have_mmx = true
  endif
- 
+
  if have_mmx
 @@ -154,29 +117,7 @@ elif cc.get_id() != 'msvc'
    sse2_flags = ['-msse2', '-Winline']
@@ -77,12 +77,12 @@ index 1cec227..1b07ca8 100644
 -  endif
 +  have_sse2 = true
  endif
- 
+
  if have_sse2
 @@ -192,24 +133,8 @@ if cc.get_id() != 'msvc'
    ssse3_flags = ['-mssse3', '-Winline']
  endif
- 
+
 -# x64 pre-2010 MSVC compilers crashes when building the ssse3 code
 -if not use_ssse3.disabled() and not (cc.get_id() == 'msvc' and cc.version().version_compare('<16') and host_machine.cpu_family() == 'x86_64')
 -  if host_machine.cpu_family().startswith('x86')
@@ -104,5 +104,5 @@ index 1cec227..1b07ca8 100644
 +if use_ssse3.enabled()
 +  have_ssse3 = true
  endif
- 
+
  if have_ssse3

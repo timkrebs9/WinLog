@@ -17,7 +17,7 @@ index ab58bbd..f9fed7e 100644
    target_include_directories(cimg INTERFACE ${JPEG_INCLUDE_DIRS})
  endif()
 +endif()
- 
+
 -find_package(TIFF)
 -if(TIFF_FOUND)
 +if (WITH_TIFF)
@@ -28,7 +28,7 @@ index ab58bbd..f9fed7e 100644
    target_include_directories(cimg INTERFACE ${TIFF_INCLUDE_DIRS})
  endif()
 +endif()
- 
+
 -find_package(ZLIB)
 -if(ZLIB_FOUND)
 -  find_package(PNG)
@@ -45,7 +45,7 @@ index ab58bbd..f9fed7e 100644
    endif ()
  endif()
 +endif()
- 
+
 -find_package(LAPACK)
 -if(LAPACK_FOUND)
 +if (WITH_LAPACK)
@@ -56,7 +56,7 @@ index ab58bbd..f9fed7e 100644
    target_include_directories(cimg INTERFACE ${LAPACK_INCLUDE_DIRS})
  endif()
 +endif()
- 
+
 -find_package(BLAS)
 -if(BLAS_FOUND)
 +if (WITH_BLAS)
@@ -67,7 +67,7 @@ index ab58bbd..f9fed7e 100644
    target_include_directories(cimg INTERFACE ${BLAS_INCLUDE_DIRS})
  endif()
 +endif()
- 
+
 -find_package(FFTW)
 -if(FFTW_FOUND)
 +if (WITH_FFTW3)
@@ -79,7 +79,7 @@ index ab58bbd..f9fed7e 100644
 +  target_link_libraries(cimg INTERFACE FFTW3::fftw3)
 +endif()
  endif()
- 
+
  if (CMAKE_MODULE_PATH)
 -  find_package(OpenCV QUIET)
 -  if (OpenCV_FOUND)

@@ -4,7 +4,7 @@ index 5ec3739..a6cff8d 100644
 +++ b/gst-libs/gst/tag/meson.build
 @@ -70,7 +70,7 @@ endif
  core_conf.set('HAVE_ISO_CODES', have_iso_codes)
- 
+
  # could drop optional zlib dep and use g_zlib_decompressor_new()
 -zlib_dep = dependency('zlib', required : false)
 +zlib_dep = dependency('zlib', required : true)

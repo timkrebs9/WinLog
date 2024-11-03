@@ -5,7 +5,7 @@ index 1f1902c..623bec8 100644
 @@ -53,6 +53,9 @@ option(MDL_LOG_FILE_DEPENDENCIES "Prints the list of files that is copied after
  set(MDL_ADDITIONAL_COMPILER_DEFINES "MDL_SOURCE_RELEASE" CACHE STRING "Additional compile defines that are passed to each of the projects")
  set(MDL_ADDITIONAL_COMPILER_OPTIONS "" CACHE STRING "Additional compile options that are passed to each of the projects")
- 
+
 +include(GNUInstallDirs)
 +include(CMakePackageConfigHelpers)
 +
@@ -15,7 +15,7 @@ index 1f1902c..623bec8 100644
 @@ -235,3 +238,35 @@ foreach(_TEST_POST ${MDL_TEST_LIST_POST})
      add_subdirectory(${_TEST_POST})
  endforeach()
- 
+
 +# Config
 +#--------------------------------------------------------------------------------------------------
 +
@@ -58,12 +58,12 @@ index 5e9774f..51dc65c 100644
          set_target_properties(${CREATE_FROM_BASE_PRESET_TARGET} PROPERTIES OUTPUT_NAME ${CREATE_FROM_BASE_PRESET_OUTPUT_NAME})
 +        set_target_properties(${CREATE_FROM_BASE_PRESET_TARGET} PROPERTIES EXPORT_NAME ${CREATE_FROM_BASE_PRESET_OUTPUT_NAME})
      endif()
- 
+
      # log message
 @@ -1143,6 +1144,15 @@ endfunction()
  # -------------------------------------------------------------------------------------------------
  # basic install logic to copy the entire output folder
- 
+
 +set(_MDL_PROD_TARGETS
 +    prod-lib-mdl_core
 +    prod-lib-mdl_sdk
@@ -112,7 +112,7 @@ index b60a1fc..3c3d2f4 100644
 @@ -42,9 +42,15 @@ create_from_base_preset(
      EMBED_RC "mdl_core.rc"
      )
- 
+
 +target_include_directories(${PROJECT_NAME}
 +    PUBLIC
 +        $<INSTALL_INTERFACE:include>
@@ -122,7 +122,7 @@ index b60a1fc..3c3d2f4 100644
  set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "lib")
  set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "mdl_core")
 +set_target_properties(${PROJECT_NAME} PROPERTIES EXPORT_NAME "mdl_core")
- 
+
  if(MACOSX)
      set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".so") # corresponding to the binary release
 diff --git a/src/prod/lib/mdl_sdk/CMakeLists.txt b/src/prod/lib/mdl_sdk/CMakeLists.txt
@@ -132,7 +132,7 @@ index 6ddfc24..51c84e7 100644
 @@ -44,9 +44,15 @@ create_from_base_preset(
      EMBED_RC "mdl_sdk.rc"
      )
- 
+
 +target_include_directories(${PROJECT_NAME}
 +    PUBLIC
 +        $<INSTALL_INTERFACE:include>
@@ -142,7 +142,7 @@ index 6ddfc24..51c84e7 100644
  set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "lib")
  set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "mdl_sdk")
 +set_target_properties(${PROJECT_NAME} PROPERTIES EXPORT_NAME "mdl_sdk")
- 
+
  if(MACOSX)
      set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".so") # corresponding to the binary release
 diff --git a/src/shaders/plugin/dds/CMakeLists.txt b/src/shaders/plugin/dds/CMakeLists.txt
@@ -154,7 +154,7 @@ index 81558b0..179e1df 100644
  set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
  set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "dds")
 +set_target_properties(${PROJECT_NAME} PROPERTIES EXPORT_NAME "dds")
- 
+
  if(MACOSX)
      set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".so") # corresponding to the binary release
 diff --git a/src/shaders/plugin/freeimage/CMakeLists.txt b/src/shaders/plugin/freeimage/CMakeLists.txt
@@ -166,6 +166,6 @@ index b3ae039..a28b50e 100644
  set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
  set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "nv_freeimage")
 +set_target_properties(${PROJECT_NAME} PROPERTIES EXPORT_NAME "nv_freeimage")
- 
+
  if(MACOSX)
      set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".so") # corresponding to the binary release

@@ -3,7 +3,7 @@ index c4105ef..7c7e72a 100644
 --- a/rply.c
 +++ b/rply.c
 @@ -372,7 +372,7 @@ p_ply ply_open(const char *name, p_ply_error_cb error_cb,
- 
+
  p_ply ply_open_from_file(FILE *fp, p_ply_error_cb error_cb,
          long idata, void *pdata) {
 -    p_ply ply;
@@ -12,7 +12,7 @@ index c4105ef..7c7e72a 100644
      assert(fp);
      if (!ply_type_check()) {
 @@ -475,7 +475,7 @@ p_ply ply_create(const char *name, e_ply_storage_mode storage_mode,
- 
+
  p_ply ply_create_to_file(FILE *fp, e_ply_storage_mode storage_mode,
          p_ply_error_cb error_cb, long idata, void *pdata) {
 -    p_ply ply;

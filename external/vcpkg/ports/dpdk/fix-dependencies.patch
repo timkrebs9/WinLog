@@ -16,7 +16,7 @@ index 0dde249..64f7d1c 100644
 -        dpdk_extra_ldflags += '-lnuma'
      endif
  endif
- 
+
 @@ -211,8 +209,6 @@ if libarchive.found()
      # Push libarchive link dependency at the project level to support
      # statically linking dpdk apps. Details at:
@@ -24,14 +24,14 @@ index 0dde249..64f7d1c 100644
 -    add_project_link_arguments('-larchive', language: 'c')
 -    dpdk_extra_ldflags += '-larchive'
  endif
- 
+
  # check for libbsd
 diff --git a/lib/eal/linux/meson.build b/lib/eal/linux/meson.build
 index 65f2ac6..3e023f8 100644
 --- a/lib/eal/linux/meson.build
 +++ b/lib/eal/linux/meson.build
 @@ -23,5 +23,6 @@ sources += files(
- 
+
  deps += ['kvargs', 'telemetry']
  if has_libnuma == 1
 +    ext_deps += numa_dep

@@ -4,7 +4,7 @@ diff --git a/lite/src/format.c b/lite/src/format.c
 @@ -27,20 +27,20 @@
  #endif
  #include "format.h"
- 
+
 -extern const struct format_loader xm_loader;
 -extern const struct format_loader mod_loader;
 -extern const struct format_loader it_loader;
@@ -13,9 +13,9 @@ diff --git a/lite/src/format.c b/lite/src/format.c
 +extern const struct format_loader libxmp_loader_mod;
 +extern const struct format_loader libxmp_loader_it;
 +extern const struct format_loader libxmp_loader_s3m;
- 
+
  extern const struct pw_format *const pw_format[];
- 
+
  const struct format_loader *const format_loader[5] = {
 -	&xm_loader,
 -	&mod_loader,
@@ -29,14 +29,14 @@ diff --git a/lite/src/format.c b/lite/src/format.c
 +	&libxmp_loader_s3m,
  	NULL
  };
- 
+
 diff --git a/lite/src/loaders/mod_load.c b/lite/src/loaders/mod_load.c
 --- a/src/loaders/mod_load.c
 +++ b/src/loaders/mod_load.c
 @@ -36,7 +36,7 @@
  static int mod_test (HIO_HANDLE *, char *, const int);
  static int mod_load (struct module_data *, HIO_HANDLE *, const int);
- 
+
 -const struct format_loader mod_loader = {
 +const struct format_loader libxmp_loader_mod = {
      "Protracker",

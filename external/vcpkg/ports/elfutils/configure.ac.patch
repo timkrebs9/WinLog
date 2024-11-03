@@ -3,7 +3,7 @@ index e462e7d7a..7f68d0348 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
 @@ -41,8 +41,8 @@ CLEANFILES += make-debug-archive
- 
+
  if BUILD_STATIC
  libasm = ../libasm/libasm.a
 -libdw = ../libdw/libdw.a -lz $(zip_LIBS) $(libelf) -ldl -lpthread
@@ -25,7 +25,7 @@ index 5a2dc373e..b1928831e 100644
 +eu_ZIPLIB(zlib,ZLIB,[z zlib zlibd],gzdirect,gzip)
  AS_IF([test "x$with_zlib" = xno], [AC_MSG_ERROR([zlib not found but is required])])
  LIBS="$save_LIBS"
- 
+
 @@ -391,13 +391,13 @@ dnl Test for bzlib and xz/lzma, gives BZLIB/LZMALIB .am
  dnl conditional and config.h USE_BZLIB/USE_LZMALIB/USE_ZSTD #define.
  save_LIBS="$LIBS"

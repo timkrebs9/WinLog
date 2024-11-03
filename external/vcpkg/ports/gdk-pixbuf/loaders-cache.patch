@@ -5,7 +5,7 @@ index 54ff9dd..27f8512 100644
 @@ -348,7 +348,14 @@ foreach bin: gdkpixbuf_bin
    set_variable(bin_name.underscorify(), bin)
  endforeach
- 
+
 -if not meson.is_cross_build()
 +if dynamic_loaders.length() == 0
 +  # skip tool invocation

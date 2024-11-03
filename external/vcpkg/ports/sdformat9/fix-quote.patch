@@ -5,7 +5,7 @@ index cdbcfcc..0339a17 100644
 @@ -5,7 +5,7 @@ IF (ARCH MATCHES "i386" OR ARCH MATCHES "x86_64")
    IF(CMAKE_SYSTEM_NAME MATCHES "Linux")
       EXEC_PROGRAM(cat ARGS "/proc/cpuinfo" OUTPUT_VARIABLE CPUINFO)
- 
+
 -     STRING(REGEX REPLACE "^.*(sse2).*$" "\\1" SSE_THERE ${CPUINFO})
 +     STRING(REGEX REPLACE "^.*(sse2).*$" "\\1" SSE_THERE "${CPUINFO}")
       STRING(COMPARE EQUAL "sse2" "${SSE_THERE}" SSE2_TRUE)
@@ -13,7 +13,7 @@ index cdbcfcc..0339a17 100644
          set(SSE2_FOUND true CACHE BOOL "SSE2 available on host")
 @@ -14,14 +14,14 @@ IF (ARCH MATCHES "i386" OR ARCH MATCHES "x86_64")
       ENDIF (SSE2_TRUE)
- 
+
       # /proc/cpuinfo apparently omits sse3 :(
 -     STRING(REGEX REPLACE "^.*[^s](sse3).*$" "\\1" SSE_THERE ${CPUINFO})
 +     STRING(REGEX REPLACE "^.*[^s](sse3).*$" "\\1" SSE_THERE "${CPUINFO}")
@@ -23,7 +23,7 @@ index cdbcfcc..0339a17 100644
 +        STRING(REGEX REPLACE "^.*(T2300).*$" "\\1" SSE_THERE "${CPUINFO}")
          STRING(COMPARE EQUAL "T2300" "${SSE_THERE}" SSE3_TRUE)
       ENDIF (NOT SSE3_TRUE)
- 
+
 -     STRING(REGEX REPLACE "^.*(ssse3).*$" "\\1" SSE_THERE ${CPUINFO})
 +     STRING(REGEX REPLACE "^.*(ssse3).*$" "\\1" SSE_THERE "${CPUINFO}")
       STRING(COMPARE EQUAL "ssse3" "${SSE_THERE}" SSSE3_TRUE)
@@ -32,7 +32,7 @@ index cdbcfcc..0339a17 100644
 @@ -34,7 +34,7 @@ IF (ARCH MATCHES "i386" OR ARCH MATCHES "x86_64")
          set(SSSE3_FOUND false CACHE BOOL "SSSE3 available on host")
       ENDIF (SSSE3_TRUE)
- 
+
 -     STRING(REGEX REPLACE "^.*(sse4_1).*$" "\\1" SSE_THERE ${CPUINFO})
 +     STRING(REGEX REPLACE "^.*(sse4_1).*$" "\\1" SSE_THERE "${CPUINFO}")
       STRING(COMPARE EQUAL "sse4_1" "${SSE_THERE}" SSE41_TRUE)
@@ -41,7 +41,7 @@ index cdbcfcc..0339a17 100644
 @@ -42,7 +42,7 @@ IF (ARCH MATCHES "i386" OR ARCH MATCHES "x86_64")
          set(SSE4_1_FOUND false CACHE BOOL "SSE4.1 available on host")
       ENDIF (SSE41_TRUE)
- 
+
 -     STRING(REGEX REPLACE "^.*(sse4_2).*$" "\\1" SSE_THERE ${CPUINFO})
 +     STRING(REGEX REPLACE "^.*(sse4_2).*$" "\\1" SSE_THERE "${CPUINFO}")
       STRING(COMPARE EQUAL "sse4_2" "${SSE_THERE}" SSE42_TRUE)
@@ -50,7 +50,7 @@ index cdbcfcc..0339a17 100644
 @@ -54,7 +54,7 @@ IF (ARCH MATCHES "i386" OR ARCH MATCHES "x86_64")
       EXEC_PROGRAM("/usr/sbin/sysctl -n machdep.cpu.features" OUTPUT_VARIABLE
          CPUINFO)
- 
+
 -     STRING(REGEX REPLACE "^.*[^S](SSE2).*$" "\\1" SSE_THERE ${CPUINFO})
 +     STRING(REGEX REPLACE "^.*[^S](SSE2).*$" "\\1" SSE_THERE "${CPUINFO}")
       STRING(COMPARE EQUAL "SSE2" "${SSE_THERE}" SSE2_TRUE)
@@ -59,7 +59,7 @@ index cdbcfcc..0339a17 100644
 @@ -62,7 +62,7 @@ IF (ARCH MATCHES "i386" OR ARCH MATCHES "x86_64")
          set(SSE2_FOUND false CACHE BOOL "SSE2 available on host")
       ENDIF (SSE2_TRUE)
- 
+
 -     STRING(REGEX REPLACE "^.*[^S](SSE3).*$" "\\1" SSE_THERE ${CPUINFO})
 +     STRING(REGEX REPLACE "^.*[^S](SSE3).*$" "\\1" SSE_THERE "${CPUINFO}")
       STRING(COMPARE EQUAL "SSE3" "${SSE_THERE}" SSE3_TRUE)
@@ -68,7 +68,7 @@ index cdbcfcc..0339a17 100644
 @@ -70,7 +70,7 @@ IF (ARCH MATCHES "i386" OR ARCH MATCHES "x86_64")
          set(SSE3_FOUND false CACHE BOOL "SSE3 available on host")
       ENDIF (SSE3_TRUE)
- 
+
 -     STRING(REGEX REPLACE "^.*(SSSE3).*$" "\\1" SSE_THERE ${CPUINFO})
 +     STRING(REGEX REPLACE "^.*(SSSE3).*$" "\\1" SSE_THERE "${CPUINFO}")
       STRING(COMPARE EQUAL "SSSE3" "${SSE_THERE}" SSSE3_TRUE)
@@ -77,7 +77,7 @@ index cdbcfcc..0339a17 100644
 @@ -78,7 +78,7 @@ IF (ARCH MATCHES "i386" OR ARCH MATCHES "x86_64")
          set(SSSE3_FOUND false CACHE BOOL "SSSE3 available on host")
       ENDIF (SSSE3_TRUE)
- 
+
 -     STRING(REGEX REPLACE "^.*(SSE4.1).*$" "\\1" SSE_THERE ${CPUINFO})
 +     STRING(REGEX REPLACE "^.*(SSE4.1).*$" "\\1" SSE_THERE "${CPUINFO}")
       STRING(COMPARE EQUAL "SSE4.1" "${SSE_THERE}" SSE41_TRUE)

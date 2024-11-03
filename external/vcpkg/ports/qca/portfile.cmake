@@ -78,7 +78,7 @@ string(REGEX REPLACE "PACKAGE_PREFIX_DIR \"(.*)\" ABSOLUTE"
 file(WRITE "${CURRENT_PACKAGES_DIR}/share/${PORT}/QcaConfig.cmake" "${QCA_CONFIG_FILE}")
 
 # Remove unneeded dirs
-file(REMOVE_RECURSE 
+file(REMOVE_RECURSE
     "${CURRENT_BUILDTREES_DIR}/share/man"
     "${CURRENT_PACKAGES_DIR}/share/man"
     "${CURRENT_PACKAGES_DIR}/debug/include"

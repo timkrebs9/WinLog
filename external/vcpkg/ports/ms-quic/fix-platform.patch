@@ -52,5 +52,5 @@ index 0b670cf..f94f4c6 100644
          endif()
 -
          set(OPENSSL_DIR ${QUIC_BUILD_DIR}/openssl)
- 
+
          add_library(OpenSSL_Crypto STATIC IMPORTED)

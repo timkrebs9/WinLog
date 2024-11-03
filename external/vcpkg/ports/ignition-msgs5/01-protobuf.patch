@@ -9,5 +9,5 @@ index f68bf3d..d4d1372 100644
 +  # Fix for protobuf 3.12 - allow big object files
 +  add_definitions(/bigobj)
  endif()
- 
+
  set_source_files_properties(${gen_headers} ${gen_sources} ${gen_ruby_scripts}

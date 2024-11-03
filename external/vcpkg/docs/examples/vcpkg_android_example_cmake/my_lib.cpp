@@ -2,7 +2,7 @@
 
 int answer()
 {
-  Json::Value meaning_of;
-  meaning_of["everything"] = 42;
-  return meaning_of["everything"].asInt();
+    Json::Value meaning_of;
+    meaning_of["everything"] = 42;
+    return meaning_of["everything"].asInt();
 }

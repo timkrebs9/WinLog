@@ -14,8 +14,8 @@ file (GLOB wordnet_srcs "lib/*.c")
 
 add_library (${target_name} ${wordnet_srcs} ${wordnet_headers})
 
-target_include_directories (${target_name} 
-    PRIVATE ${INCLUDE_DIR_BUILD} 
+target_include_directories (${target_name}
+    PRIVATE ${INCLUDE_DIR_BUILD}
     PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
@@ -40,8 +40,8 @@ install (TARGETS ${target_name} EXPORT ${target_name}-targets
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
-install(FILES 
-    ${wordnet_headers} 
+install(FILES
+    ${wordnet_headers}
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${target_name}
     CONFIGURATIONS Release
 )

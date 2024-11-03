@@ -7,10 +7,10 @@ vcpkg_from_github(
 )
 
 # Install header files
-file(INSTALL 
-    DIRECTORY 
+file(INSTALL
+    DIRECTORY
         "${SOURCE_PATH}/src/"
-    DESTINATION 
+    DESTINATION
         "${CURRENT_PACKAGES_DIR}/include/${PORT}"
     FILES_MATCHING PATTERN "*.h" )
 

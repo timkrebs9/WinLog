@@ -5,7 +5,7 @@ index f5f4448..5e5cc7e 100644
 @@ -87,6 +87,10 @@ if(CAPSTONE_BUILD_STATIC_RUNTIME)
      set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
  endif()
- 
+
 +if(WIN32)
 +    add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
 +endif()

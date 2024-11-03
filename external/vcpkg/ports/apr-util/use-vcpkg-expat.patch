@@ -3,9 +3,9 @@ index 9ae90b1..71a50b0 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -21,16 +21,14 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
- 
+
  FIND_PACKAGE(OpenSSL)
- 
+
 -FIND_PACKAGE(expat)
 -
  OPTION(APU_HAVE_CRYPTO      "Crypto support"                            OFF)
@@ -18,13 +18,13 @@ index 9ae90b1..71a50b0 100644
 -SET(APR_LIBRARIES           "${CMAKE_INSTALL_PREFIX}/lib/libapr-1.lib"  CACHE STRING "APR library to link with")
 +find_path(APR_INCLUDE_DIR apr.h)
 +find_library(APR_LIBRARIES NAMES libapr-1 apr-1)
- 
+
  IF(NOT EXISTS "${APR_INCLUDE_DIR}/apr.h")
    MESSAGE(FATAL_ERROR "APR include directory ${APR_INCLUDE_DIR} is not correct.")
 @@ -61,13 +59,13 @@ IF(APR_HAS_LDAP)
    SET(apr_has_ldap_10 1)
  ENDIF()
- 
+
 -IF(NOT EXPAT_FOUND)
 +find_package(expat)
 +set(XMLLIB_INCLUDE_DIR ${EXPAT_INCLUDE_DIRS})
@@ -32,7 +32,7 @@ index 9ae90b1..71a50b0 100644
 +IF(NOT XMLLIB_LIBRARIES)
    MESSAGE(FATAL_ERROR "Expat is required, and it wasn't found!")
  ENDIF()
- 
+
 -SET(XMLLIB_INCLUDE_DIR   ${EXPAT_INCLUDE_DIRS})
 -SET(XMLLIB_LIBRARIES     ${EXPAT_LIBRARIES})
 -
@@ -41,7 +41,7 @@ index 9ae90b1..71a50b0 100644
    SET(LDAP_LIBRARIES wldap32)
 @@ -229,17 +227,21 @@ SET(dbd_drivers)
  # Note: The WINNT definition on some targets is used only by libaprutil.rc.
- 
+
  # libaprutil-1 is shared, aprutil-1 is static
 +if(BUILD_SHARED_LIBS)
  ADD_LIBRARY(libaprutil-1 SHARED ${APR_SOURCES} ${APR_PUBLIC_HEADERS_GENERATED} libaprutil.rc)
@@ -50,14 +50,14 @@ index 9ae90b1..71a50b0 100644
  TARGET_LINK_LIBRARIES(libaprutil-1 ${APR_LIBRARIES} ${XMLLIB_LIBRARIES})
 -SET_TARGET_PROPERTIES(libaprutil-1 PROPERTIES COMPILE_DEFINITIONS "APU_DECLARE_EXPORT;APR_DECLARE_EXPORT;XML_STATIC;WINNT")
 +SET_TARGET_PROPERTIES(libaprutil-1 PROPERTIES COMPILE_DEFINITIONS "APU_DECLARE_EXPORT;APR_DECLARE_IMPORT;XML_STATIC;WINNT")
- 
+
 +else(BUILD_SHARED_LIBS)
  ADD_LIBRARY(aprutil-1 STATIC ${APR_SOURCES} ${APR_PUBLIC_HEADERS_GENERATED})
  SET(install_targets ${install_targets} aprutil-1)
  TARGET_LINK_LIBRARIES(aprutil-1 ${APR_LIBRARIES} ${XMLLIB_LIBRARIES})
  SET_TARGET_PROPERTIES(aprutil-1 PROPERTIES COMPILE_DEFINITIONS "APU_DECLARE_STATIC;APR_DECLARE_STATIC;APU_DSO_MODULE_BUILD;XML_STATIC")
 +endif(BUILD_SHARED_LIBS)
- 
+
 +if(BUILD_SHARED_LIBS)
  IF(APU_HAVE_CRYPTO)
    IF(NOT OPENSSL_FOUND)
@@ -70,7 +70,7 @@ index 9ae90b1..71a50b0 100644
 +  SET_TARGET_PROPERTIES(apr_crypto_openssl-1 PROPERTIES COMPILE_FLAGS "-DAPR_DECLARE_IMPORT -DAPU_DECLARE_IMPORT -DDLL_NAME=apr_crypto_openssl")
    TARGET_LINK_LIBRARIES(apr_crypto_openssl-1 libaprutil-1 ${APR_LIBRARIES} ${OPENSSL_LIBRARIES})
  ENDIF()
- 
+
 @@ -260,8 +262,8 @@ IF(APU_HAVE_ODBC)
    SET(dbd_drivers ${dbd_drivers} odbc)
    TARGET_LINK_LIBRARIES(apr_dbd_odbc-1 libaprutil-1 ${APR_LIBRARIES} odbc32 odbccp32)
@@ -80,7 +80,7 @@ index 9ae90b1..71a50b0 100644
 +  SET_TARGET_PROPERTIES(apr_dbd_odbc-1 PROPERTIES COMPILE_DEFINITIONS "APU_HAVE_ODBC;HAVE_SQL_H;APU_DECLARE_IMPORT;APR_DECLARE_IMPORT;APU_DSO_MODULE_BUILD;WINNT")
 +  SET_TARGET_PROPERTIES(apr_dbd_odbc-1 PROPERTIES COMPILE_FLAGS "-DAPR_DECLARE_IMPORT  -DAPU_DECLARE_IMPORT -DDLL_NAME=apr_dbd_odbc")
  ENDIF()
- 
+
  IF(APR_HAS_LDAP)
 @@ -271,11 +273,12 @@ IF(APR_HAS_LDAP)
    SET(install_bin_pdb ${install_bin_pdb} ${PROJECT_BINARY_DIR}/apr_ldap-1.pdb)
@@ -93,13 +93,13 @@ index 9ae90b1..71a50b0 100644
    SET(apr_ldap_libraries)
  ENDIF()
 +endif(BUILD_SHARED_LIBS)
- 
+
  IF(APR_BUILD_TESTAPR)
    ENABLE_TESTING()
 @@ -289,7 +292,7 @@ IF(APR_BUILD_TESTAPR)
                    ${PROJECT_SOURCE_DIR}/test/data/billion-laughs.xml
                    ${PROJECT_BINARY_DIR}/data/billion-laughs.xml)
- 
+
 -  IF(TEST_STATIC_LIBS)
 +  IF(NOT BUILD_SHARED_LIBS)
      SET(whichapr    aprutil-1)
@@ -108,7 +108,7 @@ index 9ae90b1..71a50b0 100644
 @@ -325,13 +328,9 @@ INSTALL(TARGETS ${install_targets}
          ARCHIVE DESTINATION lib
         )
- 
+
 -IF(INSTALL_PDB)
 -  INSTALL(FILES ${install_bin_pdb}
 -          DESTINATION bin
@@ -119,6 +119,6 @@ index 9ae90b1..71a50b0 100644
 +if(NOT DISABLE_INSTALL_HEADERS)
 +  INSTALL(FILES ${APR_PUBLIC_HEADERS_STATIC} ${APR_PUBLIC_HEADERS_GENERATED} DESTINATION include)
 +endif()
- 
+
  STRING(TOUPPER "${CMAKE_BUILD_TYPE}" buildtype)
  MESSAGE(STATUS "")

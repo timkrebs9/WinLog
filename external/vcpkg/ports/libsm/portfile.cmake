@@ -12,7 +12,7 @@ vcpkg_from_gitlab(
     HEAD_REF master
     PATCHES windows.patch
             missing-include.patch # avoids: warning C4013: '_getpid' undefined; assuming extern returning int
-) 
+)
 
 set(ENV{ACLOCAL} "aclocal -I \"${CURRENT_INSTALLED_DIR}/share/xorg/aclocal/\"")
 

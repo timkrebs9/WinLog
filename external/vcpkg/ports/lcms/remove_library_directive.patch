@@ -6,5 +6,5 @@ index f3e4779..9bf2a4f 100644
 -LIBRARY     LCMS2.DLL
 -
  EXPORTS
- 
+
  _cms15Fixed16toDouble                    =   _cms15Fixed16toDouble

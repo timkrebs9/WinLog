@@ -3,7 +3,7 @@ index 9835482..8bf3476 100644
 --- a/src/library/blas/gens/gemv.c
 +++ b/src/library/blas/gens/gemv.c
 @@ -21,6 +21,7 @@
- 
+
  #include <string.h>
  #include <stdio.h>
 +#include <stdlib.h> // for abs(int)
@@ -15,7 +15,7 @@ index 47c8f1d..31ab3c5 100644
 --- a/src/library/blas/gens/symv.c
 +++ b/src/library/blas/gens/symv.c
 @@ -21,6 +21,7 @@
- 
+
  #include <string.h>
  #include <stdio.h>
 +#include <stdlib.h> // for abs(int)

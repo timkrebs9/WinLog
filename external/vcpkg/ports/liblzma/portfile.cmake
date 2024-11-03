@@ -7,8 +7,8 @@ vcpkg_from_github(
     PATCHES
         enable-uwp-builds.patch
         fix_config_include.patch
-        win_output_name.patch # Fix output name on Windows. Autotool build does not generate lib prefixed libraries on windows. 
-        add_support_ios.patch # add install bundle info for support ios 
+        win_output_name.patch # Fix output name on Windows. Autotool build does not generate lib prefixed libraries on windows.
+        add_support_ios.patch # add install bundle info for support ios
         build-tools.patch
 )
 

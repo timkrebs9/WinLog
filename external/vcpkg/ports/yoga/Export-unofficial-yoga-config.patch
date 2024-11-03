@@ -5,7 +5,7 @@ index c6f4a83..7cee74a 100644
 @@ -21,6 +21,26 @@ add_compile_options(
  file(GLOB_RECURSE yogacore_SRC yoga/*.cpp)
  add_library(yogacore STATIC ${yogacore_SRC})
- 
+
 -target_include_directories(yogacore PUBLIC .)
 +target_include_directories(yogacore PUBLIC
 +    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}>

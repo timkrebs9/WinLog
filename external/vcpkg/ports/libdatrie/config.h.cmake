@@ -51,7 +51,7 @@
 #cmakedefine LT_OBJDIR
 
 /* Name of package */
-#define PACKAGE "libdatrie" 
+#define PACKAGE "libdatrie"
 
 /* Define to the address where bug reports for this package should be sent. */
 #cmakedefine PACKAGE_BUGREPORT

@@ -21,7 +21,7 @@ We recommend cloning directly from [GitHub](https://github.com/microsoft/vcpkg) 
 ## Can I build a private library with this tool?
 Yes. Follow [our packaging zlib Example](../examples/packaging-zipfiles.md) for creating a portfile using a fake URL. Then, either pre-seed the `downloads\` folder with a zip containing your private sources or replace the normal calls to `vcpkg_download_distfile` and `vcpkg_extract_source_archive` with functions that unpack your source code.
 
-You can take this further by publishing your private libraries into a registry. See the article on [Creating Registries](../maintainers/registries.md). A registry is a catalog of ports, similar to the one provided with vcpkg that contains open source libraries.  
+You can take this further by publishing your private libraries into a registry. See the article on [Creating Registries](../maintainers/registries.md). A registry is a catalog of ports, similar to the one provided with vcpkg that contains open source libraries.
 
 ## Can I use a prebuilt private library with this tool?
 Yes. The `portfile.cmake` for a library is fundamentally a script that places the headers and binaries into the correct arrangement in the `${CURRENT_PACKAGES_DIR}`, so to pull in prebuilt binaries you can write a portfile which directly downloads and arranges the files.
@@ -102,7 +102,7 @@ Vcpkg uses CMake internally as a build scripting language. This is because CMake
 ## Will vcpkg support downloading compiled binaries from a public or private server?
 We would like to eventually support downloading precompiled binaries, similar to other system package managers.
 
-In a corporate scenario, we currently recommend building the libraries once and using the [Binary Caching](../users/binarycaching.md) feature to re-use binaries across different machines and for local development vs. CI scenarios. 
+In a corporate scenario, we currently recommend building the libraries once and using the [Binary Caching](../users/binarycaching.md) feature to re-use binaries across different machines and for local development vs. CI scenarios.
 
 ## What Visual C++ toolsets are supported?
 We support Visual Studio 2015 Update 3 and above.

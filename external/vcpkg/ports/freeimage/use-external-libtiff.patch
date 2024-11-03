@@ -3,14 +3,14 @@ index 5068d94..8947b03 100644
 --- a/Source/FreeImage/PluginTIFF.cpp
 +++ b/Source/FreeImage/PluginTIFF.cpp
 @@ -37,9 +37,9 @@
- 
+
  #include "FreeImage.h"
  #include "Utilities.h"
 -#include "../LibTIFF4/tiffiop.h"
 +#include <tiffio.h>
  #include "../Metadata/FreeImageTag.h"
  #include "../OpenEXR/Half/half.h"
- 
+
  #include "FreeImageIO.h"
  #include "PSDParser.h"
 @@ -199,15 +199,18 @@ Open a TIFF file for reading or writing
@@ -23,11 +23,11 @@ index 5068d94..8947b03 100644
  	return 0;
  }
 +*/
- 
+
  // ----------------------------------------------------------
  //   TIFF library FreeImage-specific routines.
  // ----------------------------------------------------------
- 
+
 +/*
  void*
  _TIFFmalloc(tmsize_t s) {
@@ -37,10 +37,10 @@ index 5068d94..8947b03 100644
  	return (memcmp(p1, p2, (size_t) c));
  }
 +*/
- 
+
  // ----------------------------------------------------------
  //   in FreeImage warnings and errors are disabled
- 
+
 diff --git a/Source/Metadata/XTIFF.cpp b/Source/Metadata/XTIFF.cpp
 index d5be902..8dbcd5d 100644
 --- a/Source/Metadata/XTIFF.cpp
@@ -48,17 +48,17 @@ index d5be902..8dbcd5d 100644
 @@ -29,7 +29,7 @@
  #pragma warning (disable : 4786) // identifier was truncated to 'number' characters
  #endif
- 
+
 -#include "../LibTIFF4/tiffiop.h"
 +#include <tiffio.h>
- 
+
  #include "FreeImage.h"
  #include "Utilities.h"
 @@ -40,6 +40,43 @@
  //   Extended TIFF Directory GEO Tag Support
  // ----------------------------------------------------------
- 
-+// vcpkg: function imported from libtiff/tif_dirinfo.c, in which it is not exported 
+
++// vcpkg: function imported from libtiff/tif_dirinfo.c, in which it is not exported
 +/*
 + * Return size of TIFFDataType in bytes.
 + *
@@ -101,7 +101,7 @@ index d5be902..8dbcd5d 100644
 @@ -224,6 +261,33 @@ tiff_write_geotiff_profile(TIFF *tif, FIBITMAP *dib) {
  //   TIFF EXIF tag reading & writing
  // ----------------------------------------------------------
- 
+
 +static uint32 exif_tag_ids[] = {
 +  EXIFTAG_EXPOSURETIME, EXIFTAG_FNUMBER, EXIFTAG_EXPOSUREPROGRAM,
 +  EXIFTAG_SPECTRALSENSITIVITY, EXIFTAG_ISOSPEEDRATINGS, EXIFTAG_OECF,
@@ -131,9 +131,9 @@ index d5be902..8dbcd5d 100644
 +
  /**
  Read a single Exif tag
- 
+
 @@ -575,43 +639,10 @@ tiff_read_exif_tags(TIFF *tif, TagLib::MDMODEL md_model, FIBITMAP *dib) {
- 
+
  	// loop over all Core Directory Tags
  	// ### uses private data, but there is no other way
 +    // -> vcpkg: Best we can do without private headers is to hard-code a list of known EXIF tags and read those
@@ -177,20 +177,20 @@ index d5be902..8dbcd5d 100644
 +		for (int i = 0; i < nExifTags; ++i) {
 +			tiff_read_exif_tag(tif, exif_tag_ids[i], dib, md_model);
  		}
- 
+
  	}
 @@ -723,10 +754,9 @@ tiff_write_exif_tags(TIFF *tif, TagLib::MDMODEL md_model, FIBITMAP *dib) {
- 	
+
  	TagLib& tag_lib = TagLib::instance();
- 	
+
 -	for (int fi = 0, nfi = (int)tif->tif_nfields; nfi > 0; nfi--, fi++) {
 -		const TIFFField *fld = tif->tif_fields[fi];
--		
+-
 -		const uint32 tag_id = TIFFFieldTag(fld);
 +	for (int fi = 0, nfi = nExifTags; nfi > 0; nfi--, fi++) {
 +		const uint32 tag_id = exif_tag_ids[fi];
 +		const TIFFField *fld = TIFFFieldWithTag(tif, tag_id);
- 
+
  		if(skip_write_field(tif, tag_id)) {
  			// skip tags that are already handled by the LibTIFF writing process
 @@ -749,7 +779,7 @@ tiff_write_exif_tags(TIFF *tif, TagLib::MDMODEL md_model, FIBITMAP *dib) {

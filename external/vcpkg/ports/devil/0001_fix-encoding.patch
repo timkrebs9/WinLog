@@ -4,7 +4,7 @@ index d3b280d..445440e 100644
 +++ b/DevIL/src-ILU/include/ilu_error/ilu_err-french.h
 @@ -17,19 +17,19 @@
  #include "ilu_internal.h"
- 
+
  ILconst_string iluErrorStringsFrench[IL_FILE_READ_ERROR - IL_INVALID_ENUM + 1] = {
 -	IL_TEXT("énumération invalide"),
 -    IL_TEXT("dépassement de mémoire"),
@@ -34,7 +34,7 @@ index d3b280d..445440e 100644
  	IL_TEXT("conversion invalide"),
 @@ -38,7 +38,7 @@ ILconst_string iluErrorStringsFrench[IL_FILE_READ_ERROR - IL_INVALID_ENUM + 1] =
  };
- 
+
  ILconst_string iluLibErrorStringsFrench[IL_LIB_EXR_ERROR - IL_LIB_GIF_ERROR + 1] = {
 -	IL_TEXT("gif : erreur dans la librairie"),	//or: gif : erreur dans la bibliothèque (but less used)
 +	IL_TEXT("gif : erreur dans la librairie"),	//or: gif : erreur dans la bibliothÃ¨que (but less used)
@@ -53,10 +53,10 @@ index bf3f05c..acdbe8a 100644
 +// Description: Error functions in German, translated by Andreas StÃ¶ckel.
  //
  //-----------------------------------------------------------------------------
- 
+
 @@ -17,23 +17,23 @@
  #include "ilu_internal.h"
- 
+
  ILconst_string iluErrorStringsGerman[IL_FILE_READ_ERROR - IL_INVALID_ENUM + 1] = {
 -	IL_TEXT("Ungültiger Enumerator"),
 -    IL_TEXT("Kein Speicher verfügbar"),
@@ -90,7 +90,7 @@ index bf3f05c..acdbe8a 100644
 +	IL_TEXT("UnzulÃ¤ssige Abmessungen"),
  	IL_TEXT("Fehler beim Lesen der Datei")
  };
- 
+
 diff --git a/DevIL/src-ILU/include/ilu_error/ilu_err-italian.h b/DevIL/src-ILU/include/ilu_error/ilu_err-italian.h
 index 09d7bd1..d34b23f 100644
 --- a/DevIL/src-ILU/include/ilu_error/ilu_err-italian.h
@@ -124,7 +124,7 @@ index 77b5a24..0945fdf 100644
 +// Description: Error functions in Spanish, translated by Carlos AragonÃ©s
  //
  //-----------------------------------------------------------------------------
- 
+
 @@ -19,32 +19,32 @@
  ILconst_string iluErrorStringsSpanish[IL_FILE_READ_ERROR - IL_INVALID_ENUM + 1] = {
  	IL_TEXT("enumerador incorrecto"),
@@ -152,7 +152,7 @@ index 77b5a24..0945fdf 100644
 +	IL_TEXT("nÃºmero de dimensiones incorrecto"),
  	IL_TEXT("error de lectura en el fichero")
  };
- 
+
  ILconst_string iluLibErrorStringsSpanish[IL_LIB_EXR_ERROR - IL_LIB_GIF_ERROR + 1] = {
 -	IL_TEXT("error en la librería gif"),  // the correct translation will be 'error en la biblioteca gif', but nobody in spain uses the word 'biblioteca' for the translation the word 'library'. Almost all Spanish programmers translate 'library' incorrectly to 'librería'.
 -	IL_TEXT("error en la librería jpeg"),
@@ -169,5 +169,5 @@ index 77b5a24..0945fdf 100644
 +	IL_TEXT("error en la librerÃ­a jp2"),
 +	IL_TEXT("error en la librerÃ­a exr"),
  };
- 
+
  ILconst_string iluMiscErrorStringsSpanish[2] = {

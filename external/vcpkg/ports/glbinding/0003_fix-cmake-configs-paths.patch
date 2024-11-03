@@ -4,12 +4,12 @@ index 25fac3a..429544f 100644
 +++ b/3rdparty/KHR/CMakeLists.txt
 @@ -43,7 +43,7 @@ add_library(${target} INTERFACE)
  add_library(externals::${target} ALIAS ${target})
- 
+
  # Export library for downstream projects
 -export(TARGETS ${target} NAMESPACE ${META_PROJECT_NAME}:: FILE ${PROJECT_BINARY_DIR}/cmake/${target}/${target}-export.cmake)
 +export(TARGETS ${target} NAMESPACE ${META_PROJECT_NAME}:: FILE ${PROJECT_BINARY_DIR}/${target}-export.cmake)
- 
- 
+
+
  #
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 700b48b..8aaab8d 100644
@@ -40,11 +40,11 @@ index 61cc166..cb0758a 100644
 +++ b/source/glbinding-aux/CMakeLists.txt
 @@ -137,7 +137,7 @@ add_library(${target}
  add_library(${META_PROJECT_NAME}::${target} ALIAS ${target})
- 
+
  # Export library for downstream projects
 -export(TARGETS ${target} NAMESPACE ${META_PROJECT_NAME}:: FILE ${PROJECT_BINARY_DIR}/cmake/${target}/${target}-export.cmake)
 +export(TARGETS ${target} NAMESPACE ${META_PROJECT_NAME}:: FILE ${PROJECT_BINARY_DIR}/${target}-export.cmake)
- 
+
  # Create API export header
  generate_export_header(${target}
 diff --git a/source/glbinding/CMakeLists.txt b/source/glbinding/CMakeLists.txt
@@ -53,10 +53,10 @@ index bca68d1..f014494 100644
 +++ b/source/glbinding/CMakeLists.txt
 @@ -172,7 +172,7 @@ add_library(${target}
  add_library(${META_PROJECT_NAME}::${target} ALIAS ${target})
- 
+
  # Export library for downstream projects
 -export(TARGETS ${target} NAMESPACE ${META_PROJECT_NAME}:: FILE ${PROJECT_BINARY_DIR}/cmake/${target}/${target}-export.cmake)
 +export(TARGETS ${target} NAMESPACE ${META_PROJECT_NAME}:: FILE ${PROJECT_BINARY_DIR}/${target}-export.cmake)
- 
+
  # Create API export header
  generate_export_header(${target}

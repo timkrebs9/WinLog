@@ -4,7 +4,7 @@ index 14d5e85..cb7232f 100644
 +++ b/lib/CMakeLists.txt
 @@ -30,19 +30,27 @@ if (GAINPUT_BUILD_SHARED)
  endif (GAINPUT_BUILD_SHARED)
- 
+
  if (GAINPUT_BUILD_STATIC)
 -  message(STATUS "..Building shared libraries (-DGAINPUT_BUILD_STATIC=OFF to disable)")
 +  message(STATUS "..Building static libraries (-DGAINPUT_BUILD_STATIC=OFF to disable)")
@@ -12,7 +12,7 @@ index 14d5e85..cb7232f 100644
    set_target_properties(gainputstatic PROPERTIES DEBUG_POSTFIX -d FOLDER gainput)
    set(install_libs ${install_libs} gainputstatic)
  endif (GAINPUT_BUILD_STATIC)
- 
+
  if(WIN32)
 -	target_link_libraries(gainput ${XINPUT} ws2_32)
 -	target_link_libraries(gainputstatic ${XINPUT} ws2_32)
@@ -38,7 +38,7 @@ index 14d5e85..cb7232f 100644
 @@ -65,6 +73,14 @@ if(NOT DEFINED CMAKE_INSTALL_LIBDIR)
  endif(NOT DEFINED CMAKE_INSTALL_LIBDIR)
  set(libdir ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
- 
+
 +foreach(t ${install_libs})
 +    target_include_directories(
 +        ${t}
@@ -51,7 +51,7 @@ index 14d5e85..cb7232f 100644
      DIRECTORY "include/gainput"
      DESTINATION "include"
 @@ -73,7 +89,15 @@ install(
- 
+
  install(
      TARGETS ${install_libs}
 +    EXPORT  unofficial-${PROJECT_NAME}-Targets

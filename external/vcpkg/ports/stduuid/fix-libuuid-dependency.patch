@@ -15,7 +15,7 @@ index 039ee53..d4218a4 100644
 +        target_link_libraries(${PROJECT_NAME} INTERFACE unofficial::UUID::uuid)
      endif ()
  endif ()
- 
+
 diff --git a/cmake/Config.cmake.in b/cmake/Config.cmake.in
 index fb981d2..8a3c8ab 100644
 --- a/cmake/Config.cmake.in
@@ -29,4 +29,3 @@ index fb981d2..8a3c8ab 100644
 +        find_dependency(unofficial-libuuid CONFIG)
      endif ()
  endif ()
- 

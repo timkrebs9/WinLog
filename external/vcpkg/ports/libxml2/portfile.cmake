@@ -5,7 +5,7 @@ vcpkg_from_gitlab(
     REF 7846b0a677f8d3ce72486125fa281e92ac9970e8
     SHA512 3b960e410cf812a94938cd31c317f9a8d4b2d5b3e148efb108f6dad86ce8c9553c0fe3b32dd68d15e3d5ada9db07b39f9e0b13906edf6ed1bb1cec4f137bca71
     HEAD_REF master
-    PATCHES 
+    PATCHES
         disable-docs.patch
         fix_cmakelist.patch
         fix-uwp.patch
@@ -32,10 +32,10 @@ vcpkg_cmake_configure(
         -DLIBXML2_WITH_HTML=ON
         -DLIBXML2_WITH_C14N=ON
         -DLIBXML2_WITH_CATALOG=ON
-        -DLIBXML2_WITH_DEBUG=ON 
+        -DLIBXML2_WITH_DEBUG=ON
         -DLIBXML2_WITH_DOCB=ON
         -DLIBXML2_WITH_ICONV=ON
-        -DLIBXML2_WITH_ISO8859X=ON 
+        -DLIBXML2_WITH_ISO8859X=ON
         -DLIBXML2_WITH_ZLIB=ON
         -DLIBXML2_WITH_ICU=OFF # Culprit of linkage issues? Solving this is probably another PR
         -DLIBXML2_WITH_LZMA=ON
@@ -82,7 +82,7 @@ if(VCPKG_LIBRARY_LINKAGE STREQUAL static)
     file(WRITE "${_file}" "${_contents}")
 endif()
 
-file(COPY "${CURRENT_PACKAGES_DIR}/include/libxml2/" DESTINATION "${CURRENT_PACKAGES_DIR}/include") # TODO: Fix usage in all dependent ports hardcoding the wrong include path. 
+file(COPY "${CURRENT_PACKAGES_DIR}/include/libxml2/" DESTINATION "${CURRENT_PACKAGES_DIR}/include") # TODO: Fix usage in all dependent ports hardcoding the wrong include path.
 
 #Cleanup
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")

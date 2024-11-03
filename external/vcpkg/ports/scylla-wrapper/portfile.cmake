@@ -18,7 +18,7 @@ file(REMOVE
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
-    OPTIONS_DEBUG 
+    OPTIONS_DEBUG
         -DDISABLE_INSTALL_HEADERS=ON
 )
 

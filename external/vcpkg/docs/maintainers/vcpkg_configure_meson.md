@@ -30,7 +30,7 @@ Additional options passed to Meson during the Release configuration. These are i
 Additional options passed to Meson during the Debug configuration. These are in addition to `OPTIONS`.
 
 ### NO_PKG_CONFIG
-Disable pkg-config setup 
+Disable pkg-config setup
 
 ## Notes
 This command supplies many common arguments to Meson. To see the full list, examine the source.

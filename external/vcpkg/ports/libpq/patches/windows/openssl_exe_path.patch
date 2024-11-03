@@ -1,6 +1,6 @@
 diff --git a/src/tools/msvc/Solution.pm b/src/tools/msvc/Solution.pm
 index 51711c2bf..d33fdc3b0 100644
---- a/src/tools/msvc/Solution.pm	
+--- a/src/tools/msvc/Solution.pm
 +++ b/src/tools/msvc/Solution.pm
 @@ -129,7 +129,7 @@ sub GetOpenSSLVersion
  	# openssl.exe is in the specified directory.
@@ -9,5 +9,5 @@ index 51711c2bf..d33fdc3b0 100644
 -	  qq("$self->{options}->{openssl}\\bin\\openssl.exe" version 2>&1);
 +	  qq("openssl.exe" version 2>&1);
  	my $sslout = `$opensslcmd`;
- 
+
  	$? >> 8 == 0

@@ -31,7 +31,7 @@ endfunction()
 function(z_vcpkg_download_distfile_show_proxy_and_fail error_code)
     message(FATAL_ERROR
         "    \n"
-        "    Failed to download file with error: ${error_code}\n"  
+        "    Failed to download file with error: ${error_code}\n"
         "    If you use a proxy, please check your proxy setting. Possible causes are:\n"
         "    \n"
         "    1. You are actually using an HTTP proxy, but setting HTTPS_PROXY variable\n"
@@ -81,7 +81,7 @@ function(z_vcpkg_download_distfile_via_aria)
             RESULT_VARIABLE error_code
             WORKING_DIRECTORY "${DOWNLOADS}"
         )
-        
+
         if ("${error_code}" STREQUAL "0")
             break()
         endif()
@@ -163,7 +163,7 @@ If you do not know the SHA512, add it as 'SHA512 0' and re-run this command.")
     if(EXISTS "${downloaded_file_path}" AND NOT arg_SKIP_SHA512)
         set(hash_match OFF)
         z_vcpkg_check_hash(hash_match "${downloaded_file_path}" "${arg_SHA512}")
-        
+
         if(NOT hash_match)
             get_filename_component(filename_component "${arg_FILENAME}" NAME_WE)
             get_filename_component(extension_component "${arg_FILENAME}" EXT)
@@ -203,7 +203,7 @@ If you do not know the SHA512, add it as 'SHA512 0' and re-run this command.")
         if(NOT vcpkg_download_distfile_QUIET)
             message(STATUS "Using cached ${arg_FILENAME}.")
         endif()
-        
+
         # Suppress the "Downloading ${arg_URLS} -> ${arg_FILENAME}..." message
         set(vcpkg_download_distfile_QUIET TRUE)
     endif()

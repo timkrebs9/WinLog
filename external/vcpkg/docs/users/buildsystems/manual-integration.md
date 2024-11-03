@@ -2,7 +2,7 @@
 
 **The latest version of this documentation is available on [GitHub](https://github.com/Microsoft/vcpkg/tree/master/docs/users/buildsystems/manual-integration.md).**
 
-When installing libraries, vcpkg creates a single common layout partitioned by triplet. 
+When installing libraries, vcpkg creates a single common layout partitioned by triplet.
 
 The root of the tree in classic mode is `[vcpkg root]/installed`. The root of the tree in manifest mode is `[vcpkg.json directory]/vcpkg_installed`.
 

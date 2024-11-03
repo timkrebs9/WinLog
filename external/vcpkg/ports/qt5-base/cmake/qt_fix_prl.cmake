@@ -8,7 +8,7 @@ function(qt_fix_prl PACKAGE_DIR PRL_FILES)
             string(REPLACE "${CMAKE_LIB_PATH}" "\$\$[QT_INSTALL_LIBS]" _contents "${_contents}")
             string(REPLACE "${CMAKE_INCLUDE_PATH}" "\$\$[QT_INSTALL_HEADERS]" _contents "${_contents}")
             string(REPLACE "${CMAKE_INCLUDE_PATH2}" "\$\$[QT_INSTALL_HEADERS]/../" _contents "${_contents}")
-            string(REPLACE "${CMAKE_INSTALLED_PREFIX}" "\$\$[QT_INSTALL_PREFIX]" _contents "${_contents}") 
+            string(REPLACE "${CMAKE_INSTALLED_PREFIX}" "\$\$[QT_INSTALL_PREFIX]" _contents "${_contents}")
             #Note: This only works without an extra if case since QT_INSTALL_PREFIX is the same for debug and release
             file(WRITE "${PRL_FILE}" "${_contents}")
         endforeach()

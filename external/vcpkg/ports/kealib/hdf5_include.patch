@@ -5,10 +5,10 @@ index 95a5d7f..fbfebc1 100644
 @@ -37,7 +37,7 @@
  #include <map>
  #include <math.h>
- 
+
 -#include "H5Cpp.h"
 +#include <H5Cpp.h>
- 
+
  #include "libkea/KEACommon.h"
  #include "libkea/KEAException.h"
 diff --git a/include/libkea/KEAAttributeTableFile.h b/include/libkea/KEAAttributeTableFile.h
@@ -18,10 +18,10 @@ index 9987a7c..39dbb21 100644
 @@ -35,7 +35,7 @@
  #include <string>
  #include <vector>
- 
+
 -#include "H5Cpp.h"
 +#include <H5Cpp.h>
- 
+
  #include "libkea/KEACommon.h"
  #include "libkea/KEAException.h"
 diff --git a/include/libkea/KEAAttributeTableInMem.h b/include/libkea/KEAAttributeTableInMem.h
@@ -31,10 +31,10 @@ index b4f7fad..6a8a8b7 100644
 @@ -35,7 +35,7 @@
  #include <string>
  #include <vector>
- 
+
 -#include "H5Cpp.h"
 +#include <H5Cpp.h>
- 
+
  #include "libkea/KEACommon.h"
  #include "libkea/KEAException.h"
 diff --git a/include/libkea/KEACommon.h b/include/libkea/KEACommon.h
@@ -44,10 +44,10 @@ index 3175c93..67b02a2 100644
 @@ -38,7 +38,7 @@
  #include <string>
  #include <vector>
- 
+
 -#include "H5Cpp.h"
 +#include <H5Cpp.h>
- 
+
  // MSVC 2008 uses different names....
  #ifdef _MSC_VER
 diff --git a/include/libkea/KEAImageIO.h b/include/libkea/KEAImageIO.h
@@ -57,9 +57,9 @@ index d510cae..4c2aa97 100644
 @@ -35,7 +35,7 @@
  #include <string>
  #include <vector>
- 
+
 -#include "H5Cpp.h"
 +#include <H5Cpp.h>
- 
+
  #include "libkea/KEACommon.h"
  #include "libkea/KEAException.h"

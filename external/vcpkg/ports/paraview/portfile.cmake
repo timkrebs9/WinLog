@@ -3,7 +3,7 @@ string(JSON _ver_string GET "${_vcpkg_json}" "version")
 string(REGEX MATCH "^[0-9]+\.[0-9]+" VERSION "${_ver_string}")
 
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
-    "cuda"         PARAVIEW_USE_CUDA            #untested; probably only affects internal VTK build so it does nothing here 
+    "cuda"         PARAVIEW_USE_CUDA            #untested; probably only affects internal VTK build so it does nothing here
     "all_modules"  PARAVIEW_BUILD_ALL_MODULES   #untested
     "mpi"          PARAVIEW_USE_MPI             #untested
     "vtkm"         PARAVIEW_USE_VTKM
@@ -30,8 +30,8 @@ if(VCPKG_LIBRARY_LINKAGE STREQUAL "static")
     list(APPEND VisItPatches removedoublesymbols.patch)
 endif()
 
-#The following two dependencies should probably be their own port 
-#but require additional patching in paraview to make it work. 
+#The following two dependencies should probably be their own port
+#but require additional patching in paraview to make it work.
 
 #Get VisItBridge Plugin
 vcpkg_from_gitlab(
@@ -40,7 +40,7 @@ vcpkg_from_gitlab(
     REPO paraview/visitbridge
     REF 42fce8ad6863ca2c1308741955cca1d0cf570d22
     SHA512 03a6254989d3e286a462683af92caba1e90decbdcfb2e729f2d7e1116b04d63a05c28d02c4615d780fdd0d33e2719f96617233d6e0602410cc6d894f92fe6ee3
-    PATCHES 
+    PATCHES
         ${VisItPatches}
 )
 #Get QtTesting Plugin
@@ -90,7 +90,7 @@ vcpkg_cmake_configure(
 
         # Workarounds for CMake issues
         -DHAVE_SYS_TYPES_H=0    ## For some strange reason the test first succeeds and then fails the second time around
-        -DWORDS_BIGENDIAN=0     ## Tests fails in VisItCommon.cmake for some unknown reason this is just a workaround since most systems are little endian. 
+        -DWORDS_BIGENDIAN=0     ## Tests fails in VisItCommon.cmake for some unknown reason this is just a workaround since most systems are little endian.
         ${ADDITIONAL_OPTIONS}
 
         #-DPARAVIEW_ENABLE_FFMPEG:BOOL=OFF
@@ -140,7 +140,7 @@ foreach(tool ${TOOLS})
     if(EXISTS ${filename})
         file(REMOVE "${filename}")
     endif()
-    
+
     # Move release tools
     set(filename ${CURRENT_PACKAGES_DIR}/bin/${tool}${VCPKG_TARGET_EXECUTABLE_SUFFIX})
     if(EXISTS ${filename})
@@ -168,7 +168,7 @@ if(VCPKG_LIBRARY_LINKAGE STREQUAL "static")
             file(RENAME "${CURRENT_PACKAGES_DIR}/debug/bin/${name}" "${CURRENT_PACKAGES_DIR}/debug/lib/${name}")
         endif()
     endmacro()
-    
+
     set(to_move Lib paraview-${VERSION} paraview-config)
     foreach(name ${to_move})
         move_bin_to_lib(${name})

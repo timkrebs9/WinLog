@@ -18,11 +18,11 @@ index 3d449d4..18a03b7 100644
 --- a/gmp-h.in
 +++ b/gmp-h.in
 @@ -398,7 +398,7 @@ typedef __mpq_struct *mpq_ptr;
- 
+
  /* Microsoft's C compiler accepts __inline */
  #ifdef _MSC_VER
 -#define __GMP_EXTERN_INLINE  __inline
 +#define __GMP_EXTERN_INLINE  static __inline
  #endif
- 
+
  /* Recent enough Sun C compilers want "inline" */

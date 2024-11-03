@@ -17,7 +17,7 @@ configure_file("${CMAKE_CURRENT_LIST_DIR}/config.h.linux" "${SOURCE_PATH}/config
 vcpkg_find_acquire_program(PKGCONFIG)
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
-    DISABLE_PARALLEL_CONFIGURE 
+    DISABLE_PARALLEL_CONFIGURE
     OPTIONS
         -DPKG_CONFIG_EXECUTABLE=${PKGCONFIG}
 )

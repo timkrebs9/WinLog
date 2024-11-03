@@ -5,7 +5,7 @@ index ebabb8a..4a166dc 100755
 @@ -173,6 +173,9 @@ else()
      set_target_properties(tgui PROPERTIES RELWITHDEBINFO_POSTFIX -s)
  endif()
- 
+
 +find_path(STB_INCLUDE_DIR stb_image.h REQUIRED)
 +target_include_directories(tgui PRIVATE "${STB_INCLUDE_DIR}")
 +
@@ -22,6 +22,6 @@ index e3ec9c5..d2f691d 100644
  #define STB_IMAGE_IMPLEMENTATION
 -#include <TGUI/extlibs/stb/stb_image.h>
 +#include <stb_image.h>
- 
+
  #if defined(__GNUC__)
      #pragma GCC diagnostic pop

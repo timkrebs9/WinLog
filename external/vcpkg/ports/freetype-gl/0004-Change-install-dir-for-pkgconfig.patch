@@ -18,8 +18,7 @@ index fd40e68..4f8d7dd 100644
 -	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/freetype-gl.pc DESTINATION ${PKG_CONFIG_PREFIX}/share/pkgconfig)
 +	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/freetype-gl.pc DESTINATION ${PKG_CONFIG_PREFIX}/lib/pkgconfig)
  endif()
- 
- if(freetype-gl_BUILD_SHARED)
--- 
-2.27.0
 
+ if(freetype-gl_BUILD_SHARED)
+--
+2.27.0

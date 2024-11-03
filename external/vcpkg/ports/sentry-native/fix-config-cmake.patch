@@ -5,7 +5,7 @@ index 89ea345..c14b31c 100644
 @@ -3,9 +3,11 @@
  set(SENTRY_BACKEND @SENTRY_BACKEND@)
  set(SENTRY_TRANSPORT @SENTRY_TRANSPORT@)
- 
+
 +include(CMakeFindDependencyMacro)
 +
  if(SENTRY_BACKEND STREQUAL "crashpad")
@@ -17,7 +17,7 @@ index 89ea345..c14b31c 100644
  	endif()
 @@ -14,7 +16,7 @@ endif()
  include("${CMAKE_CURRENT_LIST_DIR}/sentry-targets.cmake")
- 
+
  if(SENTRY_TRANSPORT STREQUAL "curl" AND NOT @BUILD_SHARED_LIBS@)
 -	find_package(CURL REQUIRED)
 +	find_dependency(CURL)

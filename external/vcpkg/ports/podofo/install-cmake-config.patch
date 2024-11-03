@@ -12,7 +12,7 @@ index df623ef..8e653b8 100644
 -IF(PODOFO_BUILD_STATIC)
 -  EXPORT(TARGETS podofo_static FILE "${CMAKE_CURRENT_BINARY_DIR}/PoDoFoConfig.cmake")
 -ENDIF(PODOFO_BUILD_STATIC)
- 
+
 diff --git a/src/podofo/CMakeLists.txt b/src/podofo/CMakeLists.txt
 index bba6b5f..16f0798 100644
 --- a/src/podofo/CMakeLists.txt
@@ -30,7 +30,7 @@ index bba6b5f..16f0798 100644
 +        DESTINATION share/podofo
 +        )
  ENDIF(PODOFO_BUILD_STATIC)
- 
+
  IF(PODOFO_BUILD_SHARED)
 @@ -301,10 +305,14 @@ IF(PODOFO_BUILD_SHARED)
          CACHE INTERNAL "Which PoDoFo library variant to depend on")
@@ -44,6 +44,6 @@ index bba6b5f..16f0798 100644
 +    INSTALL(EXPORT PoDoFoConfig
 +        DESTINATION share/podofo
 +        )
- 
- 
+
+
        # Create a pkg-config file for linking against shared library

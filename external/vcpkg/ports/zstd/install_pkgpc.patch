@@ -5,7 +5,7 @@ index 5f75665..dabc9d5 100644
 @@ -130,7 +130,7 @@ if (ZSTD_BUILD_STATIC)
              OUTPUT_NAME ${STATIC_LIBRARY_BASE_NAME})
  endif ()
- 
+
 -if (UNIX OR MINGW)
 +if (1)
      # pkg-config

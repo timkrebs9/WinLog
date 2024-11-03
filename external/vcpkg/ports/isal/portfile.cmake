@@ -81,7 +81,7 @@ else()
     )
     vcpkg_install_make()
     vcpkg_fixup_pkgconfig()
-    
+
     file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/share")
 endif()
 

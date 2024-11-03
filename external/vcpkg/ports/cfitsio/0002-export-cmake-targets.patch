@@ -3,17 +3,17 @@ index 9e7d2ee..5b37adc 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -24,7 +24,7 @@ OPTION(UseCurl "UseCurl" ON)
- 
+
  set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}")
  set (LIB_DESTINATION "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}")
 -set (INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include/")
 +set (INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include/cfitsio")
- 
+
  # Define project version
  SET(${PROJECT_NAME}_MAJOR_VERSION 3)
 @@ -138,19 +138,31 @@ ELSE()
  ENDIF()
- 
+
  ADD_LIBRARY(${LIB_NAME} ${LIB_TYPE} ${H_FILES} ${SRC_FILES})
 -TARGET_LINK_LIBRARIES(${LIB_NAME} ${PTHREADS_LIBRARY} ${M_LIB} ZLIB::ZLIB)
 +TARGET_INCLUDE_DIRECTORIES(${LIB_NAME} PUBLIC $<INSTALL_INTERFACE:include/cfitsio>)
@@ -22,7 +22,7 @@ index 9e7d2ee..5b37adc 100644
 -    TARGET_LINK_LIBRARIES(${LIB_NAME} CURL::libcurl)
 +    TARGET_LINK_LIBRARIES(${LIB_NAME} PUBLIC CURL::libcurl)
  ENDIF(CURL_FOUND)
- 
+
  SET_TARGET_PROPERTIES(${LIB_NAME} PROPERTIES VERSION ${${PROJECT_NAME}_VERSION} SOVERSION ${${PROJECT_NAME}_MAJOR_VERSION})
 -install(TARGETS ${LIB_NAME} DESTINATION ${LIB_DESTINATION})
  install(TARGETS ${LIB_NAME}
@@ -31,7 +31,7 @@ index 9e7d2ee..5b37adc 100644
                              LIBRARY DESTINATION lib
                              ARCHIVE DESTINATION lib)
  install(FILES ${H_FILES} DESTINATION ${INCLUDE_INSTALL_DIR} COMPONENT Devel)
- 
+
 +set(CFITSIO_VERSION 3.49)
 +include(CMakePackageConfigHelpers)
 +write_basic_package_version_file(unofficial-${LIB_NAME}-version.cmake VERSION ${CFITSIO_VERSION} COMPATIBILITY ExactVersion)
@@ -45,4 +45,3 @@ index 9e7d2ee..5b37adc 100644
 +
  # Only build test code and executables if building a shared library:
  IF (BUILD_SHARED_LIBS)
- 

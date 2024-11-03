@@ -4,12 +4,12 @@ diff --color -Naur a/CMakeLists.txt b/CMakeLists.txt
 @@ -36,8 +36,9 @@
  # If you find any errors or have suggestion to improve the build script:
  # patches are most welcome! Please send them to the development mailing list.
- 
+
 +cmake_minimum_required(VERSION 3.1)
- 
+
 -cmake_minimum_required(VERSION 2.8.2)
 +set(CMAKE_CXX_STANDARD 11)
- 
+
  # Override flags to enable prepare for linking to static runtime
  set(CMAKE_USER_MAKE_RULES_OVERRIDE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/c_flag_overrides.cmake)
 diff --color -Naur a/src/tools/e57fields.cpp b/src/tools/e57fields.cpp
@@ -27,13 +27,13 @@ diff --color -Naur a/src/tools/e57fields.cpp b/src/tools/e57fields.cpp
 +#include <memory>
  #include "E57Foundation.h"
  #include "E57FoundationImpl.h" //??? for exceptions, should be in separate file
- 
+
 @@ -43,7 +39,6 @@
- 
+
  using namespace e57;
  using namespace std;
 -using namespace std::tr1;
- 
+
  //!!! prologue, file name, date, version#, total # elements
  //!!! doc
 @@ -446,9 +441,9 @@
@@ -46,7 +46,7 @@ diff --color -Naur a/src/tools/e57fields.cpp b/src/tools/e57fields.cpp
 +    std::shared_ptr<vector<int64_t> > iBuffer;
 +    std::shared_ptr<vector<double> >  dBuffer;
 +    std::shared_ptr<vector<string> >  sBuffer;
- 
+
      /// The precalculated parts of the element path name.
      /// The only part that is missing is the record number which goes in between.
 diff --color -Naur a/src/tools/e57unpack.cpp b/src/tools/e57unpack.cpp
@@ -55,7 +55,7 @@ diff --color -Naur a/src/tools/e57unpack.cpp b/src/tools/e57unpack.cpp
 @@ -45,12 +45,8 @@
  #include <stdexcept>
  using std::runtime_error;
- 
+
 -#if defined(_MSC_VER)
 -#   include <memory>
 -#else
@@ -64,15 +64,15 @@ diff --color -Naur a/src/tools/e57unpack.cpp b/src/tools/e57unpack.cpp
 -using std::tr1::shared_ptr;
 +#include <memory>
 +using std::shared_ptr;
- 
+
  #include <string>
  using std::string;
 diff --color -Naur a/src/tools/e57validate.cpp b/src/tools/e57validate.cpp
 --- a/src/tools/e57validate.cpp	2011-10-06 16:01:00.000000000 +0800
 +++ b/src/tools/e57validate.cpp	2022-03-01 17:25:46.220771800 +0800
 @@ -66,11 +66,7 @@
- 
- 
+
+
  ================================================================*/
 -#if defined(_MSC_VER)
 -#   include <unordered_map>
@@ -90,6 +90,6 @@ diff --color -Naur a/src/tools/e57validate.cpp b/src/tools/e57validate.cpp
  private:
 -    typedef std::tr1::unordered_map<int64_t, LineGroup> GroupsMap;
 +    typedef std::unordered_map<int64_t, LineGroup> GroupsMap;
- 
+
      bool        isDefined_;
      bool        isByRow_;

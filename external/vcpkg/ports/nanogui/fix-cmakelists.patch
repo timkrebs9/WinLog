@@ -5,20 +5,20 @@ index 8c59277..3fe6f5d 100644
 @@ -11,11 +11,7 @@ if (POLICY CMP0058)
    cmake_policy(SET CMP0058 NEW)
  endif()
- 
+
 -if (NOT IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/ext/glfw/src")
 -  message(FATAL_ERROR "The NanoGUI dependency repositories (GLFW, etc.) are missing! "
 -    "You probably did not clone the project with --recursive. It is possible to recover "
 -    "by calling \"git submodule update --init --recursive\"")
 -endif()
 +
- 
+
  if (WIN32)
    set(NANOGUI_USE_GLAD_DEFAULT ON)
 @@ -78,13 +74,11 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-deprecated-declarations")
  endif()
- 
+
 -add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/ext/glfw" "ext_build/glfw")
  # Two targets have now been defined: `glfw_objects`, which will be merged into
  # NanoGUI at the end, and `glfw`.  The `glfw` target is the library itself
@@ -26,7 +26,7 @@ index 8c59277..3fe6f5d 100644
  # (because we merge `glfw_objects` into NanoGUI).  Skipping is required for
  # XCode, but preferable for all build systems (reduces build artifacts).
 -set_target_properties(glfw PROPERTIES EXCLUDE_FROM_ALL 1 EXCLUDE_FROM_DEFAULT_BUILD 1)
- 
+
  # Python support: add NANOGUI_PYTHON flag to all targets
  if (NANOGUI_BUILD_PYTHON)
 @@ -310,7 +304,6 @@ add_definitions(${NANOGUI_EXTRA_DEFS})
@@ -40,7 +40,7 @@ index 8c59277..3fe6f5d 100644
 @@ -352,6 +345,11 @@ add_library(nanogui-obj OBJECT
    src/serializer.cpp
  )
- 
+
 +find_path(EIGEN_INCLUDE_DIR Eigen/Core)
 +target_include_directories(nanogui-obj PRIVATE ${EIGEN_INCLUDE_DIR})
 +find_path(STB_INCLUDE_DIR stb_image.h)
@@ -61,7 +61,7 @@ index 8c59277..3fe6f5d 100644
 -    $<TARGET_OBJECTS:glfw_objects>
    )
  endif()
- 
+
 +find_package(nanovg CONFIG REQUIRED)
 +find_package(Eigen3 CONFIG REQUIRED)
 +find_package(glfw3 CONFIG REQUIRED)

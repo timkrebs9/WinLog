@@ -51,7 +51,7 @@ vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
     "qml"    CMAKE_DISABLE_FIND_PACKAGE_Qt6QuickWidgets
     )
 
- set(TOOL_NAMES 
+ set(TOOL_NAMES
         assistant
         designer
         lconvert
@@ -82,7 +82,7 @@ endif()
 
 qt_install_submodule(PATCHES    ${${PORT}_PATCHES}
                      TOOL_NAMES ${TOOL_NAMES}
-                     CONFIGURE_OPTIONS 
+                     CONFIGURE_OPTIONS
                            ${FEATURE_OPTIONS}
                            -DCMAKE_DISABLE_FIND_PACKAGE_Qt6AxContainer=ON
                      CONFIGURE_OPTIONS_RELEASE

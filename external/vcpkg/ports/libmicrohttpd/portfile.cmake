@@ -26,7 +26,7 @@ if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
         RELEASE_CONFIGURATION "Release-${CFG_SUFFIX}"
         DEBUG_CONFIGURATION "Debug-${CFG_SUFFIX}"
     )
-    
+
     file(GLOB MICROHTTPD_HEADERS "${SOURCE_PATH}/src/include/microhttpd*.h")
     file(COPY ${MICROHTTPD_HEADERS} DESTINATION "${CURRENT_PACKAGES_DIR}/include")
 else()
@@ -45,7 +45,7 @@ else()
 
     vcpkg_install_make()
     vcpkg_fixup_pkgconfig()
-    
+
     file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/share")
 endif()
 

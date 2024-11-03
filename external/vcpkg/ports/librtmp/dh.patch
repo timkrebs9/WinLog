@@ -1,11 +1,11 @@
 diff --git a/librtmp/dh.h b/librtmp/dh.h
 index 8e285a60c..ea562d200 100644
---- a/librtmp/dh.h	
+--- a/librtmp/dh.h
 +++ b/librtmp/dh.h
 @@ -139,11 +139,14 @@ typedef BIGNUM * MP_t;
  #define MP_setbin(u,buf,len)	BN_bn2bin(u,buf)
  #define MP_getbin(u,buf,len)	u = BN_bin2bn(buf,len,0)
- 
+
 +
  #define MDH	DH
  #define MDH_new()	DH_new()
@@ -14,11 +14,11 @@ index 8e285a60c..ea562d200 100644
  #define MDH_compute_key(secret, seclen, pub, dh)	DH_compute_key(secret, pub, dh)
 +#define MPH_set_pqg(dh, p, q, g, res)  res = DH_set0_pqg(dh, p, q, g)
 +#define MPH_set_length(dh, len, res)  res = DH_set_length(dh,len)
- 
+
  #endif
- 
+
 @@ -152,7 +155,7 @@ typedef BIGNUM * MP_t;
- 
+
  /* RFC 2631, Section 2.1.5, http://www.ietf.org/rfc/rfc2631.txt */
  static int
 -isValidPublicKey(MP_t y, MP_t p, MP_t q)
@@ -29,17 +29,17 @@ index 8e285a60c..ea562d200 100644
 @@ -211,20 +214,33 @@ DHInit(int nKeyBits)
    if (!dh)
      goto failed;
- 
+
 -  MP_new(dh->g);
 +  MP_t g,p;
 +  MP_new(g);
- 
+
 -  if (!dh->g)
-+  if (!g) 
++  if (!g)
 +  {
      goto failed;
 +  }
- 
+
 -  MP_gethex(dh->p, P1024, res);	/* prime P1024, see dhgroups.h */
 +  DH_get0_pqg(dh, (BIGNUM const**)&p, NULL, NULL);
 +  MP_gethex(p, P1024, res);	/* prime P1024, see dhgroups.h */
@@ -47,7 +47,7 @@ index 8e285a60c..ea562d200 100644
      {
        goto failed;
      }
- 
+
 -  MP_set_w(dh->g, 2);	/* base 2 */
 -
 -  dh->length = nKeyBits;
@@ -64,10 +64,10 @@ index 8e285a60c..ea562d200 100644
 +    goto failed;
 +  }
    return dh;
- 
+
  failed:
 @@ -250,14 +267,11 @@ DHGenerateKey(MDH *dh)
- 
+
        MP_gethex(q1, Q1024, res);
        assert(res);
 -
@@ -82,7 +82,7 @@ index 8e285a60c..ea562d200 100644
 +        {
 +              MDH_free(dh); // Cannot set priv_key to nullptr so there is no way to generate a new pub/priv key pair in openssl 1.1.1.
 +        }
- 
+
        MP_free(q1);
      }
 @@ -272,15 +286,16 @@ static int
@@ -93,18 +93,18 @@ index 8e285a60c..ea562d200 100644
 +  MP_t pub = DH_get0_pub_key(dh);
 +  if (!dh || !pub)
      return 0;
- 
+
 -  len = MP_bytes(dh->pub_key);
 +  len = MP_bytes(pub);
    if (len <= 0 || len > (int) nPubkeyLen)
      return 0;
- 
+
    memset(pubkey, 0, nPubkeyLen);
 -  MP_setbin(dh->pub_key, pubkey + (nPubkeyLen - len), len);
 +  MP_setbin(pub, pubkey + (nPubkeyLen - len), len);
    return 1;
  }
- 
+
 @@ -288,15 +303,16 @@ DHGetPublicKey(MDH *dh, uint8_t *pubkey, size_t nPubkeyLen)
  static int
  DHGetPrivateKey(MDH *dh, uint8_t *privkey, size_t nPrivkeyLen)
@@ -113,12 +113,12 @@ index 8e285a60c..ea562d200 100644
 +  MP_t priv = DH_get0_priv_key(dh);
 +  if (!dh || !priv)
      return 0;
- 
+
 -  int len = MP_bytes(dh->priv_key);
 +  int len = MP_bytes(priv);
    if (len <= 0 || len > (int) nPrivkeyLen)
      return 0;
- 
+
    memset(privkey, 0, nPrivkeyLen);
 -  MP_setbin(dh->priv_key, privkey + (nPrivkeyLen - len), len);
 +  MP_setbin(priv, privkey + (nPrivkeyLen - len), len);
@@ -128,7 +128,7 @@ index 8e285a60c..ea562d200 100644
 @@ -322,7 +338,7 @@ DHComputeSharedSecretKey(MDH *dh, uint8_t *pubkey, size_t nPubkeyLen,
    MP_gethex(q1, Q1024, len);
    assert(len);
- 
+
 -  if (isValidPublicKey(pubkeyBn, dh->p, q1))
 +  if (isValidPublicKey(pubkeyBn, DH_get0_p(dh), q1))
      res = MDH_compute_key(secret, nPubkeyLen, pubkeyBn, dh);

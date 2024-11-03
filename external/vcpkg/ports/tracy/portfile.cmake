@@ -70,7 +70,7 @@ function(tracy_tool_install_make tracy_TOOL tracy_TOOL_NAME)
             file(REMOVE_RECURSE "${SOURCE_PATH}/${tracy_TOOL}/_build")
 
             set(path_makefile_dir "${SOURCE_PATH}/${tracy_TOOL}/build/unix${short_buildtype}")
-            cmake_path(RELATIVE_PATH path_makefile_dir 
+            cmake_path(RELATIVE_PATH path_makefile_dir
                 BASE_DIRECTORY "${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}${short_buildtype}"
                 OUTPUT_VARIABLE relative_path_makefile_dir)
 

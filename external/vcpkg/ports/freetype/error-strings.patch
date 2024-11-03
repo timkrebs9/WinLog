@@ -14,10 +14,10 @@ index feb4be39a..4eea860e8 100644
 @@ -215,6 +215,8 @@ cmake_dependent_option(FT_REQUIRE_BROTLI
    "Require support of compressed WOFF2 fonts." OFF
    "NOT FT_DISABLE_BROTLI" OFF)
- 
+
 +option(FT_ENABLE_ERROR_STRINGS
 +  "Enable support for meaningful error descriptions" OFF)
- 
+
  # Disallow in-source builds
  if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}")
 @@ -353,6 +355,11 @@ if (BROTLIDEC_FOUND)
@@ -29,9 +29,8 @@ index feb4be39a..4eea860e8 100644
 +    "/\\* +(#define +FT_CONFIG_OPTION_ERROR_STRINGS) +\\*/" "\\1"
 +    FTOPTION_H "${FTOPTION_H}")
 +endif ()
- 
+
  set(FTOPTION_H_NAME "${PROJECT_BINARY_DIR}/include/freetype/config/ftoption.h")
  if (EXISTS "${FTOPTION_H_NAME}")
--- 
+--
 2.33.0.windows.2
-

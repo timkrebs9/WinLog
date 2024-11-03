@@ -16,9 +16,8 @@ index 0332506..4aa9f60 100644
  #include <sys/stat.h>
  #include <stdarg.h>
 +#include <dirent.h>
- 
- #define ENABLE_CONDITIONALS
- 
--- 
-2.29.2.windows.2
 
+ #define ENABLE_CONDITIONALS
+
+--
+2.29.2.windows.2

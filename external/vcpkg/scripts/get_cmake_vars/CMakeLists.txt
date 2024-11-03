@@ -32,7 +32,7 @@ foreach(_lang IN LISTS VCPKG_LANGUAGES)
     list(APPEND VCPKG_DEFAULT_VARS_TO_CHECK CMAKE_${_lang}_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES)
     list(APPEND VCPKG_DEFAULT_VARS_TO_CHECK CMAKE_${_lang}_COMPILER_TARGET)
 
-    # Probably never required since implicit. 
+    # Probably never required since implicit.
     #list(APPEND VCPKG_DEFAULT_VARS_TO_CHECK CMAKE_${_lang}_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES)
     #list(APPEND VCPKG_DEFAULT_VARS_TO_CHECK CMAKE_${_lang}_IMPLICIT_INCLUDE_DIRECTORIES)
     #list(APPEND VCPKG_DEFAULT_VARS_TO_CHECK CMAKE_${_lang}_IMPLICIT_LINK_DIRECTORIES)
@@ -40,11 +40,11 @@ foreach(_lang IN LISTS VCPKG_LANGUAGES)
 endforeach()
 list(REMOVE_DUPLICATES VCPKG_DEFAULT_VARS_TO_CHECK)
 
-# Environment variables to check. 
+# Environment variables to check.
 list(APPEND VCPKG_DEFAULT_ENV_VARS_TO_CHECK PATH INCLUDE C_INCLUDE_PATH CPLUS_INCLUDE_PATH LIB LIBPATH LIBRARY_PATH LD_LIBRARY_PATH)
 list(REMOVE_DUPLICATES VCPKG_DEFAULT_ENV_VARS_TO_CHECK)
 
-#Flags to check. Flags are a bit special since they are configuration aware. 
+#Flags to check. Flags are a bit special since they are configuration aware.
 set(FLAGS ${VCPKG_LANGUAGES} RC SHARED_LINKER STATIC_LINKER EXE_LINKER MODULE_LINKER)
 foreach(flag IN LISTS FLAGS)
     list(APPEND VCPKG_DEFAULT_FLAGS_TO_CHECK CMAKE_${flag}_FLAGS)

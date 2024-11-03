@@ -10,6 +10,6 @@ index 2f0bccded..2d698f664 100644
 +#ifdef HAVE_UNISTD_H
  #include <unistd.h>
 +#endif
- 
+
  #ifdef WIN32
  #include <X11/Xlibint.h>

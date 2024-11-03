@@ -79,7 +79,7 @@ message(STATUS "Fetching submodules")
 v8_fetch(
         DESTINATION build
         URL https://chromium.googlesource.com/chromium/src/build.git
-        REF fd86d60f33cbc794537c4da2ef7e298d7f81138e 
+        REF fd86d60f33cbc794537c4da2ef7e298d7f81138e
         SOURCE ${SOURCE_PATH}
         PATCHES ${CURRENT_PORT_DIR}/build.patch)
 v8_fetch(
@@ -149,7 +149,7 @@ message(STATUS "Generating v8 build files. Please wait...")
 
 vcpkg_configure_gn(
     SOURCE_PATH "${SOURCE_PATH}"
-    OPTIONS "is_component_build=${is_component_build} target_cpu=\"${VCPKG_TARGET_ARCHITECTURE}\" v8_monolithic=${v8_monolithic} v8_use_external_startup_data=${v8_use_external_startup_data} use_sysroot=false is_clang=false use_custom_libcxx=false v8_enable_verify_heap=false icu_use_data_file=false" 
+    OPTIONS "is_component_build=${is_component_build} target_cpu=\"${VCPKG_TARGET_ARCHITECTURE}\" v8_monolithic=${v8_monolithic} v8_use_external_startup_data=${v8_use_external_startup_data} use_sysroot=false is_clang=false use_custom_libcxx=false v8_enable_verify_heap=false icu_use_data_file=false"
     OPTIONS_DEBUG "is_debug=true enable_iterator_debugging=true pkg_config_libdir=\"${UNIX_CURRENT_INSTALLED_DIR}/debug/lib/pkgconfig\""
     OPTIONS_RELEASE "is_debug=false enable_iterator_debugging=false pkg_config_libdir=\"${UNIX_CURRENT_INSTALLED_DIR}/lib/pkgconfig\""
 )

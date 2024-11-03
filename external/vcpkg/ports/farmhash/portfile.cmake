@@ -1,5 +1,5 @@
-#Requires a compiler which understands '__builtin_unreachable': 
-vcpkg_check_linkage(ONLY_STATIC_LIBRARY) 
+#Requires a compiler which understands '__builtin_unreachable':
+vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
 
 vcpkg_download_distfile(WIN_PR_PATCH
     URLS "https://github.com/google/farmhash/pull/40.diff"
@@ -33,5 +33,5 @@ file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include"
 )
 file(INSTALL "${SOURCE_PATH}/COPYING"
      DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME copyright)
-file(INSTALL "${CMAKE_CURRENT_LIST_DIR}/farmhashConfig.cmake" 
+file(INSTALL "${CMAKE_CURRENT_LIST_DIR}/farmhashConfig.cmake"
      DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}")

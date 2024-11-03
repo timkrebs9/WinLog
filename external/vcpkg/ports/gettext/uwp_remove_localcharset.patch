@@ -30,7 +30,7 @@ index 7999d3456..b3ef40340 100644
  	setlocale.c setlocale-lock.c setlocale_null.c version.c \
  	xsize.c osdep.c intl-compat.c windows-mutex.c windows-rwlock.c \
 @@ -1387,7 +1387,7 @@ AUTOMAKE_OPTIONS = 1.10 gnu no-dependencies
- 
+
  # Miscellaneous files.
  EXTRA_DIST = gmo.h gettextP.h hash-string.h loadinfo.h plural-exp.h \
 -	eval-plural.h localcharset.h lock.h windows-mutex.h \
@@ -69,11 +69,10 @@ index 1a1627888..3e6582f17 100644
 --- a/gettext-runtime/intl/localcharset.c
 +++ b/gettext-runtime/intl/localcharset.c
 @@ -1021,7 +1021,7 @@ locale_charset (void)
- 
+
  # else
- 
+
 -#  error "Add code for other platforms here."
 +//#  error "Add code for other platforms here."
- 
+
  # endif
- 

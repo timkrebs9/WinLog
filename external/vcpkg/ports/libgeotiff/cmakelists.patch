@@ -18,6 +18,6 @@ index 47a2b00..3809ba3 100644
 +  set (INSTALL_CMAKE_DIR "share/${PROJECT_NAME}")
 +  set (PROJECT_ROOT_DIR "../..")
 +endif()
- 
+
  configure_file (project-config.cmake.in project-config.cmake @ONLY)
  configure_file (project-config-version.cmake.in

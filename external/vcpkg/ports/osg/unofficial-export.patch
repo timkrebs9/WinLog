@@ -14,13 +14,13 @@ index f6714c5..d58f6fd 100644
 --- a/CMakeModules/ModuleInstall.cmake
 +++ b/CMakeModules/ModuleInstall.cmake
 @@ -27,6 +27,7 @@ ENDIF()
- 
+
  INSTALL(
      TARGETS ${LIB_NAME}
 +    EXPORT osg-targets
      RUNTIME DESTINATION ${INSTALL_BINDIR} COMPONENT libopenscenegraph
      LIBRARY DESTINATION ${INSTALL_LIBDIR} COMPONENT libopenscenegraph
-     ARCHIVE DESTINATION ${INSTALL_ARCHIVEDIR} COMPONENT libopenscenegraph-dev    
+     ARCHIVE DESTINATION ${INSTALL_ARCHIVEDIR} COMPONENT libopenscenegraph-dev
 diff --git a/CMakeModules/OsgMacroUtils.cmake b/CMakeModules/OsgMacroUtils.cmake
 index dcc1fe37d..76429b85a 100644
 --- a/CMakeModules/OsgMacroUtils.cmake
@@ -49,13 +49,13 @@ index dcc1fe37d..76429b85a 100644
 +            LIBRARY DESTINATION plugins${LIB_POSTFIX}/${OSG_PLUGINS} COMPONENT ${PACKAGE_COMPONENT})
      ENDIF(WIN32)
  ENDMACRO(SETUP_PLUGIN)
- 
+
 diff --git a/src/OpenThreads/pthreads/CMakeLists.txt b/src/OpenThreads/pthreads/CMakeLists.txt
 index e18969c..5a8ad62 100644
 --- a/src/OpenThreads/pthreads/CMakeLists.txt
 +++ b/src/OpenThreads/pthreads/CMakeLists.txt
 @@ -157,6 +157,7 @@ ELSE()
- 
+
      INSTALL(
          TARGETS OpenThreads
 +        EXPORT osg-targets
@@ -67,7 +67,7 @@ index 0e816f7..0c083fd 100644
 --- a/src/OpenThreads/win32/CMakeLists.txt
 +++ b/src/OpenThreads/win32/CMakeLists.txt
 @@ -45,6 +45,7 @@ ENDIF()
- 
+
  INSTALL(
      TARGETS OpenThreads
 +    EXPORT osg-targets

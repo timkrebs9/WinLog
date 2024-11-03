@@ -15,7 +15,7 @@ index 296eda4..cf87993 100644
 +++ b/src/msix/CMakeLists.txt
 @@ -87,9 +87,9 @@ endif()
  include(msix_resources) # Handles all the certificates and schemas we are going to use.
- 
+
  set(LIB_PUBLIC_HEADERS
 -    ../inc/AppxPackaging.hpp
 -    ../inc/MSIXWindows.hpp
@@ -24,7 +24,7 @@ index 296eda4..cf87993 100644
 +    ${CMAKE_CURRENT_SOURCE_DIR}/../inc/MSIXWindows.hpp
 +    ${CMAKE_CURRENT_SOURCE_DIR}/../inc/MsixErrors.hpp
  )
- 
+
  set(MsixSrc) # list with all the files we are going to use
 @@ -260,7 +260,7 @@ if(WIN32)
              "/DELAYLOAD:api-ms-win-core-winrt-l1-1-0.dll")

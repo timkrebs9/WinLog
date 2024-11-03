@@ -7,7 +7,7 @@ diff -r 29939b8a25be -r 8a0a85e63950 CMakeLists.txt
  # If you get an error at this line, you need to install ignition-cmake
 -find_package(ignition-cmake0 REQUIRED)
 +find_package(ignition-cmake0 0.4.1 REQUIRED)
- 
+
  #============================================================================
  # Configure the project
 diff -r 29939b8a25be -r 8a0a85e63950 src/CMakeLists.txt
@@ -21,4 +21,3 @@ diff -r 29939b8a25be -r 8a0a85e63950 src/CMakeLists.txt
 +    ${YAML_TARGET}
      ZIP::ZIP
  )
- 

@@ -4,7 +4,7 @@ index bff867c..cc7d706 100644
 +++ b/CMakeLists.txt
 @@ -113,13 +113,15 @@ endif()
  set(export_name "docopt-targets")
- 
+
  # Runtime package
 +if(BUILD_SHARED_LIBS)
  install(TARGETS docopt EXPORT ${export_name}
@@ -17,5 +17,5 @@ index bff867c..cc7d706 100644
  install(TARGETS docopt_s EXPORT ${export_name} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 +endif()
  install(FILES ${docopt_HEADERS} DESTINATION include/docopt)
- 
+
  # CMake Package

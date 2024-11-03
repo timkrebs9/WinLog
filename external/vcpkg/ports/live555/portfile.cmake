@@ -1,4 +1,4 @@
-vcpkg_check_linkage(ONLY_STATIC_LIBRARY) 
+vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
 
 vcpkg_download_distfile(ARCHIVE
     URLS "http://www.live555.com/liveMedia/public/live.2022.07.14.tar.gz"
@@ -8,7 +8,7 @@ vcpkg_download_distfile(ARCHIVE
 
 vcpkg_extract_source_archive_ex(
     OUT_SOURCE_PATH SOURCE_PATH
-    ARCHIVE ${ARCHIVE} 
+    ARCHIVE ${ARCHIVE}
     PATCHES
         fix-RTSPClient.patch
 )

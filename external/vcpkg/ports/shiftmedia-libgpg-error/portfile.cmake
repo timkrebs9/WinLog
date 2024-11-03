@@ -6,7 +6,7 @@ vcpkg_from_github(
     REF "libgpg-error-${VERSION}"
     SHA512 779983bd0aac1f281bf357d0218e9626a5c72c3391513eef8a56148f08966f3cc75495e97f410ea7156d40be16977b5c64748c66626ae6d877e2a6c28dc822a2
     HEAD_REF master
-    PATCHES 
+    PATCHES
         outdir.patch
         runtime.patch
         TargetPlatformMinVersion.patch

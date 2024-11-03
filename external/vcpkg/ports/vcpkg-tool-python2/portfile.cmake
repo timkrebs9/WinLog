@@ -29,7 +29,7 @@ if(VCPKG_TARGET_IS_WINDOWS)
     message(STATUS "Extracting Python2 ...")
     vcpkg_execute_in_download_mode(
                     COMMAND "${CURRENT_HOST_INSTALLED_DIR}/tools/vcpkg-tool-lessmsi/lessmsi.exe" x "${archive_path_native}" # Using output_path here does not work in bash
-                    WORKING_DIRECTORY "${output_path}" 
+                    WORKING_DIRECTORY "${output_path}"
                     OUTPUT_FILE "${CURRENT_BUILDTREES_DIR}/lessmsi-${TARGET_TRIPLET}-out.log"
                     ERROR_FILE "${CURRENT_BUILDTREES_DIR}/lessmsi-${TARGET_TRIPLET}-err.log"
                     RESULT_VARIABLE error_code
@@ -40,7 +40,7 @@ if(VCPKG_TARGET_IS_WINDOWS)
     message(STATUS "Extracting Python2 ... finished!")
     file(RENAME "${output_path}/python-2.7.18${arch_suffix}/SourceDir/" "${output_path}/${PORT}/")
     file(REMOVE_RECURSE "${output_path}/python-2.7.18.amd64"
-                        # Files below are not part of a msiexec installation/extraction. 
+                        # Files below are not part of a msiexec installation/extraction.
                         "${output_path}/${PORT}/Windows"
                         "${output_path}/${PORT}/Microsoft.VC90.CRT.manifest"
                         "${output_path}/${PORT}/msvcr90.dll")
@@ -57,4 +57,3 @@ if(VCPKG_TARGET_IS_WINDOWS)
     string(APPEND details "set(paths_to_search \"\${CURRENT_HOST_INSTALLED_DIR}/manual-tools/${PORT}\")\n")
     file(WRITE "${CURRENT_PACKAGES_DIR}/share/${PORT}/details.cmake" "${details}")
 endif()
-

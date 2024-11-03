@@ -11,4 +11,3 @@ index 9871c01..269cfe1 100644
 + # define THRIFT_STDCXX std
   #endif
  #endif
- 

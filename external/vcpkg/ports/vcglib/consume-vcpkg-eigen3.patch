@@ -4,7 +4,7 @@ index 5cae402f..e8f82258 100644
 +++ b/vcg/math/eigen.h
 @@ -53,10 +53,10 @@ struct ei_to_vcgtype;
  }
- 
+
  #include "base.h"
 -#include "../../eigenlib/Eigen/LU"
 -#include "../../eigenlib/Eigen/Geometry"
@@ -14,6 +14,6 @@ index 5cae402f..e8f82258 100644
 +#include <eigen3/Eigen/Geometry>
 +#include <eigen3/Eigen/Array>
 +#include <eigen3/Eigen/Core>
- 
+
  // add support for unsigned char and short int
  namespace Eigen {

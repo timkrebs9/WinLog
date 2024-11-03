@@ -3,7 +3,7 @@ index 60b7637..a8b34ef 100644
 --- a/cmake/prebuild.cmake
 +++ b/cmake/prebuild.cmake
 @@ -1322,14 +1322,14 @@ else(NOT CMAKE_CROSSCOMPILING)
- 
+
    set(GETARCH_DIR "${PROJECT_BINARY_DIR}/getarch_build")
    set(GETARCH_BIN "getarch${CMAKE_EXECUTABLE_SUFFIX}")
 -  file(MAKE_DIRECTORY ${GETARCH_DIR})
@@ -19,10 +19,10 @@ index 60b7637..a8b34ef 100644
 -      COPY_FILE ${PROJECT_BINARY_DIR}/${GETARCH_BIN}
 +      COPY_FILE "${PROJECT_BINARY_DIR}/${GETARCH_BIN}"
      )
- 
+
      if (NOT ${GETARCH_RESULT})
 @@ -1367,14 +1367,14 @@ execute_process(COMMAND "${BLASHELPER_BINARY_DIR}/${GETARCH_BIN}" 1 OUTPUT_VARIA
- 
+
    set(GETARCH2_DIR "${PROJECT_BINARY_DIR}/getarch2_build")
    set(GETARCH2_BIN "getarch_2nd${CMAKE_EXECUTABLE_SUFFIX}")
 -  file(MAKE_DIRECTORY ${GETARCH2_DIR})
@@ -39,5 +39,5 @@ index 60b7637..a8b34ef 100644
 -      COPY_FILE ${PROJECT_BINARY_DIR}/${GETARCH2_BIN}
 +      COPY_FILE "${PROJECT_BINARY_DIR}/${GETARCH2_BIN}"
      )
- 
+
      if (NOT ${GETARCH2_RESULT})

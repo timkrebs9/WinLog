@@ -7,13 +7,13 @@ vcpkg_from_github(
 )
 
 file(
-    COPY 
-        ${SOURCE_PATH}/include/atomic_queue/atomic_queue.h 
-        ${SOURCE_PATH}/include/atomic_queue/atomic_queue_mutex.h 
-        ${SOURCE_PATH}/include/atomic_queue/barrier.h 
-        ${SOURCE_PATH}/include/atomic_queue/defs.h 
-        ${SOURCE_PATH}/include/atomic_queue/spinlock.h 
-    DESTINATION 
+    COPY
+        ${SOURCE_PATH}/include/atomic_queue/atomic_queue.h
+        ${SOURCE_PATH}/include/atomic_queue/atomic_queue_mutex.h
+        ${SOURCE_PATH}/include/atomic_queue/barrier.h
+        ${SOURCE_PATH}/include/atomic_queue/defs.h
+        ${SOURCE_PATH}/include/atomic_queue/spinlock.h
+    DESTINATION
         ${CURRENT_PACKAGES_DIR}/include/atomic_queue
 )
 

@@ -4,7 +4,7 @@ index ee79f39..874ab8f 100644
 +++ b/src/load_abc.cpp
 @@ -268,7 +268,8 @@ static void setenv(const char *name, const char *value, int overwrite)
  #endif
- 
+
  static int abc_isvalidchar(char c) {
 -	return(isalpha(c) || isdigit(c) || isspace(c) || c == '%' || c == ':');
 +	unsigned char u = static_cast<unsigned char>(c);

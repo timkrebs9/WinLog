@@ -8,6 +8,6 @@ index 4152f01..e5986ca 100644
  #include <algorithm>
 +#undef max
 +#undef min
- 
+
  bool ODEIntegrators::AdaptiveRK54(AbstractODEIntegrator &ode, double tstart, double tend, double hmin, double hmax, double eps_allowed, double step_relax)
  {

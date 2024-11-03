@@ -5,7 +5,7 @@ index 4053b79ca7..bdca85fab4 100644
 @@ -21,6 +21,23 @@ if(Brotli_FOUND)
    return()
  endif()
- 
+
 +if(ARROW_PACAKGE_KIND STREQUAL "vcpkg")
 +  set(find_package_args "")
 +  if(Brotli_FIND_VERSION)

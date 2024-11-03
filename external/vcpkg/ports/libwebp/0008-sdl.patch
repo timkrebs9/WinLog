@@ -3,7 +3,7 @@ index 91a4ba8..10a3f4d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -624,11 +624,12 @@ endif()
- 
+
  if(WEBP_BUILD_WEBP_JS)
    # wasm2js does not support SIMD.
 +  find_package(SDL REQUIRED)
@@ -18,7 +18,7 @@ index 91a4ba8..10a3f4d 100644
      set_target_properties(
        webp_js
 @@ -641,14 +642,14 @@ if(WEBP_BUILD_WEBP_JS)
- 
+
    # WASM version
    add_executable(webp_wasm ${CMAKE_CURRENT_SOURCE_DIR}/extras/webp_to_sdl.c)
 -  target_link_libraries(webp_wasm webpdecoder SDL)
@@ -32,6 +32,6 @@ index 91a4ba8..10a3f4d 100644
         -s EXPORTED_RUNTIME_METHODS='[\"cwrap\"]'")
 -  target_compile_definitions(webp_wasm PUBLIC EMSCRIPTEN WEBP_HAVE_SDL)
 +  target_compile_definitions(webp_wasm PUBLIC EMSCRIPTEN WEBP_HAVE_SDL WEBP_HAVE_JUST_SDL_H)
- 
+
    target_compile_definitions(webpdspdecode PUBLIC EMSCRIPTEN)
  endif()

@@ -27,7 +27,7 @@ else()
     set(RuntimeLibraryExt "DLL")
 endif()
 
-# patch output library file path and name; inject RuntimeLibrary property to control CRT linkage 
+# patch output library file path and name; inject RuntimeLibrary property to control CRT linkage
 foreach(PROPS IN ITEMS
     "${SOURCE_PATH}/SMP/smp_deps.props"
     "${SOURCE_PATH}/SMP/smp_winrt_deps.props")

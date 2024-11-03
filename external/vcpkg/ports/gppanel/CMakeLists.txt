@@ -18,7 +18,7 @@ target_include_directories(gpPanel PUBLIC
 
 target_link_libraries(gpPanel PRIVATE ${wxWidgets_LIBRARIES})
 
-install(TARGETS gpPanel EXPORT gpPanel-config 
+install(TARGETS gpPanel EXPORT gpPanel-config
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib

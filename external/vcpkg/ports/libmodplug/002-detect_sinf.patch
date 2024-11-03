@@ -4,16 +4,16 @@ index 2ada51b..468f1a3 100644
 +++ b/CMakeLists.txt
 @@ -4,6 +4,7 @@ project(libmodplug)
  add_definitions(-DMODPLUG_BUILD)
- 
+
  include (CheckFunctionExists)
 +include (CheckIncludeFile)
- 
+
  include_directories(AFTER
    src
 @@ -11,6 +12,10 @@ include_directories(AFTER
    ${PROJECT_BINARY_DIR}
    )
- 
+
 +if (UNIX)
 +  set (CMAKE_REQUIRED_LIBRARIES m)
 +endif()
@@ -31,5 +31,5 @@ index 2ada51b..468f1a3 100644
 +    add_definitions(-DHAVE_STDINT_H)
 +  endif()
  endif()
- 
+
  check_function_exists("setenv" HAVE_SETENV)

@@ -2,7 +2,7 @@
 
 IF "%2"=="" (set WPDPACKDESTDIR=.\WpdPack\) ELSE (set WPDPACKDESTDIR=%2)
 
-IF ""=="%1" (set WINPCAPSOURCEDIR=.\) ELSE (set WINPCAPSOURCEDIR=%1) 
+IF ""=="%1" (set WINPCAPSOURCEDIR=.\) ELSE (set WINPCAPSOURCEDIR=%1)
 
 echo Creating \Lib folder
 mkdir %WPDPACKDESTDIR% 		>nul 2>nul

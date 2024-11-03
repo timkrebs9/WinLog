@@ -31,7 +31,7 @@ if(NOT DEFINED VCPKG_BUILD_TYPE OR VCPKG_BUILD_TYPE STREQUAL "release")
     file(GLOB CPPUTEST_LIBS ${CURRENT_PACKAGES_DIR}/lib/*${VCPKG_TARGET_STATIC_LIBRARY_SUFFIX})
     file(COPY ${CPPUTEST_LIBS} DESTINATION ${CURRENT_PACKAGES_DIR}/lib/manual-link)
     file(REMOVE ${CPPUTEST_LIBS})
-    
+
     file(READ ${CURRENT_PACKAGES_DIR}/share/CppUTest/CppUTestTargets-release.cmake RELEASE_CONFIG)
     # Replace CppUTestExt first
     string(REPLACE "\${_IMPORT_PREFIX}/lib/"

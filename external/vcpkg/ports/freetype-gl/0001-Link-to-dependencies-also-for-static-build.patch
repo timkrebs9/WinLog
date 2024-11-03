@@ -27,7 +27,7 @@ index 2ccbf9a..b5db60a 100644
 @@ -198,6 +192,13 @@ else()
      )
  endif()
- 
+
 +target_link_libraries(freetype-gl
 +                      ${OPENGL_LIBRARY}
 +                      ${FREETYPE_LIBRARIES}
@@ -37,7 +37,6 @@ index 2ccbf9a..b5db60a 100644
 +
  if(freetype-gl_BUILD_MAKEFONT)
      add_executable(makefont makefont.c)
- 
--- 
-2.27.0
 
+--
+2.27.0

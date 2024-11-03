@@ -78,7 +78,7 @@ if(WIN32) # WIN32 HOST probably has win_flex and win_bison!
 endif()
 
 string(LENGTH "${CURRENT_BUILDTREES_DIR}" buildtree_length)
-# We know that C:/buildrees/${PORT} is to long to build Release. Debug works however. Means 24 length is too much but 23 might work. 
+# We know that C:/buildrees/${PORT} is to long to build Release. Debug works however. Means 24 length is too much but 23 might work.
 if(buildtree_length GREATER 22 AND VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_ARCHITECTURE MATCHES "arm64")
     message(WARNING "Buildtree path '${CURRENT_BUILDTREES_DIR}' is too long.\nConsider passing --x-buildtrees-root=<shortpath> to vcpkg!\nTrying to use '${CURRENT_BUILDTREES_DIR}/../tmp'")
     set(CURRENT_BUILDTREES_DIR "${CURRENT_BUILDTREES_DIR}/../tmp") # activly avoid long path issues in CI. -> Means CI will not return logs
@@ -99,7 +99,7 @@ if(QT_UPDATE_VERSION)
     return()
 endif()
 
-qt_cmake_configure( DISABLE_PARALLEL_CONFIGURE # due to in source changes. 
+qt_cmake_configure( DISABLE_PARALLEL_CONFIGURE # due to in source changes.
                     OPTIONS ${FEATURE_OPTIONS}
                         -DGPerf_EXECUTABLE=${GPERF}
                         -DBISON_EXECUTABLE=${BISON}

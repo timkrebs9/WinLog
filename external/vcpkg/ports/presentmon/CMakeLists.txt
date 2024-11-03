@@ -36,9 +36,9 @@ target_compile_definitions(PresentData PRIVATE UNICODE)
 
 # Install targets
 install(TARGETS PresentData
-	RUNTIME DESTINATION bin 
-	LIBRARY DESTINATION lib 
-	ARCHIVE DESTINATION lib 
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
 )
 
 if (BUILD_TOOLS)
@@ -53,12 +53,12 @@ if (BUILD_TOOLS)
         PresentMon/Privilege.cpp
         PresentMon/TraceSession.cpp
     )
-    
+
     add_executable(PresentMon ${PresentMon_SRCS})
     target_include_directories(PresentMon PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/PresentMon ${CMAKE_BINARY_DIR})
     target_compile_definitions(PresentMon PRIVATE UNICODE)
     target_link_libraries(PresentMon PRIVATE PresentData Tdh Shlwapi)
-    
+
     install(TARGETS PresentMon
         RUNTIME DESTINATION bin
     )

@@ -25,7 +25,7 @@ if(BUILD_SHARED_LIBS)
 endif()
 
 install(
-    TARGETS sratom 
+    TARGETS sratom
     EXPORT sratom-targets
     INCLUDES DESTINATION include
 )

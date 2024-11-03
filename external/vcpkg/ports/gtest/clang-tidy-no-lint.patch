@@ -4,10 +4,9 @@ index 2bd3dcf6..12cd60f6 100644
 +++ b/googletest/include/gtest/gtest-matchers.h
 @@ -403,6 +403,7 @@ class MatcherBase : private MatcherDescriberInterface {
    };
- 
+
    void Destroy() {
 +    // NOLINTNEXTLINE
      if (IsShared() && buffer_.shared->Unref()) {
        vtable_->shared_destroy(buffer_.shared);
      }
-

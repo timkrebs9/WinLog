@@ -10,5 +10,3 @@ index 08b6af5..281665e 100644
 +        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:static_assert-")
 +    endif()
  endif()
- 
- 

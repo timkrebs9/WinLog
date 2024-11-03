@@ -9,5 +9,5 @@ index f62c4cc..af8af69 100644
 - * "FlipScan" Constrained Edge Algorithm invented by Thomas Åhlén, thahlen@gmail.com
 + * "FlipScan" Constrained Edge Algorithm invented by Thomas, thahlen@gmail.com
   */
- 
+
  #ifndef SWEEP_H

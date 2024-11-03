@@ -3,7 +3,7 @@ if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
     vcpkg_list(SET patches
         yasm.patch # the asm changes are a downgrade to an older version
         compile.patch
-        libname-windows.patch # Apply common libtool rules for lib naming. 
+        libname-windows.patch # Apply common libtool rules for lib naming.
     )
 endif()
 
@@ -14,7 +14,7 @@ vcpkg_from_gitlab(
     REF 52bacacaf4339fd78289f58919732f1f35bea1c1 #v3.7.3
     SHA512 0130d14195274eeec11e8299793e3037f4b84d8fb4b5c5c9392b63ee693ed5713434070744b1a44e14a6a5090d655917c1dd296e2011cd99e3c316ef5d8ee395
     HEAD_REF master
-    PATCHES 
+    PATCHES
         fix-InstallLibPath.patch
         flags.patch
         ${patches}
@@ -42,7 +42,7 @@ if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
 endif()
 
 if(VCPKG_CROSSCOMPILING)
-    # Silly trick to make configure accept CC_FOR_BUILD but in reallity CC_FOR_BUILD is deactivated. 
+    # Silly trick to make configure accept CC_FOR_BUILD but in reallity CC_FOR_BUILD is deactivated.
     set(ENV{CC_FOR_BUILD} "touch a.out | touch conftest${VCPKG_HOST_EXECUTABLE_SUFFIX} | true")
 endif()
 
@@ -84,11 +84,11 @@ if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
         if(NOT VCPKG_BUILD_TYPE)
             set(build_dir "${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-dbg/")
             configure_file(
-                "${CURRENT_PORT_DIR}/nettle-${VCPKG_TARGET_ARCHITECTURE}.def" 
+                "${CURRENT_PORT_DIR}/nettle-${VCPKG_TARGET_ARCHITECTURE}.def"
                 "${build_dir}/nettle.def"
                 COPYONLY
             )
-            configure_file("${CURRENT_PORT_DIR}/hogweed-${VCPKG_TARGET_ARCHITECTURE}.def" 
+            configure_file("${CURRENT_PORT_DIR}/hogweed-${VCPKG_TARGET_ARCHITECTURE}.def"
                 "${build_dir}/hogweed.def"
                 COPYONLY
             )

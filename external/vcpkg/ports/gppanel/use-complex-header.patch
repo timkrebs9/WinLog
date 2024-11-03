@@ -10,5 +10,5 @@ index af55d2a..4283be8 100644
 +#include <complex>
 +
  #define SQUARE(real,imag)   sqrt((real)*(real)+(imag)*(imag))
- 
+
  //==============================================================================

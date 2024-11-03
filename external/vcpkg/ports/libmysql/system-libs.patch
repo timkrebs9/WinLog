@@ -48,13 +48,13 @@ index fde3a75..9f694b9 100644
 -
 -  # Needed for version information.
 -  SET(ICU_COMMON_DIR ${ICU_INCLUDE_DIR})
- 
+
 + find_package(ICU REQUIRED COMPONENTS uc io dt in)
 + set(ICU_SYSTEM_LIBRARIES ICU::uc ICU::io ICU::dt ICU::in)
 + set(ICU_COMMON_DIR ${ICU_INCLUDE_DIR})
 + SET(ICU_INCLUDE_DIRS ${ICU_INCLUDE_DIR})
  ENDMACRO()
- 
+
  MACRO (MYSQL_USE_BUNDLED_ICU)
 diff --git a/cmake/libutils.cmake b/cmake/libutils.cmake
 index 3fa58da..88b53e7 100644
@@ -72,14 +72,14 @@ index 3fa58da..88b53e7 100644
 -      PROPERTIES STATIC_LIBRARY_FLAGS "${LINKER_EXTRA_FLAGS}")
 +    TARGET_LINK_LIBRARIES(${TARGET} PRIVATE ${SSL_LIBRARIES})
    ENDIF()
- 
+
    IF(OSLIBS)
 diff --git a/cmake/lz4.cmake b/cmake/lz4.cmake
 index 9aad130..68cbaba 100644
 --- a/cmake/lz4.cmake
 +++ b/cmake/lz4.cmake
 @@ -25,7 +25,7 @@
- 
+
  MACRO (FIND_SYSTEM_LZ4)
    FIND_PATH(PATH_TO_LZ4 NAMES lz4frame.h)
 -  FIND_LIBRARY(LZ4_SYSTEM_LIBRARY NAMES lz4)
@@ -107,7 +107,7 @@ index 52feade..1e71bd7 100644
 +    list(APPEND SSL_LIBRARIES Threads::Threads)
 +  endif()
 +ENDMACRO()
- 
+
 +MACRO (MYSQL_CHECK_SSL_OLD)
    IF(NOT WITH_SSL)
      SET(WITH_SSL "system" CACHE STRING ${WITH_SSL_DOC_STRING} FORCE)

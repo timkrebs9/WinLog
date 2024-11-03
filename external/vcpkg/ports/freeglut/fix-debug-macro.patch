@@ -3,7 +3,7 @@ index a658c7c..a5efb3b 100644
 --- a/include/GL/freeglut_std.h
 +++ b/include/GL/freeglut_std.h
 @@ -70,7 +70,7 @@
- 
+
          /* Link with Win32 static freeglut lib */
  #       if FREEGLUT_LIB_PRAGMAS
 -#           ifdef NDEBUG
@@ -12,7 +12,7 @@ index a658c7c..a5efb3b 100644
  #           else
  #              pragma comment (lib, "freeglut_staticd.lib")
 @@ -88,7 +88,7 @@
- 
+
              /* Link with Win32 shared freeglut lib */
  #           if FREEGLUT_LIB_PRAGMAS
 -#               ifdef NDEBUG
@@ -27,9 +27,8 @@ index a1b9cbb..a20c53d 100644
 @@ -31,7 +31,7 @@
  #include "fg_internal.h"
  #include "egl/fg_window_egl.h"
- 
+
 -#ifdef NDEBUG
 +#if defined(NDEBUG) || !defined(_DEBUG)
  #define LOGI(...)
  #endif
- 

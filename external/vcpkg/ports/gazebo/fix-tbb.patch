@@ -3,7 +3,7 @@ index af56ee4..8583740 100644
 --- a/cmake/SearchForStuff.cmake
 +++ b/cmake/SearchForStuff.cmake
 @@ -301,7 +301,7 @@ if (PKG_CONFIG_FOUND)
- 
+
    #################################################
    # Find TBB
 -  pkg_check_modules(TBB tbb<2021)
@@ -21,7 +21,7 @@ index af56ee4..8583740 100644
 +      set(HAVE_TBB_GREATER_OR_EQUAL_2021 ON)
 +    endif()
 +  endif()
- 
+
    #################################################
    # Find OGRE
 diff --git a/cmake/gazebo-config.cmake.in b/cmake/gazebo-config.cmake.in
@@ -55,7 +55,7 @@ index 8e59020..a72d49b 100644
 @@ -70,6 +71,12 @@ if (WIN32)
    target_link_libraries(gazebo_transport ws2_32 Iphlpapi)
  endif()
- 
+
 +if(${CMAKE_VERSION} VERSION_LESS "3.13.0")
 +  link_directories(${TBB_LIBRARY_DIRS})
 +else()
@@ -72,7 +72,7 @@ index 0e7d88a..cbcd7af 100644
 @@ -17,7 +17,16 @@
  #ifndef _CONNECTION_HH_
  #define _CONNECTION_HH_
- 
+
 +#undef emit
  #include <tbb/task.h>
 +#define emit
@@ -84,7 +84,7 @@ index 0e7d88a..cbcd7af 100644
 +#endif
 +
  #include <google/protobuf/message.h>
- 
+
  #include <boost/asio.hpp>
 @@ -37,6 +46,9 @@
  #include "gazebo/common/Console.hh"
@@ -94,7 +94,7 @@ index 0e7d88a..cbcd7af 100644
 +#include "gazebo/transport/TaskGroup.hh"
 +#endif
  #include "gazebo/util/system.hh"
- 
+
  #define HEADER_LENGTH 8
 @@ -54,7 +66,11 @@ namespace gazebo
      /// \cond
@@ -111,7 +111,7 @@ index 0e7d88a..cbcd7af 100644
 @@ -68,6 +84,7 @@ namespace gazebo
                {
                }
- 
+
 +#if TBB_VERSION_MAJOR < 2021
        /// \bried Overridden function from tbb::task that exectues the data
        /// callback.
@@ -125,18 +125,18 @@ index 0e7d88a..cbcd7af 100644
 +      public: void operator()() const
 +              { this->func(this->data); }
 +#endif
- 
+
        /// \brief The boost function pointer
        private: boost::function<void (const std::string &)> func;
 @@ -310,12 +332,16 @@ namespace gazebo
- 
+
                  if (!_e && !transport::is_stopped())
                  {
 +#if TBB_VERSION_MAJOR < 2021
                    ConnectionReadTask *task = new(tbb::task::allocate_root())
                          ConnectionReadTask(boost::get<0>(_handler), data);
                    tbb::task::enqueue(*task);
- 
+
                    // Non-tbb version:
                    // boost::get<0>(_handler)(data);
 +#else
@@ -144,9 +144,9 @@ index 0e7d88a..cbcd7af 100644
 +#endif
                  }
                }
- 
+
 @@ -465,6 +491,11 @@ namespace gazebo
- 
+
        /// \brief True if the connection is open.
        private: bool isOpen;
 +
@@ -164,7 +164,7 @@ index b0546e5..17016a4 100644
 @@ -27,6 +27,7 @@
  using namespace gazebo;
  using namespace transport;
- 
+
 +#if TBB_VERSION_MAJOR < 2021
  /// TBB task to process nodes.
  class TopicManagerProcessTask : public tbb::task
@@ -174,7 +174,7 @@ index b0546e5..17016a4 100644
            }
  };
 +#endif
- 
+
  /// TBB task to establish subscriber to publisher connection.
 +#if TBB_VERSION_MAJOR < 2021
  class TopicManagerConnectionTask : public tbb::task
@@ -185,7 +185,7 @@ index b0546e5..17016a4 100644
    /// \brief Constructor.
    /// \param[in] _pub Publish message
    public: explicit TopicManagerConnectionTask(msgs::Publish _pub) : pub(_pub) {}
- 
+
    /// Implements the necessary execute function
 +#if TBB_VERSION_MAJOR < 2021
    public: tbb::task *execute()
@@ -197,20 +197,20 @@ index b0546e5..17016a4 100644
 +  public: void operator()() const
 +          { TopicManager::Instance()->ConnectSubToPub(pub); }
 +#endif
- 
+
    /// \brief Publish message
    private: msgs::Publish pub;
 @@ -273,11 +284,6 @@ void ConnectionManager::RunUpdate()
    if (this->masterConn)
      this->masterConn->ProcessWriteQueue();
- 
+
 -  // Use TBB to process nodes. Need more testing to see if this makes
 -  // a difference.
 -  // TopicManagerProcessTask *task = new(tbb::task::allocate_root())
 -  //   TopicManagerProcessTask();
 -  // tbb::task::enqueue(*task);
    boost::recursive_mutex::scoped_lock lock(this->connectionMutex);
- 
+
    TopicManager::Instance()->ProcessNodes();
 @@ -403,9 +409,13 @@ void ConnectionManager::ProcessMessage(const std::string &_data)
      if (pub.host() != this->serverConn->GetLocalAddress() ||
@@ -233,7 +233,7 @@ index ef80eaf..6dc212b 100644
 @@ -27,8 +27,11 @@
  #include "gazebo/msgs/msgs.hh"
  #include "gazebo/common/SingletonT.hh"
- 
+
 -#include "gazebo/transport/Publisher.hh"
  #include "gazebo/transport/Connection.hh"
 +#include "gazebo/transport/Publisher.hh"
@@ -241,12 +241,12 @@ index ef80eaf..6dc212b 100644
 +#include "gazebo/transport/TaskGroup.hh"
 +#endif
  #include "gazebo/util/system.hh"
- 
+
  /// \brief Explicit instantiation for typed SingletonT.
 @@ -194,6 +197,11 @@ namespace gazebo
        /// \brief Condition used for synchronization
        private: boost::condition_variable namespaceCondition;
- 
+
 +#if TBB_VERSION_MAJOR >= 2021
 +      /// \brief For managing asynchronous tasks with tbb
 +      private: TaskGroup taskGroup;
@@ -262,7 +262,7 @@ index b7d37f7..7248b72 100644
 @@ -18,7 +18,12 @@
  #ifndef GAZEBO_TRANSPORT_NODE_HH_
  #define GAZEBO_TRANSPORT_NODE_HH_
- 
+
 +#undef emit
  #include <tbb/task.h>
 +#define emit
@@ -275,7 +275,7 @@ index b7d37f7..7248b72 100644
 @@ -26,6 +31,9 @@
  #include <string>
  #include <vector>
- 
+
 +#if TBB_VERSION_MAJOR >= 2021
 +#include "gazebo/transport/TaskGroup.hh"
 +#endif
@@ -297,7 +297,7 @@ index b7d37f7..7248b72 100644
 @@ -49,16 +61,23 @@ namespace gazebo
          this->msg->CopyFrom(_message);
        }
- 
+
 +#if TBB_VERSION_MAJOR < 2021
        /// \brief Overridden function from tbb::task that exectues the
        /// publish task.
@@ -316,7 +316,7 @@ index b7d37f7..7248b72 100644
                  return NULL;
 +#endif
                }
- 
+
        /// \brief Pointer to the publisher.
 @@ -159,11 +178,15 @@ namespace gazebo
                    const google::protobuf::Message &_message)
@@ -325,24 +325,24 @@ index b7d37f7..7248b72 100644
 +#if TBB_VERSION_MAJOR < 2021
                  PublishTask *task = new(tbb::task::allocate_root())
                    PublishTask(pub, _message);
- 
+
                  tbb::task::enqueue(*task);
                  return;
 +#else
 +                this->taskGroup.run<PublishTask>(pub, _message);
 +#endif
                }
- 
+
        /// \brief Advertise a topic
 @@ -420,6 +443,10 @@ namespace gazebo
- 
+
        /// \brief List of newly arrive messages
        private: std::map<std::string, std::list<MessagePtr> > incomingMsgsLocal;
 +#if TBB_VERSION_MAJOR >= 2021
 +      /// \brief For managing asynchronous tasks with tbb
 +      private: TaskGroup taskGroup;
 +#endif
- 
+
        private: boost::mutex publisherMutex;
        private: boost::mutex publisherDeleteMutex;
 diff --git a/gazebo/transport/TaskGroup.hh b/gazebo/transport/TaskGroup.hh

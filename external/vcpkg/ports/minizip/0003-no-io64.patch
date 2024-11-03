@@ -28,8 +28,8 @@ index 3d65401..a1269ea 100644
 +#define FTELLO_FUNC(stream) ftell(stream)
 +#define FSEEKO_FUNC(stream, offset, origin) fseek(stream, offset, origin)
  #endif
- 
- 
+
+
 diff --git a/contrib/minizip/minizip.c b/contrib/minizip/minizip.c
 index 4288962..02267fb 100644
 --- a/contrib/minizip/minizip.c
@@ -45,5 +45,3 @@ index 4288962..02267fb 100644
 +#define FTELLO_FUNC(stream) ftell(stream)
 +#define FSEEKO_FUNC(stream, offset, origin) fseek(stream, offset, origin)
  #endif
- 
- 

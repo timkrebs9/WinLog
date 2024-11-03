@@ -5,10 +5,10 @@ index cc56298..7b9370a 100644
 @@ -2,7 +2,7 @@
  #include <inttypes.h>
  #include <stdio.h>
- 
+
 -#include <capstone.h>
 +#include <capstone/capstone.h>
- 
+
  #include "imgui.h"
  #include "TracyCharUtil.hpp"
 diff --git a/server/TracyWorker.cpp b/server/TracyWorker.cpp
@@ -18,9 +18,9 @@ index fcb1718..2433e59 100644
 @@ -19,7 +19,7 @@
  #include <inttypes.h>
  #include <sys/stat.h>
- 
+
 -#include <capstone.h>
 +#include <capstone/capstone.h>
- 
+
  #define ZDICT_STATIC_LINKING_ONLY
  #include "../zstd/zdict.h"

@@ -5,7 +5,7 @@ index 14747c9..65c3ddb 100644
 @@ -155,7 +155,7 @@ elseif(NOT EPROSIMA_INSTALLER)
          COMPONENT cmake
          )
- 
+
 -    if(MSVC OR MSVC_IDE)
 +    if(MSVC OR MSVC_IDE AND 0)
          if(TARGET_TYPE STREQUAL "SHARED_LIBRARY")

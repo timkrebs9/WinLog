@@ -8,5 +8,5 @@ index f38af1d..ebf3197 100644
  #include <vector>
 +#include <algorithm>
  #include "butteraugli/butteraugli.h"
- 
+
  extern "C" {

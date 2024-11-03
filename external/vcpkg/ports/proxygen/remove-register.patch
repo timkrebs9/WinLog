@@ -7,6 +7,6 @@ index a870b2d67..2dec9c5a1 100755
    ${8:-gperf} -m5 -D --output-file="${7?}"
    perl -p -i -e "s/\/\*FALLTHROUGH\*\//FOLLY_FALLTHROUGH;/g" "${7?}"
 +  perl -p -i -e "s/register//g" "${7?}"
- 
+
    # Here we delete one of the comment lines gperf adds to the top of the file.
    # i.e. /* Command-line: .../gperf -m5 --output-file=...  */

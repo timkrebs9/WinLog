@@ -49,7 +49,7 @@ vcpkg_cmake_install()
 
 foreach(TARGET IN LISTS BUILD_ONLY)
     vcpkg_cmake_config_fixup(PACKAGE_NAME "aws-cpp-sdk-${TARGET}" CONFIG_PATH "lib/cmake/aws-cpp-sdk-${TARGET}" DO_NOT_DELETE_PARENT_CONFIG_PATH)
-endforeach() 
+endforeach()
 vcpkg_cmake_config_fixup(PACKAGE_NAME "AWSSDK" CONFIG_PATH "lib/cmake/AWSSDK")
 
 vcpkg_copy_pdbs()

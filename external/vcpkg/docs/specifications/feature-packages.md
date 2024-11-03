@@ -249,7 +249,7 @@ Description: C++ client for SignalR.
 # cpprestsdk/CONTROL
 Source: cpprestsdk
 Version: 2.9.0-2
-Build-Depends: 
+Build-Depends:
 Description: C++11 JSON, REST, and OAuth library ...
 Default-Features: compression, ws-client
 

@@ -14,7 +14,7 @@ vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
     OPTIONS ${FEATURE_OPTIONS}
-        -DVALUE_PTR_LITE_OPT_BUILD_EXAMPLES=OFF   
+        -DVALUE_PTR_LITE_OPT_BUILD_EXAMPLES=OFF
 )
 
 vcpkg_cmake_install()

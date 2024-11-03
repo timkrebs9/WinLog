@@ -43,7 +43,7 @@ endif()
 
 vcpkg_fixup_pkgconfig()
 
-file(REMOVE_RECURSE 
+file(REMOVE_RECURSE
     "${CURRENT_PACKAGES_DIR}/debug/share"
     "${CURRENT_PACKAGES_DIR}/debug/include"
     "${CURRENT_PACKAGES_DIR}/SDL2_image.framework"

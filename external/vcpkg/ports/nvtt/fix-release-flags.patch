@@ -4,7 +4,7 @@ index e4d5c56..eba8624 100644
 +++ b/cmake/OptimalOptions.cmake
 @@ -11,8 +11,8 @@ IF(MSVC)
  #	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /arch:SSE2 /fp:fast")
- 
+
  	# Optimization flags.
 -	SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS} /O2 /Ob2 /Oi /Ot /Oy /GL")
 -	SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} /O2 /Ob2 /Oi /Ot /Oy /GL")

@@ -12,7 +12,7 @@ vcpkg_add_to_path("${PYTHON3_DIR}")
 if(VCPKG_TARGET_IS_IOS)
     message(STATUS "Using iOS trplet. Executables won't be created...")
     set(TOOLS_INSTALL OFF)
-    set(SKIP_EXECUTABLES ON) 
+    set(SKIP_EXECUTABLES ON)
 else()
     set(TOOLS_INSTALL ON)
     set(SKIP_EXECUTABLES OFF)
@@ -49,34 +49,34 @@ vcpkg_fixup_pkgconfig()
 
 if(TOOLS_INSTALL)
     vcpkg_copy_tools(
-        TOOL_NAMES 
-            spirv-as 
-            spirv-cfg 
-            spirv-dis 
-            spirv-link 
-            spirv-lint 
-            spirv-opt 
-            spirv-reduce 
-            spirv-val 
+        TOOL_NAMES
+            spirv-as
+            spirv-cfg
+            spirv-dis
+            spirv-link
+            spirv-lint
+            spirv-opt
+            spirv-reduce
+            spirv-val
         AUTO_CLEAN
     )
 endif()
 
 if(WIN32)
-    file(REMOVE_RECURSE 
-        "${CURRENT_PACKAGES_DIR}/debug/SPIRV-Tools" 
+    file(REMOVE_RECURSE
+        "${CURRENT_PACKAGES_DIR}/debug/SPIRV-Tools"
         "${CURRENT_PACKAGES_DIR}/debug/SPIRV-Tools-link"
-        "${CURRENT_PACKAGES_DIR}/debug/SPIRV-Tools-lint"  
+        "${CURRENT_PACKAGES_DIR}/debug/SPIRV-Tools-lint"
         "${CURRENT_PACKAGES_DIR}/debug/SPIRV-Tools-opt"
-        "${CURRENT_PACKAGES_DIR}/debug/SPIRV-Tools-reduce" 
-        "${CURRENT_PACKAGES_DIR}/SPIRV-Tools" 
-        "${CURRENT_PACKAGES_DIR}/SPIRV-Tools-link" 
-        "${CURRENT_PACKAGES_DIR}/SPIRV-Tools-lint" 
-        "${CURRENT_PACKAGES_DIR}/SPIRV-Tools-opt" 
+        "${CURRENT_PACKAGES_DIR}/debug/SPIRV-Tools-reduce"
+        "${CURRENT_PACKAGES_DIR}/SPIRV-Tools"
+        "${CURRENT_PACKAGES_DIR}/SPIRV-Tools-link"
+        "${CURRENT_PACKAGES_DIR}/SPIRV-Tools-lint"
+        "${CURRENT_PACKAGES_DIR}/SPIRV-Tools-opt"
         "${CURRENT_PACKAGES_DIR}/SPIRV-Tools-reduce"
     )
 endif()
-file(REMOVE_RECURSE 
+file(REMOVE_RECURSE
     "${CURRENT_PACKAGES_DIR}/debug/include"
     "${CURRENT_PACKAGES_DIR}/debug/share"
 )

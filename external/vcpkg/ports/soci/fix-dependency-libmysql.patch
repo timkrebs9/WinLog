@@ -9,6 +9,5 @@ index 1233568..9a7cb61 100644
 +find_package(libmysql REQUIRED)
 +set(MySQL_FOUND 1)
 +return()
- 
+
  include(CheckCXXSourceCompiles)
- 

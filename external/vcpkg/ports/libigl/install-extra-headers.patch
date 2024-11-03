@@ -6,7 +6,7 @@ index a33cefa..0014375 100644
  # Install headers for core library
  install_dir_files(core)
  install_dir_files(copyleft)
-+ 
++
 +if (LIBIGL_WITH_EMBREE)
 +    install_dir_files(embree)
 +#    if(NOT LIBIGL_USE_STATIC_LIBRARY)
@@ -16,19 +16,19 @@ index a33cefa..0014375 100644
 +    )
 +#    endif()
 +endif()
-+ 
++
 +if (LIBIGL_WITH_CGAL)
 +    install_dir_files(copyleft/cgal)
 +endif()
-+ 
++
 +if (LIBIGL_WITH_COMISO)
 +    install_dir_files(copyleft/comiso)
 +endif()
-+ 
++
 +if (LIBIGL_WITH_CORK)
 +    install_dir_files(copyleft/cork)
 +endif()
-+ 
++
 +if (LIBIGL_WITH_TETGEN)
 +    install_dir_files(copyleft/tetgen)
 +endif()
@@ -85,6 +85,6 @@ index a33cefa..0014375 100644
 +    )
 +#    endif()
 +endif()
- 
+
  # Write package configuration file
  configure_package_config_file(

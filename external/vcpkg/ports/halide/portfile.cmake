@@ -44,7 +44,7 @@ vcpkg_cmake_configure(
         -DHalide_INSTALL_PLUGINDIR=bin
 )
 
-# ADD_BIN_TO_PATH needed to compile autoschedulers, 
+# ADD_BIN_TO_PATH needed to compile autoschedulers,
 # which use Halide.dll (and deps) during the build.
 vcpkg_cmake_install(ADD_BIN_TO_PATH)
 
@@ -61,7 +61,7 @@ vcpkg_copy_tools(
 # Exclude those to avoid warning with default globs.
 vcpkg_copy_pdbs(
     BUILD_PATHS
-        "${CURRENT_PACKAGES_DIR}/bin/Halide.dll" 
+        "${CURRENT_PACKAGES_DIR}/bin/Halide.dll"
         "${CURRENT_PACKAGES_DIR}/debug/bin/*.dll"
 )
 

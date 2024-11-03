@@ -16,10 +16,10 @@ vcpkg_configure_cmake(
 vcpkg_install_cmake()
 
 file(
-	INSTALL 
+	INSTALL
 		${SOURCE_PATH}/mcpp_lib.h
 		${SOURCE_PATH}/mcpp_out.h
-	DESTINATION 
+	DESTINATION
 		${CURRENT_PACKAGES_DIR}/include
 )
 

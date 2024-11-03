@@ -3,9 +3,9 @@ index 8277123..84fbd0a 100644
 --- a/bzlib.h
 +++ b/bzlib.h
 @@ -65,29 +65,23 @@ typedef
-    } 
+    }
     bz_stream;
- 
+
 -
 -#ifndef BZ_IMPORT
 -#define BZ_EXPORT
@@ -15,7 +15,7 @@ index 8277123..84fbd0a 100644
  /* Need a definitition for FILE */
  #include <stdio.h>
  #endif
- 
+
  #ifdef _WIN32
 -#   include <windows.h>
  #   ifdef small

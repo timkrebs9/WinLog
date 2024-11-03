@@ -85,7 +85,7 @@ are not claimed by package registries may be installed.
 
 The `"registries"` field should be an array of registry objects, each of
 which additionally contain a `"packages"` field, which should be an array of
-package names. These define the package registries, which are used for 
+package names. These define the package registries, which are used for
 the specific packages named by the `"packages"` field.
 
 The `"packages"` fields of all the package registries must be disjoint.
@@ -111,7 +111,7 @@ Relative paths are resolved relative to the `vcpkg-configuration.json` file. Abs
 Let's assume that you have mirrored <https://github.com/microsoft/vcpkg> at
 <https://git.example.com/vcpkg>: this will be your default registry.
 Additionally, you want to use North Wind Trader's registry for their
-beison and beicode libraries, as well as configure overlay ports and 
+beison and beicode libraries, as well as configure overlay ports and
 overlay triplets from your custom directories. The following
 `vcpkg-configuration.json` will work:
 

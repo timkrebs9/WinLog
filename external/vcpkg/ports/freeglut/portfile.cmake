@@ -4,7 +4,7 @@ vcpkg_from_github(
     REF v3.2.2
     SHA512 caaed8af95c2d0ecbc785229e26433978a0f606ae2b9f0b3cd794bb5bb70a1cc54d21f941a1a03e20c7e0fa3eba9d54a21d6e23e44f243899c0fdf146066cf29
     HEAD_REF master
-    PATCHES 
+    PATCHES
         x11-dependencies-export.patch
         macOS_Xquartz.patch
         fix-debug-macro.patch

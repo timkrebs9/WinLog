@@ -3,7 +3,7 @@ index 99f39caa5..4f51c12f2 100644
 --- a/src/tools/msvc/Mkvcbuild.pm
 +++ b/src/tools/msvc/Mkvcbuild.pm
 @@ -110,8 +110,8 @@ sub mkvcbuild
- 
+
  	if ($vsVersion >= '9.00')
  	{
 -		push(@pgportfiles, 'pg_crc32c_sse42_choose.c');
@@ -15,17 +15,17 @@ index 99f39caa5..4f51c12f2 100644
  	else
 diff --git a/src/tools/msvc/MSBuildProject.pm b/src/tools/msvc/MSBuildProject.pm
 index 823357c02..625f32bf8 100644
---- a/src/tools/msvc/MSBuildProject.pm	
+--- a/src/tools/msvc/MSBuildProject.pm
 +++ b/src/tools/msvc/MSBuildProject.pm
 @@ -307,9 +307,8 @@ sub WriteItemDefinitionGroup
  	  : ($self->{type} eq "dll" ? 'DynamicLibrary' : 'StaticLibrary');
  	my $libs = $self->GetAdditionalLinkerDependencies($cfgname, ';');
- 
+
 -	my $targetmachine =
 -	  $self->{platform} eq 'Win32' ? 'MachineX86' : 'MachineX64';
 -
 +	my $targetmachine = $self->{platform} eq 'ARM64' ? 'MachineARM64' : 'MachineARM';
-+    
++
  	my $includes = $self->{includes};
  	unless ($includes eq '' or $includes =~ /;$/)
  	{

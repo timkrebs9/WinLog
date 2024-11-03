@@ -8,7 +8,7 @@
 
 1. Download the [android ndk](https://developer.android.com/ndk/downloads/)
 
-2. Set environment variable `ANDROID_NDK_HOME` to your android ndk installation. 
+2. Set environment variable `ANDROID_NDK_HOME` to your android ndk installation.
    For example:
 
 ````bash
@@ -29,7 +29,7 @@ export VCPKG_ROOT=/path/to/vcpkg
 
 ## vcpkg triplets and their corresponding android ABI
 
-There are four different Android ABI, each of which maps to 
+There are four different Android ABI, each of which maps to
 a vcpkg triplet. The following table outlines the mapping from vcpkg architectures to android architectures
 
 |VCPKG_TARGET_TRIPLET       | ANDROID_ABI          |
@@ -47,9 +47,9 @@ Example for jsoncpp:
 cd $VCPKG_ROOT
 
 # specify the triplet like this
-./vcpkg install jsoncpp --triplet arm-android   
+./vcpkg install jsoncpp --triplet arm-android
 # or like this
-./vcpkg install jsoncpp:arm64-android           
+./vcpkg install jsoncpp:arm64-android
 ./vcpkg install jsoncpp:x86-android
 ./vcpkg install jsoncpp:x64-android
 ````
@@ -63,8 +63,8 @@ export VULKAN_SDK=/usr/local
 ./vcpkg install vulkan
 ```
 
-NDK already contains [Vulkan](https://developer.android.com/ndk/guides/graphics/getting-started) headers and `libvulkan.so` binaries for each of its architecture.  
-To expose them to VcPkg, you can consider `export VULKAN_SDK=...` for each installation.  
+NDK already contains [Vulkan](https://developer.android.com/ndk/guides/graphics/getting-started) headers and `libvulkan.so` binaries for each of its architecture.
+To expose them to VcPkg, you can consider `export VULKAN_SDK=...` for each installation.
 But by placing `set(ENV{VULKAN_SDK} ...)` in the triplet files, you can skip the tedious work.
 
 If you are using NDK 21.3.6528147 or earlier version, it will be like the following.
@@ -77,7 +77,7 @@ set(VCPKG_CMAKE_SYSTEM_NAME Android)
 set(ENV{VULKAN_SDK} $ENV{ANDROID_NDK_HOME}/sysroot/usr)
 ```
 
-Notice that **the location of the sysroot has changed since NDK 22**. (see https://github.com/android/ndk/issues/1407)  
+Notice that **the location of the sysroot has changed since NDK 22**. (see https://github.com/android/ndk/issues/1407)
 If you prefer using [the latest version](https://developer.android.com/studio/projects/install-ndk#default-ndk-per-agp), check the [BuildSystemMaintainers.md of the NDK document](https://android.googlesource.com/platform/ndk/+/master/docs/BuildSystemMaintainers.md#sysroot) and then put appropriate path for your system.
 
 For example, Mac OS users will use the path like this.
@@ -156,9 +156,9 @@ vcpkg_toolchain_file=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
 android_toolchain_file=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake
 ````
 
-When using vcpkg, the vcpkg toolchain shall be specified first. 
+When using vcpkg, the vcpkg toolchain shall be specified first.
 
-However, vcpkg provides a way to preload and additional toolchain, with the VCPKG_CHAINLOAD_TOOLCHAIN_FILE option. 
+However, vcpkg provides a way to preload and additional toolchain, with the VCPKG_CHAINLOAD_TOOLCHAIN_FILE option.
 
 ````bash
 cmake \
@@ -177,7 +177,7 @@ For example:
 android_abi=armeabi-v7a
 vcpkg_target_triplet=arm-android
 
-cmake 
+cmake
   ...
   -DVCPKG_TARGET_TRIPLET=$vcpkg_target_triplet \
   -DANDROID_ABI=$android_abi

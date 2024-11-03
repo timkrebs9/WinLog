@@ -5,7 +5,7 @@ index 6d242f36f..ec57131ce 100644
 @@ -23,14 +23,6 @@
  extern "C" {
  #endif
- 
+
 -#ifndef DLLAPI
 -#if defined (_WIN32) && defined (_MSC_VER)
 -#define DLLAPI __declspec(dllimport)
@@ -23,7 +23,7 @@ index 8cadde16d..9b034def3 100644
 +++ b/include/fcgiapp.h
 @@ -23,11 +23,19 @@
  #endif
- 
+
  #ifndef DLLAPI
 -#if defined (_WIN32) && defined (_MSC_VER)
 -#define DLLAPI __declspec(dllimport)
@@ -44,16 +44,16 @@ index 8cadde16d..9b034def3 100644
 +#  define DLLAPI
 +# endif
  #endif
- 
+
  #if defined (c_plusplus) || defined (__cplusplus)
 diff --git a/include/fcgio.h b/include/fcgio.h
 index ce8b930a8..81981974a 100644
 --- a/include/fcgio.h
 +++ b/include/fcgio.h
 @@ -34,14 +34,6 @@
- 
+
  #include "fcgiapp.h"
- 
+
 -#ifndef DLLAPI
 -#if defined (_WIN32) && defined (_MSC_VER)
 -#define DLLAPI __declspec(dllimport)
@@ -71,7 +71,7 @@ index 206973137..7a2f5333a 100644
 +++ b/include/fcgios.h
 @@ -50,11 +50,19 @@ extern "C" {
  #endif /* !_WIN32 */
- 
+
  #ifndef DLLAPI
 -#if defined (_WIN32) && defined (_MSC_VER)
 -#define DLLAPI __declspec(dllimport)
@@ -92,18 +92,18 @@ index 206973137..7a2f5333a 100644
 +#  define DLLAPI
 +# endif
  #endif
- 
- 
+
+
 diff --git a/libfcgi/Makefile.am b/libfcgi/Makefile.am
 index 42d507253..26f06f550 100644
 --- a/libfcgi/Makefile.am
 +++ b/libfcgi/Makefile.am
 @@ -1,7 +1,7 @@
  # $Id: Makefile.am,v 1.9 2001/12/22 03:16:20 robs Exp $
- 
+
  INCLUDEDIR  = ../include
 -AM_CPPFLAGS = -I$(top_srcdir)/include -W -Wall -pedantic -Wno-unused-parameter
 +AM_CPPFLAGS = -I$(top_srcdir)/include -DLIBFCGI_BUILD
- 
+
  INCLUDE_FILES = $(INCLUDEDIR)/fastcgi.h     \
                  $(INCLUDEDIR)/fcgiapp.h     \

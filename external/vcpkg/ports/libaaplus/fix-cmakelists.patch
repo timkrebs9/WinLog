@@ -5,7 +5,7 @@ index 9bb8ea3..c445c4b 100644
 @@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 3.8)
  SET(CMAKE_CXX_STANDARD 17)
  SET(CMAKE_CXX_STANDARD_REQUIRED ON)
- 
+
 +option(BUILD_TOOLS "Build libaaplus tools" OFF)
  #-----------------------------------------------------------------------------
  # Output directories.
@@ -55,8 +55,8 @@ index 9bb8ea3..c445c4b 100644
 +        RUNTIME DESTINATION bin
 +    )
 +endif()
- 
--install(TARGETS aaplus-shared aaplus-static 
+
+-install(TARGETS aaplus-shared aaplus-static
 -		DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" )
 +if(BUILD_TOOLS)
 +    if(BUILD_SHARED_LIBS)
@@ -67,12 +67,12 @@ index 9bb8ea3..c445c4b 100644
 +                -DAAPLUS_EXT_CLASS\=__declspec\(dllimport\)
 +        )
 +        endif()
-+        
++
 +    else()
 +        TARGET_LINK_LIBRARIES(AATest aaplus-static)
-+    endif()    
++    endif()
 +endif()
- 
+
 -TARGET_LINK_LIBRARIES(AATest aaplus-static)
 +install(
 +    EXPORT aaplus
@@ -80,6 +80,6 @@ index 9bb8ea3..c445c4b 100644
 +    FILE aaplusConfig.cmake
 +    NAMESPACE aaplus::
 +)
- 
+
 +install(FILES ${INCS} DESTINATION include/aaplus)
 \ No newline at end of file

@@ -21,7 +21,6 @@ index f5d2f4a..6bffe32 100644
 -!endif
  	@echo Installing $(TCLSTUBLIBNAME)
  	@$(CPY) "$(TCLSTUBLIB)" "$(LIB_INSTALL_DIR)\"
- 
--- 
-2.28.0.windows.1
 
+--
+2.28.0.windows.1

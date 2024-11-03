@@ -4,10 +4,10 @@ index 803abe77b..7d694e401 100644
 +++ b/configure.ac
 @@ -11,6 +11,7 @@ AM_MAINTAINER_MODE
  XCB_UTIL_COMMON([1.4], [1.6])
- 
+
  PKG_CHECK_MODULES(XCB_RENDER, xcb-render)
 +PKG_CHECK_MODULES(PTHREAD_STUBS, pthread-stubs)
- 
+
  AC_CONFIG_FILES([Makefile
  	renderutil/Makefile
 diff --git a/renderutil/Makefile.am b/renderutil/Makefile.am
@@ -16,7 +16,7 @@ index 3a5179884..d403aa34a 100644
 +++ b/renderutil/Makefile.am
 @@ -4,9 +4,9 @@ lib_LTLIBRARIES = libxcb-render-util.la
  xcbinclude_HEADERS = xcb_renderutil.h
- 
+
  AM_CFLAGS = $(BASE_CFLAGS)
 -AM_CPPFLAGS = $(XCB_CFLAGS) $(XCB_RENDER_CFLAGS)
 +AM_CPPFLAGS = $(XCB_CFLAGS) $(XCB_RENDER_CFLAGS) ${PTHREAD_STUBS_CFLAGS}
@@ -24,5 +24,5 @@ index 3a5179884..d403aa34a 100644
 -libxcb_render_util_la_LIBADD = $(XCB_LIBS) $(XCB_RENDER_LIBS)
 +libxcb_render_util_la_LIBADD = $(XCB_LIBS) $(XCB_RENDER_LIBS) ${PTHREAD_STUBS_LIBS}
  libxcb_render_util_la_LDFLAGS = -no-undefined
- 
+
  pkgconfig_DATA = xcb-renderutil.pc

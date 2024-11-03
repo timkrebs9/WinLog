@@ -10,7 +10,7 @@ vcpkg_from_github(
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
-    OPTIONS 
+    OPTIONS
         -DBUILD_TESTING=OFF
 )
 
@@ -34,8 +34,8 @@ file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/lib/cmake"
                     "${CURRENT_PACKAGES_DIR}/debug/share"
 )
 
-file(REMOVE_RECURSE 
-    "${CURRENT_PACKAGES_DIR}/bin" 
+file(REMOVE_RECURSE
+    "${CURRENT_PACKAGES_DIR}/bin"
     "${CURRENT_PACKAGES_DIR}/debug/bin"
 )
 

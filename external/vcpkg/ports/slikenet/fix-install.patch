@@ -4,12 +4,12 @@ index 7f6453d..48f9562 100644
 +++ b/Lib/DLL/CMakeLists.txt
 @@ -50,6 +50,7 @@ ELSE(WIN32 AND NOT UNIX)
  ENDIF(WIN32 AND NOT UNIX)
- 
+
  target_link_libraries(SLikeNetDLL ${SLIKENET_LIBRARY_LIBS})
 +if(0)
  IF(NOT WIN32 OR UNIX)
  	configure_file(../../slikenet-config-version.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/slikenet-config-version.cmake @ONLY)
- 
+
 @@ -60,3 +61,12 @@ IF(NOT WIN32 OR UNIX)
  	INSTALL(FILES ../../slikenet-config.cmake ${CMAKE_CURRENT_BINARY_DIR}/slikenet-config-version.cmake DESTINATION lib/slikenet-${SLikeNet_VERSION})
  	INSTALL(EXPORT SLikeNetDLL DESTINATION lib/slikenet-${SLikeNet_VERSION})
@@ -29,7 +29,7 @@ index f936fa5..a5dcc4f 100644
 +++ b/Lib/LibStatic/CMakeLists.txt
 @@ -50,6 +50,8 @@ ELSE(WIN32 AND NOT UNIX)
  ENDIF(WIN32 AND NOT UNIX)
- 
+
  target_link_libraries(SLikeNetLibStatic ${SLIKENET_LIBRARY_LIBS})
 +
 +if(0)

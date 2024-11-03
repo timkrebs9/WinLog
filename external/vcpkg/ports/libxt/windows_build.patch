@@ -5,7 +5,7 @@ index cf8d3fe41..559697aa0 100644
 @@ -50,6 +50,10 @@ in this Software without prior written authorization from The Open Group.
  #ifndef _XtIntrinsic_h
  #define _XtIntrinsic_h
- 
+
 +#ifdef WIN32
 +#define _WILLWINSOCK_
 +#endif
@@ -20,7 +20,7 @@ index a8b7f48cf..99c5349e7 100644
 @@ -48,11 +48,12 @@ SOFTWARE.
  #ifndef _XtintrinsicI_h
  #define _XtintrinsicI_h
- 
+
 -#include "Xtos.h"
 -#include "IntrinsicP.h"
  #ifdef WIN32
@@ -30,7 +30,7 @@ index a8b7f48cf..99c5349e7 100644
 +#include "Xtos.h"
 +#include "IntrinsicP.h"
  #include <X11/Xos.h>
- 
+
  #include "Object.h"
 diff --git a/src/Convert.c b/src/Convert.c
 index 9b2d465b3..5c89850f1 100644
@@ -57,7 +57,7 @@ index d728a9286..5ee0d2fe8 100644
 +#ifndef None
 +#define None 0L
 +#endif
- 
+
  /******************************************************************
   *
 diff --git a/src/Error.c b/src/Error.c
@@ -112,7 +112,7 @@ index 3704cb63d..2f00cdcca 100644
 @@ -75,6 +75,10 @@ in this Software without prior written authorization from The Open Group.
  #include "ShellP.h"
  #include "ShellI.h"
- 
+
 +#ifndef None
 +#define None 0L
 +#endif
@@ -127,13 +127,13 @@ index da6fa11aa..7d9271f45 100644
 @@ -80,6 +80,10 @@ in this Software without prior written authorization from The Open Group.
  #include "PassivGraI.h"
  #include "EventI.h"
- 
+
 +#ifndef None
 +#define None 0L
 +#endif
 +
  #define _GetWindowedAncestor(w) (XtIsWidget(w) ? w : _XtWindowedAncestor(w))
- 
+
  /* InActiveSubtree cache of the current focus source and its ancestors */
 diff --git a/util/makestrs.c b/util/makestrs.c
 index 4d5c0a6b7..b64e42eea 100644
@@ -146,7 +146,7 @@ index 4d5c0a6b7..b64e42eea 100644
 +#ifdef HAVE_UNISTD_H
  #include <unistd.h>
 +#endif
- 
+
  typedef struct _TableEnt {
      struct _TableEnt *next;
 diff --git a/src/Initialize.c b/src/Initialize.c
@@ -156,7 +156,7 @@ index 8ae54b47c..765479603 100644
 @@ -246,7 +246,7 @@ _XtInherit(void)
   * cygwin-xfree: http://www.cygwin.com/ml/cygwin-xfree/2003-10/msg00000.html
   */
- 
+
 -#ifdef __x86_64__
 +#if defined(__x86_64__) || defined(_M_X64)
  asm(".section .trampoline, \"dwx\" \n\
@@ -173,6 +173,6 @@ index 07713cc25..fcf10a5e2 100644
 +#ifdef HAVE_UNISTD_H
  #include <unistd.h>
 +#endif
- 
+
  #ifdef EDITRES
  #include <X11/Xmu/Editres.h>

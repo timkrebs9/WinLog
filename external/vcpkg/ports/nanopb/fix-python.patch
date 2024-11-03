@@ -5,7 +5,7 @@ index d9c5e5e..4e94bb7 100644
 @@ -41,7 +41,6 @@ endif()
  if(nanopb_BUILD_GENERATOR)
      set(generator_protos nanopb)
- 
+
 -    find_package(Python REQUIRED)
      execute_process(
          COMMAND ${Python_EXECUTABLE} -c
@@ -17,9 +17,9 @@ index d9c5e5e..4e94bb7 100644
 +    install( FILES generator/proto/_utils.py
 +             DESTINATION ${PYTHON_INSTDIR}/proto/ )
  endif()
- 
+
 -install( FILES generator/proto/_utils.py
 -         DESTINATION ${PYTHON_INSTDIR}/proto/ )
- 
+
  if( WIN32 )
          install(

@@ -1,6 +1,6 @@
 # 1. Install the library via vcpkg
 # This install jsoncpp for the 4 android target ABIs and for the host computer.
-# see the correspondence between ABIs and vcpkg triplets in the table below: 
+# see the correspondence between ABIs and vcpkg triplets in the table below:
 #
 # |VCPKG_TARGET_TRIPLET       | ANDROID_ABI          |
 # |---------------------------|----------------------|
@@ -26,8 +26,8 @@ android_abi=armeabi-v7a
 # android_abi=arm64-v8a
 # android_abi=x86_64
 
-rm -rf build 
-mkdir build && cd build 
+rm -rf build
+mkdir build && cd build
 
 # DVCPKG_TARGET_ANDROID will load vcpkg_android.cmake,
 # which will then load the android + vcpkg toolchains.

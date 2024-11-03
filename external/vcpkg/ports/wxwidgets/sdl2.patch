@@ -4,7 +4,7 @@ index 7bd00d3..d903584 100644
 +++ b/build/cmake/init.cmake
 @@ -493,7 +493,9 @@ if(wxUSE_GUI)
      endif()
- 
+
      if(wxUSE_SOUND AND wxUSE_LIBSDL AND UNIX AND NOT APPLE)
 -        find_package(SDL2)
 +        find_package(SDL2 CONFIG REQUIRED)
@@ -18,12 +18,12 @@ index 248a701..f617dc4 100644
 --- a/build/cmake/wxWidgetsConfig.cmake.in
 +++ b/build/cmake/wxWidgetsConfig.cmake.in
 @@ -2,6 +2,9 @@
- 
+
  include(CMakeFindDependencyMacro)
  find_dependency(unofficial-nanosvg CONFIG)
 +if("@wxUSE_LIBSDL@")
 +    find_dependency(SDL2 CONFIG)
 +endif()
- 
+
  # determine target from compiler, platform and library type
  if(WIN32 AND NOT CYGWIN AND NOT MSYS)

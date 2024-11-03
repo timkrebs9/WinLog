@@ -5,7 +5,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 @@ -125,14 +125,6 @@ IF (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
      SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
  ENDIF()
- 
+
 -# Set some debug vs opt flags
 -if ("${CMAKE_BUILD_TYPE}" MATCHES "Debug" AND NOT MSVC)
 -    add_definitions(-Wall -Werror -Wextra -Wno-unused-parameter -Wno-deprecated)
@@ -14,6 +14,6 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 -        add_definitions( -Wno-error=implicit-fallthrough)
 -    endif()
 -endif()
- 
+
  IF (NOT ${WINDOWS})
      SET(EXTERNAL_MATH_LIBS "-lm")

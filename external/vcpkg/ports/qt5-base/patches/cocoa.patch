@@ -5,8 +5,7 @@ index e070ba97..07c75b04 100644
 @@ -40,6 +40,7 @@
  #ifndef QIOSURFACEGRAPHICSBUFFER_H
  #define QIOSURFACEGRAPHICSBUFFER_H
- 
+
 +#include <CoreGraphics/CGColorSpace.h>
  #include <qpa/qplatformgraphicsbuffer.h>
  #include <private/qcore_mac_p.h>
- 

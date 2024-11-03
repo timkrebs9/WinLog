@@ -2,28 +2,28 @@
 +++ b/3rdparty/libtiff/CMakeLists.txt
 @@ -102,7 +102,7 @@ if(UNIX AND (CMAKE_COMPILER_IS_GNUCXX OR CV_ICC))
  endif()
- 
+
  add_library(${TIFF_LIBRARY} STATIC ${lib_srcs})
 -target_link_libraries(${TIFF_LIBRARY} ${ZLIB_LIBRARIES})
 +target_link_libraries(${TIFF_LIBRARY} ZLIB::ZLIB)
- 
+
  set_target_properties(${TIFF_LIBRARY}
      PROPERTIES
 --- a/3rdparty/openexr/CMakeLists.txt
 +++ b/3rdparty/openexr/CMakeLists.txt
 @@ -55,7 +55,7 @@ if(MSVC AND CV_ICC)
  endif()
- 
+
  add_library(IlmImf STATIC ${lib_hdrs} ${lib_srcs})
 -target_link_libraries(IlmImf ${ZLIB_LIBRARIES})
 +target_link_libraries(IlmImf ZLIB::ZLIB)
- 
+
  set_target_properties(IlmImf
      PROPERTIES
 --- a/3rdparty/tbb/CMakeLists.txt
 +++ b/3rdparty/tbb/CMakeLists.txt
 @@ -116,7 +116,7 @@ endif()
- 
+
  if(NOT EXISTS "${tbb_tarball}")
    message(STATUS "Downloading ${tbb_ver}_src.tgz")
 -  file(DOWNLOAD "${tbb_url}" "${tbb_tarball}" TIMEOUT 600 STATUS __statvar)
@@ -35,7 +35,7 @@
 +++ b/CMakeLists.txt
 @@ -275,23 +275,10 @@ if (ANDROID)
  endif()
- 
+
  if(NOT DEFINED OPENCV_DOC_INSTALL_PATH)
 -  if(ANDROID OR WIN32)
 -    set(OPENCV_DOC_INSTALL_PATH doc)
@@ -46,7 +46,7 @@
 -  endif()
 +    set(OPENCV_DOC_INSTALL_PATH share/opencv/doc)
  endif()
- 
+
 -if(WIN32)
 -  if(DEFINED OpenCV_RUNTIME AND DEFINED OpenCV_ARCH)
 -    set(OpenCV_INSTALL_BINARIES_PREFIX "${OpenCV_ARCH}/${OpenCV_RUNTIME}/")
@@ -94,12 +94,12 @@
 +  set(OPENCV_INCLUDE_INSTALL_PATH        "include/opencv2.4")
 +  set(OPENCV_CONFIG_INSTALL_PATH         "share/opencv2")
  endif()
- 
+
  set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${OPENCV_LIB_INSTALL_PATH}")
 @@ -354,15 +325,8 @@ if(INSTALL_TO_MANGLED_PATHS)
    set(OPENCV_INCLUDE_INSTALL_PATH ${OPENCV_INCLUDE_INSTALL_PATH}/opencv-${OPENCV_VERSION})
  endif()
- 
+
 -if(WIN32)
 -  # Postfix of DLLs:
 -  set(OPENCV_DLLVERSION "${OPENCV_VERSION_MAJOR}${OPENCV_VERSION_MINOR}${OPENCV_VERSION_PATCH}")
@@ -110,32 +110,32 @@
 -  set(OPENCV_DLLVERSION "")
 -  set(OPENCV_DEBUG_POSTFIX "")
 -endif()
- 
+
  if(DEFINED CMAKE_DEBUG_POSTFIX)
    set(OPENCV_DEBUG_POSTFIX "${CMAKE_DEBUG_POSTFIX}")
 @@ -397,8 +361,6 @@ if(CMAKE_HOST_WIN32)
    endif()
  endif()
- 
+
 -find_host_program(GIT_EXECUTABLE NAMES ${git_names} PATH_SUFFIXES Git/cmd Git/bin DOC "git command line client")
 -mark_as_advanced(GIT_EXECUTABLE)
- 
+
  if(GIT_EXECUTABLE)
    execute_process(COMMAND ${GIT_EXECUTABLE} describe --tags --always --dirty --match "2.[0-9].[0-9]*"
 @@ -501,7 +463,9 @@ if(BUILD_DOCS)
  endif(BUILD_DOCS)
- 
+
  # --- Python Support ---
 -include(cmake/OpenCVDetectPython.cmake)
 +if(WITH_PYTHON)
 +  include(cmake/OpenCVDetectPython.cmake)
 +endif()
- 
+
  # --- Java Support ---
  include(cmake/OpenCVDetectApacheAnt.cmake)
 @@ -885,11 +849,7 @@ if(ANDROID)
  endif()
- 
+
  if(DEFINED WITH_FFMPEG OR HAVE_FFMPEG)
 -  if(WIN32)
 -    status("    FFMPEG:"       WITH_FFMPEG         THEN "YES (prebuilt binaries)"                  ELSE NO)
@@ -153,7 +153,7 @@
    if(BUILD_WITH_DEBUG_INFO)
 -    set(OPENCV_EXTRA_FLAGS_RELEASE "${OPENCV_EXTRA_FLAGS_RELEASE} /Zi")
    endif()
- 
+
    if(ENABLE_SSE4_1 AND CV_ICC AND NOT OPENCV_EXTRA_FLAGS MATCHES "/arch:")
 --- a/cmake/OpenCVFindLibsVideo.cmake
 +++ b/cmake/OpenCVFindLibsVideo.cmake
@@ -179,14 +179,14 @@
 -    message(STATUS "Can't find ffmpeg - 'pkg-config' utility is missing")
 -  endif()
  endif(WITH_FFMPEG)
- 
+
  # --- VideoInput/DirectShow ---
 --- a/cmake/OpenCVGenConfig.cmake
 +++ b/cmake/OpenCVGenConfig.cmake
 @@ -101,7 +101,7 @@ endif()
  configure_file("${OpenCV_SOURCE_DIR}/cmake/templates/OpenCVConfig.cmake.in" "${CMAKE_BINARY_DIR}/unix-install/OpenCVConfig.cmake" @ONLY)
  configure_file("${OpenCV_SOURCE_DIR}/cmake/templates/OpenCVConfig-version.cmake.in" "${CMAKE_BINARY_DIR}/unix-install/OpenCVConfig-version.cmake" @ONLY)
- 
+
 -if(UNIX) # ANDROID configuration is created here also
 +if(1) # ANDROID configuration is created here also
    #http://www.vtk.org/Wiki/CMake/Tutorials/Packaging reference
@@ -200,7 +200,7 @@
 +if(0)
    set(OpenCV_INCLUDE_DIRS_CONFIGCMAKE "\"\${OpenCV_CONFIG_PATH}/include\" \"\${OpenCV_CONFIG_PATH}/include/opencv\"")
    set(OpenCV2_INCLUDE_DIRS_CONFIGCMAKE "\"\"")
- 
+
 --- a/cmake/OpenCVGenPkgconfig.cmake
 +++ b/cmake/OpenCVGenPkgconfig.cmake
 @@ -95,7 +95,7 @@ set(includedir  "\${prefix}/${OPENCV_INCLUDE_INSTALL_PATH}")
@@ -217,7 +217,7 @@
 @@ -86,10 +86,10 @@ macro(ocv_add_dependencies full_modname)
    endforeach()
    unset(__depsvar)
- 
+
 -  ocv_list_unique(OPENCV_MODULE_${full_modname}_REQ_DEPS)
 -  ocv_list_unique(OPENCV_MODULE_${full_modname}_OPT_DEPS)
 -  ocv_list_unique(OPENCV_MODULE_${full_modname}_PRIVATE_REQ_DEPS)
@@ -226,11 +226,11 @@
 +  #ocv_list_unique(OPENCV_MODULE_${full_modname}_OPT_DEPS)
 +  #ocv_list_unique(OPENCV_MODULE_${full_modname}_PRIVATE_REQ_DEPS)
 +  #ocv_list_unique(OPENCV_MODULE_${full_modname}_PRIVATE_OPT_DEPS)
- 
+
    set(OPENCV_MODULE_${full_modname}_REQ_DEPS ${OPENCV_MODULE_${full_modname}_REQ_DEPS}
      CACHE INTERNAL "Required dependencies of ${full_modname} module")
 @@ -277,7 +277,7 @@ endfunction()
- 
+
  # sort modules by dependencies
  function(__ocv_sort_modules_by_deps __lst)
 -  ocv_list_sort(${__lst})
@@ -241,10 +241,10 @@
 @@ -382,7 +382,7 @@ function(__ocv_resolve_dependencies)
      endforeach()
    endforeach()
- 
+
 -  ocv_list_sort(OPENCV_MODULES_BUILD)
 +  #ocv_list_sort(OPENCV_MODULES_BUILD)
- 
+
    foreach(m ${OPENCV_MODULES_BUILD})
  #    message(STATUS "FULL deps of ${m}: ${deps_${m}}")
 @@ -397,7 +397,7 @@ function(__ocv_resolve_dependencies)
@@ -253,7 +253,7 @@
      __ocv_sort_modules_by_deps(OPENCV_MODULE_${m}_DEPS)
 -    ocv_list_sort(OPENCV_MODULE_${m}_DEPS_EXT)
 +    #ocv_list_sort(OPENCV_MODULE_${m}_DEPS_EXT)
- 
+
      set(OPENCV_MODULE_${m}_DEPS ${OPENCV_MODULE_${m}_DEPS} CACHE INTERNAL "Flattened dependencies of ${m} module")
      set(OPENCV_MODULE_${m}_DEPS_EXT ${OPENCV_MODULE_${m}_DEPS_EXT} CACHE INTERNAL "Extra dependencies of ${m} module")
 --- a/data/CMakeLists.txt
@@ -265,7 +265,7 @@
 -  install(FILES ${HAAR_CASCADES} DESTINATION share/OpenCV/haarcascades COMPONENT libs)
 -  install(FILES ${LBP_CASCADES}  DESTINATION share/OpenCV/lbpcascades  COMPONENT libs)
  endif()
- 
+
  if(INSTALL_TESTS AND OPENCV_TEST_DATA_PATH)
 @@ -51,4 +49,4 @@ if(INSTALL_TESTS AND OPENCV_TEST_DATA_PATH)
        install(FILES ${DATAFILES_CASCADES} DESTINATION share/OpenCV/testdata/data/haarcascades COMPONENT tests)
@@ -278,7 +278,7 @@
 +++ b/modules/core/CMakeLists.txt
 @@ -1,9 +1,9 @@
  set(the_description "The Core Functionality")
- 
+
  if (NOT HAVE_CUDA OR ENABLE_DYNAMIC_CUDA)
 -  ocv_add_module(core PRIVATE_REQUIRED ${ZLIB_LIBRARIES})
 +  ocv_add_module(core PRIVATE_REQUIRED ZLIB::ZLIB)
@@ -286,42 +286,42 @@
 -  ocv_add_module(core PRIVATE_REQUIRED ${ZLIB_LIBRARIES} ${CUDA_LIBRARIES} ${CUDA_npp_LIBRARY})
 +  ocv_add_module(core PRIVATE_REQUIRED ZLIB::ZLIB ${CUDA_LIBRARIES} ${CUDA_npp_LIBRARY})
  endif()
- 
+
  ocv_module_include_directories("${OpenCV_SOURCE_DIR}/modules/dynamicuda/include/" ${ZLIB_INCLUDE_DIR})
 --- a/modules/highgui/CMakeLists.txt
 +++ b/modules/highgui/CMakeLists.txt
 @@ -15,23 +15,23 @@ endif()
- 
+
  if(HAVE_PNG OR HAVE_TIFF OR HAVE_OPENEXR)
    ocv_include_directories(${ZLIB_INCLUDE_DIR})
 -  list(APPEND GRFMT_LIBS ${ZLIB_LIBRARIES})
 +  list(APPEND GRFMT_LIBS ZLIB::ZLIB)
  endif()
- 
+
  if(HAVE_JPEG)
    ocv_include_directories(${JPEG_INCLUDE_DIR})
 -  list(APPEND GRFMT_LIBS ${JPEG_LIBRARIES})
 +  list(APPEND GRFMT_LIBS JPEG::JPEG)
  endif()
- 
+
  if(HAVE_PNG)
    add_definitions(${PNG_DEFINITIONS})
    ocv_include_directories(${PNG_INCLUDE_DIR})
 -  list(APPEND GRFMT_LIBS ${PNG_LIBRARIES})
 +  list(APPEND GRFMT_LIBS PNG::PNG)
  endif()
- 
+
  if(HAVE_TIFF)
    ocv_include_directories(${TIFF_INCLUDE_DIR})
 -  list(APPEND GRFMT_LIBS ${TIFF_LIBRARIES})
 +  list(APPEND GRFMT_LIBS TIFF::TIFF)
  endif()
- 
+
  if(HAVE_JASPER)
 @@ -296,38 +296,5 @@ endif()
  ocv_add_precompiled_headers(${the_module})
  ocv_warnings_disable(CMAKE_CXX_FLAGS -Wno-deprecated-declarations -Wno-clobbered)
- 
+
 -if(WIN32 AND WITH_FFMPEG)
 -  #copy ffmpeg dll to the output folder
 -  if(MSVC64 OR MINGW64)

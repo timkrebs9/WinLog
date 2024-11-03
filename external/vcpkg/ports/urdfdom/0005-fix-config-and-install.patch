@@ -5,13 +5,13 @@ index d8eb93d..3e5c42a 100644
 @@ -3,8 +3,12 @@ if (@PKG_NAME@_CONFIG_INCLUDED)
  endif()
  set(@PKG_NAME@_CONFIG_INCLUDED TRUE)
- 
+
 -set(@PKG_NAME@_INCLUDE_DIRS "${@PROJECT_NAME@_DIR}/@RELATIVE_PATH_CMAKE_DIR_TO_PREFIX@/@CMAKE_INSTALL_INCLUDEDIR@" "@TinyXML_INCLUDE_DIRS@")
 +get_filename_component(_IMPORT_PREFIX "${CMAKE_CURRENT_LIST_FILE}" PATH)
 +get_filename_component(_IMPORT_PREFIX "${_IMPORT_PREFIX}" PATH)
-+ 
++
 +set(@PKG_NAME@_INCLUDE_DIRS "${_IMPORT_PREFIX}/include" "@TinyXML_INCLUDE_DIRS@")
- 
+
 +if (0)
  foreach(lib @PKG_LIBRARIES@)
    set(onelib "${lib}-NOTFOUND")
@@ -24,7 +24,7 @@ index d8eb93d..3e5c42a 100644
 +
 +include(CMakeFindDependencyMacro)
 +find_dependency(console_bridge)
- 
+
  foreach(dep @PKG_DEPENDS@)
    if(NOT ${dep}_FOUND)
 -    find_package(${dep})

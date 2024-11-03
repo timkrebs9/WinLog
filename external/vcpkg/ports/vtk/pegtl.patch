@@ -1,11 +1,11 @@
 diff --git a/CMake/FindPEGTL.cmake b/CMake/FindPEGTL.cmake
 index 73eee02f7..22d8bc159 100644
---- a/CMake/FindPEGTL.cmake	
+--- a/CMake/FindPEGTL.cmake
 +++ b/CMake/FindPEGTL.cmake
 @@ -19,31 +19,42 @@
  # Copyright (c) 2009 Benoit Jacob <jacob.benoit.1@gmail.com>
  # Redistribution and use is allowed according to the terms of the 2-clause BSD license.
- 
+
 -find_path(PEGTL_INCLUDE_DIR
 -  NAMES pegtl/version.hpp
 -  PATH_SUFFIXES tao
@@ -25,7 +25,7 @@ index 73eee02f7..22d8bc159 100644
 +      PATH_SUFFIXES tao
 +      DOC "Path to PEGTL headers")
 +    mark_as_advanced(PEGTL_INCLUDE_DIR)
- 
+
 -if (PEGTL_INCLUDE_DIR)
 -  file(STRINGS "${PEGTL_INCLUDE_DIR}/pegtl/version.hpp" _pegtl_version_header
 -    REGEX "TAO_PEGTL_VERSION")
@@ -42,7 +42,7 @@ index 73eee02f7..22d8bc159 100644
 +      unset(_pegtl_version_header)
 +      unset(_pegtl_version_match)
 +    endif ()
- 
+
 -include(FindPackageHandleStandardArgs)
 -find_package_handle_standard_args(PEGTL
 -  REQUIRED_VARS PEGTL_INCLUDE_DIR
@@ -51,7 +51,7 @@ index 73eee02f7..22d8bc159 100644
 +    find_package_handle_standard_args(PEGTL
 +      REQUIRED_VARS PEGTL_INCLUDE_DIR
 +      VERSION_VAR PEGTL_VERSION)
- 
+
 -if (PEGTL_FOUND)
 -  set(PEGTL_INCLUDE_DIRS "${PEGTL_INCLUDE_DIR}")
 -  if (NOT TARGET PEGTL::PEGTL)

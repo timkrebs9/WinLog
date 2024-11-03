@@ -3,9 +3,9 @@ index 2df4435..408bb4a 100644
 --- a/caffe2/core/logging_is_google_glog.h
 +++ b/caffe2/core/logging_is_google_glog.h
 @@ -30,5 +30,13 @@ INSTANTIATE_FOR_CONTAINER(std::set)
- 
+
  #include <glog/logging.h>
- 
+
 +#ifdef IN
 +#undef IN
 +#endif
@@ -14,5 +14,5 @@ index 2df4435..408bb4a 100644
 +#undef OUT
 +#endif
 +
- 
+
  #endif  // CAFFE2_CORE_LOGGING_IS_GOOGLE_GLOG_H_

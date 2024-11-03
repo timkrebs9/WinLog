@@ -5,7 +5,7 @@ index b406d0f..c5d04d5 100644
 @@ -65,7 +65,7 @@ if(MSVC)
    add_msvc_runtime_flag(foxi_loader)
  endif()
- 
+
 -if (NOT ANDROID AND NOT IOS)
 +if (FALSE)
    # ---[ FOXI wrapper
@@ -14,7 +14,7 @@ index b406d0f..c5d04d5 100644
 @@ -93,17 +93,6 @@ if (NOT ANDROID AND NOT IOS)
    endif()
  endif()
- 
+
 -# ---[ FOXI dummy backend
 -add_library(foxi_dummy SHARED foxi/onnxifi_dummy.c)
 -target_include_directories(foxi_dummy PRIVATE
@@ -31,12 +31,12 @@ index b406d0f..c5d04d5 100644
          FILES_MATCHING
 @@ -114,10 +103,10 @@ install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/foxi
          PATTERN "*.h")
- 
+
  install(TARGETS
 -  foxi foxi_dummy foxi_loader
 +  foxi_loader
    EXPORT ONNXTargets DESTINATION lib)
- 
+
 -if(NOT ANDROID AND NOT IOS)
 +if(FALSE)
    install(TARGETS foxi_wrapper
@@ -54,7 +54,6 @@ index c5d04d5..cc7d18a 100644
 -if(MSVC)
 -  add_msvc_runtime_flag(foxi_loader)
 -endif()
- 
+
  if (FALSE)
    # ---[ FOXI wrapper
-

@@ -16,4 +16,3 @@ index f764223..d6a58e4 100644
 +                               extra_link_args = bz2_extra_link_args) )
          else:
              missing.append('bz2')
- 

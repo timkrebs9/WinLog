@@ -7,9 +7,9 @@ vcpkg_from_github(
     PATCHES fix-find-lzma.patch
 )
 
-vcpkg_check_features( 
+vcpkg_check_features(
         OUT_FEATURE_OPTIONS FEATURE_OPTIONS
-        FEATURES    
+        FEATURES
         encryption LIBZIPPP_ENABLE_ENCRYPTION)
 
 vcpkg_cmake_configure(

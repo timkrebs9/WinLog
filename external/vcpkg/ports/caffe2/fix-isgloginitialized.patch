@@ -5,7 +5,7 @@ index 1379f3a..d1289db 100644
 @@ -120,17 +120,6 @@ using fLB::FLAGS_logtostderr;
  CAFFE2_DEFINE_int(caffe2_log_level, google::GLOG_ERROR,
                    "The minimum log level that caffe2 will output.");
- 
+
 -// Google glog's api does not have an external function that allows one to check
 -// if glog is initialized or not. It does have an internal function - so we are
 -// declaring it here. This is a hack but has been used by a bunch of others too

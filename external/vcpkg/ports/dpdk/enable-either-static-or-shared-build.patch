@@ -23,13 +23,13 @@ index 1d8123b..36ab3c0 100644
                  c_args: cflags,
 -                install: true)
 +                install: get_option('default_library') == 'static')
- 
+
          # now build the shared driver
          version_map = '@0@/@1@/version.map'.format(meson.current_source_dir(), drv_path)
 @@ -220,6 +220,7 @@ foreach subpath:subdirs
              endif
          endif
- 
+
 +      if get_option('default_library') == 'shared'
          shared_lib = shared_library(lib_name, sources,
                  objects: objs,
@@ -45,9 +45,9 @@ index 1d8123b..36ab3c0 100644
 +      if get_option('default_library') == 'static'
 +        shared_dep = static_dep
 +      endif
- 
+
          dpdk_drivers += static_lib
- 
+
 diff --git a/lib/meson.build b/lib/meson.build
 index 24adbe4..eef6e93 100644
 --- a/lib/meson.build
@@ -64,18 +64,18 @@ index 24adbe4..eef6e93 100644
 @@ -246,6 +246,7 @@ foreach l:libraries
                  output: name + '.sym_chk')
      endif
- 
+
 +  if get_option('default_library') == 'shared'
      shared_lib = shared_library(libname,
              sources,
              objects: objs,
 @@ -262,6 +263,9 @@ foreach l:libraries
              dependencies: shared_deps)
- 
+
      dpdk_libraries = [shared_lib] + dpdk_libraries
 +  else
 +    shared_dep = static_dep
 +  endif
      dpdk_static_libraries = [static_lib] + dpdk_static_libraries
- 
+
      set_variable('shared_rte_' + name, shared_dep)

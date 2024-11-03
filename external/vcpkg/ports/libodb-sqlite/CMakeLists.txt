@@ -11,7 +11,7 @@ file(GLOB_RECURSE libodb_src LIST_DIRECTORIES False
 list(FILTER libodb_src EXCLUDE REGEX /posix/.*)
 add_library(libodb-sqlite ${libodb_src})
 target_include_directories(libodb-sqlite
-    PUBLIC 
+    PUBLIC
         $<INSTALL_INTERFACE:include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>

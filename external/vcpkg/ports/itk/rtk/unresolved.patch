@@ -3,13 +3,13 @@ index 2a70ae046..69abb409e 100644
 --- a/include/rtkDCMImagXImageIO.h
 +++ b/include/rtkDCMImagXImageIO.h
 @@ -18,7 +18,7 @@
- 
+
  #ifndef rtkDCMImagXImageIO_h
  #define rtkDCMImagXImageIO_h
 -
 +#include "RTKExport.h"
  #include <itkGDCMImageIO.h>
- 
+
  #include "rtkMacro.h"
 @@ -32,7 +32,7 @@ namespace rtk
   *
@@ -25,7 +25,7 @@ index 66499c56b..7b16fbc5a 100644
 --- a/include/rtkEdfImageIO.h
 +++ b/include/rtkEdfImageIO.h
 @@ -18,7 +18,7 @@
- 
+
  #ifndef rtkEdfImageIO_h
  #define rtkEdfImageIO_h
 -
@@ -49,7 +49,7 @@ index 2ef2005dd..95449b8a6 100644
 @@ -19,6 +19,8 @@
  #ifndef rtkHisImageIO_h
  #define rtkHisImageIO_h
- 
+
 +#include "RTKExport.h"
 +
  // itk include
@@ -71,14 +71,14 @@ index 7b9539bde..dc9dca759 100644
 @@ -19,9 +19,11 @@
  #ifndef rtkHncImageIO_h
  #define rtkHncImageIO_h
- 
+
 +#include "RTKExport.h"
 +
  // itk include
  #include <itkImageIOBase.h>
 -#include "itksys/SystemTools.hxx"
 +//#include "itksys/SystemTools.hxx"
- 
+
  #if defined(_MSC_VER) && (_MSC_VER < 1600)
  // SR: taken from
 @@ -43,7 +45,7 @@ namespace rtk
@@ -110,12 +110,12 @@ index 5a07897cc..5f843362a 100644
 @@ -19,6 +19,8 @@
  #ifndef rtkHndImageIO_h
  #define rtkHndImageIO_h
- 
+
 +#include "RTKExport.h"
 +
  // itk include
  #include <itkImageIOBase.h>
- 
+
 @@ -43,7 +45,7 @@ namespace rtk
   *
   * \ingroup RTK IOFilters
@@ -130,7 +130,7 @@ index d69e9a790..d6cc8388e 100644
 --- a/include/rtkImagXImageIO.h
 +++ b/include/rtkImagXImageIO.h
 @@ -18,7 +18,7 @@
- 
+
  #ifndef rtkImagXImageIO_h
  #define rtkImagXImageIO_h
 -
@@ -154,7 +154,7 @@ index ece525a42..2d5332872 100644
 @@ -19,6 +19,8 @@
  #ifndef rtkOraImageIO_h
  #define rtkOraImageIO_h
- 
+
 +#include "RTKExport.h"
 +
  // This is done to avoid any interference with zlib
@@ -176,7 +176,7 @@ index a72c934e4..0a92afa22 100644
 @@ -19,6 +19,7 @@
  #ifndef rtkXRadImageIO_h
  #define rtkXRadImageIO_h
- 
+
 +#include "RTKExport.h"
  #include <itkImageIOBase.h>
  #include <fstream>
@@ -197,10 +197,10 @@ index ae789dbf9..741f05183 100644
 @@ -19,6 +19,7 @@
  #ifndef rtkXimImageIO_h
  #define rtkXimImageIO_h
- 
+
 +#include "RTKExport.h"
  #include "rtkMacro.h"
- 
+
  // itk include
 @@ -43,7 +44,7 @@ namespace rtk
   *

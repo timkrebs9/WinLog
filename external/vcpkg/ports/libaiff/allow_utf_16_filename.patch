@@ -3,7 +3,7 @@ index d0ad40d..e266802 100644
 --- a/libaiff.c
 +++ b/libaiff.c
 @@ -44,6 +44,8 @@ static struct decoder* decoders[] = {
- 
+
  static AIFF_Ref AIFF_ReadOpen (const char *, int);
  static AIFF_Ref AIFF_WriteOpen (const char *, int);
 +static AIFF_Ref AIFF_ReadOpenW (const wchar_t*, int);
@@ -14,13 +14,13 @@ index d0ad40d..e266802 100644
 @@ -53,6 +55,21 @@ static int Prepare (AIFF_Ref);
  static void Unprepare (AIFF_Ref);
  static struct decoder* FindDecoder (IFFType);
- 
+
 +#ifdef _WIN32
 +AIFF_Ref
 +AIFF_OpenFileW(const wchar_t *file, int flags)
 +{
 +	AIFF_Ref ref = NULL;
-+	
++
 +	if (flags & F_RDONLY) {
 +		ref = AIFF_ReadOpenW(file, flags);
 +	} else if (flags & F_WRONLY) {
@@ -36,9 +36,9 @@ index d0ad40d..e266802 100644
 @@ -86,6 +103,76 @@ AIFF_CloseFile(AIFF_Ref ref)
  	return r;
  }
- 
+
 +#ifdef _WIN32
-+static AIFF_Ref 
++static AIFF_Ref
 +AIFF_ReadOpenW(const wchar_t *file, int flags)
 +{
 +	AIFF_Ref r;
@@ -107,21 +107,21 @@ index d0ad40d..e266802 100644
 +
 +#endif
 +
- static AIFF_Ref 
+ static AIFF_Ref
  AIFF_ReadOpen(const char *file, int flags)
  {
 @@ -450,6 +537,89 @@ AIFF_ReadClose(AIFF_Ref r)
  	return;
  }
- 
+
 +#ifdef WIN32
-+static AIFF_Ref 
++static AIFF_Ref
 +AIFF_WriteOpenW(const wchar_t *file, int flags)
 +{
 +	AIFF_Ref w;
 +	IFFHeader hdr;
 +	ASSERT(sizeof(IFFHeader) == 12);
-+	
++
 +	w = malloc(kAIFFRefSize);
 +	if (!w) {
 +err0:
@@ -168,7 +168,7 @@ index d0ad40d..e266802 100644
 +		chk.len = ARRANGE_BE32(4);
 +		vers = ARRANGE_BE32(AIFC_STD_DRAFT_082691);
 +
-+		if (fwrite(&chk, 1, 8, w->fd) < 8 || 
++		if (fwrite(&chk, 1, 8, w->fd) < 8 ||
 +		    fwrite(&vers, 1, 4, w->fd) < 4) {
 +			goto err2;
 +		}
@@ -197,7 +197,7 @@ index d0ad40d..e266802 100644
 +}
 +#endif
 +
- static AIFF_Ref 
+ static AIFF_Ref
  AIFF_WriteOpen(const char *file, int flags)
  {
 diff --git a/libaiff/libaiff.h b/libaiff/libaiff.h
@@ -205,7 +205,7 @@ index 56fc77f..e1940a5 100644
 --- a/libaiff/libaiff.h
 +++ b/libaiff/libaiff.h
 @@ -165,6 +165,7 @@ typedef struct s_Instrument Instrument ;
- 
+
  /* == Function prototypes == */
  AIFF_Ref AIFF_OpenFile(const char *, int) ;
 +AIFF_Ref AIFF_OpenFileW(const wchar_t *, int) ;

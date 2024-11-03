@@ -24,7 +24,7 @@ index 06258729..0a7ad03d 100644
              });
          if (consideredInFirstImports && !consideredInPreviousOtherImports) {
 @@ -177,15 +177,15 @@ void GpgME::ImportResult::mergeWith(const ImportResult &other)
- 
+
          // now do the same for the secret key counts
          const auto secretKeyConsideredInFirstImports =
 -            std::any_of(std::begin(d->imports), std::end(d->imports), [fpr](const auto i) {
@@ -51,6 +51,5 @@ index 06258729..0a7ad03d 100644
                         gpgme_import_status_t copy = new _gpgme_import_status{*import};
                         if (import->fpr) {
                             copy->fpr = strdup(import->fpr);
--- 
+--
 2.11.0
-

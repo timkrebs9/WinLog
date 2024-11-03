@@ -9,9 +9,9 @@ vcpkg_from_github(
   )
 
 # Copy the headers that define this package to the install location.
-file(GLOB header_files 
+file(GLOB header_files
     "${SOURCE_PATH}/include/Random123/*.h"
-    "${SOURCE_PATH}/include/Random123/*.hpp") 
+    "${SOURCE_PATH}/include/Random123/*.hpp")
 file(COPY ${header_files}
     "${SOURCE_PATH}/include/Random123/features"
     "${SOURCE_PATH}/include/Random123/conventional"
@@ -19,5 +19,5 @@ file(COPY ${header_files}
 
 # Handle copyright
 file(INSTALL "${SOURCE_PATH}/LICENSE"
-    DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" 
+    DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}"
     RENAME copyright)

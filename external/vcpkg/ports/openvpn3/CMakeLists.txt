@@ -8,7 +8,7 @@ find_library(MBEDX509_LIB mbedx509)
 
 include_directories(. ${ASIO_HPP})
 
-if(WIN32) 
+if(WIN32)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
 endif()
 
@@ -38,5 +38,5 @@ INSTALL(EXPORT unofficial-openvpnConfig
 if(BUILD_TOOL)
     add_executable(cli test/ovpncli/cli.cpp)
     target_compile_definitions(cli PRIVATE -DTAP_WIN_COMPONENT_ID=tap0901)
-    target_link_libraries(cli PRIVATE ovpncli)    
+    target_link_libraries(cli PRIVATE ovpncli)
 endif()

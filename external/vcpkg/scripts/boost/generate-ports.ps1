@@ -200,7 +200,7 @@ $portData = @{
             "numa" = @{
                 "description" = "Enable NUMA support";
             }
-        } 
+        }
     };
     "boost-filesystem"       = @{ "supports" = "!uwp" };
     "boost-iostreams"        = @{
@@ -386,7 +386,7 @@ function GeneratePortManifest() {
                     $dep_name = $dependency
                 }
                 $manifest["dependencies"] = $manifest["dependencies"] `
-                | Where-Object { 
+                | Where-Object {
                     if ($_.Contains("name")) {
                         $_.name -notmatch "$dep_name"
                     } else {

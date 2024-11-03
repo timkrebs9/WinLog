@@ -10,7 +10,7 @@ vcpkg_download_distfile(ARCHIVE
 
 vcpkg_extract_source_archive_ex(
     OUT_SOURCE_PATH SOURCE_PATH
-    ARCHIVE ${ARCHIVE} 
+    ARCHIVE ${ARCHIVE}
     REF ${VERSION}
     PATCHES
         fix_gobal_vars_uninit_local_ptr.patch
@@ -49,4 +49,3 @@ vcpkg_fixup_cmake_targets()
 
 # Handle copyright
 file(INSTALL ${SOURCE_PATH}/LICENSE DESTINATION ${CURRENT_PACKAGES_DIR}/share/wordnet RENAME copyright)
-

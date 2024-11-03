@@ -4,8 +4,8 @@ index cddbccb..63c8f3d 100644
 +++ b/CMakeLists.txt
 @@ -492,6 +492,7 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/liblzmaConfig.cmake"
          COMPONENT liblzma_Development)
- 
- 
+
+
 +if(BUILD_TOOLS)
  #############################################################################
  # getopt_long

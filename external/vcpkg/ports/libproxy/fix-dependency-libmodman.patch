@@ -4,7 +4,7 @@ index 4f51e38..32a0319 100644
 +++ b/CMakeLists.txt
 @@ -31,11 +31,15 @@ include(cmake/ctest.cmk)
  include(cmake/paths.cmk)
- 
+
  option(WITH_WEBKIT3 "Build against gtk-3 version of webkitgtk" OFF)
 -
 -### Subdirectories
@@ -20,7 +20,7 @@ index 4f51e38..32a0319 100644
 +    add_subdirectory(libmodman)
 +    include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 +endif()
- 
+
  # Conditionally build bindings
  if(NOT WIN32)
 diff --git a/libproxy/cmake/libproxy.cmk b/libproxy/cmake/libproxy.cmk

@@ -25,7 +25,7 @@ index 2cedf81..f413f28 100644
 +    if constexpr(B)
 +        __builtin_coro_destroy(p);
  }
- 
+
 +template <bool B>
 +bool done_wrapper(void *p)
 +{
@@ -37,7 +37,7 @@ index 2cedf81..f413f28 100644
 +//}
 +
  bool _coro_finished(portable_coro_prefix* _Handle);
- 
+
  #if defined(__clang__)
 @@ -124,7 +142,7 @@ bool portable_coro_done(portable_coro_prefix* _Handle) {
      if constexpr (is_msvc) {
@@ -53,10 +53,10 @@ index 2cedf81..f413f28 100644
          _coro_resume(_Handle);
      } else if constexpr (is_clang) {
 -        __builtin_coro_resume(_Handle);
-+       resume_wrapper<true>(_Handle); 
++       resume_wrapper<true>(_Handle);
      }
  }
- 
+
 @@ -141,7 +159,7 @@ void portable_coro_destroy(portable_coro_prefix* _Handle) {
      if constexpr (is_msvc) {
          _coro_destroy(_Handle);
@@ -65,4 +65,3 @@ index 2cedf81..f413f28 100644
 +        destroy_wrapper<true>(_Handle);
      }
  }
- 

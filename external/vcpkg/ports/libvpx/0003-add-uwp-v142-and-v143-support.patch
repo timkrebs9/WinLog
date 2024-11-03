@@ -148,7 +148,7 @@ index beea650..91ae3c8 100644
          ver=`"$source_path/build/make/version.sh" --bare "$source_path"`
          DIST_DIR="${DIST_DIR}-${ver}"
 @@ -578,6 +589,10 @@ process_detect() {
- 
+
              # Specialize windows and POSIX environments.
              case $toolchain in
 +                *-uwp-*)

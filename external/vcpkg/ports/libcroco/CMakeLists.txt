@@ -72,7 +72,7 @@ set(CMAKE_DEBUG_POSTFIX "d")
 add_library(croco-0.6 ${SOURCES})
 
 target_include_directories(croco-0.6 PRIVATE ${GLIB_INCLUDE_DIRS} ${LIBXML2_INCLUDE_DIR})
-target_link_libraries(croco-0.6 PRIVATE 
+target_link_libraries(croco-0.6 PRIVATE
     PkgConfig::GLIB2
     ${LIBXML2_LIBRARIES} ${Intl_LIBRARIES} Iconv::Iconv
 )

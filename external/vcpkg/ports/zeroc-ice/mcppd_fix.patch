@@ -1,5 +1,5 @@
---- a/config/Make.project.rules	2022-01-17 10:28:23.000000000 
-+++ b/config/Make.project.rules	2022-04-18 12:15:19.000000000 
+--- a/config/Make.project.rules	2022-01-17 10:28:23.000000000
++++ b/config/Make.project.rules	2022-04-18 12:15:19.000000000
 @@ -1050,17 +1050,17 @@
  #
  # $(call make-lib,$1=libname)
@@ -17,7 +17,7 @@
 -$1_ldflags      ?= -l$1
 +$1_ldflags      ?= -l$$(if $$(and $$(filter mcpp,$1),$$(filter no,$$(OPTIMIZE))),$1d,$1)
  endef
- 
+
  #
  # $(call repathfromdir,path)
  #

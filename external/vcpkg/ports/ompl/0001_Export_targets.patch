@@ -10,7 +10,7 @@ index a9bb05f..31fab8c 100644
 +    DESTINATION "share/ompl"
 +    FILE ompl-targets.cmake
 +)
- 
+
  # script to install ompl on Ubuntu
  configure_file("${CMAKE_CURRENT_SOURCE_DIR}/install-ompl-ubuntu.sh.in"
 diff --git a/src/ompl/CMakeLists.txt b/src/ompl/CMakeLists.txt
@@ -18,7 +18,7 @@ index 9ea130e..6dda4df 100644
 --- a/src/ompl/CMakeLists.txt
 +++ b/src/ompl/CMakeLists.txt
 @@ -83,6 +83,7 @@ endif (MSVC)
- 
+
  # install the library
  install(TARGETS ompl
 +    EXPORT ompl

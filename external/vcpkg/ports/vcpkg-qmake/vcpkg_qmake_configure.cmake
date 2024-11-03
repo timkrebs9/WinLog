@@ -102,7 +102,7 @@ function(vcpkg_qmake_configure)
                 vcpkg_list(APPEND qmake_comp_flags "${qmake_var}${operation}${striped_flags}")
             endif()
         endmacro()
-        
+
         qmake_add_flags("QMAKE_LIBS" "+=" "${VCPKG_DETECTED_CMAKE_C_STANDARD_LIBRARIES} ${VCPKG_DETECTED_CMAKE_CXX_STANDARD_LIBRARIES}")
         qmake_add_flags("QMAKE_RC" "+=" "${VCPKG_COMBINED_RC_FLAGS_${buildtype}}") # not exported by vcpkg_cmake_get_vars yet
         qmake_add_flags("QMAKE_CFLAGS_${buildtype}" "+=" "${VCPKG_COMBINED_C_FLAGS_${buildtype}}")
@@ -122,7 +122,7 @@ function(vcpkg_qmake_configure)
         else()
             # Let a supplied qt.conf override everything.
             # The file will still be configured so users might use the variables within this scope.
-            set(qmake_build_tools "") 
+            set(qmake_build_tools "")
             set(qmake_comp_flags "")
         endif()
         configure_file("${VCPKG_QT_CONF_${buildtype}}" "${CURRENT_BUILDTREES_DIR}/${config_triplet}/qt.conf")
@@ -135,7 +135,7 @@ function(vcpkg_qmake_configure)
         if(DEFINED arg_OPTIONS OR DEFINED arg_OPTIONS_${buildtype})
             set(options -- ${arg_OPTIONS} ${arg_OPTIONS_${buildtype}})
         endif()
-        # Options might need to go into a response file? I am a bit concerned about cmd line length. 
+        # Options might need to go into a response file? I am a bit concerned about cmd line length.
         vcpkg_execute_required_process(
             COMMAND ${VCPKG_QMAKE_COMMAND} ${qmake_config_${buildtype}}
                     ${arg_QMAKE_OPTIONS} ${arg_QMAKE_OPTIONS_${buildtype}}

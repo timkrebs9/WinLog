@@ -24,8 +24,8 @@ endif()
 find_path(ASIOSDK_INCLUDE_DIR
   asio.h
   PATHS
-  ${ASIOSDK_ROOT_DIR}/common 
-)  
+  ${ASIOSDK_ROOT_DIR}/common
+)
 
 
 if (NOT "${ASIOSDK_ROOT_DIR}" STREQUAL "")

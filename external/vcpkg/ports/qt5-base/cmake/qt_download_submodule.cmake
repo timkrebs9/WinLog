@@ -5,11 +5,11 @@ endfunction()
 
 function(qt_download_submodule)
     cmake_parse_arguments(_csc "" "OUT_SOURCE_PATH" "PATCHES;BUILD_OPTIONS;BUILD_OPTIONS_RELEASE;BUILD_OPTIONS_DEBUG" ${ARGN})
-    
+
     if(NOT DEFINED _csc_OUT_SOURCE_PATH)
         message(FATAL_ERROR "qt_download_module requires parameter OUT_SOURCE_PATH to be set! Please correct the portfile!")
     endif()
-    
+
     vcpkg_buildpath_length_warning(37)
     qt_get_submodule_name(NAME)
 

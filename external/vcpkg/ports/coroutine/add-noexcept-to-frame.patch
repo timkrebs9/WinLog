@@ -10,4 +10,3 @@
          _Result._Ptr = reinterpret_cast<portable_coro_prefix*>(_Addr);
          return _Result;
      }
- 

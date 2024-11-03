@@ -7,7 +7,7 @@ index d50781615663..df06604c724c 100644
 +++ b/bolt/tools/driver/CMakeLists.txt
 @@ -33,14 +33,6 @@ set(BOLT_DEPENDS
    )
- 
+
  add_custom_target(bolt DEPENDS ${BOLT_DEPENDS})
 -install(PROGRAMS
 -  ${CMAKE_BINARY_DIR}/bin/llvm-bolt

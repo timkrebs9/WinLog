@@ -9,7 +9,7 @@ index 433d5c7..04a0edf 100644
 -# ASIO_INCLUDE_DIR, where to find the headers
 -#
  # Created by Stephan Maximilian Huber
- 
+
 -FIND_PATH(ASIO_INCLUDE_DIR
 -  NAMES
 -    asio.hpp
@@ -35,7 +35,7 @@ index 8464b9d..073e8ed 100644
 @@ -1,5 +1,4 @@
  INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 -INCLUDE_DIRECTORIES(${ASIO_INCLUDE_DIR})
-     
+
  SET(TARGET_SRC
      connection.cpp
 diff --git a/src/osgPlugins/RestHttpDevice/connection.hpp b/src/osgPlugins/RestHttpDevice/connection.hpp
@@ -45,7 +45,7 @@ index 99f3a93..b205759 100644
 @@ -11,7 +11,7 @@
  #ifndef HTTP_SERVER_CONNECTION_HPP
  #define HTTP_SERVER_CONNECTION_HPP
- 
+
 -#include <asio.hpp>
 +#include <boost/asio.hpp>
  #include <boost/array.hpp>
@@ -58,7 +58,7 @@ index 1d363a8..b6e7195 100644
 @@ -11,7 +11,7 @@
  #ifndef HTTP_SERVER_IO_SERVICE_POOL_HPP
  #define HTTP_SERVER_IO_SERVICE_POOL_HPP
- 
+
 -#include <asio.hpp>
 +#include <boost/asio.hpp>
  #include <vector>
@@ -69,13 +69,13 @@ index 89f264a..b63d0b9 100644
 --- a/src/osgPlugins/RestHttpDevice/reply.hpp
 +++ b/src/osgPlugins/RestHttpDevice/reply.hpp
 @@ -13,7 +13,7 @@
- 
+
  #include <string>
  #include <vector>
 -#include <asio.hpp>
 +#include <boost/asio.hpp>
  #include "header.hpp"
- 
+
  namespace http {
 diff --git a/src/osgPlugins/RestHttpDevice/server.hpp b/src/osgPlugins/RestHttpDevice/server.hpp
 index a14f263..91c4b62 100644
@@ -84,7 +84,7 @@ index a14f263..91c4b62 100644
 @@ -11,7 +11,7 @@
  #ifndef HTTP_SERVER_SERVER_HPP
  #define HTTP_SERVER_SERVER_HPP
- 
+
 -#include <asio.hpp>
 +#include <boost/asio.hpp>
  #include <string>

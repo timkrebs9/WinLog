@@ -3,7 +3,7 @@ index fcd791b..346f715 100644
 --- a/build/cmake/FindResSearch.cmake
 +++ b/build/cmake/FindResSearch.cmake
 @@ -2,7 +2,7 @@ include (CheckSymbolExists)
- 
+
  if (ENABLE_SRV STREQUAL ON OR ENABLE_SRV STREQUAL AUTO)
     if (WIN32)
 -      set (RESOLV_LIBRARIES Dnsapi)
@@ -60,15 +60,15 @@ index e085adb..592bc89 100644
 +#include <mstcpip.h>
  #include <process.h>
  #endif
- 
+
 diff --git a/src/libmongoc/src/mongoc/mongoc-sspi-private.h b/src/libmongoc/src/mongoc/mongoc-sspi-private.h
 index 60996fc..3745eff 100644
 --- a/src/libmongoc/src/mongoc/mongoc-sspi-private.h
 +++ b/src/libmongoc/src/mongoc/mongoc-sspi-private.h
 @@ -28,7 +28,7 @@ BSON_BEGIN_DECLS
- 
+
  #define SECURITY_WIN32 1 /* Required for SSPI */
- 
+
 -#include <Windows.h>
 +#include <windows.h>
  #include <limits.h>

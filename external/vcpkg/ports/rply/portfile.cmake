@@ -30,4 +30,3 @@ vcpkg_fixup_cmake_targets()
 
 # Handle copyright
 file(INSTALL ${SOURCE_PATH}/LICENSE DESTINATION ${CURRENT_PACKAGES_DIR}/share/rply RENAME copyright)
-

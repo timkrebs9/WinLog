@@ -9,12 +9,12 @@ index bc6dbdc..1e8adbb 100644
 -  set(oneValueArgs VERSION PRETTY PURPOSE EXTRA_ARGS PKGCONFIG PKGCONFIG_LIB PKGCONFIG_VER_COMPARISON)
 +  set(oneValueArgs VERSION PRETTY PURPOSE EXTRA_ARGS PKGCONFIG PKGCONFIG_LIB PKGCONFIG_VER_COMPARISON BY_PKGCONFIG)
    set(multiValueArgs REQUIRED_BY PRIVATE_FOR COMPONENTS OPTIONAL_COMPONENTS)
- 
+
    #------------------------------------
 @@ -183,9 +183,15 @@ macro(ign_find_package PACKAGE_NAME)
    endif()
- 
- 
+
+
 +  if (NOT ign_find_package_BY_PKGCONFIG)
    #------------------------------------
    # Call find_package with the provided arguments
@@ -24,12 +24,12 @@ index bc6dbdc..1e8adbb 100644
 +  include(FindPkgConfig)
 +  pkg_check_modules(${PACKAGE_NAME} ${ign_find_package_BY_PKGCONFIG})
 +  endif()
- 
+
    if(${PACKAGE_NAME}_FOUND)
- 
+
 @@ -300,17 +306,11 @@ macro(ign_find_package PACKAGE_NAME)
      endif()
- 
+
      if(ign_find_package_REQUIRED_BY)
 -
 -      # Identify which components are privately requiring this package

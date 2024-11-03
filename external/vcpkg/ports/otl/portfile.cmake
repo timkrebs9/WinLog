@@ -12,8 +12,8 @@ vcpkg_extract_source_archive_ex(
     NO_REMOVE_ONE_LEVEL
 )
 
-file(INSTALL "${SOURCE_PATH}/otlv${OTL_VERSION}.h" 
-    DESTINATION "${CURRENT_PACKAGES_DIR}/include/${PORT}" 
+file(INSTALL "${SOURCE_PATH}/otlv${OTL_VERSION}.h"
+    DESTINATION "${CURRENT_PACKAGES_DIR}/include/${PORT}"
     RENAME otlv4.h)
 
 file(READ "${SOURCE_PATH}/otlv${OTL_VERSION}.h" copyright_contents)

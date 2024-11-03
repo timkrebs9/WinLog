@@ -14,5 +14,5 @@
 -ELSEIF(WITH_QT)
 -   MESSAGE(WARNING "Qt not found, the GUI lib and the stand-alone application will not be compiled...")
  ENDIF()
- 
+
  IF(BUILD_TOOLS)

@@ -20,8 +20,8 @@ index ef1864f..d284c64 100644
 +#endif /* HAVE_UNISTD_H */
  #include <string>
  #include <sys/stat.h>
- 
--- 
+
+--
 2.12.2.windows.2
 
 From 840f920bcd370668b9e788b3c8272eca1f20ce3a Mon Sep 17 00:00:00 2001
@@ -47,7 +47,7 @@ index 44b4cb1..2144370 100644
  #include <stdlib.h>
  #include <stdint.h>
  #include <stdio.h>
--- 
+--
 2.12.2.windows.2
 
 From 1c231aa84624082a0fa52d59be8c449bfe1fadd1 Mon Sep 17 00:00:00 2001
@@ -74,5 +74,5 @@ index 17fc6fd..8503abe 100644
  #include <stdlib.h>
  #include <stdint.h>
  #include <stdio.h>
--- 
+--
 2.12.2.windows.2

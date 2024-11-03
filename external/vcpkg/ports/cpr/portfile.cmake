@@ -18,7 +18,7 @@ vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
-    OPTIONS 
+    OPTIONS
         -DCPR_BUILD_TESTS=OFF
         -DCPR_FORCE_USE_SYSTEM_CURL=ON
         ${FEATURE_OPTIONS}

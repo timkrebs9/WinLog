@@ -4,18 +4,18 @@ index 92bedf4..8c3e542 100644
 +++ b/include/pangolin/gl/colour.h
 @@ -28,6 +28,7 @@
  #pragma once
- 
+
  #include <cmath>
 +#include <limits>
- 
+
  #include <stdexcept>
- 
+
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index ddeb144..ee27d57 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -299,7 +299,9 @@ if(BUILD_PANGOLIN_PYTHON AND BUILD_PANGOLIN_GUI AND BUILD_PANGOLIN_VARS AND NOT
- 
+
    if(pybind11_FOUND)
      set(HAVE_PYTHON 1)
 -
@@ -26,7 +26,7 @@ index ddeb144..ee27d57 100644
      file(GLOB pypangolin_HDR "python/pypangolin/*.hpp" )
      list(APPEND HEADERS
 @@ -382,6 +384,7 @@ endif()
- 
+
  option(BUILD_PANGOLIN_FFMPEG "Build support for ffmpeg video input" ON)
  if(BUILD_PANGOLIN_FFMPEG AND BUILD_PANGOLIN_VIDEO)
 +  add_definitions(-DHAVE_FFMPEG_AVPIXELFORMAT)
@@ -34,7 +34,7 @@ index ddeb144..ee27d57 100644
    if(FFMPEG_FOUND)
      set(HAVE_FFMPEG 1)
 @@ -464,11 +467,14 @@ endif()
- 
+
  option(BUILD_PANGOLIN_LIBUVC "Build support for libuvc video input" ON)
  if(BUILD_PANGOLIN_LIBUVC AND BUILD_PANGOLIN_VIDEO)
 -  find_package(uvc QUIET)
@@ -53,7 +53,7 @@ index ddeb144..ee27d57 100644
      list(APPEND SOURCES video/drivers/uvc.cpp)
      list(APPEND VIDEO_FACTORY_REG RegisterUvcVideoFactory )
 @@ -584,11 +590,14 @@ endif()
- 
+
  option(BUILD_PANGOLIN_LIBOPENEXR "Build support for libopenexr image input" ON)
  if(BUILD_PANGOLIN_LIBOPENEXR)
 -  find_package(OpenEXR QUIET)
@@ -71,9 +71,9 @@ index ddeb144..ee27d57 100644
    endif()
  endif()
 @@ -630,6 +635,13 @@ endif()
- 
+
  set(INSTALL_INCLUDE_DIR "include")
- 
+
 +# Required by geometry
 +if(NOT BUILD_EXTERN_GLEW)
 +    find_package(GLEW REQUIRED)
@@ -105,7 +105,7 @@ index 52c0078..1bd6c55 100644
 +++ b/src/image/image_io_exr.cpp
 @@ -4,6 +4,8 @@
  #include <pangolin/image/typed_image.h>
- 
+
  #ifdef HAVE_OPENEXR
 +#include <ImfFrameBuffer.h>
 +#include <ImfHeader.h>
@@ -115,13 +115,13 @@ index 52c0078..1bd6c55 100644
 @@ -54,12 +56,12 @@ class StdIStream: public Imf::IStream
          return true;
      }
- 
+
 -    virtual Imf::Int64 tellg ()
 +    virtual uint64_t tellg ()
      {
          return std::streamoff (_is->tellg());
      }
- 
+
 -    virtual void seekg (Imf::Int64 pos)
 +    virtual void seekg (uint64_t pos)
      {

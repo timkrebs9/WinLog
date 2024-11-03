@@ -46,7 +46,7 @@ elseif(VCPKG_TARGET_ARCHITECTURE STREQUAL "x64")
             c/blake3_sse2_x86-64_unix.S
             c/blake3_sse41_x86-64_unix.S
             c/blake3_avx512_x86-64_unix.S
-        )        
+        )
     endif()
 else()
     target_compile_definitions(blake3 PRIVATE BLAKE3_NO_SSE2=1 BLAKE3_NO_SSE41=1 BLAKE3_NO_AVX2=1 BLAKE3_NO_AVX512=1)

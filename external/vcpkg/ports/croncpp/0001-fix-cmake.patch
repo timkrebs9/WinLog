@@ -17,12 +17,12 @@ index 9114b39..8d46e6b 100644
  cmake_minimum_required(VERSION 3.7.0)
 -project(croncpp)
 +project(croncpp VERSION 1.0.0)
- 
+
  if(WIN32)
     message(status "Setting MSVC flags")
 @@ -24,4 +24,47 @@ if(BUILD_TESTS)
  endif()
- 
+
  add_subdirectory(benchmark)
 -add_subdirectory(test)
 \ No newline at end of file
@@ -77,6 +77,5 @@ index 0000000..3c4702c
 +++ b/croncppConfig.cmake
 @@ -0,0 +1 @@
 +include( "${CMAKE_CURRENT_LIST_DIR}/croncppTargets.cmake" )
--- 
+--
 2.20.1
-

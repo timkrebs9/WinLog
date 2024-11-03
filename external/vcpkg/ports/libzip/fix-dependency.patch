@@ -4,7 +4,7 @@ index 5b9aa55..0723f3c 100644
 +++ b/libzip-config.cmake.in
 @@ -1,8 +1,20 @@
  @PACKAGE_INIT@
- 
+
  # only needed for static library, and doesn't work as-is
 -#include(CMakeFindDependencyMacro)
 -#find_dependency(ZLIB::ZLIB)

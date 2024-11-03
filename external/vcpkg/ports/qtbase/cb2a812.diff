@@ -13,10 +13,10 @@ index ecc21eb..7b00940 100644
 --- a/src/plugins/platforms/xcb/nativepainting/qtessellator.cpp
 +++ b/src/plugins/platforms/xcb/nativepainting/qtessellator.cpp
 @@ -5,6 +5,7 @@
- 
+
  #include <QRect>
  #include <QList>
 +#include <QMap>
  #include <QDebug>
- 
+
  #include <qmath.h>

@@ -3,7 +3,7 @@ index f4e5c29..24641ad 100644
 --- a/blosc/CMakeLists.txt
 +++ b/blosc/CMakeLists.txt
 @@ -122,14 +122,14 @@ endif (NOT DEACTIVATE_ZSTD)
- 
+
  # targets
  if (BUILD_SHARED)
 -    add_library(blosc_shared SHARED ${SOURCES})
@@ -20,21 +20,21 @@ index f4e5c29..24641ad 100644
 +        TARGET blosc
          APPEND PROPERTY COMPILE_DEFINITIONS BLOSC_SHARED_LIBRARY)
  endif()
- 
+
 @@ -192,8 +192,8 @@ if (BUILD_TESTS)
  endif()
- 
+
  if (BUILD_SHARED)
 -    target_link_libraries(blosc_shared ${LIBS})
 -    target_include_directories(blosc_shared PUBLIC ${BLOSC_INCLUDE_DIRS})
 +    target_link_libraries(blosc ${LIBS})
 +    target_include_directories(blosc PUBLIC $<INSTALL_INTERFACE:include> $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
  endif()
- 
+
  if (BUILD_TESTS)
 @@ -202,22 +202,24 @@ if (BUILD_TESTS)
  endif()
- 
+
  if(BUILD_STATIC)
 -    add_library(blosc_static STATIC ${SOURCES})
 -    set_target_properties(blosc_static PROPERTIES OUTPUT_NAME blosc)
@@ -49,7 +49,7 @@ index f4e5c29..24641ad 100644
 +    target_link_libraries(blosc ${LIBS})
 +    target_include_directories(blosc PUBLIC $<INSTALL_INTERFACE:include> $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
  endif(BUILD_STATIC)
- 
+
  # install
  if(BLOSC_INSTALL)
      install(FILES blosc.h blosc-export.h DESTINATION include COMPONENT DEV)

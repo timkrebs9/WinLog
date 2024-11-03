@@ -7,10 +7,10 @@ index 2596a23..3ec1527 100644
 +cmake_minimum_required (VERSION 3.7.0)
  project (collada-dom)
  set( CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS TRUE )
- 
+
 @@ -89,14 +89,22 @@ string(TOUPPER ${COMPONENT_PREFIX} COMPONENT_PREFIX_UPPER)
  set(CPACK_COMPONENTS_ALL ${COMPONENT_PREFIX}-base ${COMPONENT_PREFIX}-dev)
- 
+
  if( MSVC )
 -  if( MSVC70 OR MSVC71 )
 -    set(MSVC_PREFIX "vc70")

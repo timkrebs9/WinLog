@@ -25,6 +25,5 @@ index 20bdc92e..4efe834e 100644
      else()
          find_package(Threads REQUIRED)
          if (NOT CMAKE_USE_PTHREADS_INIT)
--- 
+--
 2.34.1
-

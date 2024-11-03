@@ -13,4 +13,3 @@ file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/lib")
 
 # Handle copyright
 file(INSTALL "${SOURCE_PATH}/LICENSE" DESTINATION "${CURRENT_PACKAGES_DIR}/share/cpp-peglib" RENAME copyright)
-

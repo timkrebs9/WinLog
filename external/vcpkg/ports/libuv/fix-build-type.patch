@@ -47,7 +47,7 @@ index ac52412..15d5cb2 100644
 +else()
  configure_file(libuv-static.pc.in libuv-static.pc @ONLY)
 +endif()
- 
+
  install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
  install(FILES LICENSE DESTINATION ${CMAKE_INSTALL_DOCDIR})
 -install(FILES ${PROJECT_BINARY_DIR}/libuv.pc ${PROJECT_BINARY_DIR}/libuv-static.pc
@@ -68,5 +68,5 @@ index ac52412..15d5cb2 100644
          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 +endif()
  install(EXPORT libuvConfig DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libuv)
- 
+
  if(MSVC)

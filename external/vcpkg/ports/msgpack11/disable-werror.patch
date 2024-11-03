@@ -10,5 +10,5 @@ index 080cefa..b73072a 100644
 -  target_compile_options(msgpack11 PRIVATE -Wall -Wextra -Werror)
 -endif()
  configure_file("msgpack11.pc.in" "msgpack11.pc" @ONLY)
- 
+
  if (MSGPACK11_BUILD_TESTS)

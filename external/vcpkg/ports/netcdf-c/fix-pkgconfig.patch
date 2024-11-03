@@ -5,7 +5,7 @@ index 390ac0a..4bcd909 100644
 @@ -2100,6 +2100,21 @@ STRING(REPLACE ";" " " LINKFLAGS "${LINKFLAGS}")
  SET(LIBS ${NC_LIBS})
  SET(NC_LIBS "-lnetcdf")
- 
+
 +set(NC_LIBS_PRIVATE " ${LIBS} ")
 +set(NC_REQUIRES_PRIVATE "")
 +macro(replace_pkgconfig_module PATTERN MODULE)

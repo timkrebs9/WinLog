@@ -8,7 +8,7 @@ index 6541f1b..e81bdce 100644
 +cmake_policy(SET CMP0022 NEW)
  project(libsoundio C)
  set(CMAKE_MODULE_PATH ${libsoundio_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
- 
+
 @@ -233,7 +234,8 @@ if(BUILD_DYNAMIC_LIBS)
          LINKER_LANGUAGE C
      )
@@ -17,7 +17,7 @@ index 6541f1b..e81bdce 100644
 +    target_include_directories(libsoundio_shared PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 +    install(TARGETS libsoundio_shared EXPORT libsoundio-export)
  endif()
- 
+
  if(BUILD_STATIC_LIBS)
 @@ -204,8 +206,7 @@ if(MSVC)
      set(EXAMPLE_CFLAGS "/W4")
@@ -37,7 +37,7 @@ index 6541f1b..e81bdce 100644
 +    target_include_directories(libsoundio_static PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 +    install(TARGETS libsoundio_static EXPORT libsoundio-export)
  endif()
- 
+
 +add_library(libsoundio INTERFACE)
 +if(BUILD_DYNAMIC_LIBS)
 +    target_link_libraries(libsoundio INTERFACE libsoundio_shared)

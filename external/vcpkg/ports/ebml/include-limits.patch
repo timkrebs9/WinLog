@@ -7,18 +7,17 @@ index 27e55fd..4c05fcf 100644
  */
  #include <cassert>
 +#include <limits>
- 
+
  #include "ebml/EbmlString.h"
- 
+
 diff --git a/src/EbmlUnicodeString.cpp b/src/EbmlUnicodeString.cpp
 index 496a16a..99fc073 100644
 --- a/src/EbmlUnicodeString.cpp
 +++ b/src/EbmlUnicodeString.cpp
 @@ -36,6 +36,7 @@
  */
- 
+
  #include <cassert>
 +#include <limits>
- 
+
  #include "ebml/EbmlUnicodeString.h"
- 

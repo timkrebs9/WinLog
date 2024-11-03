@@ -5,14 +5,14 @@ index 7af20b5..908523c 100644
 @@ -720,8 +720,8 @@ void gpPanel::OnMenuItemPrintPreview(wxCommandEvent& event)
      gpLayer_s *gp = GetLayerByMenuId(event.GetId() );
      if(gp==NULL)return;
- 
+
 -    mpPrintout *plotPrint = new mpPrintout(gp->m_plot, gp->layer->GetName());
 -    mpPrintout *plotPrintPreview = new mpPrintout(gp->m_plot, gp->layer->GetName());
 +    mpPrintout *plotPrint = new mpPrintout(gp->m_plot, gp->layer->GetName().c_str());
 +    mpPrintout *plotPrintPreview = new mpPrintout(gp->m_plot, gp->layer->GetName().c_str());
- 
+
      wxPrintPreview *preview = new wxPrintPreview(plotPrintPreview, plotPrint);
- 
+
 @@ -765,7 +765,7 @@ void gpPanel::OnMenuItemSaveScreenshot(wxCommandEvent& event)
          if(index!=-1)
          {

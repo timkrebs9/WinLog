@@ -4,7 +4,7 @@ index e85defa..7f450ab 100644
 +++ b/configs/azure_c_shared_utilityFunctions.cmake
 @@ -2,11 +2,11 @@
  #Licensed under the MIT license. See LICENSE file in the project root for full license information.
- 
+
  function(target_link_libraries_with_arg_prefix arg_prefix whatIsBuilding lib)
 -    if(${arg_prefix} STREQUAL "debug")
 +    if(arg_prefix STREQUAL "debug")
@@ -34,7 +34,7 @@ index e85defa..7f450ab 100644
              SET(PARSING_VALGRIND_SUPPRESSIONS_FILE ON)
              set(skip_to_next TRUE)
 @@ -57,7 +57,7 @@ function(windows_unittests_add_dll whatIsBuilding)
- 
+
          if(NOT skip_to_next)
              if(PARSING_ADDITIONAL_LIBS)
 -                if((${f} STREQUAL "debug") OR (${f} STREQUAL "optimized") OR (${f} STREQUAL "general"))
@@ -59,7 +59,7 @@ index e85defa..7f450ab 100644
              SET(PARSING_VALGRIND_SUPPRESSIONS_FILE ON)
              set(skip_to_next TRUE)
 @@ -104,7 +104,7 @@ function(windows_unittests_add_exe whatIsBuilding)
- 
+
          if(NOT skip_to_next)
              if(PARSING_ADDITIONAL_LIBS)
 -                if((${f} STREQUAL "debug") OR (${f} STREQUAL "optimized") OR (${f} STREQUAL "general"))
@@ -78,14 +78,14 @@ index e85defa..7f450ab 100644
              set(ARG_PREFIX "none")
              set(skip_to_next TRUE)
              #also unset all the other states
- 
+
 -        elseif(${f} STREQUAL "VALGRIND_SUPPRESSIONS_FILE")
 +        elseif(f STREQUAL "VALGRIND_SUPPRESSIONS_FILE")
              SET(PARSING_ADDITIONAL_LIBS OFF)
              SET(PARSING_VALGRIND_SUPPRESSIONS_FILE ON)
              set(skip_to_next TRUE)
 @@ -165,7 +165,7 @@ function(linux_unittests_add_exe whatIsBuilding)
- 
+
          if(NOT skip_to_next)
              if(PARSING_ADDITIONAL_LIBS)
 -                if((${f} STREQUAL "debug") OR (${f} STREQUAL "optimized") OR (${f} STREQUAL "general"))
@@ -94,7 +94,7 @@ index e85defa..7f450ab 100644
                  else()
                      target_link_libraries_with_arg_prefix(${ARG_PREFIX} ${whatIsBuilding}_exe ${f})
 @@ -184,7 +184,7 @@ function(linux_unittests_add_exe whatIsBuilding)
- 
+
      if(${run_valgrind})
          find_program(VALGRIND_FOUND NAMES valgrind)
 -        if(${VALGRIND_FOUND} STREQUAL VALGRIND_FOUND-NOTFOUND)
@@ -119,7 +119,7 @@ index e85defa..7f450ab 100644
              SET(PARSING_VALGRIND_SUPPRESSIONS_FILE ON)
              set(skip_to_next TRUE)
 @@ -321,7 +321,7 @@ function(c_windows_unittests_add_dll whatIsBuilding folder)
- 
+
          if(NOT skip_to_next)
              if(PARSING_ADDITIONAL_LIBS)
 -                if((${f} STREQUAL "debug") OR (${f} STREQUAL "optimized") OR (${f} STREQUAL "general"))
@@ -144,7 +144,7 @@ index e85defa..7f450ab 100644
              SET(PARSING_VALGRIND_SUPPRESSIONS_FILE ON)
              set(skip_to_next TRUE)
 @@ -383,7 +383,7 @@ function(c_windows_unittests_add_exe whatIsBuilding folder)
- 
+
          if(NOT skip_to_next)
              if(PARSING_ADDITIONAL_LIBS)
 -                if((${f} STREQUAL "debug") OR (${f} STREQUAL "optimized") OR (${f} STREQUAL "general"))
@@ -169,7 +169,7 @@ index e85defa..7f450ab 100644
              SET(PARSING_VALGRIND_SUPPRESSIONS_FILE ON)
              set(skip_to_next TRUE)
 @@ -443,7 +443,7 @@ function(c_linux_unittests_add_exe whatIsBuilding folder)
- 
+
          if(NOT skip_to_next)
              if(PARSING_ADDITIONAL_LIBS)
 -                if((${f} STREQUAL "debug") OR (${f} STREQUAL "optimized") OR (${f} STREQUAL "general"))
@@ -178,7 +178,7 @@ index e85defa..7f450ab 100644
                  else()
                      target_link_libraries_with_arg_prefix(${ARG_PREFIX} ${whatIsBuilding}_exe ${f})
 @@ -462,7 +462,7 @@ function(c_linux_unittests_add_exe whatIsBuilding folder)
- 
+
      if(${run_valgrind})
          find_program(VALGRIND_FOUND NAMES valgrind)
 -        if(${VALGRIND_FOUND} STREQUAL VALGRIND_FOUND-NOTFOUND)

@@ -9,14 +9,14 @@ index b0dea2b32..b035a9dc3 100644
 +          "${Qt5_DIR}/../../../tools/qt5/bin"
      DOC   "Path to xmlpatterns")
    mark_as_advanced(qt_xmlpatterns_executable)
- 
+
 diff --git a/CMake/ParaViewOptions.cmake b/CMake/ParaViewOptions.cmake
 index f544a7c06..c51278931 100644
 --- a/CMake/ParaViewOptions.cmake
 +++ b/CMake/ParaViewOptions.cmake
 @@ -88,7 +88,7 @@ endif()
  #========================================================================
- 
+
  # XXX(VTK): External VTK is not yet actually supported.
 -if (FALSE)
 +if (TRUE)
@@ -29,7 +29,7 @@ index 1af77d164..bebcb83ee 100644
 +++ b/CMakeLists.txt
 @@ -72,7 +72,8 @@ if (NOT CMAKE_INSTALL_LICENSEDIR)
  endif ()
- 
+
  set(paraview_cmake_dir "${CMAKE_CURRENT_SOURCE_DIR}/CMake")
 -set(vtk_cmake_dir "${CMAKE_CURRENT_SOURCE_DIR}/VTK/CMake")
 +set(vtk_cmake_dir "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/share/vtk")
@@ -38,7 +38,7 @@ index 1af77d164..bebcb83ee 100644
    message(FATAL_ERROR
      "Failed to find the VTK CMake directory. Did you forget to initialize the "
 @@ -383,9 +384,73 @@ endif ()
- 
+
  if (PARAVIEW_USE_EXTERNAL_VTK)
    if (paraview_required_modules OR paraview_unrecognized_modules)
 -    message(FATAL_ERROR
@@ -112,11 +112,11 @@ index 1af77d164..bebcb83ee 100644
 +    endmacro()
 +    search_dependent_targets(${vtk_modules})
    endif ()
- 
+
    if (PARAVIEW_USE_PYTHON)
 @@ -459,7 +524,7 @@ else ()
    endif()
- 
+
    # Set up these variables now so that modules may acess them
 -  if (NOT PARAVIEW_USE_EXTERNAL_VTK AND PARAVIEW_INSTALL_DEVELOPMENT_FILES)
 +  if (PARAVIEW_INSTALL_DEVELOPMENT_FILES)
@@ -126,7 +126,7 @@ index 1af77d164..bebcb83ee 100644
 @@ -558,6 +623,9 @@ set(_paraview_add_tests_default_data_directory
  set(_paraview_add_tests_default_test_data_target
    "ParaViewData")
- 
+
 +list(REMOVE_DUPLICATES vtk_modules) # Missed this somewhere
 +list(REMOVE_DUPLICATES paraview_modules) # probably not needed
 +
@@ -135,7 +135,7 @@ index 1af77d164..bebcb83ee 100644
    KITS                ${paraview_kits}
 @@ -596,9 +664,11 @@ vtk_module_build(
    TEST_OUTPUT_DATA_DIRECTORY  "${paraview_test_data_directory_output}")
- 
+
  include(vtkModuleJson)
 -vtk_module_json(
 -  MODULES ${vtk_modules}

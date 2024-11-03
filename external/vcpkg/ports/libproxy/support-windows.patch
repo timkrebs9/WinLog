@@ -17,7 +17,7 @@ index 0301dce..0eb5f83 100644
 +if(1)
    # PkgConfig file
    set (PKGCONFIG_PREFIX ${CMAKE_INSTALL_PREFIX})
-   
+
 diff --git a/libproxy/cmake/libproxy.cmk b/libproxy/cmake/libproxy.cmk
 index de68e5c..9356486 100644
 --- a/libproxy/cmake/libproxy.cmk

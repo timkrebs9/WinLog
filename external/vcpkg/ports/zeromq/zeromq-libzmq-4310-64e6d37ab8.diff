@@ -11,7 +11,7 @@ index 6c983c6698..21bcd414a0 100644
  include(FindThreads)
  include(GNUInstallDirs)
 @@ -495,8 +496,12 @@ endif()
- 
+
  if(NOT WIN32)
    set(ZMQ_HAVE_IPC 1)
 +  set(ZMQ_HAVE_STRUCT_SOCKADDR_UN 1)
@@ -21,7 +21,7 @@ index 6c983c6698..21bcd414a0 100644
 +    check_struct_has_member("struct sockaddr_un" sun_path "winsock2.h;afunix.h" ZMQ_HAVE_STRUCT_SOCKADDR_UN)
 +  endif()
  endif()
- 
+
  # ##################### BEGIN condition_variable_t selection
 diff --git a/builds/cmake/platform.hpp.in b/builds/cmake/platform.hpp.in
 index 2d23e8b288..18064362fe 100644
@@ -29,10 +29,10 @@ index 2d23e8b288..18064362fe 100644
 +++ b/builds/cmake/platform.hpp.in
 @@ -59,6 +59,7 @@
  #cmakedefine ZMQ_HAVE_LIBBSD
- 
+
  #cmakedefine ZMQ_HAVE_IPC
 +#cmakedefine ZMQ_HAVE_STRUCT_SOCKADDR_UN
- 
+
  #cmakedefine ZMQ_USE_BUILTIN_SHA1
  #cmakedefine ZMQ_USE_NSS
 diff --git a/src/windows.hpp b/src/windows.hpp

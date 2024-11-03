@@ -4,7 +4,7 @@ index 8ab3fc917..c19aa2264 100644
 +++ b/ext/dts/meson.build
 @@ -15,7 +15,7 @@ if not dca_dep.found()
  endif
- 
+
  no_warn_c_args = []
 -if cc.get_id() != 'msvc'
 +if cc.get_argument_syntax() != 'msvc'
@@ -16,7 +16,7 @@ index 4a844ef75..cd97e8f7a 100644
 --- a/gst-libs/gst/d3d11/meson.build
 +++ b/gst-libs/gst/d3d11/meson.build
 @@ -174,7 +174,7 @@ endif
- 
+
  # MinGW 32bits compiler seems to be complaining about redundant-decls
  # when ComPtr is in use. Let's just disable the warning
 -if cc.get_id() != 'msvc'
@@ -29,9 +29,9 @@ index 7cab556e0..35531110b 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -45,7 +45,7 @@ endif
- 
+
  cdata = configuration_data()
- 
+
 -if cc.get_id() == 'msvc'
 +if cc.get_argument_syntax() == 'msvc'
    msvc_args = [
@@ -42,7 +42,7 @@ index 3006d26ce..1afbd0022 100644
 --- a/sys/asio/meson.build
 +++ b/sys/asio/meson.build
 @@ -15,7 +15,7 @@ endif
- 
+
  # FIXME: non-msvc is not tested, and unlikely supported yet because of
  # tool-chain issue
 -if cxx.get_id() != 'msvc'
@@ -55,7 +55,7 @@ index 43f213d9c..9c9e9b535 100644
 --- a/sys/d3d11/meson.build
 +++ b/sys/d3d11/meson.build
 @@ -102,7 +102,7 @@ endif
- 
+
  # MinGW 32bits compiler seems to be complaining about redundant-decls
  # when ComPtr is in use. Let's just disable the warning
 -if cc.get_id() != 'msvc'
@@ -68,7 +68,7 @@ index d869e79a4..c7b37a7c6 100644
 --- a/sys/decklink/meson.build
 +++ b/sys/decklink/meson.build
 @@ -18,7 +18,7 @@ decklink_libs = []
- 
+
  if host_system == 'windows'
    decklink_sources += ['win/DeckLinkAPIDispatch.cpp', 'win/DeckLinkAPI_i.c']
 -  if cxx.get_id() == 'msvc'
@@ -83,7 +83,7 @@ index 828954909..af570f9ff 100644
 @@ -48,7 +48,7 @@ if host_system != 'windows' or mf_option.disabled()
    subdir_done()
  endif
- 
+
 -if cc.get_id() != 'msvc'
 +if cc.get_argument_syntax() != 'msvc'
    if mf_option.enabled()
@@ -95,7 +95,7 @@ index a77160049..7c834d8ed 100644
 +++ b/sys/msdk/meson.build
 @@ -139,13 +139,13 @@ if have_mfx_ver134
  endif
- 
+
  if host_machine.system() == 'windows'
 -  if cc.get_id() != 'msvc' and msdk_option.enabled()
 +  if cc.get_argument_syntax() != 'msvc' and msdk_option.enabled()

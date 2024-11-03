@@ -15,7 +15,7 @@ index c5db1ed..73c4118 100644
 @@ -39,10 +39,29 @@ extern "C" {
  /** \addtogroup misc Miscellanea */
  /*@{*/
- 
+
 -/* Use _snprintf instead of snprintf under MSVC compiler */
 -#if defined(_WIN32) && !defined(__MINGW32__)
 -#define snprintf    _snprintf
@@ -43,9 +43,8 @@ index c5db1ed..73c4118 100644
 +}
 +#endif  // _MSC_VER < 1900
 +#endif  // _MSC_VER
- 
+
  #ifdef HAVE_CONFIG_H
  # include <config.h>
--- 
+--
 2.16.1
-

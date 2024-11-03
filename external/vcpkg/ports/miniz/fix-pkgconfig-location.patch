@@ -10,4 +10,3 @@ index f12435b..edee1f4 100644
 +      DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
    endif()
  endif()
- 

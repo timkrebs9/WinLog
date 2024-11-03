@@ -9,7 +9,7 @@ index e7df8ec..1ecd596 100644
 -install_project(gmock gmock_main)
 +install_project(gmock)
 +install_project(gmock_main)
- 
+
  ########################################################################
  #
 diff --git a/googletest/CMakeLists.txt b/googletest/CMakeLists.txt
@@ -23,7 +23,7 @@ index abdd98b..7d1c01d 100644
 -install_project(gtest gtest_main)
 +install_project(gtest)
 +install_project(gtest_main)
- 
+
  ########################################################################
  #
 diff --git a/googletest/cmake/internal_utils.cmake b/googletest/cmake/internal_utils.cmake
@@ -37,7 +37,7 @@ index 8d8d60a..b08ce28 100644
 +    set (LIB_INSTALL_DST ${CMAKE_INSTALL_LIBDIR})
 +    if (${ARGN} MATCHES "_main")
 +      set (LIB_INSTALL_DST ${CMAKE_INSTALL_LIBDIR}/manual-link)
-+    endif()    
++    endif()
      install(TARGETS ${ARGN}
        EXPORT ${targets_export_name}
        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"

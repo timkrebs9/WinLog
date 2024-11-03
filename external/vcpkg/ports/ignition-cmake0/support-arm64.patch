@@ -4,7 +4,7 @@ diff -r 8a976a308d77 -r 1bea7874cfec cmake/IgnSetCompilerFlags.cmake
 @@ -279,13 +279,6 @@
    # Don't pull in the Windows min/max macros
    add_definitions(-DNOMINMAX)
- 
+
 -  if (MSVC AND CMAKE_SIZEOF_VOID_P EQUAL 8)
 -    # Not needed if a proper cmake generator (-G "...Win64") is passed
 -    # to cmake. Enable as a second measure to work around bug
@@ -13,5 +13,5 @@ diff -r 8a976a308d77 -r 1bea7874cfec cmake/IgnSetCompilerFlags.cmake
 -  endif()
 -
    if(USE_IGN_RECOMMENDED_FLAGS)
- 
+
      # Gy: Prevent errors caused by multiply-defined symbols

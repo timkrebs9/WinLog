@@ -3,9 +3,9 @@ index 4c0a9be..cbec22f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -28,7 +28,7 @@ ENDIF (NOT CMAKE_BUILD_TYPE)
- 
+
  SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
- 
+
 -IF (WIN32)
 +IF (WIN32 AND FALSE)
    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4")

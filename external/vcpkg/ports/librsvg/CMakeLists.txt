@@ -71,7 +71,7 @@ set(LIBRSVG_SOURCES
     librsvg-enum-types.h
 )
 
-set(PIXBUFLOADERSVG_SOURCES 
+set(PIXBUFLOADERSVG_SOURCES
     gdk-pixbuf-loader/io-svg.c
 )
 
@@ -92,11 +92,11 @@ add_library(pixbufloader-svg ${PIXBUFLOADERSVG_SOURCES})
 target_compile_definitions(rsvg-2.40 PRIVATE -DRSVG_COMPILATION -D_CRT_SECURE_NO_WARNINGS -DSRCDIR="${CMAKE_CURRENT_SOURCE_DIR}")
 
 target_include_directories(pixbufloader-svg PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-target_compile_definitions(pixbufloader-svg PRIVATE 
-    -DRSVG_COMPILATION 
+target_compile_definitions(pixbufloader-svg PRIVATE
+    -DRSVG_COMPILATION
     -D_CRT_SECURE_NO_WARNINGS
-    -DSRCDIR="${CMAKE_CURRENT_SOURCE_DIR}" 
-    -DGDK_PIXBUF_ENABLE_BACKEND 
+    -DSRCDIR="${CMAKE_CURRENT_SOURCE_DIR}"
+    -DGDK_PIXBUF_ENABLE_BACKEND
     -DG_LOG_DOMAIN="libpixbufloader-svg")
 
 target_link_libraries(rsvg-2.40 PRIVATE

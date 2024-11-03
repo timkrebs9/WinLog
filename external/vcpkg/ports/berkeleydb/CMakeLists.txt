@@ -24,7 +24,7 @@ else()
 	)
 endif()
 
-add_library(libdb48 
+add_library(libdb48
 	btree/bt_compact.c
 	btree/bt_compare.c
 	btree/bt_compress.c

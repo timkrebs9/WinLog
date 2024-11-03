@@ -4,7 +4,7 @@ index a3ac1c0..ef2d4c0 100644
 +++ b/opus_functions.cmake
 @@ -43,6 +43,8 @@ function(get_library_version OPUS_LIBRARY_VERSION OPUS_LIBRARY_VERSION_MAJOR)
  endfunction()
- 
+
  function(get_package_version PACKAGE_VERSION)
 +  set(PACKAGE_VERSION "0" CACHE STRING "opus package version")
 +  return()

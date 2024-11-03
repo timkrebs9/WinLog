@@ -5,7 +5,7 @@ index 175e997..8a55804 100644
 @@ -19,6 +19,8 @@ set (libLAS_INCLUDE_DIRS "${PROJECT_ROOT_DIR}/include")
  set (libLAS_LIBRARY_DIRS "${PROJECT_ROOT_DIR}/lib")
  set (libLAS_BINARY_DIRS "${PROJECT_ROOT_DIR}/bin")
- 
+
 +include(CMakeFindDependencyMacro)
 +find_dependency(GeoTIFF CONFIG)
  include ("${_DIR}/liblas-depends.cmake")

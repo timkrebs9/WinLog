@@ -7,7 +7,7 @@ vcpkg_from_github(
     REF v2022.03.21.00
     SHA512 8d2d9430dc3a4ecc23042cd9bcf4eee888824449d05d98baec408aef806b934d643e578d3876169f69966c846aeddbe0aa84416c4e020cba028a49d2fccfe7ab
     HEAD_REF master
-    PATCHES 
+    PATCHES
         0001-fix-compatibility-with-boost-1.79.0.patch
         fix-glog.patch
 )
@@ -52,11 +52,11 @@ vcpkg_copy_tools(TOOL_NAMES thrift1 AUTO_CLEAN)
 vcpkg_copy_pdbs()
 
 if(EXISTS "${CURRENT_PACKAGES_DIR}/share/fbthrift/FBThriftConfig.cmake")
-    vcpkg_replace_string("${CURRENT_PACKAGES_DIR}/share/fbthrift/FBThriftConfig.cmake" 
+    vcpkg_replace_string("${CURRENT_PACKAGES_DIR}/share/fbthrift/FBThriftConfig.cmake"
         "${PACKAGE_PREFIX_DIR}/lib/cmake/fbthrift" "${PACKAGE_PREFIX_DIR}/share/fbthrift")
-    vcpkg_replace_string("${CURRENT_PACKAGES_DIR}/share/fbthrift/FBThriftConfig.cmake" 
+    vcpkg_replace_string("${CURRENT_PACKAGES_DIR}/share/fbthrift/FBThriftConfig.cmake"
         "${PACKAGE_PREFIX_DIR}/bin/thrift1.exe" "${PACKAGE_PREFIX_DIR}/tools/fbthrift/thrift1.exe")
-    vcpkg_replace_string("${CURRENT_PACKAGES_DIR}/share/fbthrift/FBThriftConfig.cmake" 
+    vcpkg_replace_string("${CURRENT_PACKAGES_DIR}/share/fbthrift/FBThriftConfig.cmake"
         "${PACKAGE_PREFIX_DIR}/bin/thrift1" "${PACKAGE_PREFIX_DIR}/tools/fbthrift/thrift1")
 endif()
 

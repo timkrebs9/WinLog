@@ -4,7 +4,7 @@ index ef32f35..d12d473 100644
 +++ b/src/binn.c
 @@ -142,8 +142,14 @@ BINN_PRIVATE void copy_be64(u64 *pdest, u64 *psource) {
  /***************************************************************************/
- 
+
  #ifndef WIN32
  #define stricmp strcasecmp
  #define strnicmp strncasecmp
@@ -15,25 +15,25 @@ index ef32f35..d12d473 100644
 +#define strnicmp _strnicmp
 +#define strdup _strdup
  #endif
- 
+
  BINN_PRIVATE BOOL IsValidBinnHeader(void *pbuf, int *ptype, int *pcount, int *psize, int *pheadersize);
 @@ -1582,6 +1588,7 @@ BINN_PRIVATE BOOL binn_read_pair(int expected_type, void *ptr, int pos, int *pid
    base = p;
    plimit = p + size - 1;
    p += header_size;
 +  key = 0;
- 
+
    for (i = 0; i < count; i++) {
      switch (type) {
 @@ -3333,7 +3340,7 @@ char * APIENTRY binn_get_str(binn *value) {
- 
+
    if (type_family(value->type) == BINN_FAMILY_INT) {
      if (copy_int_value(value->ptr, &vint, value->type, BINN_INT64) == FALSE) return NULL;
 -    sprintf(buf, "%" INT64_FORMAT, vint);
 +    sprintf_s(buf, sizeof buf, "%" INT64_FORMAT, vint);
      goto loc_convert_value;
    }
- 
+
 @@ -3341,14 +3348,14 @@ char * APIENTRY binn_get_str(binn *value) {
    case BINN_FLOAT:
      value->vdouble = value->vfloat;

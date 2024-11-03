@@ -46,14 +46,14 @@ index f1ec925..c310fcc 100644
 --- a/Source/ThirdParty/LuaJIT/CMakeLists.txt
 +++ b/Source/ThirdParty/LuaJIT/CMakeLists.txt
 @@ -603,7 +603,7 @@ if (NOT CMAKE_PROJECT_NAME MATCHES ^Urho3D-ExternalProject-LuaJIT AND NOT IOS AN
- 
+
      # Install dependency files required by luajit
      if (DEST_RUNTIME_DIR)
 -        install (DIRECTORY ${LUAJIT_DEP_DIR} DESTINATION ${DEST_RUNTIME_DIR})
 +        install (DIRECTORY ${LUAJIT_DEP_DIR} DESTINATION share/Urho3D)
      endif ()
  endif ()
- 
+
 diff --git a/Source/ThirdParty/toluapp/src/bin/CMakeLists.txt b/Source/ThirdParty/toluapp/src/bin/CMakeLists.txt
 index 0cd69fc..e761ef6 100644
 --- a/Source/ThirdParty/toluapp/src/bin/CMakeLists.txt
@@ -99,7 +99,7 @@ index 65b59d9..db8f5cd 100644
 +        install (PROGRAMS ${CMAKE_BINARY_DIR}/bin/tool/BindingGenerator DESTINATION ${DEST_RUNTIME_DIR})
      endif ()
  endif ()
- 
+
 diff --git a/Source/Urho3D/CMakeLists.txt b/Source/Urho3D/CMakeLists.txt
 index 7433020..8161011 100644
 --- a/Source/Urho3D/CMakeLists.txt

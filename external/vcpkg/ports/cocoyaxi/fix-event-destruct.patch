@@ -8,6 +8,5 @@ index 8921296..838ac16 100644
      EventImpl() : _counter(0), _signaled(false), _has_cond(false) {}
 -    ~EventImpl() { co::xx::cond_destroy(&_cond); }
 +    ~EventImpl() { if (_has_cond) co::xx::cond_destroy(&_cond); }
- 
+
      bool wait(uint32 ms);
- 

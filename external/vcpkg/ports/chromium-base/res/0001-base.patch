@@ -13,7 +13,7 @@ index 7b7cd51..2961688 100644
 @@ -162,6 +163,11 @@ jumbo_component("base") {
      never_build_jumbo = true
    }
- 
+
 +  if (!is_component_build) {
 +    complete_static_lib = true
 +    configs -= [ "//build/config/compiler:thin_archive" ]
@@ -41,7 +41,7 @@ index 7b7cd51..2961688 100644
      "base_switches.h",
 @@ -2325,7 +2332,7 @@ static_library("base_static") {
  }
- 
+
  component("i18n") {
 -  output_name = "base_i18n"
 +  output_name = "chromium_base_i18n"
@@ -55,11 +55,11 @@ index 2ca267e..0a0b6df 100644
 @@ -5,7 +5,8 @@
  #ifndef BASE_GTEST_PROD_UTIL_H_
  #define BASE_GTEST_PROD_UTIL_H_
- 
+
 -#include "testing/gtest/include/gtest/gtest_prod.h"  // nogncheck
 +#define FRIEND_TEST(test_case_name, test_name)\
 +friend class test_case_name##_##test_name##_Test
- 
+
  // This is a wrapper for gtest's FRIEND_TEST macro that friends
  // test with all possible prefixes. This is very helpful when changing the test
 diff --git a/hash/md5.h b/hash/md5.h
@@ -69,7 +69,7 @@ index 8a49f08..24acdab 100644
 @@ -11,7 +11,7 @@
  #include "base/strings/string_piece.h"
  #include "build/build_config.h"
- 
+
 -#if defined(OS_NACL)
 +#if true
  #include "base/hash/md5_nacl.h"
@@ -81,21 +81,20 @@ index 827bbbd..4b22c59 100644
 +++ b/hash/md5_nacl.cc
 @@ -22,6 +22,7 @@
   */
- 
+
  #include <stddef.h>
 +#include <string.h>
- 
+
  #include "base/hash/md5.h"
- 
+
 diff --git a/profiler/stack_copier_signal.cc b/profiler/stack_copier_signal.cc
 index 5a7d8b9..f959f2f 100644
 --- a/profiler/stack_copier_signal.cc
 +++ b/profiler/stack_copier_signal.cc
 @@ -6,6 +6,7 @@
- 
+
  #include <linux/futex.h>
  #include <signal.h>
 +#include <string.h>
  #include <sys/ucontext.h>
  #include <syscall.h>
- 

@@ -8,6 +8,6 @@ index 4b0815f2..236ffa8d 100644
  ##### small test programs (to be run interactively)
 -add_subdirectory(test-code)
 +#add_subdirectory(test-code)
- 
+
  ############################################################################
  # New CPACK section, please see the README file inside cpack.d directory.

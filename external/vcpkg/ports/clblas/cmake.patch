@@ -3,13 +3,13 @@ index 6a88c41..05b8029 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -276,6 +276,9 @@ endif()
- 
+
  # This will define OPENCL_FOUND
  find_package( OpenCL ${OPENCL_VERSION} )
 +set( OPENCL_FOUND ${OpenCL_FOUND})
 +set( OPENCL_LIBRARIES ${OpenCL_LIBRARIES} )
 +set( OPENCL_INCLUDE_DIRS ${OpenCL_INCLUDE_DIRS} )
- 
+
  # Find Boost on the system, and configure the type of boost build we want
  set( Boost_USE_MULTITHREADED ON )
 diff --git a/src/clBLASConfig.cmake.in b/src/clBLASConfig.cmake.in
@@ -32,5 +32,5 @@ index 5164898..f2d5a88 100644
 -		 ARCHIVE DESTINATION lib${SUFFIX_LIB}/import
 +		 ARCHIVE DESTINATION lib${SUFFIX_LIB}
  		)
- 
+
  # For debug builds, include the debug runtimes into the package for testing on non-developer machines

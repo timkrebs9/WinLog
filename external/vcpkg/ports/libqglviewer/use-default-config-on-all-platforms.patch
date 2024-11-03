@@ -21,7 +21,7 @@ index e0205e5..6db4c81 100644
 -
  	# Needed by Intel C++, (icl.exe) so that WINGDIAPI is a defined symbol in gl.h.
  	DEFINES *= WIN32
- 
+
 @@ -279,7 +273,7 @@ win32 {
  		QMAKE_CXXFLAGS *= -TP -GR
  		DEFINES += NOMINMAX

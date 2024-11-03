@@ -64,11 +64,10 @@ endif()
 vcpkg_cmake_config_fixup(PACKAGE_NAME lsquic)
 
 # Concatenate license files and install
-vcpkg_install_copyright(FILE_LIST 
-  "${SOURCE_PATH}/LICENSE" 
+vcpkg_install_copyright(FILE_LIST
+  "${SOURCE_PATH}/LICENSE"
   "${SOURCE_PATH}/LICENSE.chrome"
 )
 
 # Remove duplicated include directory
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
-

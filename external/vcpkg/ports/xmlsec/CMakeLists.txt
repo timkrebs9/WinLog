@@ -151,7 +151,7 @@ if(INSTALL_HEADERS_TOOLS)
     if(NOT Iconv_IS_BUILT_IN)
         target_link_libraries(xmlsec PRIVATE Iconv::Iconv)
     endif()
-    
+
 	target_compile_definitions(xmlsec PRIVATE
 		-DXMLSEC_CRYPTO_OPENSSL
 	)

@@ -8,7 +8,7 @@ index b99820a..fe6a2aa 100644
      #include <cctype>
 +    #include <vector>
 +    #include <string>
- 
+
  #if !defined(NO_FMTLIB)
      #ifndef FMT_HEADER_ONLY
 @@ -14,9 +16,6 @@
@@ -19,7 +19,7 @@ index b99820a..fe6a2aa 100644
 -    #include <vector>
 -    #include <string>
  #endif
- 
+
      #include "Exceptions.h"
 @@ -58,11 +57,11 @@
      // Missing string formatting function, this old guy is needed for ancient gcc compilers on PowerPC for VxWorks

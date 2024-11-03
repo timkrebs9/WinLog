@@ -4,7 +4,7 @@ index a0ef573..b77566e 100644
 +++ b/CMake/CMakeLists.txt
 @@ -5,7 +5,7 @@
  #############################################################
- 
+
  if(WIN32)
 -	set(MYGUI_CMAKE_DIR "CMake")
 +	set(MYGUI_CMAKE_DIR "share")

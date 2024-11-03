@@ -9,4 +9,3 @@ index fcd9024..a717b87 100644
 +    BUNDLE DESTINATION tools/brotli
      CONFIGURATIONS Release
    )
- 

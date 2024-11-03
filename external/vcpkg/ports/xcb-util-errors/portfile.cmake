@@ -15,7 +15,7 @@ vcpkg_from_gitlab(
     SHA512 391f6bc9452bf4d6a3f1fa69232cdbef43f9fcd339b8d1965132a3b227ed7ebcbaad553fe64d42bc525811caedf3ff9d5bec108f6ac2efd5a014f75fb35cbf85
     HEAD_REF master
     PATCHES ${PATCHES}
-) 
+)
 file(TOUCH "${SOURCE_PATH}/m4/dummy")
 set(ENV{ACLOCAL} "aclocal -I \"${CURRENT_INSTALLED_DIR}/share/xorg/aclocal/\"")
 
@@ -37,4 +37,3 @@ file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/share")
 
 file(INSTALL "${SOURCE_PATH}/COPYING" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME copyright)
 endif()
-

@@ -3,9 +3,9 @@ index 6b3e5b3..bab784a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -182,6 +182,21 @@ else (USE_EXT_GD)
- 
+
  	SET(ENABLE_GD_FORMATS ${ENABLE_GD_FORMATS})
- 
+
 +	# The remaining code uses <Pkg>_FOUND, but this could be set as side effect.
 +	# Restore explicit control. <Pkg>_FOUND is implied by <Pkg>_REQUIRED.
 +	set(FONTCONFIG_FOUND ${ENABLE_FONTCONFIG})
@@ -26,13 +26,13 @@ index 6b3e5b3..bab784a 100644
  		SET(HAVE_FT2BUILD_H 1)
 @@ -299,8 +299,6 @@ else (USE_EXT_GD)
  endif (USE_EXT_GD)
- 
+
  add_subdirectory(tests)
 -add_subdirectory(examples)
 -add_subdirectory(docs)
- 
+
  add_custom_target(distclean ${GD_SOURCE_DIR}/cmake/distclean.sh)
- 
+
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index 3839bc7..4cb56eb 100644
 --- a/src/CMakeLists.txt
@@ -40,7 +40,7 @@ index 3839bc7..4cb56eb 100644
 @@ -150,6 +150,9 @@ if (ZLIB_FOUND)
  	set(GD_PROGRAMS ${GD_PROGRAMS} gd2copypal gd2togif giftogd2)
  endif()
- 
+
 +if(NOT ENABLE_TOOLS)
 +	set(GD_PROGRAMS "")
 +endif()

@@ -15,7 +15,7 @@ index fdfe4bc..7864d96 100644
 +#else
 +#define WINPTY_API
 +#endif
- 
+
  #ifdef __cplusplus
  extern "C" {
 diff --git a/src/shared/WinptyVersion.cc b/src/shared/WinptyVersion.cc
@@ -28,14 +28,14 @@ index 76bb8a5..33a2c23 100644
  // added to the search path.
 -#include "GenVersion.h"
 +//#include "GenVersion.h"
- 
+
  void dumpVersionToStdout() {
 -    printf("winpty version %s\n", GenVersion_Version);
 -    printf("commit %s\n", GenVersion_Commit);
 +    printf("winpty version %s\n", PROJECT_VERSION);
 +    printf("commit %s\n", "empty");
  }
- 
+
  void dumpVersionToTrace() {
      trace("winpty version %s (commit %s)",
 -        GenVersion_Version,

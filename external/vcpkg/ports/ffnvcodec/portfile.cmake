@@ -28,7 +28,7 @@ if(VCPKG_TARGET_IS_WINDOWS)
         WORKING_DIRECTORY ${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}
         LOGNAME build-${TARGET_TRIPLET}
     )
-    
+
     file(INSTALL "${SOURCE_PATH}/ffnvcodec.pc" DESTINATION "${CURRENT_PACKAGES_DIR}/debug/lib/pkgconfig")
 
 # Linux, etc.
@@ -37,14 +37,14 @@ else()
     IF (NOT MAKE)
         MESSAGE(FATAL_ERROR "MAKE not found")
     ENDIF ()
-    
+
     vcpkg_execute_required_process(
         COMMAND make PREFIX=$${CURRENT_PACKAGES_DIR}
         WORKING_DIRECTORY ${SOURCE_PATH}
         LOGNAME make-${TARGET_TRIPLET}
     )
 
-    # FFmpeg uses pkgconfig to find ffnvcodec.pc, so install it where 
+    # FFmpeg uses pkgconfig to find ffnvcodec.pc, so install it where
     # FFMpeg's call to pkgconfig expects to find it.
     file(INSTALL "${SOURCE_PATH}/ffnvcodec.pc" DESTINATION "${CURRENT_PACKAGES_DIR}/lib/pkgconfig")
     file(INSTALL "${SOURCE_PATH}/ffnvcodec.pc" DESTINATION "${CURRENT_PACKAGES_DIR}/debug/lib/pkgconfig")

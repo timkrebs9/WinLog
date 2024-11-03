@@ -5,7 +5,7 @@ index 24a194c..91c8e41 100644
 @@ -95,6 +95,18 @@ find_library(GLIB2_GIO_LIBRARIES
               HINTS ${PC_GIO_LIBDIR}
  )
- 
+
 +pkg_check_modules(PC_GMODULE QUIET gmodule-2.0)
 +
 +find_path(GLIB2_GMODULE_INCLUDE_DIRS
@@ -20,11 +20,11 @@ index 24a194c..91c8e41 100644
 +
  # search the glibconfig.h include dir under the same root where the library is found
  get_filename_component(glib2LibDir "${GLIB2_LIBRARIES}" PATH)
- 
+
 @@ -126,6 +138,11 @@ if(GLIB2_GIO_LIBRARIES AND GLIB2_GIO_INCLUDE_DIRS)
    set(GLIB2_GIO_FOUND TRUE)
  endif()
- 
+
 +if(GLIB2_GMODULE_LIBRARIES AND GLIB2_GMODULE_INCLUDE_DIRS)
 +  set(GLIB2_GMODULE_FOUND TRUE)
 +endif()
@@ -44,12 +44,12 @@ index 24a194c..91c8e41 100644
 +    find_package(Intl)
 +    target_link_libraries(GLIB2::GLIB2 INTERFACE Intl::Intl Iconv::Iconv)
  endif()
- 
+
  if(GLIB2_GOBJECT_FOUND AND NOT TARGET GLIB2::GOBJECT)
 @@ -153,12 +176,21 @@ if(GLIB2_GIO_FOUND AND NOT TARGET GLIB2::GIO)
                          INTERFACE_INCLUDE_DIRECTORIES "${GLIB2_GIO_INCLUDE_DIRS}")
  endif()
- 
+
 +if(GLIB2_GMODULE_FOUND AND NOT TARGET GLIB2::GMODULE)
 +  add_library(GLIB2::GMODULE UNKNOWN IMPORTED)
 +  set_target_properties(GLIB2::GMODULE PROPERTIES
@@ -66,6 +66,6 @@ index 24a194c..91c8e41 100644
 -                 GLIB2_GIO_LIBRARIES GLIB2_GIO_LIBRARY)
 +                 GLIB2_GIO_LIBRARIES GLIB2_GIO_LIBRARY
 +                 GLIB2_GMODULE_LIBRARIES GLIB2_GMODULE_INCLUDE_DIRS)
- 
+
  include(FeatureSummary)
  set_package_properties(GLIB2 PROPERTIES

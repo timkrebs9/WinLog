@@ -2,7 +2,7 @@ vcpkg_buildpath_length_warning(37)
 
 if (VCPKG_TARGET_IS_LINUX)
     message(WARNING "qt5-base currently requires some packages from the system package manager, see https://doc.qt.io/qt-5/linux-requirements.html")
-    message(WARNING 
+    message(WARNING
 [[
 qt5-base for qt5-x11extras requires several libraries from the system package manager. Please refer to
   https://github.com/microsoft/vcpkg/blob/master/scripts/azure-pipelines/linux/provision-image.sh

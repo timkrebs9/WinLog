@@ -17,7 +17,7 @@ set_target_properties(unofficial-tinyxml PROPERTIES OUTPUT_NAME tinyxml)
 include(GenerateExportHeader)
 generate_export_header(unofficial-tinyxml BASE_NAME tinyxml)
 
-target_include_directories(unofficial-tinyxml 
+target_include_directories(unofficial-tinyxml
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
         $<INSTALL_INTERFACE:include>

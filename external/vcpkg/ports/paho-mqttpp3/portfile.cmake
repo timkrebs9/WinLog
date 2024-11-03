@@ -9,7 +9,7 @@ vcpkg_from_github(
     fix-dependency.patch
 )
 
-vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS 
+vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
   FEATURES
     "ssl" PAHO_WITH_SSL
 )
@@ -28,7 +28,7 @@ endif()
 set(PAHO_C_INC "${CURRENT_INSTALLED_DIR}/include")
 
 
-# NOTE: the Paho C++ cmake files on Github are problematic. 
+# NOTE: the Paho C++ cmake files on Github are problematic.
 # It uses two different options PAHO_BUILD_STATIC and PAHO_BUILD_SHARED instead of just using one variable.
 # Unless the open source community cleans up the cmake files, we are stuck with setting both of them.
 if (VCPKG_LIBRARY_LINKAGE STREQUAL "static")

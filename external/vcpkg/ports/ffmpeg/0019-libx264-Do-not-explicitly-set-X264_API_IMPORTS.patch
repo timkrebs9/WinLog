@@ -23,7 +23,7 @@ index 4ddc497..0152d30 100644
 @@ -32,10 +32,6 @@
  #include "packet_internal.h"
  #include "atsc_a53.h"
- 
+
 -#if defined(_MSC_VER)
 -#define X264_API_IMPORTS 1
 -#endif

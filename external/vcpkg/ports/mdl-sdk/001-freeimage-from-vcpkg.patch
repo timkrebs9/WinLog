@@ -21,23 +21,23 @@ index b11573a..703458e 100644
 --- a/cmake/find/find_freeimage_ext.cmake
 +++ b/cmake/find/find_freeimage_ext.cmake
 @@ -28,6 +28,9 @@
- 
+
  function(FIND_FREEIMAGE_EXT)
- 
+
 +    find_package(freeimage CONFIG REQUIRED)
 +    if(0)
 +
      set(FREEIMAGE_DIR "NOT-SPECIFIED" CACHE PATH "Directory that contains the freeimage library and the corresponding headers.")
      #-----------------------------------------------------------------------------------------------
- 
+
 @@ -90,6 +93,35 @@ function(FIND_FREEIMAGE_EXT)
          endif()
      endif()
- 
+
 +    else()
 +        get_target_property(_FREEIMAGE_INCLUDE      freeimage::FreeImage INTERFACE_INCLUDE_DIRECTORIES)
 +        get_target_property(_FREEIMAGE_DEPENDENCIES freeimage::FreeImage INTERFACE_LINK_LIBRARIES     )
-+        
++
 +        get_target_property(_FREEIMAGE_SHARED freeimage::FreeImage IMPORTED_LOCATION)
 +        if(NOT _FREEIMAGE_SHARED)
 +            get_target_property(_FREEIMAGE_SHARED freeimage::FreeImage IMPORTED_LOCATION_RELEASE)
@@ -45,7 +45,7 @@ index b11573a..703458e 100644
 +        if(NOT _FREEIMAGE_SHARED)
 +            get_target_property(_FREEIMAGE_SHARED freeimage::FreeImage IMPORTED_LOCATION_DEBUG)
 +        endif()
-+        
++
 +        get_target_property(_FREEIMAGE_TYPE freeimage::FreeImage TYPE)
 +        if(${_FREEIMAGE_TYPE} STREQUAL "SHARED_LIBRARY")
 +            get_target_property(_FREEIMAGE_LIB freeimage::FreeImage IMPORTED_IMPLIB)
@@ -56,7 +56,7 @@ index b11573a..703458e 100644
 +                get_target_property(_FREEIMAGE_LIB freeimage::FreeImage IMPORTED_IMPLIB_DEBUG)
 +            endif()
 +        endif()
-+        
++
 +        find_file(_FREEIMAGE_HEADER_FILE "FreeImage.h"
 +            HINTS
 +                ${_FREEIMAGE_INCLUDE}

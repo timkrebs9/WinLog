@@ -12,5 +12,5 @@ index 6b95fe4..3a19058 100755
 +            "XR_MSFT_scene_understanding",
 +            "XR_MSFT_scene_understanding_serialization",
          ))
- 
+
      # Turn lists of names/patterns into matching regular expressions

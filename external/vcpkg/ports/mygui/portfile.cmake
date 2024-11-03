@@ -6,7 +6,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO MyGUI/mygui
     REF 81e5c67e92920607d16bc2aee1ac32f6fd7d446b #v3.4.1
-    SHA512 b13e0a08559b3ddfe42ffcc6cf017fb20d50168785fb551e16f613c60b9ea28a65056a9bc42bdab876368f40dcba1772bc704ad0928c45d8b32e909abc0f1916 
+    SHA512 b13e0a08559b3ddfe42ffcc6cf017fb20d50168785fb551e16f613c60b9ea28a65056a9bc42bdab876368f40dcba1772bc704ad0928c45d8b32e909abc0f1916
     HEAD_REF master
     PATCHES
         fix-generation.patch

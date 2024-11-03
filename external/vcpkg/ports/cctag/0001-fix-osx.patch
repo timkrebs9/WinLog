@@ -5,7 +5,7 @@ index 094d278..8647f76 100644
 @@ -8,6 +8,7 @@
  #ifndef _CCTAG_EXCEPTIONS_HPP_
  #define _CCTAG_EXCEPTIONS_HPP_
- 
+
 +#define _GNU_SOURCE
  #include <boost/exception/diagnostic_information.hpp>
  #include <boost/exception/errinfo_file_name.hpp>

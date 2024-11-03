@@ -17,4 +17,3 @@ diff -ur a/magick/nt_base.h b/magick/nt_base.h
 +#    endif
  #  endif
  #endif /* defined(HasBZLIB) */
- 

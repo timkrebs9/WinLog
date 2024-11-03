@@ -21,8 +21,8 @@ index 386698c..ecba525 100644
    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
-+  
-+install(DIRECTORY ${ZFP_SOURCE_DIR}/cfp/include DESTINATION include) 
++
++install(DIRECTORY ${ZFP_SOURCE_DIR}/cfp/include DESTINATION include)
 diff --git a/examples/CMakeLists.txt b/examples/CMakeLists.txt
 index 7cc7606..6ca1034 100644
 --- a/examples/CMakeLists.txt
@@ -32,21 +32,21 @@ index 7cc7606..6ca1034 100644
    target_link_libraries(simple m)
  endif()
 +
-+install(TARGETS diffusion 
++install(TARGETS diffusion
 +    RUNTIME DESTINATION tools)
 + if(BUILD_CFP)
-+   install(TARGETS diffusionC 
++   install(TARGETS diffusionC
 +       RUNTIME DESTINATION tools)
 + endif()
-+install(TARGETS inplace 
++install(TARGETS inplace
 +    RUNTIME DESTINATION tools)
-+install(TARGETS iterator 
++install(TARGETS iterator
 +    RUNTIME DESTINATION tools)
-+install(TARGETS pgm 
++install(TARGETS pgm
 +    RUNTIME DESTINATION tools)
-+install(TARGETS simple 
++install(TARGETS simple
 +    RUNTIME DESTINATION tools)
-+install(TARGETS speed 
++install(TARGETS speed
 +    RUNTIME DESTINATION tools)
 diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
 index d15246e..7a6c6cb 100644
@@ -57,7 +57,7 @@ index d15246e..7a6c6cb 100644
    endforeach()
  endif()
 +
-+install(TARGETS testzfp 
++install(TARGETS testzfp
 +    RUNTIME DESTINATION tools)
 diff --git a/utils/CMakeLists.txt b/utils/CMakeLists.txt
 index a960d2c..5fcbf87 100644
@@ -68,5 +68,5 @@ index a960d2c..5fcbf87 100644
    target_link_libraries(zfpcmd m)
  endif()
 +
-+install(TARGETS zfpcmd 
++install(TARGETS zfpcmd
 +    RUNTIME DESTINATION tools)

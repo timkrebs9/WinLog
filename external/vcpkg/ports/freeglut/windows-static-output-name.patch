@@ -26,4 +26,3 @@ index a5efb3b..6bdcdfb 100644
 +#              pragma comment (lib, "freeglutd.lib")
  #           endif
  #       endif
- 

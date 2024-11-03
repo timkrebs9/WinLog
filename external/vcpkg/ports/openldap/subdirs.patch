@@ -5,7 +5,7 @@ index 5c6bec0..c654210 100644
 @@ -13,7 +13,11 @@
  ## top-level directory of the distribution or, alternatively, at
  ## <http://www.OpenLDAP.org/license.html>.
- 
+
 -SUBDIRS= include libraries clients servers tests doc
 +ifeq ($(patsubst %/debug,DEBUG,$(prefix)),DEBUG)
 +SUBDIRS= include libraries
@@ -13,8 +13,8 @@ index 5c6bec0..c654210 100644
 +SUBDIRS= include libraries @TOOLS_SUBDIRS@
 +endif
  CLEANDIRS=
- INSTALLDIRS= 
- 
+ INSTALLDIRS=
+
 diff --git a/configure.ac b/configure.ac
 index e97f548..71dd7a6 100644
 --- a/configure.ac
@@ -29,6 +29,6 @@ index e97f548..71dd7a6 100644
 +	TOOLS_SUBDIRS="clients"
 +fi
 +AC_SUBST(TOOLS_SUBDIRS)
- 
+
  dnl ----------------------------------------------------------------
  dnl General "with" options

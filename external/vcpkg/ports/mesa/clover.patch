@@ -18,7 +18,7 @@ index ec65fcbe18e..f6ca4a28f20 100644
 @@ -85,19 +85,31 @@ if not (dep_clang.found() and dep_clang_usable)
    endif
  endif
- 
+
 +if host_machine.system() == 'windows'
 +  libpipe_loader = libpipe_loader_static
 +  target_files = ['target.c']
@@ -28,7 +28,7 @@ index ec65fcbe18e..f6ca4a28f20 100644
 +endif
 +
  ocldef = files(opencl_libname + '.def')[0]
- 
+
  libopencl = shared_library(
    opencl_libname,
 -  [],
@@ -58,6 +58,5 @@ index 00000000000..308e23bb4a0
 @@ -0,0 +1,2 @@
 +#include "target-helpers/drm_helper.h"
 +#include "target-helpers/sw_helper.h"
--- 
+--
 2.33.1.windows.1
-

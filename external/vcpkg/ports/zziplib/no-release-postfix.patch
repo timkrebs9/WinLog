@@ -21,4 +21,3 @@ index a9f6e3a..407827b 100644
 +set_target_properties(libzzipmmapped PROPERTIES OUTPUT_NAME "zzipmmapped")
  SET_TARGET_PROPERTIES(libzzipmmapped PROPERTIES VERSION ${VERNUM}.${FIXNUM} SOVERSION ${VERNUM})
  endif()
-

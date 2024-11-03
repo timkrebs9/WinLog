@@ -21,6 +21,5 @@ index 5da838c..ccfe0da 100644
  #endif
  /* Do this here and now, because struct stat gets re-defined on solaris */
  #include <sys/stat.h>
--- 
+--
 2.29.2.windows.2
-

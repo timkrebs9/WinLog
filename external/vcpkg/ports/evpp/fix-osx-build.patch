@@ -4,7 +4,7 @@ index 3a83725..f28f833 100644
 +++ b/evpp/server_status.h
 @@ -25,7 +25,7 @@ public:
      };
- 
+
      std::string StatusToString() const {
 -        H_CASE_STRING_BIGIN(status_);
 +        H_CASE_STRING_BIGIN(+status_);
@@ -17,7 +17,7 @@ index 333c05c..c547d88 100644
 +++ b/evpp/sockets.cc
 @@ -22,6 +22,14 @@ std::string strerror(int e) {
      }
- 
+
      return empty_string;
 +#elif defined(__APPLE__)
 +    char buf[2048] = {};
@@ -36,7 +36,7 @@ index b7678d0..527b2b9 100644
 +++ b/evpp/tcp_conn.cc
 @@ -309,7 +309,7 @@ void TCPConn::SetTCPNoDelay(bool on) {
  }
- 
+
  std::string TCPConn::StatusToString() const {
 -    H_CASE_STRING_BIGIN(status_);
 +    H_CASE_STRING_BIGIN(+status_);

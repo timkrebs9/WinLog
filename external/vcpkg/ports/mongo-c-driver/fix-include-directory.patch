@@ -4,12 +4,12 @@ index 86f59ae..d108e5d 100644
 +++ b/src/libmongoc/CMakeLists.txt
 @@ -1172,7 +1172,7 @@ else ()
  endif ()
- 
+
  set (MONGOC_HEADER_INSTALL_DIR
 -   "${CMAKE_INSTALL_INCLUDEDIR}/libmongoc-${MONGOC_API_VERSION}"
 +   "${CMAKE_INSTALL_INCLUDEDIR}"
  )
- 
+
  install (
 diff --git a/src/libmongoc/src/libmongoc-1.0.pc.in b/src/libmongoc/src/libmongoc-1.0.pc.in
 index 1b489d8..991603e 100644

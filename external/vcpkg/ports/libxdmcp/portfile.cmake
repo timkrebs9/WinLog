@@ -11,7 +11,7 @@ vcpkg_from_gitlab(
     SHA512  f8b035fa95f6948cc6bac69bfcc33498cd65db73c62aadee714bce371d61c50f283c45d1a3f43397a96b3c956b41dfe94355e94e33764760b29bf98ba8dfebe2
     HEAD_REF master
     PATCHES configure.ac.patch
-) 
+)
 
 set(ENV{ACLOCAL} "aclocal -I \"${CURRENT_INSTALLED_DIR}/share/xorg/aclocal/\"")
 if(VCPKG_TARGET_IS_WINDOWS)

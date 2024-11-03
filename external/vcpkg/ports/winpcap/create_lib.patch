@@ -5,7 +5,7 @@ index dbe511c..d431b88 100644
 @@ -9,12 +9,10 @@ mkdir %WPDPACKDESTDIR% 		>nul 2>nul
  mkdir %WPDPACKDESTDIR%\Lib 	>nul 2>nul
  mkdir %WPDPACKDESTDIR%\Lib\x64	>nul 2>nul
- 
+
 -xcopy /v /Y %WINPCAPSOURCEDIR%\wpcap\PRJ\Release\x86\wpcap.lib				%WPDPACKDESTDIR%\Lib\ >nul
 -xcopy /v /Y %WINPCAPSOURCEDIR%\wpcap\PRJ\Release\x64\wpcap.lib				%WPDPACKDESTDIR%\Lib\x64 >nul
 +xcopy /v /Y "%WINPCAPSOURCEDIR%\wpcap\PRJ\Release No AirPcap\x86\wpcap.lib"		%WPDPACKDESTDIR%\Lib\ >nul
@@ -14,6 +14,5 @@ index dbe511c..d431b88 100644
  xcopy /v /Y %WINPCAPSOURCEDIR%\packetNtx\Dll\Project\Release\x64\packet.lib	 	%WPDPACKDESTDIR%\Lib\x64 >nul
 -xcopy /v /Y %WINPCAPSOURCEDIR%\packetNtx\Dll\Project\libpacket.a			%WPDPACKDESTDIR%\Lib\	>nul
 -xcopy /v /Y %WINPCAPSOURCEDIR%\wpcap\LIB\libwpcap.a					%WPDPACKDESTDIR%\Lib\ >nul
- 
+
  echo Folder \Lib created successfully
- 

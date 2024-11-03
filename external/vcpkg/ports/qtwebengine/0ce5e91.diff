@@ -24,7 +24,7 @@ index b705bc8..5c9c004 100644
 @@ -281,15 +281,63 @@
      return IntermediateDataToMD5Digest(ProcessMessage(data, n));
    }
- 
+
 -  static constexpr uint64_t Hash64(const char* data, uint32_t n) {
 -    IntermediateData intermediate = ProcessMessage(data, n);
 -    return (static_cast<uint64_t>(SwapEndian(intermediate.a)) << 32) |
@@ -58,7 +58,7 @@ index b705bc8..5c9c004 100644
 +    return (static_cast<uint64_t>(SwapEndian(intermediate0.a)) << 32) |
 +           static_cast<uint64_t>(SwapEndian(intermediate0.b));
    }
- 
+
 -  static constexpr uint32_t Hash32(const char* data, uint32_t n) {
 -    IntermediateData intermediate = ProcessMessage(data, n);
 -    return SwapEndian(intermediate.a);
@@ -91,4 +91,3 @@ index b705bc8..5c9c004 100644
 +    return SwapEndian(intermediate0.a);
    }
  };
- 

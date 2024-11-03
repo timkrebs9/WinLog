@@ -5,7 +5,7 @@ index ac7c079..67f175d 100644
 @@ -23,6 +23,10 @@ macro(add_urdfdom_library)
      SOVERSION ${URDF_MAJOR_MINOR_VERSION})
  endmacro()
- 
+
 +if(MSVC)
 +  add_definitions(-D_USE_MATH_DEFINES)
 +endif()

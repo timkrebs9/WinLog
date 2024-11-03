@@ -52,7 +52,7 @@ if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
         LIBS
         CFLAGS
     )
-    
+
     set(CL_FLAGS_RELEASE "${CL_FLAGS} ${PKGCONFIG_CFLAGS_RELEASE}")
     set(CL_FLAGS_DEBUG "${CL_FLAGS} ${PKGCONFIG_CFLAGS_DEBUG}")
 
@@ -158,7 +158,7 @@ else()
     list(REMOVE_ITEM pkg_config_modules libxml2) # handled properly by configure
     x_vcpkg_pkgconfig_get_modules(
         PREFIX PKGCONFIG
-        MODULES ${pkg_config_modules} 
+        MODULES ${pkg_config_modules}
         LIBS
     )
     if(VCPKG_TARGET_IS_MINGW)

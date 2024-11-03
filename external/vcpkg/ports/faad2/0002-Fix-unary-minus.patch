@@ -17,7 +17,7 @@ index c992543..be8c541 100644
 +++ b/libfaad/syntax.c
 @@ -2644,5 +2644,5 @@ uint32_t faad_latm_frame(latm_header *latm, bitfile *ld)
              return (len*8)-(endpos-initpos);
-         //faad_getbits(ld, initpos-endpos); //go back to initpos, but is valid a getbits(-N) ? 
+         //faad_getbits(ld, initpos-endpos); //go back to initpos, but is valid a getbits(-N) ?
      }
 -    return -1U;
 +    return 0xFFFFFFFF;

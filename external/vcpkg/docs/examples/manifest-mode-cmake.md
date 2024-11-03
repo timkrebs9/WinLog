@@ -109,7 +109,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 And now we can try out the `fibo` binary!
 
 ```cmd
-D:\src\fibo> .\build\Debug\fibo.exe -n 7 
+D:\src\fibo> .\build\Debug\fibo.exe -n 7
 fib(1) = 1
 fib(2) = 1
 fib(3) = 2

@@ -2,7 +2,7 @@
 +++ b/magick/studio.h	2020-01-08 20:43:08.325889700 -0200
 @@ -470,10 +470,10 @@
  */
- 
+
  #if defined(HasLTDL)
 -#  define SupportMagickModules
 +//#  define SupportMagickModules
@@ -12,5 +12,3 @@
 +//#    define SupportMagickModules
  #  endif
  #endif
- 
- 

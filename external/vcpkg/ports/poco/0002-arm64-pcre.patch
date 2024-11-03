@@ -5,9 +5,9 @@ index f9a9fb1..b032f9d 100644
 @@ -11,6 +11,7 @@
  // SPDX-License-Identifier:	BSL-1.0
  //
- 
+
 +#pragma comment(lib,"advapi32.lib")
- 
+
  #include "Poco/EventLogChannel.h"
  #include "Poco/Message.h"
 diff --git a/Foundation/src/utils.h b/Foundation/src/utils.h
@@ -30,11 +30,11 @@ index 1a75379..b4081fd 100644
 @@ -11,6 +11,7 @@
  // SPDX-License-Identifier:	BSL-1.0
  //
- 
+
 +#pragma comment(lib,"advapi32.lib")
- 
+
  #include "Poco/Net/Net.h"
- 
+
 diff --git a/Util/src/WinRegistryKey.cpp b/Util/src/WinRegistryKey.cpp
 index 7fd1a28..a07c5d2 100644
 --- a/Util/src/WinRegistryKey.cpp
@@ -42,8 +42,8 @@ index 7fd1a28..a07c5d2 100644
 @@ -11,6 +11,7 @@
  // SPDX-License-Identifier:	BSL-1.0
  //
- 
+
 +#pragma comment(lib,"advapi32.lib")
- 
+
  #include "Poco/Util/WinRegistryKey.h"
  #include "Poco/Exception.h"

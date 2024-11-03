@@ -4,7 +4,7 @@ index 9f9e8fa..d912635 100644
 +++ b/src/common/windows/pe_util.cc
 @@ -28,7 +28,7 @@
  // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- 
+
  #include "pe_util.h"
 -
 +#include <memory>

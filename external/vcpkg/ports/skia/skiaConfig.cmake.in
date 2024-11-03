@@ -24,7 +24,7 @@ function(set_dependencies CONFIG LIBRARIES)
             if(WIN32)
                 string(SUBSTRING "${LIB}" 1 -1 LIB)
             endif()
-            target_link_libraries(skia INTERFACE 
+            target_link_libraries(skia INTERFACE
                 "$<$<CONFIG:${CONFIG}>:${LIB}>")
         else()
             string(REGEX REPLACE "\\.framework" "" LIB ${LIB})
@@ -32,7 +32,7 @@ function(set_dependencies CONFIG LIBRARIES)
             string(TOUPPER ${LIB_NAME} LIB_NAME)
             set(LIB_NAME SKIA_${LIB_NAME}_LIBRARY)
             find_library(${LIB_NAME} ${LIB})
-            target_link_libraries(skia INTERFACE 
+            target_link_libraries(skia INTERFACE
                 "$<$<CONFIG:${CONFIG}>:${${LIB_NAME}}>")
         endif()
     endforeach()

@@ -12,7 +12,7 @@ index b05c334..dd4063c 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -173,7 +173,7 @@ AC_REPLACE_FUNCS(getopt_long asprintf vasprintf strlcpy strlcat getline ctime_r
- 
+
  dnl Checks for libraries
  if test "$enable_zlib" != "no"; then
 -  AC_CHECK_LIB(z, gzopen)
@@ -21,7 +21,7 @@ index b05c334..dd4063c 100644
  if test "$enable_bzlib" != "no"; then
    AC_CHECK_LIB(bz2, BZ2_bzCompressInit)
 @@ -193,11 +193,11 @@ AM_CONDITIONAL(IS_CROSS_COMPILE, test "$cross_compiling" = yes)
- 
+
  dnl Final sanity checks
  if test "$enable_zlib" = "yes"; then
 -  if test "$ac_cv_header_zlib_h$ac_cv_lib_z_gzopen" != "yesyes"; then
@@ -34,6 +34,5 @@ index b05c334..dd4063c 100644
    AC_DEFINE([ZLIBSUPPORT], 1, [Enable zlib compression support])
  fi
  if test "$enable_bzlib" = "yes"; then
--- 
+--
 2.29.2.windows.2
-

@@ -4,7 +4,7 @@ index e50af54..e0fd0dc 100644
 +++ b/wangle/cmake/wangle-config.cmake.in
 @@ -12,7 +12,16 @@
  @PACKAGE_INIT@
- 
+
  set_and_check(WANGLE_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@")
 -set_and_check(WANGLE_CMAKE_DIR "@PACKAGE_CMAKE_INSTALL_DIR@")
 +set_and_check(WANGLE_CMAKE_DIR "${PACKAGE_PREFIX_DIR}/share/wangle")
@@ -17,6 +17,6 @@ index e50af54..e0fd0dc 100644
 +find_dependency(Libevent REQUIRED)
 +find_dependency(OpenSSL REQUIRED)
 +find_dependency(double-conversion REQUIRED)
- 
+
  if (NOT TARGET wangle::wangle)
    include("${WANGLE_CMAKE_DIR}/wangle-targets.cmake")

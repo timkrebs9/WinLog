@@ -5,13 +5,13 @@ index 08330d9..a58d669 100644
 @@ -5,10 +5,16 @@ project(rabit VERSION 0.0.0)
  option(RABIT_BUILD_TESTS "Build rabit tests" OFF)
  option(RABIT_BUILD_MPI "Build MPI" OFF)
- 
+
 +find_package(dmlc CONFIG REQUIRED)
 +
  add_library(rabit src/allreduce_base.cc src/allreduce_robust.cc src/engine.cc src/c_api.cc)
  add_library(rabit_base src/allreduce_base.cc src/engine_base.cc src/c_api.cc)
  add_library(rabit_empty src/engine_empty.cc src/c_api.cc)
- 
+
 +target_link_libraries(rabit dmlc::dmlc)
 +target_link_libraries(rabit_base dmlc::dmlc)
 +target_link_libraries(rabit_empty dmlc::dmlc)
@@ -25,18 +25,18 @@ index 08330d9..a58d669 100644
  endif()
 -
  foreach(lib ${rabit_libs})
-   #include "./internal/utils.h"  
+   #include "./internal/utils.h"
    target_include_directories(${lib} PUBLIC
 @@ -42,7 +47,8 @@ if(RABIT_BUILD_TESTS)
    if(RABIT_BUILD_MPI)
      add_executable(speed_test_mpi test/speed_test.cc)
      target_link_libraries(speed_test_mpi rabit_mpi)
--    install(TARGETS speed_test_mpi DESTINATION bin)    
-+    install(TARGETS speed_test_mpi DESTINATION bin) 
-+    message("IN MPI ")    
+-    install(TARGETS speed_test_mpi DESTINATION bin)
++    install(TARGETS speed_test_mpi DESTINATION bin)
++    message("IN MPI ")
    endif()
  endif()
- 
+
 diff --git a/include/rabit/serializable.h b/include/rabit/serializable.h
 index 4a3c2a1..0fd4154 100644
 --- a/include/rabit/serializable.h
@@ -47,6 +47,6 @@ index 4a3c2a1..0fd4154 100644
  #include "./internal/utils.h"
 -#include "../dmlc/io.h"
 +#include <dmlc/io.h>
- 
+
  namespace rabit {
  /*!

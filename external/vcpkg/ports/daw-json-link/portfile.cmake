@@ -19,7 +19,7 @@ vcpkg_cmake_config_fixup(CONFIG_PATH share/${PORT}/cmake)
 # remove empty lib and debug/lib directories (and duplicate files from debug/include)
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug" "${CURRENT_PACKAGES_DIR}/lib")
 
-# Append the json-link and dragonbox license information into a single 
+# Append the json-link and dragonbox license information into a single
 # copyright file (they are both Boost v1.0 but it is good to be clear).
 file(APPEND "${SOURCE_PATH}/copyright" [=[+----------------------------------------------------------------------------+
 |                            json-link copywrite                             |

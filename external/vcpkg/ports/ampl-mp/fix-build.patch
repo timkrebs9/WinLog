@@ -23,7 +23,7 @@ index 904cfb1..13f11cb 100644
 @@ -308,16 +310,17 @@ if (RT_LIBRARY)
    target_link_libraries(mp ${RT_LIBRARY})
  endif ()
- 
+
 +if (MP_VARIADIC_TEMPLATES)
  # Check if variadic templates are working and not affected by GCC bug 39653:
  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=39653
@@ -38,5 +38,5 @@ index 904cfb1..13f11cb 100644
    target_link_libraries(nl-example mp)
 +  endif()
  endif ()
- 
+
  add_subdirectory(doc)

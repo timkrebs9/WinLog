@@ -82,7 +82,7 @@ All C++ projects can now #include any installed libraries.
 Linking will be handled automatically.
 Installing new libraries will make them instantly available.
 ```
-*Note: You will need to restart Visual Studio or perform a Build to update intellisense with the changes.* 
+*Note: You will need to restart Visual Studio or perform a Build to update intellisense with the changes.*
 
 You can now simply use File -> New Project in Visual Studio and the library will be automatically available. For SQLite, you can try out their [C/C++ sample](https://sqlite.org/quickstart.html).
 
@@ -91,7 +91,7 @@ To remove the integration for your user, you can use `.\vcpkg integrate remove`.
 <a name="cmake"></a>
 #### CMake (Toolchain File)
 
-The best way to use installed libraries with cmake is via the toolchain file `scripts\buildsystems\vcpkg.cmake`. To use this file, you simply need to add it onto your CMake command line as:  
+The best way to use installed libraries with cmake is via the toolchain file `scripts\buildsystems\vcpkg.cmake`. To use this file, you simply need to add it onto your CMake command line as:
 `-DCMAKE_TOOLCHAIN_FILE=D:\src\vcpkg\scripts\buildsystems\vcpkg.cmake`.
 
 If you are using CMake through Open Folder with Visual Studio you can define `CMAKE_TOOLCHAIN_FILE` by adding a "variables" section to each of your `CMakeSettings.json` configurations:
@@ -140,7 +140,7 @@ int main()
 
 Then, we build our project in the normal CMake way:
 ```no-highlight
-PS D:\src\cmake-test> mkdir build 
+PS D:\src\cmake-test> mkdir build
 PS D:\src\cmake-test> cd build
 PS D:\src\cmake-test\build> cmake .. "-DCMAKE_TOOLCHAIN_FILE=D:\src\vcpkg\scripts\buildsystems\vcpkg.cmake"
     // omitted CMake output here //

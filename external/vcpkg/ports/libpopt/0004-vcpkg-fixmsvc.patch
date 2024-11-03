@@ -9,7 +9,7 @@ diff -Naur a/poptconfig.c b/poptconfig.c
 +#ifndef  _MSC_VER
 +	uid_t uid = getuid();
 +#endif // ! _MSC_VER
- 
+
      if (stat(fn, &sb) == -1)
  	return 1;
 +#ifndef  _MSC_VER
@@ -32,9 +32,9 @@ diff -Naur a/popthelp.c b/popthelp.c
 --- a/popthelp.c	2009-08-28 03:06:33.000000000 +0300
 +++ b/popthelp.c	2017-01-21 02:59:26.665695800 +0300
 @@ -10,7 +10,10 @@
- 
+
  #include "system.h"
- 
+
 -#define        POPT_USE_TIOCGWINSZ
 +#ifndef  _MSC_VER
 +#define        POPT_USE_TIOCGWINSZ
@@ -49,7 +49,7 @@ diff -Naur a/system.h b/system.h
 @@ -100,4 +100,13 @@
  #endif
  #define UNUSED(x) x __attribute__((__unused__))
- 
+
 +#if defined(_MSC_VER)
 +#define X_OK 0
 +

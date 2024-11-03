@@ -4,7 +4,7 @@ index d4cd035..0701a7d 100644
 +++ b/c++/src/CMakeLists.txt
 @@ -239,12 +239,13 @@ endif(BUILD_LIBHDFSPP)
  add_library (orc STATIC ${SOURCE_FILES})
- 
+
  target_link_libraries (orc
 -  orc::protobuf
 -  orc::zlib
@@ -20,7 +20,7 @@ index d4cd035..0701a7d 100644
 +    $<IF:$<TARGET_EXISTS:zstd::libzstd_shared>,zstd::libzstd_shared,zstd::libzstd_static>
 +    ${LIBHDFSPP_LIBRARIES}
    )
- 
+
  install(TARGETS orc DESTINATION lib)
 diff --git a/cmake_modules/ThirdpartyToolchain.cmake b/cmake_modules/ThirdpartyToolchain.cmake
 index 6919847..ad52cf2 100644
@@ -29,7 +29,7 @@ index 6919847..ad52cf2 100644
 @@ -66,8 +66,8 @@ endif ()
  # ----------------------------------------------------------------------
  # Snappy
- 
+
 -if (NOT "${SNAPPY_HOME}" STREQUAL "")
 -  find_package (Snappy REQUIRED)
 +if (1)
@@ -40,7 +40,7 @@ index 6919847..ad52cf2 100644
 @@ -90,15 +90,6 @@ else ()
    set(SNAPPY_VENDORED TRUE)
  endif ()
- 
+
 -add_library (orc_snappy INTERFACE)
 -add_library (orc::snappy ALIAS orc_snappy)
 -if (ORC_PREFER_STATIC_SNAPPY AND ${SNAPPY_STATIC_LIB})
@@ -56,7 +56,7 @@ index 6919847..ad52cf2 100644
 @@ -110,7 +101,7 @@ endif ()
  # ----------------------------------------------------------------------
  # ZLIB
- 
+
 -if (NOT "${ZLIB_HOME}" STREQUAL "")
 +if (1)
    find_package (ZLIB REQUIRED)
@@ -65,7 +65,7 @@ index 6919847..ad52cf2 100644
 @@ -142,15 +133,6 @@ else ()
    set(ZLIB_VENDORED TRUE)
  endif ()
- 
+
 -add_library (orc_zlib INTERFACE)
 -add_library (orc::zlib ALIAS orc_zlib)
 -if (ORC_PREFER_STATIC_ZLIB AND ${ZLIB_STATIC_LIB})
@@ -81,7 +81,7 @@ index 6919847..ad52cf2 100644
 @@ -162,8 +144,8 @@ endif ()
  # ----------------------------------------------------------------------
  # Zstd
- 
+
 -if (NOT "${ZSTD_HOME}" STREQUAL "")
 -  find_package (ZSTD REQUIRED)
 +if (1)
@@ -92,7 +92,7 @@ index 6919847..ad52cf2 100644
 @@ -201,15 +183,6 @@ else ()
    set(ZSTD_VENDORED TRUE)
  endif ()
- 
+
 -add_library (orc_zstd INTERFACE)
 -add_library (orc::zstd ALIAS orc_zstd)
 -if (ORC_PREFER_STATIC_ZSTD AND ${ZSTD_STATIC_LIB})
@@ -108,7 +108,7 @@ index 6919847..ad52cf2 100644
 @@ -221,8 +194,8 @@ endif ()
  # ----------------------------------------------------------------------
  # LZ4
- 
+
 -if (NOT "${LZ4_HOME}" STREQUAL "")
 -  find_package (LZ4 REQUIRED)
 +if (1)
@@ -119,7 +119,7 @@ index 6919847..ad52cf2 100644
 @@ -253,15 +226,6 @@ else ()
    set(LZ4_VENDORED TRUE)
  endif ()
- 
+
 -add_library (orc_lz4 INTERFACE)
 -add_library (orc::lz4 ALIAS orc_lz4)
 -if (ORC_PREFER_STATIC_LZ4 AND ${LZ4_STATIC_LIB})
@@ -135,7 +135,7 @@ index 6919847..ad52cf2 100644
 @@ -273,7 +237,7 @@ endif ()
  # ----------------------------------------------------------------------
  # IANA - Time Zone Database
- 
+
 -if (WIN32)
 +if (WIN32 AND TEST_VALGRIND_MEMCHECK)
    SET(CURRENT_TZDATA_FILE "")
@@ -144,7 +144,7 @@ index 6919847..ad52cf2 100644
 @@ -372,8 +336,8 @@ endif ()
  # ----------------------------------------------------------------------
  # Protobuf
- 
+
 -if (NOT "${PROTOBUF_HOME}" STREQUAL "")
 -  find_package (Protobuf REQUIRED)
 +if (1)
@@ -155,7 +155,7 @@ index 6919847..ad52cf2 100644
 @@ -421,19 +385,7 @@ add_library (orc::protobuf ALIAS orc_protobuf)
  add_library (orc_protoc INTERFACE)
  add_library (orc::protoc ALIAS orc_protoc)
- 
+
 -if (ORC_PREFER_STATIC_PROTOBUF AND ${PROTOBUF_STATIC_LIB})
 -  target_link_libraries (orc_protobuf INTERFACE ${PROTOBUF_STATIC_LIB})
 -else ()
@@ -170,7 +170,7 @@ index 6919847..ad52cf2 100644
 -endif()
 -target_include_directories (orc_protoc SYSTEM INTERFACE ${PROTOBUF_INCLUDE_DIR})
 +include_directories (SYSTEM ${PROTOBUF_INCLUDE_DIR})
- 
+
  if (PROTOBUF_VENDORED)
    add_dependencies (orc_protoc protobuf_ep)
 diff --git a/tools/src/CMakeLists.txt b/tools/src/CMakeLists.txt
@@ -179,7 +179,7 @@ index d55581b..701fd7c 100644
 +++ b/tools/src/CMakeLists.txt
 @@ -95,11 +95,7 @@ target_link_libraries (csv-import
    )
- 
+
  install(TARGETS
 -   orc-contents
 -   orc-metadata

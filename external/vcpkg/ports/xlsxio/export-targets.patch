@@ -4,7 +4,7 @@ index 05c7ee5..28a0206 100644
 +++ b/CMakeLists.txt
 @@ -87,7 +87,8 @@ INCLUDE_DIRECTORIES(${ANYZIP_INCLUDE_DIRS})
  INCLUDE_DIRECTORIES(${EXPAT_INCLUDE_DIRS})
- 
+
  # build definitions
 -SET(ALLTARGETS)
 +SET(ALLTARGETS_LIB)
@@ -18,7 +18,7 @@ index 05c7ee5..28a0206 100644
    TARGET_LINK_LIBRARIES(xlsxio_read_${LINKTYPE} ${ANYZIP_LIBRARIES} ${EXPAT_LIBRARIES})
 -  SET(ALLTARGETS ${ALLTARGETS} xlsxio_read_${LINKTYPE})
 +  SET(ALLTARGETS_LIB ${ALLTARGETS_LIB} xlsxio_read_${LINKTYPE})
- 
+
    ADD_LIBRARY(xlsxio_write_${LINKTYPE} ${LINKTYPE} lib/xlsxio_write.c)
    SET_TARGET_PROPERTIES(xlsxio_write_${LINKTYPE} PROPERTIES COMPILE_DEFINITIONS "BUILD_XLSXIO;${ANYZIP_DEF};BUILD_XLSXIO_${LINKTYPE}")
 @@ -115,7 +116,7 @@ FOREACH(LINKTYPE ${LINKTYPES})
@@ -27,7 +27,7 @@ index 05c7ee5..28a0206 100644
    TARGET_LINK_LIBRARIES(xlsxio_write_${LINKTYPE} ${ANYZIP_LIBRARIES} ${THREADLIB})
 -  SET(ALLTARGETS ${ALLTARGETS} xlsxio_write_${LINKTYPE})
 +  SET(ALLTARGETS_LIB ${ALLTARGETS_LIB} xlsxio_write_${LINKTYPE})
- 
+
    IF(WITH_WIDE)
      ADD_LIBRARY(xlsxio_readw_${LINKTYPE} ${LINKTYPE} lib/xlsxio_read.c lib/xlsxio_read_sharedstrings.c)
 @@ -127,7 +128,7 @@ FOREACH(LINKTYPE ${LINKTYPES})
@@ -36,7 +36,7 @@ index 05c7ee5..28a0206 100644
      TARGET_LINK_LIBRARIES(xlsxio_readw_${LINKTYPE} ${ANYZIP_LIBRARIES} ${EXPATW_LIBRARIES})
 -    SET(ALLTARGETS ${ALLTARGETS} xlsxio_readw_${LINKTYPE})
 +    SET(ALLTARGETS_LIB ${ALLTARGETS_LIB} xlsxio_readw_${LINKTYPE})
- 
+
      #ADD_LIBRARY(xlsxio_writew_${LINKTYPE} ${LINKTYPE} lib/xlsxio_write.c)
      #SET_TARGET_PROPERTIES(xlsxio_writew_${LINKTYPE} PROPERTIES DEFINE_SYMBOL "BUILD_XLSXIO_DLL")
 @@ -137,7 +138,7 @@ FOREACH(LINKTYPE ${LINKTYPES})
@@ -46,7 +46,7 @@ index 05c7ee5..28a0206 100644
 -    #SET(ALLTARGETS ${ALLTARGETS} xlsxio_writew_${LINKTYPE})
 +    #SET(ALLTARGETS_LIB ${ALLTARGETS_LIB} xlsxio_writew_${LINKTYPE})
    ENDIF()
- 
+
    SET(EXELINKTYPE ${LINKTYPE})
 @@ -148,35 +149,35 @@ ENDFOREACH()
  IF(BUILD_TOOLS)
@@ -54,34 +54,34 @@ index 05c7ee5..28a0206 100644
    TARGET_LINK_LIBRARIES(xlsxio_xlsx2csv xlsxio_read_${EXELINKTYPE})
 -  SET(ALLTARGETS ${ALLTARGETS} xlsxio_xlsx2csv)
 +  SET(ALLTARGETS_EXE ${ALLTARGETS_EXE} xlsxio_xlsx2csv)
- 
+
    ADD_EXECUTABLE(xlsxio_csv2xlsx src/xlsxio_csv2xlsx.c)
    TARGET_LINK_LIBRARIES(xlsxio_csv2xlsx xlsxio_write_${EXELINKTYPE})
 -  SET(ALLTARGETS ${ALLTARGETS} xlsxio_csv2xlsx)
 +  SET(ALLTARGETS_EXE ${ALLTARGETS_EXE} xlsxio_csv2xlsx)
  ENDIF()
- 
+
  IF(BUILD_EXAMPLES)
    ADD_EXECUTABLE(example_xlsxio_write_getversion examples/example_xlsxio_write_getversion.c)
    TARGET_LINK_LIBRARIES(example_xlsxio_write_getversion xlsxio_write_${EXELINKTYPE})
 -  SET(ALLTARGETS ${ALLTARGETS} example_xlsxio_write_getversion)
 +  SET(ALLTARGETS_EXE ${ALLTARGETS_EXE} example_xlsxio_write_getversion)
- 
+
    ADD_EXECUTABLE(example_xlsxio_write examples/example_xlsxio_write.c)
    TARGET_LINK_LIBRARIES(example_xlsxio_write xlsxio_write_${EXELINKTYPE})
 -  SET(ALLTARGETS ${ALLTARGETS} example_xlsxio_write)
 +  SET(ALLTARGETS_EXE ${ALLTARGETS_EXE} example_xlsxio_write)
- 
+
    ADD_EXECUTABLE(example_xlsxio_read examples/example_xlsxio_read.c)
    TARGET_LINK_LIBRARIES(example_xlsxio_read xlsxio_read_${EXELINKTYPE})
 -  SET(ALLTARGETS ${ALLTARGETS} example_xlsxio_read)
 +  SET(ALLTARGETS_EXE ${ALLTARGETS_EXE} example_xlsxio_read)
- 
+
    ADD_EXECUTABLE(example_xlsxio_read_advanced examples/example_xlsxio_read_advanced.c)
    TARGET_LINK_LIBRARIES(example_xlsxio_read_advanced xlsxio_read_${EXELINKTYPE})
 -  SET(ALLTARGETS ${ALLTARGETS} example_xlsxio_read_advanced)
 +  SET(ALLTARGETS_EXE ${ALLTARGETS_EXE} example_xlsxio_read_advanced)
- 
+
    IF(WITH_WIDE)
      ADD_EXECUTABLE(example_xlsxio_readw examples/example_xlsxio_read.c)
      SET_TARGET_PROPERTIES(example_xlsxio_readw PROPERTIES COMPILE_DEFINITIONS "XML_UNICODE")
@@ -90,10 +90,10 @@ index 05c7ee5..28a0206 100644
 +    SET(ALLTARGETS_EXE ${ALLTARGETS_EXE} example_xlsxio_readw)
    ENDIF()
  ENDIF()
- 
+
 @@ -200,7 +201,43 @@ IF(BUILD_DOCUMENTATION)
  ENDIF()
- 
+
  # installation specifications
 -INSTALL(TARGETS ${ALLTARGETS}
 +INSTALL(TARGETS ${ALLTARGETS_LIB}

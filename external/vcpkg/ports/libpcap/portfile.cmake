@@ -17,7 +17,7 @@ vcpkg_from_github(
     REF c7642e2cc0c5bd65754685b160d25dc23c76c6bd #1.10.1
     SHA512 ed46095863aaee79ca2833d26438f6c837cc3e64acb73efd5a388a11ff7d0d1245d23e5404070a9f2c2c77840c93c09328746761e4481e9a530593a5cbf2ad6f
     HEAD_REF master
-    PATCHES 
+    PATCHES
         install-pc-on-msvc.patch
         add-disable-packet-option.patch
 )

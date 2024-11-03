@@ -5,7 +5,7 @@ index a6a7554..b20fd4b 100644
 @@ -111,6 +111,11 @@ if(WIN32)
  	set(PLATFORM_LIBS ${PLATFORM_LIBS} ws2_32 bcrypt)
  endif()
- 
+
 +if(MSVC AND MSVC_VERSION GREATER_EQUAL 1912)
 +	message(STATUS "Setting /Qspectre switch")
 +	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /Qspectre")
@@ -44,4 +44,3 @@ index a6a7554..b20fd4b 100644
  		)
  	elseif(CMAKE_C_COMPILER_ID MATCHES "Intel")
  		add_definitions(-D_CRT_SUPPRESS_RESTRICT)
-

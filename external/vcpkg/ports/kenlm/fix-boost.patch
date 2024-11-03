@@ -4,7 +4,7 @@ index bec81d4..44fd48a 100644
 +++ b/CMakeLists.txt
 @@ -1,6 +1,6 @@
  cmake_minimum_required(VERSION 3.1)
- 
+
 -if (WIN32)
 +if (WIN32 AND BUILD_SHARED_LIBS)
      set(Boost_USE_STATIC_LIBS OFF)

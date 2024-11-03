@@ -5,7 +5,7 @@ index e2fbe95..8c4f279 100644
 @@ -226,7 +226,7 @@ sub mkvcbuild
  		$pltcl->AddIncludeDir($solution->{options}->{tcl} . '/include');
  		$pltcl->AddReference($postgres);
- 
+
 -		for my $tclver (qw(86t 86 85 84))
 +		for my $tclver (qw(90 90g 90s 90sg))
  		{

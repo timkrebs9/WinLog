@@ -13,12 +13,12 @@ target_include_directories(wxchartdir PUBLIC
     $<INSTALL_INTERFACE:include>
 )
 
-target_link_libraries(wxchartdir 
+target_link_libraries(wxchartdir
     PRIVATE ${wxWidgets_LIBRARIES}
     PRIVATE chartdir
 )
 
-install(TARGETS wxchartdir EXPORT wxchartdir-config 
+install(TARGETS wxchartdir EXPORT wxchartdir-config
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib

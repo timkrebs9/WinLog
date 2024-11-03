@@ -14,7 +14,7 @@ index 0865689..b00710e 100644
 @@ -1381,7 +1381,7 @@ RTMP_ClientPacket(RTMP *r, RTMPPacket *packet)
    return bHasMediaPacket;
  }
- 
+
 -#ifdef _DEBUG
 +#if defined(_DEBUG) && !defined(LIBRTMP_ONLY)
  extern FILE *netstackdump;
@@ -28,11 +28,11 @@ index 0865689..b00710e 100644
 +#if defined(_DEBUG) && !defined(LIBRTMP_ONLY)
        fwrite(ptr, 1, nBytes, netstackdump_read);
  #endif
- 
+
 @@ -3757,7 +3757,7 @@ HandShake(RTMP *r, int FP9HandShake)
- 
+
    memset(&clientsig[4], 0, 4);
- 
+
 -#ifdef _DEBUG
 +#if defined(_DEBUG) && !defined(LIBRTMP_ONLY)
    for (i = 8; i < RTMP_SIG_SIZE; i++)
@@ -40,7 +40,7 @@ index 0865689..b00710e 100644
  #else
 @@ -3829,7 +3829,7 @@ SHandShake(RTMP *r)
    memcpy(serversig, &uptime, 4);
- 
+
    memset(&serversig[4], 0, 4);
 -#ifdef _DEBUG
 +#if defined(_DEBUG) && !defined(LIBRTMP_ONLY)
@@ -50,9 +50,8 @@ index 0865689..b00710e 100644
 @@ -4298,7 +4298,7 @@ RTMPSockBuf_Send(RTMPSockBuf *sb, const char *buf, int len)
  {
    int rc;
- 
+
 -#ifdef _DEBUG
 +#if defined(_DEBUG) && !defined(LIBRTMP_ONLY)
    fwrite(buf, 1, len, netstackdump);
  #endif
- 

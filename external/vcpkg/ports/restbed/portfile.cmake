@@ -1,6 +1,6 @@
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
     FEATURES
-        openssl     BUILD_SSL 
+        openssl     BUILD_SSL
 )
 
 vcpkg_from_github(

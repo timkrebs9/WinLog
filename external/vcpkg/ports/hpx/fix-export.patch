@@ -1,6 +1,6 @@
 diff --git a/cmake/HPX_GeneratePackageUtils.cmake b/cmake/HPX_GeneratePackageUtils.cmake
 index 3ec8002..b098465 100644
---- a/cmake/HPX_AddModule.cmake	
+--- a/cmake/HPX_AddModule.cmake
 +++ b/cmake/HPX_AddModule.cmake
 @@ -437,7 +437,7 @@ function(add_hpx_module libname modulename)
      elseif(MSVC)
@@ -11,7 +11,7 @@ index 3ec8002..b098465 100644
        )
      endif()
      target_link_libraries(hpx_${libname} PRIVATE ${_module_target})
---- a/cmake/HPX_GeneratePackageUtils.cmake	
+--- a/cmake/HPX_GeneratePackageUtils.cmake
 +++ b/cmake/HPX_GeneratePackageUtils.cmake
 @@ -101,7 +101,7 @@ function(
            )

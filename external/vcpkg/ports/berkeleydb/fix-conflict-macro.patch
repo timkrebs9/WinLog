@@ -8,9 +8,9 @@ index 0034dcc..2dd5e03 100644
  #define	atomic_read(p)		((p)->value)
 -#define	atomic_init(p, val)	((p)->value = (val))
 +#define	bdb_atomic_init(p, val)	((p)->value = (val))
- 
+
  #ifdef HAVE_ATOMIC_SUPPORT
- 
+
 @@ -206,7 +206,7 @@ static inline int __atomic_compare_exchange(
  #define	atomic_dec(env, p)	(--(p)->value)
  #define	atomic_compare_exchange(env, p, oldval, newval)		\
@@ -25,7 +25,7 @@ index 5fdee5a..452ef17 100644
 --- a/mp/mp_fget.c
 +++ b/mp/mp_fget.c
 @@ -617,7 +617,7 @@ alloc:		/* Allocate a new buffer header and data space. */
- 
+
  		/* Initialize enough so we can call __memp_bhfree. */
  		alloc_bhp->flags = 0;
 -		atomic_init(&alloc_bhp->ref, 1);
@@ -36,7 +36,7 @@ index 5fdee5a..452ef17 100644
 @@ -911,7 +911,7 @@ alloc:		/* Allocate a new buffer header and data space. */
  			MVCC_MPROTECT(bhp->buf, mfp->stat.st_pagesize,
  			    PROT_READ);
- 
+
 -		atomic_init(&alloc_bhp->ref, 1);
 +		bdb_atomic_init(&alloc_bhp->ref, 1);
  		MUTEX_LOCK(env, alloc_bhp->mtx_buf);
@@ -63,7 +63,7 @@ index 34467d2..b604388 100644
 +		bdb_atomic_init(&alloc_bhp->ref, 1);
  		F_CLR(alloc_bhp, BH_FROZEN);
  	}
- 
+
 diff --git a/mp/mp_region.c b/mp/mp_region.c
 index e6cece9..e3e3382 100644
 --- a/mp/mp_region.c
@@ -75,7 +75,7 @@ index e6cece9..e3e3382 100644
 -			atomic_init(&htab[i].hash_page_dirty, 0);
 +			bdb_atomic_init(&htab[i].hash_page_dirty, 0);
  		}
- 
+
  		/*
 @@ -269,7 +269,7 @@ __memp_init(env, dbmp, reginfo_off, htab_buckets, max_nreg)
  		hp->mtx_hash = (mtx_base == MUTEX_INVALID) ? MUTEX_INVALID :
@@ -97,14 +97,14 @@ index 2588763..56b6723 100644
 -		atomic_init(v, newval);
 +		bdb_atomic_init(v, newval);
  	MUTEX_UNLOCK(env, mtx);
- 
+
  	return (ret);
 diff --git a/mutex/mut_tas.c b/mutex/mut_tas.c
 index f3922e0..934a654 100644
 --- a/mutex/mut_tas.c
 +++ b/mutex/mut_tas.c
 @@ -46,7 +46,7 @@ __db_tas_mutex_init(env, mutex, flags)
- 
+
  #ifdef HAVE_SHARED_LATCHES
  	if (F_ISSET(mutexp, DB_MUTEX_SHARED))
 -		atomic_init(&mutexp->sharecount, 0);

@@ -8,7 +8,6 @@ index 45fc69d9..9b5abbad 100755
  jitter_buffer_update_delay
 +jitter_buffer_ctl
 +jitter_buffer_remaining_span
- 
+
  ;
  ;	speex_preprocess.h
- 

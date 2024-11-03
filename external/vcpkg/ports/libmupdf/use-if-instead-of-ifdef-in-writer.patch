@@ -12,7 +12,7 @@
 @@ -219,11 +219,11 @@ fz_new_document_writer(fz_context *ctx, const char *path, const char *explicit_f
                 if (is_extension(format, "stext.json"))
                         return fz_new_text_writer(ctx, "stext.json", path, options);
- 
+
 -#ifdef FZ_ENABLE_ODT_OUTPUT
 +#if FZ_ENABLE_ODT_OUTPUT
                 if (is_extension(format, "odt"))
@@ -26,7 +26,7 @@
 @@ -267,11 +267,11 @@ fz_new_document_writer_with_output(fz_context *ctx, fz_output *out, const char *
         if (is_extension(format, "stext.json"))
                 return fz_new_text_writer_with_output(ctx, "stext.json", out, options);
- 
+
 -#ifdef FZ_ENABLE_ODT_OUTPUT
 +#if FZ_ENABLE_ODT_OUTPUT
         if (is_extension(format, "odt"))

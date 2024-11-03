@@ -5,7 +5,7 @@ index 11d14e4..0fa3e1e 100644
 @@ -137,6 +137,21 @@ set_target_properties(
        1.1
  )
- 
+
 +if(USE_SYSTEM_RAPIDJSON)
 +  find_package(RapidJSON CONFIG REQUIRED)
 +  target_link_libraries(libopencc PRIVATE rapidjson)
@@ -22,5 +22,5 @@ index 11d14e4..0fa3e1e 100644
 +endif()
 +
  # Installation
- 
+
  install(

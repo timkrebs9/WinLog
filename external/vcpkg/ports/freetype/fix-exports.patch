@@ -4,7 +4,7 @@ index cb1b9a0f2..edca5d579 100644
 +++ b/CMakeLists.txt
 @@ -508,7 +508,6 @@ set(PKG_CONFIG_REQUIRED_PRIVATE "")
  set(PKGCONFIG_LIBS_PRIVATE "")
- 
+
  if (ZLIB_FOUND)
 -   target_link_libraries(freetype PRIVATE ${ZLIB_LIBRARIES})
 +   target_link_libraries(freetype PRIVATE ZLIB::ZLIB)
@@ -36,5 +36,3 @@ index cb1b9a0f2..edca5d579 100644
 +
 +  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/freetype-config.cmake DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/freetype)
  endif ()
- 
- 

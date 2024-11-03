@@ -33,7 +33,7 @@ Manifest property | Versioning scheme
 `version-date`    | For dates in the format YYYY-MM-DD
 `version-string`  | For arbitrary strings
 
-A manifest must contain only one version declaration. 
+A manifest must contain only one version declaration.
 
 _NOTE: By design, vcpkg does not compare versions that use different schemes. For example, a package
 that has a `version-string: 7.1.3` cannot be compared with the same package using `version: 7.1.4`, even if the

@@ -390,7 +390,7 @@ index 9a875ca..b7ed6b2 100644
 +  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
 +    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
 +  </PropertyGroup>
-+  
++
    <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
      <PreBuildEvent>
        <Command>echo N | copy /-Y ..\src\hunspell\hunvisapi.h.in ..\src\hunspell\hunvisapi.h</Command>
@@ -451,7 +451,7 @@ index 9a875ca..b7ed6b2 100644
 +    <Bscmake>
 +      <SuppressStartupBanner>false</SuppressStartupBanner>
 +    </Bscmake>
-+  </ItemDefinitionGroup>  
++  </ItemDefinitionGroup>
    <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_dll|Win32'">
      <PreBuildEvent>
        <Command>echo N | copy /-Y ..\src\hunspell\hunvisapi.h.in ..\src\hunspell\hunvisapi.h</Command>

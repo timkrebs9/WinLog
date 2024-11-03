@@ -19,10 +19,10 @@ index a9e1269..4c1d0d4 100644
 --- a/widgets/CMakeLists.txt
 +++ b/widgets/CMakeLists.txt
 @@ -2,6 +2,7 @@ include(GenerateExportHeader)
- 
+
  if(MSVC)
  	add_definitions(-DMGL_LIB_MSVC)
 +	add_definitions(-DMGL_WIDGETS_DLL)
  endif(MSVC)
- 
+
  if(MGL_HAVE_FLTK)

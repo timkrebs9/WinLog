@@ -6,7 +6,7 @@ if(NOT "CONFIG" IN_LIST ARGS AND NOT "NO_MODULE" IN_LIST ARGS AND NOT CMAKE_DISA
     get_filename_component(z_vcpkg_liblzma_prefix "${CMAKE_CURRENT_LIST_DIR}" DIRECTORY)
     get_filename_component(z_vcpkg_liblzma_prefix "${z_vcpkg_liblzma_prefix}" DIRECTORY)
     find_path(LIBLZMA_INCLUDE_DIR NAMES lzma.h PATHS "${z_vcpkg_liblzma_prefix}/include" NO_DEFAULT_PATH)
-    # liblzma doesn't use a debug postfix, but FindLibLZMA.cmake expects it 
+    # liblzma doesn't use a debug postfix, but FindLibLZMA.cmake expects it
     find_library(LIBLZMA_LIBRARY_RELEASE NAMES lzma PATHS "${z_vcpkg_liblzma_prefix}/lib" NO_DEFAULT_PATH)
     find_library(LIBLZMA_LIBRARY_DEBUG NAMES lzma PATHS "${z_vcpkg_liblzma_prefix}/debug/lib" NO_DEFAULT_PATH)
     unset(z_vcpkg_liblzma_prefix)

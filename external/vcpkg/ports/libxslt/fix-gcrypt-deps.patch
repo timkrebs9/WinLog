@@ -3,7 +3,7 @@ index 6dc6501..d36a049 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -317,7 +317,9 @@ target_include_directories(
- 
+
  if(LIBXSLT_WITH_CRYPTO AND NOT WIN32)
  	target_link_libraries(LibExslt PRIVATE Gcrypt::Gcrypt)
 -	set(LIBGCRYPT_LIBS "-lgcrypt")
@@ -11,7 +11,7 @@ index 6dc6501..d36a049 100644
 +	set(LIBGCRYPT_LIBS "")
 +	string(APPEND EXSLT_PRIVATE_REQUIRES " libgcrypt")
  endif()
- 
+
  target_link_libraries(LibExslt PUBLIC LibXslt LibXml2::LibXml2)
 diff --git a/FindGcrypt.cmake b/FindGcrypt.cmake
 index 781113d..a78fa84 100644
@@ -37,7 +37,7 @@ index 781113d..a78fa84 100644
 +if(0)
  include(FindPackageHandleStandardArgs)
  include(SelectLibraryConfigurations)
- 
+
 @@ -38,3 +53,4 @@ if(GCRYPT_FOUND AND NOT TARGET Gcrypt::Gcrypt)
  		INTERFACE_INCLUDE_DIRECTORIES "${GCRYPT_INCLUDE_DIRS}"
  	)

@@ -7,6 +7,5 @@ index fa572fa..640ba9a 100644
  #include <functional>
  #include <stdexcept>
 +#include <iterator>
- 
+
  namespace msgpack11 {
- 

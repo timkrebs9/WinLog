@@ -82,7 +82,7 @@ Each port in a registry should exist in the versions directory as
 `<first letter of port>-/<name of port>.json`; in other words, the
 information about the `kitten` port would be located in
 `versions/k-/kitten.json`. This should be a top-level object with only a
-single field: `"versions"`. This field should contain an array of version 
+single field: `"versions"`. This field should contain an array of version
 objects:
 
 - The version of the port in question; should be exactly the same as the
@@ -90,7 +90,7 @@ objects:
 - The `"git-tree"` field, which is a git tree; in other words, what you get
   when you write `git rev-parse COMMIT-ID:path/to/port`.
 
-Note that the version fields for ports with `CONTROL` files, is 
+Note that the version fields for ports with `CONTROL` files, is
 `"version-string"`; we do not recommend using `CONTROL` files in new
 registries, however.
 
@@ -98,7 +98,7 @@ _WARNING_: One very important part of registries is that versions should
 _never_ be changed. Updating to a later ref should never remove or change an
 existing version. It must always be safe to update a registry.
 
-Here's an example of a valid version database for a `kitten` port with one 
+Here's an example of a valid version database for a `kitten` port with one
 version:
 
 ```json
@@ -114,7 +114,7 @@ version:
 ```
 
 In general, it's not important where you place port directories. However, the
-idiom in vcpkg is to follow what the built in vcpkg registry does: your 
+idiom in vcpkg is to follow what the built in vcpkg registry does: your
 `kitten` port should be placed in `ports/kitten`.
 
 _WARNING_: One other thing to keep in mind is that when you update a registry,
@@ -170,7 +170,7 @@ Then, you can add this version to the versions database. At the top of your
 }
 ```
 
-then, you'll want to modify your `versions/baseline.json` with your new version 
+then, you'll want to modify your `versions/baseline.json` with your new version
 as well:
 
 ```json
@@ -208,7 +208,7 @@ It is laid out as a top-level object containing a map from version name to
 "baseline objects", which map port names to the version which is considered
 "latest" for that version of the registry.
 
-Filesystem registries need to decide on a versioning scheme. Unlike git 
+Filesystem registries need to decide on a versioning scheme. Unlike git
 registries, which have the implicit versioning scheme of refs, filesystem
 registries can't rely on the version control system here. One possible option
 is to do a daily release, and have your "versions" be dates.
@@ -253,16 +253,16 @@ Each port in a registry should exist in the versions directory as
 `<first letter of port>-/<name of port>.json`; in other words, the
 information about the `kitten` port would be located in
 `versions/k-/kitten.json`. This should be a top-level object with only a
-single field: `"versions"`. This field should contain an array of version 
+single field: `"versions"`. This field should contain an array of version
 objects:
 
 - The version of the port in question; should be exactly the same as the
   `vcpkg.json` file, including the version fields and `"port-version"`.
 - The `"path"` field: a relative directory, rooted at the base of the registry
-  (in other words, the directory where `versions` is located), to the port 
+  (in other words, the directory where `versions` is located), to the port
   directory. It should look something like `"$/path/to/port/dir`"
 
-Note that the version fields for ports with `CONTROL` files, is 
+Note that the version fields for ports with `CONTROL` files, is
 `"version-string"`; we do not recommend using `CONTROL` files in new
 registries, however.
 
@@ -276,7 +276,7 @@ _WARNING_: One very important part of registries is that versions should
 _never_ be changed. One should never remove or change an existing version.
 Your changes to your registry shouldn't change behavior to downstream users.
 
-Here's an example of a valid version database for a `kitten` port with one 
+Here's an example of a valid version database for a `kitten` port with one
 version:
 
 ```json
@@ -319,7 +319,7 @@ your `versions/k-/kitten.json`:
 }
 ```
 
-then, you'll want to modify your `versions/baseline.json` with your new version 
+then, you'll want to modify your `versions/baseline.json` with your new version
 as well (remember not to modify existing baselines):
 
 ```json

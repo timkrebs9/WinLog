@@ -38,7 +38,7 @@ vcpkg_download_distfile(
 )
 
 vcpkg_extract_source_archive(
-    SOURCE_PATH_DEBUGBREAK  
+    SOURCE_PATH_DEBUGBREAK
     ARCHIVE ${DEBUGBREAK_ARCHIVE}
     WORKING_DIRECTORY "${CURRENT_BUILDTREES_DIR}/src/deps"
 )
@@ -56,7 +56,7 @@ vcpkg_download_distfile(
 )
 
 vcpkg_extract_source_archive(
-    SOURCE_PATH_FAST_FLOAT 
+    SOURCE_PATH_FAST_FLOAT
     ARCHIVE ${FAST_FLOAT_ARCHIVE}
     WORKING_DIRECTORY "${CURRENT_BUILDTREES_DIR}/src/deps"
 )

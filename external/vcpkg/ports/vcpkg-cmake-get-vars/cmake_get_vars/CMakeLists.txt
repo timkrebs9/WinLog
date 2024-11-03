@@ -42,11 +42,11 @@ foreach(_lang IN LISTS VCPKG_LANGUAGES)
 endforeach()
 list(REMOVE_DUPLICATES VCPKG_DEFAULT_VARS_TO_CHECK)
 
-# Environment variables to check. 
+# Environment variables to check.
 list(APPEND VCPKG_DEFAULT_ENV_VARS_TO_CHECK PATH INCLUDE C_INCLUDE_PATH CPLUS_INCLUDE_PATH LIB LIBPATH LIBRARY_PATH LD_LIBRARY_PATH)
 list(REMOVE_DUPLICATES VCPKG_DEFAULT_ENV_VARS_TO_CHECK)
 
-#Flags to check. Flags are a bit special since they are configuration aware. 
+#Flags to check. Flags are a bit special since they are configuration aware.
 set(FLAGS ${VCPKG_LANGUAGES} RC SHARED_LINKER STATIC_LINKER EXE_LINKER)
 foreach(flag IN LISTS FLAGS)
     list(APPEND VCPKG_DEFAULT_FLAGS_TO_CHECK CMAKE_${flag}_FLAGS)

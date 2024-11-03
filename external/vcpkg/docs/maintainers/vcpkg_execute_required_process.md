@@ -44,7 +44,7 @@ This should be a unique name for different triplets so that the logs don't confl
 ### SAVE_LOG_FILES
 
 Optional files to be moved from the working directory to `${CURRENT_BUILDTREES_DIR}`.
-The files are copied even if the process failed. 
+The files are copied even if the process failed.
 The target file names are constructed from the `LOGNAME` parameter and the source filename.
 If the target file name doesn't end in `.log`, this suffix is appended.
 This helps to collect relevant log files in CI setups.

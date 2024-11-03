@@ -5,7 +5,7 @@ Index: CMakeLists.txt
 @@ -436,6 +436,12 @@
                         @ONLY)
  ENDIF(PCRE_BUILD_PCRECPP)
- 
+
 +# Make sure to not link debug libs
 +# against release libs and vice versa
 +IF(WIN32)
@@ -27,23 +27,23 @@ Index: CMakeLists.txt
  ENDIF(NOT BUILD_SHARED_LIBS)
 @@ -659,11 +668,6 @@
  ENDIF(MSVC)
- 
+
  SET(CMAKE_INCLUDE_CURRENT_DIR 1)
 -# needed to make sure to not link debug libs
 -# against release libs and vice versa
 -IF(WIN32)
 -  SET(CMAKE_DEBUG_POSTFIX "d")
 -ENDIF(WIN32)
- 
+
  SET(targets)
- 
+
 Index: configure.ac
 ===================================================================
 --- configure.ac	(revision 1767)
 +++ configure.ac	(working copy)
 @@ -1044,6 +1044,9 @@
  AM_CONDITIONAL([WITH_GCOV],[test "x$enable_coverage" = "xyes"])
- 
+
  # Produce these files, in addition to config.h.
 +# LIB_POSTFIX is used by CMakeLists.txt for Windows debug builds.
 +# Pass empty LIB_POSTFIX to *.pc files and pcre-config here.

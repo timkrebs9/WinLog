@@ -280,7 +280,7 @@ else ()
             #ifndef __SSE2__
             # define __SSE2__
             #endif
-            
+
             #include <emmintrin.h>
             int main(void) {
             __m128d x = _mm_setzero_pd();
@@ -411,7 +411,7 @@ else ()
             #endif
             #pragma GCC target(\"avx512f\")
             #include <immintrin.h>
-            
+
             #ifndef __AVX512F__
             # error No AVX512 support
             #elif defined(__clang__)
@@ -423,7 +423,7 @@ else ()
             #  error Compiler AVX512 support may be broken
             # endif
             #endif
-    
+
             int main(void) {
             __m512i x = _mm512_setzero_epi32();
             __m512i y = _mm512_permutexvar_epi64(_mm512_setr_epi64(0, 1, 4, 5, 2, 3, 6, 7), x);
@@ -1051,13 +1051,13 @@ if (BUILD_TESTING)
 
     foreach (test_src ${sodium_test_sources})
         get_filename_component(test_name ${test_src} NAME_WE)
-        
+
         add_executable(${test_name} ${test_src})
-        
+
         if (MSVC)
             target_compile_definitions(${test_name} PRIVATE _CRT_SECURE_NO_WARNINGS)
         endif ()
-        
+
         target_include_directories(${test_name}
             PRIVATE
                 $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/libsodium/include>

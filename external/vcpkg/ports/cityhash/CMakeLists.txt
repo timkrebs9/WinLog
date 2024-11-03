@@ -10,7 +10,7 @@ if (ENABLE_SSE)
     cmake_push_check_state()
     if (MSVC)
         include(CheckCXXSourceCompiles)
-        
+
     check_cxx_source_compiles(
     "#include <nmmintrin.h>
     int main() {
@@ -25,9 +25,9 @@ if (ENABLE_SSE)
             set (SSE2_FLAG "-msse4.2")
         endif()
     endif()
-    
+
     cmake_pop_check_state()
-    
+
     if (NOT USE_SSE)
         message(FATAL_ERROR "This platform doesn't support feature SSE4.2")
     endif()
@@ -52,7 +52,7 @@ target_include_directories(cityhash PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
 )
 
-install(TARGETS cityhash EXPORT cityhash-config 
+install(TARGETS cityhash EXPORT cityhash-config
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib

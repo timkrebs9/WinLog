@@ -8,15 +8,15 @@ index 9184b943..bd9203f7 100644
      check_add_cc_flag("-Wpedantic") # Standard compliance
 -    check_add_cc_flag("-Werror")    # All warnings are errors
 +    #check_add_cc_flag("-Werror")    # All warnings are errors
- 
+
      check_add_cc_flag("-Wno-static-in-inline") # Clang doesn't like the use of static inline methods inside static inline methods
      check_add_cc_flag("-Wno-overlength-strings") # May happen in the nodeset compiler when complex values are directly encoded
 @@ -659,7 +659,7 @@ if(APPLE)
  endif()
- 
+
  if(MSVC)
 -  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3 /WX /w44996") # Compiler warnings, error on warning
 +  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3 /WX /w44996 /wd4090") # Compiler warnings, error on warning
- 
+
    if(UA_MSVC_FORCE_STATIC_CRT AND NOT BUILD_SHARED_LIBS)
      set(CompilerFlags CMAKE_CXX_FLAGS CMAKE_CXX_FLAGS_DEBUG CMAKE_CXX_FLAGS_RELEASE CMAKE_C_FLAGS

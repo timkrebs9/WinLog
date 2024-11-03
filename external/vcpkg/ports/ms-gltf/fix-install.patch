@@ -4,7 +4,7 @@ index 3d940f5..322f029 100644
 +++ b/Build/CMake/Modules/GLTFPlatform.cmake
 @@ -55,14 +55,14 @@ endfunction(GetGLTFPlatform)
  function(CreateGLTFInstallTargets target platform)
- 
+
      install(TARGETS ${target}
 -        ARCHIVE DESTINATION ${CMAKE_SOURCE_DIR}/Built/Out/${platform}/$<CONFIG>/${PROJECT_NAME}
 -        LIBRARY DESTINATION ${CMAKE_SOURCE_DIR}/Built/Out/${platform}/$<CONFIG>/${PROJECT_NAME}
@@ -15,12 +15,12 @@ index 3d940f5..322f029 100644
 +        RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
 +        BUNDLE DESTINATION  ${CMAKE_INSTALL_PREFIX}/bin
      )
- 
+
      if (MSVC)
 -        install(FILES ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/${PROJECT_NAME}.pdb DESTINATION ${CMAKE_SOURCE_DIR}/Built/Out/${platform}/$<CONFIG>/${PROJECT_NAME})
 +        install(FILES ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/${PROJECT_NAME}.pdb DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
      endif()
- 
+
  endfunction(CreateGLTFInstallTargets)
 diff --git a/GLTFSDK.Test/CMakeLists.txt b/GLTFSDK.Test/CMakeLists.txt
 index 5c8eca7..a0752a3 100644
@@ -29,7 +29,7 @@ index 5c8eca7..a0752a3 100644
 @@ -46,4 +46,4 @@ add_custom_command(TARGET GLTFSDK.Test
  AddGLTFIOSAppProperties(GLTFSDK.Test)
  CreateGLTFInstallTargets(GLTFSDK.Test ${Platform})
- 
+
 -install(FILES ${PROJECT_BINARY_DIR}/$<CONFIG>/Resources/ DESTINATION ${CMAKE_SOURCE_DIR}/Built/Out/${Platform}/$<CONFIG>/${PROJECT_NAME}/Resources)
 +install(FILES ${PROJECT_BINARY_DIR}/$<CONFIG>/Resources/ DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 diff --git a/GLTFSDK/CMakeLists.txt b/GLTFSDK/CMakeLists.txt
@@ -39,6 +39,6 @@ index 3c53c74..1e8d223 100644
 @@ -46,4 +46,5 @@ target_include_directories(GLTFSDK
      PRIVATE "${CMAKE_BINARY_DIR}/GeneratedFiles"
  )
- 
+
 +install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/Inc/GLTFSDK DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
  CreateGLTFInstallTargets(GLTFSDK ${Platform})

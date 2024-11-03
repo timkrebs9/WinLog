@@ -12,9 +12,9 @@ index 4af5a08..92b0698 100644
 --- a/loader/linux/icd_linux_envvars.c
 +++ b/loader/linux/icd_linux_envvars.c
 @@ -25,6 +25,10 @@
- 
+
  #include <stdlib.h>
- 
+
 +#if defined(__APPLE__)
 +#include <unistd.h>
 +#endif
@@ -22,6 +22,5 @@ index 4af5a08..92b0698 100644
  char *khrIcd_getenv(const char *name) {
      // No allocation of memory necessary for Linux.
      return getenv(name);
--- 
+--
 2.24.3 (Apple Git-128)
-

@@ -4,7 +4,7 @@ index 2676790..af90a6e 100644
 +++ b/Cgl/src/CglLandP/CglLandP.cpp
 @@ -22,7 +22,7 @@
  #define CLONE_SI //Solver is cloned between two cuts
- 
+
  #include "CoinTime.hpp"
 -#include "CglGomory.hpp"
 +#include "CglGomory/CglGomory.hpp"
@@ -18,7 +18,7 @@ index 17cf372..8cb738f 100644
 @@ -24,9 +24,9 @@
  #include "CoinHelperFunctions.hpp"
  #include "CoinWarmStartBasis.hpp"
- 
+
 -#include "CglProbing.hpp"
 -#include "CglDuplicateRow.hpp"
 -#include "CglClique.hpp"

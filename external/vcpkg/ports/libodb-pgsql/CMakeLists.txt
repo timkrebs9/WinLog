@@ -12,7 +12,7 @@ file(GLOB_RECURSE libodb_src LIST_DIRECTORIES False
 list(FILTER libodb_src EXCLUDE REGEX /posix/.*)
 add_library(libodb-pgsql ${libodb_src})
 target_include_directories(libodb-pgsql
-    PUBLIC 
+    PUBLIC
         $<INSTALL_INTERFACE:include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 

@@ -26,7 +26,7 @@ target_include_directories(raqm SYSTEM PUBLIC ${FRIBIDI_INCLUDE_DIR})
 target_link_libraries(raqm PRIVATE Freetype::Freetype)
 target_link_libraries(raqm PRIVATE harfbuzz::harfbuzz ${FRIBIDI_LIBRARY})
 
-install(TARGETS raqm 
+install(TARGETS raqm
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib

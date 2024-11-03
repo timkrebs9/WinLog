@@ -17,12 +17,12 @@ vcpkg_find_acquire_program(BISON)
 
 set(EXTRA_OPTS "")
 if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
-    # $LIBS is an environment variable that vcpkg already pre-populated with some libraries. 
-    # We need to re-purpose it when passing LIBS option to make to avoid overriding the vcpkg's own list.  
+    # $LIBS is an environment variable that vcpkg already pre-populated with some libraries.
+    # We need to re-purpose it when passing LIBS option to make to avoid overriding the vcpkg's own list.
     list(APPEND EXTRA_OPTS "LIBS=-lgettimeofday -lgetopt \$LIBS")
 else()
     # restore the default ac_cv_prog_cc_g flags, otherwise it fails to compile
-    set(VCPKG_C_FLAGS "-g -O2") 
+    set(VCPKG_C_FLAGS "-g -O2")
     set(VCPKG_CXX_FLAGS "-g -O2")
 endif()
 

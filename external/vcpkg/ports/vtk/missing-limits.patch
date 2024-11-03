@@ -9,7 +9,7 @@ index ab9d572..202aaa2 100644
 +#include <limits>
  #include <unordered_map>
  #include <vector>
- 
+
 diff --git a/Common/DataModel/vtkPiecewiseFunction.cxx b/Common/DataModel/vtkPiecewiseFunction.cxx
 index 22eca0b..11086f1 100644
 --- a/Common/DataModel/vtkPiecewiseFunction.cxx
@@ -21,19 +21,19 @@ index 22eca0b..11086f1 100644
 +#include <limits>
  #include <set>
  #include <vector>
- 
+
 diff --git a/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx b/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
 index a16bb27..1052192 100644
 --- a/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
 +++ b/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
 @@ -27,6 +27,7 @@
  #include "vtkHyperTreeGridNonOrientedCursor.h"
- 
+
  #include <cmath>
 +#include <limits>
- 
+
  vtkStandardNewMacro(vtkHyperTreeGridThreshold);
- 
+
 diff --git a/Rendering/Core/vtkColorTransferFunction.cxx b/Rendering/Core/vtkColorTransferFunction.cxx
 index 55c046b..1be0291 100644
 --- a/Rendering/Core/vtkColorTransferFunction.cxx
@@ -45,4 +45,3 @@ index 55c046b..1be0291 100644
 +#include <limits>
  #include <set>
  #include <vector>
- 

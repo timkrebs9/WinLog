@@ -5,7 +5,7 @@ vcpkg_from_gitlab(
     REF 55b71d47f2b427b3baa8812818ed3f059acc748d # 0.1.18
     SHA512 78575c487d74734d2dff1c04103fd55c76cf5e78edde03ffd68050348881a3efc985513cfd30553bfce0568c8edfcd61be7dea8991731efc749ee4fee2f503d6
     HEAD_REF master
-) 
+)
 
 vcpkg_configure_meson(
     SOURCE_PATH "${SOURCE_PATH}"
@@ -22,7 +22,7 @@ vcpkg_configure_meson(
                                glib-mkenums='${CURRENT_HOST_INSTALLED_DIR}/tools/glib/glib-mkenums'
 )
 
-# Could be features: 
+# Could be features:
 # option('gupnp', type: 'feature', value: 'auto',
   # description: 'Enable or disable GUPnP IGD support')
 # option('ignored-network-interface-prefix', type: 'array', value: ['docker', 'veth', 'virbr', 'vnet'],

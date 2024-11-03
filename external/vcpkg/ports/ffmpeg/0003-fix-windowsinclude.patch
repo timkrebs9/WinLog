@@ -10,4 +10,3 @@ index fe424b6..2df70df 100644
 +#define WIN32_LEAN_AND_MEAN
  #include <windows.h>
  #endif
- 

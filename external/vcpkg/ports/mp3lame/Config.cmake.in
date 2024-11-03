@@ -9,16 +9,16 @@ set(_mp3lame_dbg_lib "${_mp3lame_root}/debug/lib/@MP3LAME_LIB@")
 if (EXISTS "${_mp3lame_rel_lib}" OR EXISTS "${_mp3lame_dbg_lib}")
 
     add_library(mp3lame::mp3lame UNKNOWN IMPORTED)
-    set_target_properties(mp3lame::mp3lame 
+    set_target_properties(mp3lame::mp3lame
         PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_mp3lame_root}/include")
 
     if (EXISTS "${_mp3lame_rel_lib}")
-        set_target_properties(mp3lame::mp3lame 
+        set_target_properties(mp3lame::mp3lame
             PROPERTIES IMPORTED_LOCATION_RELEASE "${_mp3lame_rel_lib}")
         set_property(TARGET mp3lame::mp3lame APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
     endif()
     if (EXISTS "${_mp3lame_dbg_lib}")
-        set_target_properties(mp3lame::mp3lame 
+        set_target_properties(mp3lame::mp3lame
             PROPERTIES IMPORTED_LOCATION_DEBUG "${_mp3lame_dbg_lib}")
         set_property(TARGET mp3lame::mp3lame APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
     endif()
@@ -31,18 +31,18 @@ if (EXISTS "${_mp3lame_rel_lib}" OR EXISTS "${_mp3lame_dbg_lib}")
         add_library(mp3lame::mpghip UNKNOWN IMPORTED)
 
         if (EXISTS "${_mp3lame_rel_lib}")
-            set_target_properties(mp3lame::mpghip 
+            set_target_properties(mp3lame::mpghip
                 PROPERTIES IMPORTED_LOCATION_RELEASE "${_mp3lame_mpghip_rel_lib}")
             set_property(TARGET mp3lame::mpghip APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
         endif()
         if (EXISTS "${_mp3lame_dbg_lib}")
-            set_target_properties(mp3lame::mpghip 
+            set_target_properties(mp3lame::mpghip
                 PROPERTIES IMPORTED_LOCATION_DEBUG "${_mp3lame_mpghip_dbg_lib}")
             set_property(TARGET mp3lame::mpghip APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
         endif()
 
         set_target_properties(mp3lame::mp3lame PROPERTIES INTERFACE_LINK_LIBRARIES mp3lame::mpghip)
-        
+
     endif()
 
     unset(_mp3lame_mpghip_rel_lib)

@@ -6,13 +6,13 @@ vcpkg_from_github(
     REF v1.15.1
     SHA512 6c3dc53f25932c9b7516ab9228f634511ae0f399719f87f0ec2b38c380c0a7d1c808f0f9a14a70a063e1956118550d1121222283a9139f23cd4f8f038f595f70
     HEAD_REF master
-    PATCHES 
+    PATCHES
         00001-fix-build.patch
         fix_wsl_symlink_error.patch
 )
 
 file(GLOB_RECURSE SRC_FILES RELATIVE "${SOURCE_PATH}"
-	"${SOURCE_PATH}/src/*.cpp" 
+	"${SOURCE_PATH}/src/*.cpp"
 	"${SOURCE_PATH}/src/*.h"
 )
 

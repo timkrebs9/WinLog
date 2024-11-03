@@ -8,7 +8,7 @@ config("zlib_config") {
 source_set("zlib") {
   public_configs = [ ":zlib_config" ]
   if(is_debug) {
-    libs = [ "@_LIBRARY_DEB@" ]  
+    libs = [ "@_LIBRARY_DEB@" ]
   } else {
     libs = [ "@_LIBRARY_REL@" ]
   }

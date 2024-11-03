@@ -5,7 +5,7 @@ index 7d736d129..2be8f8be9 100644
 @@ -129,7 +129,22 @@ if(NOT EXE_SQLITE3)
    message(SEND_ERROR "sqlite3 binary not found!")
  endif()
- 
+
 -find_package(Sqlite3 REQUIRED)
 +find_package(unofficial-sqlite3 CONFIG REQUIRED)
 +if(unofficial-sqlite3_FOUND)
@@ -48,7 +48,7 @@ index 7d5579ae..0cf96252 100644
 +++ b/cmake/project-config.cmake.in
 @@ -12,6 +12,13 @@ if(@PROJECT_VARIANT_NAME@ STREQUAL "PROJ4")
  endif()
- 
+
  include(CMakeFindDependencyMacro)
 +cmake_policy(PUSH)
 +cmake_policy(SET CMP0012 NEW)

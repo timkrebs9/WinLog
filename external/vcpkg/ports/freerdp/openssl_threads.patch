@@ -8,5 +8,5 @@ index 97ba2f9..fc36185 100644
  	include_directories(${OPENSSL_INCLUDE_DIR})
 +    list(APPEND OPENSSL_LIBRARIES Threads::Threads)
  endif()
- 
+
  if(MBEDTLS_FOUND)

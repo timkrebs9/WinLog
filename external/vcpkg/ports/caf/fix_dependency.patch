@@ -7,5 +7,5 @@ index 1a2348c..6c0d0b2 100644
  set(THREADS_PREFER_PTHREAD_FLAG TRUE)
  find_dependency(Threads)
 +find_dependency(OpenSSL REQUIRED)
- 
+
  include("${CMAKE_CURRENT_LIST_DIR}/CAFTargets.cmake")

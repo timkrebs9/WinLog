@@ -4,15 +4,15 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 @@ -31,6 +31,8 @@
  set(CMAKE_USER_MAKE_RULES_OVERRIDE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/c_flag_overrides.cmake)
  set(CMAKE_USER_MAKE_RULES_OVERRIDE_CXX ${CMAKE_CURRENT_SOURCE_DIR}/cmake/cxx_flag_overrides.cmake)
- 
+
 +set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 +
  # Set a private module find path
  set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
- 
+
 @@ -81,17 +83,17 @@
  endif(NOT Boost_FOUND)
- 
+
  set(Xerces_USE_STATIC_LIBS On)
 -find_package(Xerces QUIET)
 -if (NOT Xerces_FOUND)
@@ -25,12 +25,12 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  )
 -endif (NOT Xerces_FOUND)
 +endif (NOT XercesC_FOUND)
- 
+
 -set(XML_LIBRARIES ${Xerces_LIBRARY})
 -set(XML_INCLUDE_DIRS ${Xerces_INCLUDE_DIR})
 +set(XML_LIBRARIES ${XercesC_LIBRARY})
 +set(XML_INCLUDE_DIRS ${XercesC_INCLUDE_DIR})
- 
+
  if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
      add_definitions(-DLINUX)
 @@ -187,12 +189,18 @@
@@ -68,7 +68,7 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 +        include/time_conversion/gnss_error.h
 +    DESTINATION include/e57/time_conversion
 +)
- 
+
  install(
      FILES
          CHANGES.TXT
@@ -84,14 +84,14 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 +    RENAME copyright
 +    DESTINATION share/libe57
  )
- 
+
  #include (InstallRequiredSystemLibraries)
 --- a/src/refimpl/E57RefImplConfig.cmake	2011-10-06 16:01:00.000000000 +0800
 +++ b/src/refimpl/E57RefImplConfig.cmake	2022-03-01 16:48:29.117485600 +0800
 @@ -49,6 +49,8 @@
  # NOTE: You will also need to include the boost and xerces libraries to your
  # project.
- 
+
 +get_filename_component(E57RefImpl_DIR "${CMAKE_CURRENT_LIST_DIR}/../../" ABSOLUTE)
 +
  IF (NOT "${E57RefImpl_DIR}/include" EQUAL "${E57RefImpl_INCLUDE_DIR}")
@@ -104,4 +104,3 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 +    HINTS  ${E57RefImpl_DIR}/debug/lib
      DOC "E57 debug library"
  )
- 

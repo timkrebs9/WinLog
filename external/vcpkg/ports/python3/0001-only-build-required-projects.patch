@@ -52,6 +52,5 @@ index 4d416c589e..ede9868a8f 100644
      <ExternalModules Include="_tkinter" Condition="$(IncludeTkinter) and $(Platform) != 'ARM' and $(Platform) != 'ARM64'" />
      <ExtensionModules Include="@(ExternalModules->'%(Identity)')" Condition="$(IncludeExternals)" />
      <Projects Include="@(ExtensionModules->'%(Identity).vcxproj')" Condition="$(IncludeExtensions)" />
--- 
+--
 2.28.0.windows.1
-

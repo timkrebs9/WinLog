@@ -10,7 +10,7 @@ index 1e13def..eda8d68 100644
 +  "${PROJECT_BINARY_DIR}/include/tins/config.h"
  )
 +INCLUDE_DIRECTORIES("${CMAKE_CURRENT_BINARY_DIR}/include")
- 
+
  IF (NOT CMAKE_INSTALL_LIBDIR)
      SET(CMAKE_INSTALL_LIBDIR lib)
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt

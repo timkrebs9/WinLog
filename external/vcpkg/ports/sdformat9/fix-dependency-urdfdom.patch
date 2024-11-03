@@ -5,7 +5,7 @@ index 427e5e7..af31df4 100644
 @@ -43,7 +43,7 @@ endif()
  #  2. if USE_INTERNAL_URDF is set to True, use the internal copy
  #  3. if USE_INTERNAL_URDF is set to False, force to search system installation, fail on error
- 
+
 -if (NOT PKG_CONFIG_FOUND)
 +if (0)
    if (NOT DEFINED USE_INTERNAL_URDF)
@@ -13,12 +13,12 @@ index 427e5e7..af31df4 100644
      set(USE_INTERNAL_URDF true)
 @@ -53,10 +53,9 @@ if (NOT PKG_CONFIG_FOUND)
  endif()
- 
+
  if (NOT DEFINED USE_INTERNAL_URDF OR NOT USE_INTERNAL_URDF)
 -  # check for urdfdom with pkg-config
 -  pkg_check_modules(URDF urdfdom>=1.0)
 +  find_package(urdfdom CONFIG REQUIRED)
- 
+
 -  if (NOT URDF_FOUND)
 +  if (NOT urdfdom_FOUND)
      find_package(urdfdom)
@@ -32,4 +32,3 @@ index 427e5e7..af31df4 100644
 +    set(URDF_LIBRARIES ${urdfdom_LIBRARIES})
    endif()
  endif()
- 

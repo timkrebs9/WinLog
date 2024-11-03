@@ -12,5 +12,5 @@ index 56741c2..313308a 100644
  	DESTINATION bin)
 +  endif()
  endif()
- 
+
  IF (test)

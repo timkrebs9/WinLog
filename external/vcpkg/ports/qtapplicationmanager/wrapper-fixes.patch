@@ -32,8 +32,8 @@ index 1dab912..c09e97f 100644
 --- a/cmake/FindWrapLibYaml.cmake
 +++ b/cmake/FindWrapLibYaml.cmake
 @@ -10,10 +10,17 @@ pkg_check_modules(pc_libyaml yaml-0.1 IMPORTED_TARGET)
- 
- 
+
+
  if (NOT pc_libyaml_FOUND)
 -    set(WrapLibYaml_FOUND FALSE)
 -    return()

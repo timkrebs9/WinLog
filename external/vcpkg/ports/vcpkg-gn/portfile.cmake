@@ -60,7 +60,7 @@ file(MAKE_DIRECTORY "${CURRENT_PACKAGES_DIR}/tools/${PORT}")
 message(STATUS "ARCHIVE_PATH: '${ARCHIVE_PATH}'")
 
 vcpkg_execute_in_download_mode(
-    COMMAND ${CMAKE_COMMAND} -E tar xzf "${ARCHIVE_PATH}" 
+    COMMAND ${CMAKE_COMMAND} -E tar xzf "${ARCHIVE_PATH}"
     WORKING_DIRECTORY "${CURRENT_PACKAGES_DIR}/tools/${PORT}"
 )
 file(GLOB_RECURSE folders "${CURRENT_PACKAGES_DIR}/tools/${PORT}/*" LIST_DIRECTORIES true)

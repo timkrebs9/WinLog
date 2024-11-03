@@ -1,4 +1,4 @@
-EXPORTS 
+EXPORTS
 	convert_baudrate_UT_export
 	ftdi_deinit
 	ftdi_disable_bitbang

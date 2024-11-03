@@ -112,6 +112,5 @@ index b2d9f5d57d..4efb826a05 100644
      <ClCompile Include="..\Modules\expat\xmlparse.c" />
      <ClCompile Include="..\Modules\expat\xmlrole.c" />
      <ClCompile Include="..\Modules\expat\xmltok.c" />
--- 
+--
 2.28.0.windows.1
-

@@ -4,17 +4,17 @@ index e734714..6d665dc 100644
 +++ b/CMakeLists.txt
 @@ -397,7 +397,7 @@ add_subdirectory(devapi)
  # Generate the main connector library.
- 
+
  merge_libraries(connector xapi devapi)
 -target_include_directories(connector PUBLIC "${PROJECT_SOURCE_DIR}/include")
 +target_include_directories(connector PRIVATE "${PROJECT_SOURCE_DIR}/include")
- 
- 
+
+
  #
 @@ -472,32 +472,23 @@ set_target_properties(connector PROPERTIES
    SOVERSION "${ABI_VERSION_MAJOR}"
  )
- 
+
 -
 -install(TARGETS connector
 -  CONFIGURATIONS Release RelWithDebInfo
@@ -33,26 +33,26 @@ index e734714..6d665dc 100644
 +  RUNTIME DESTINATION bin COMPONENT XDevAPIDll
 +  LIBRARY DESTINATION lib COMPONENT XDevAPIDll
  )
- 
+
  if(MSVC AND NOT BUILD_STATIC)
- 
+
    install(FILES $<TARGET_PDB_FILE:connector>
      CONFIGURATIONS RelWithDebInfo
 -    DESTINATION "${INSTALL_LIB_DIR}"
 +    DESTINATION bin
      COMPONENT Debuginfo
    )
- 
+
    install(FILES $<TARGET_PDB_FILE:connector>
      CONFIGURATIONS Debug
 -    DESTINATION "${INSTALL_LIB_DIR}/debug"
 +    DESTINATION bin
      COMPONENT Debuginfo
    )
- 
+
 @@ -604,3 +595,15 @@ endif()
- 
- 
+
+
  show_config_options()
 +
 +include(CMakePackageConfigHelpers)

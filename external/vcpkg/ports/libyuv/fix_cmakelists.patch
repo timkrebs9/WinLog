@@ -5,14 +5,14 @@ index ed4948f..5b4e112 100644
 @@ -2,10 +2,14 @@
  # Originally created for "roxlu build system" to compile libyuv on windows
  # Run with -DTEST=ON to build unit tests
- 
+
 -PROJECT ( YUV C CXX )	# "C" is required even for C++ projects
  CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
 +CMAKE_POLICY( SET CMP0022 NEW )
 +
 +PROJECT ( YUV C CXX )	# "C" is required even for C++ projects
  OPTION( TEST "Built unit tests" OFF )
- 
+
 +SET( CMAKE_INCLUDE_CURRENT_DIR_IN_INTERFACE ON )
 +
  SET ( ly_base_dir	${PROJECT_SOURCE_DIR} )
@@ -21,17 +21,17 @@ index ed4948f..5b4e112 100644
 @@ -14,6 +18,7 @@ SET ( ly_lib_name	yuv )
  SET ( ly_lib_static	${ly_lib_name} )
  SET ( ly_lib_shared	${ly_lib_name}_shared )
- 
+
 +FILE ( GLOB_RECURSE ly_include_files ${ly_inc_dir}/libyuv/*.h )
  FILE ( GLOB_RECURSE	ly_source_files ${ly_src_dir}/*.cc )
  LIST ( SORT			ly_source_files )
- 
+
 @@ -24,6 +29,7 @@ INCLUDE_DIRECTORIES( BEFORE ${ly_inc_dir} )
- 
+
  # this creates the static library (.a)
  ADD_LIBRARY				( ${ly_lib_static} STATIC ${ly_source_files} )
 +SET_TARGET_PROPERTIES( ${ly_lib_static} PROPERTIES PUBLIC_HEADER include/libyuv.h )
- 
+
  # this creates the shared library (.so)
  ADD_LIBRARY				( ${ly_lib_shared} SHARED ${ly_source_files} )
 @@ -38,6 +44,7 @@ TARGET_LINK_LIBRARIES	( yuvconvert ${ly_lib_static} )
@@ -43,8 +43,8 @@ index ed4948f..5b4e112 100644
    add_definitions( -DHAVE_JPEG )
  endif()
 @@ -81,10 +88,12 @@ endif()
- 
- 
+
+
  # install the conversion tool, .so, .a, and all the header files
 -INSTALL ( PROGRAMS ${CMAKE_BINARY_DIR}/yuvconvert			DESTINATION bin )
 -INSTALL ( TARGETS ${ly_lib_static}						DESTINATION lib )
@@ -56,6 +56,6 @@ index ed4948f..5b4e112 100644
 +INSTALL ( TARGETS ${ly_lib_shared} EXPORT libyuv-targets LIBRARY DESTINATION lib RUNTIME DESTINATION bin )
 +
 +INSTALL( EXPORT libyuv-targets DESTINATION share/cmake/libyuv/ EXPORT_LINK_INTERFACE_LIBRARIES )
- 
+
  # create the .deb and .rpm packages using cpack
  INCLUDE ( CM_linux_packages.cmake )

@@ -14,7 +14,7 @@ index 33f74563b..40ec35101 100644
 @@ -48,11 +48,6 @@ if (MYGUI_USE_FREETYPE)
  	endif()
  endif()
- 
+
 -# platform specific dependencies
 -if (APPLE)
 -	include_directories(/usr/local/include /usr/include)

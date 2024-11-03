@@ -1,16 +1,16 @@
 diff --git a/CMake/FindCGNS.cmake b/CMake/FindCGNS.cmake
 index 005f1afd9..a45103a9f 100644
---- a/CMake/FindCGNS.cmake	
+--- a/CMake/FindCGNS.cmake
 +++ b/CMake/FindCGNS.cmake
 @@ -16,7 +16,7 @@ mark_as_advanced(CGNS_INCLUDE_DIR)
- 
+
  find_library(CGNS_LIBRARY
    NAMES
 -    cgns
 +    cgnsdll cgns
    DOC "CGNS library")
  mark_as_advanced(CGNS_LIBRARY)
- 
+
 @@ -45,4 +45,15 @@ if (CGNS_FOUND)
        IMPORTED_LOCATION "${CGNS_LIBRARY}"
        INTERFACE_INCLUDE_DIRECTORIES "${CGNS_INCLUDE_DIR}")

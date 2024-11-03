@@ -3,7 +3,7 @@ index 9380a046..f2929e19 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -194,13 +194,13 @@ endif (WIN32)
- 
+
  if (WITH_WEBSOCKETS)
  	if (STATIC_WEBSOCKETS)
 -		set (MOSQ_LIBS ${MOSQ_LIBS} websockets_static)
@@ -17,4 +17,3 @@ index 9380a046..f2929e19 100644
 +		set (MOSQ_LIBS ${MOSQ_LIBS} websockets_shared)
  	endif (STATIC_WEBSOCKETS)
  endif (WITH_WEBSOCKETS)
- 

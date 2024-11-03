@@ -8,5 +8,3 @@ diff -uNr libiconv-1.16/libcharset/include/libcharset.h.in libiconv-1.16-work/li
 -extern void libcharset_set_relocation_prefix (const char *orig_prefix,
 +extern void LIBCHARSET_DLL_EXPORTED libcharset_set_relocation_prefix (const char *orig_prefix,
                                                const char *curr_prefix);
- 
- 

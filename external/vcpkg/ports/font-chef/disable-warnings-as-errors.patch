@@ -9,4 +9,3 @@ diff --git a/src/font-chef/CMakeLists.txt b/src/font-chef/CMakeLists.txt
 +    $<$<C_COMPILER_ID:MSVC>:/W3 /wd4820 /wd4668 /wd4204>
    )
  endif()
- 

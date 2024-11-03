@@ -53,11 +53,11 @@ if ("tools" IN_LIST FEATURES AND NOT VCPKG_TARGET_IS_ANDROID)
         SEARCH_DIR "${CURRENT_PACKAGES_DIR}/tools/urho3d"
         AUTO_CLEAN
     )
-    
+
     file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/bin/tool" "${CURRENT_PACKAGES_DIR}/debug/bin/tool")
-    
+
     vcpkg_copy_tools(TOOL_NAMES Urho3DPlayer AUTO_CLEAN)
-    
+
     file(REMOVE "${CURRENT_PACKAGES_DIR}/debug/bin/Urho3DPlayer_d${VCPKG_TARGET_EXECUTABLE_SUFFIX}")
 endif()
 
@@ -71,7 +71,7 @@ if ("examples" IN_LIST FEATURES AND NOT VCPKG_TARGET_IS_ANDROID)
         endif()
     endforeach()
     vcpkg_copy_tools(TOOL_NAMES ${URHO3D_TOOLS} AUTO_CLEAN)
-    
+
     if (NOT VCPKG_BUILD_TYPE OR VCPKG_BUILD_TYPE STREQUAL "debug")
         foreach(URHO3D_TOOL IN_LIST ${URHO3D_TOOLS})
             file(REMOVE "${CURRENT_PACKAGES_DIR}/debug/bin/${URHO3D_TOOL}_d${VCPKG_TARGET_EXECUTABLE_SUFFIX}")

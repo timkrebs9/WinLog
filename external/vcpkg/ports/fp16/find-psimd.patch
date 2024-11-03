@@ -4,7 +4,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 @@ -33,7 +33,8 @@ SET(CONFU_DEPENDENCIES_SOURCE_DIR ${CMAKE_SOURCE_DIR}/deps
  SET(CONFU_DEPENDENCIES_BINARY_DIR ${CMAKE_BINARY_DIR}/deps
    CACHE PATH "Confu-style dependencies binary directory")
- 
+
 -IF(NOT DEFINED PSIMD_SOURCE_DIR)
 +find_path(PSIMD_INCLUDE_DIRS "psimd.h")
 +IF(FALSE)
@@ -17,12 +17,12 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 -    $<INSTALL_INTERFACE:include>)
 +    $<INSTALL_INTERFACE:include> $<INSTALL_INTERFACE:${PSIMD_INCLUDE_DIRS}>)
- 
+
  INSTALL(FILES include/fp16.h
    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 @@ -90,7 +91,7 @@ INSTALL(FILES
    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/fp16)
- 
+
  # ---[ Configure psimd
 -IF(NOT TARGET psimd)
 +IF(FALSE)

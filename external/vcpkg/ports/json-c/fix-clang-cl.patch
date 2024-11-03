@@ -5,7 +5,7 @@ index 9741b45f9..11b397024 100644
 @@ -281,7 +281,7 @@ message(STATUS "Wrote ${PROJECT_BINARY_DIR}/config.h")
  configure_file(${PROJECT_SOURCE_DIR}/cmake/json_config.h.in   ${PROJECT_BINARY_DIR}/json_config.h)
  message(STATUS "Wrote ${PROJECT_BINARY_DIR}/json_config.h")
- 
+
 -if ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU" OR "${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
 +if ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU" OR "${CMAKE_C_COMPILER_ID}" STREQUAL "Clang" AND NOT MSVC)
      set(CMAKE_C_FLAGS           "${CMAKE_C_FLAGS} -ffunction-sections -fdata-sections")
@@ -13,7 +13,7 @@ index 9741b45f9..11b397024 100644
  	    set(CMAKE_C_FLAGS           "${CMAKE_C_FLAGS} -Werror")
 @@ -297,7 +297,7 @@ if ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU" OR "${CMAKE_C_COMPILER_ID}" STREQUAL
      endif()
- 
+
      add_definitions(-D_GNU_SOURCE)
 -elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
 +elseif (MSVC)

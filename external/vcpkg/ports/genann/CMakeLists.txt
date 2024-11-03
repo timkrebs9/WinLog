@@ -14,12 +14,12 @@ target_include_directories(genann PUBLIC
 
 # Install targets
 install(TARGETS genann
-	RUNTIME DESTINATION bin 
-	LIBRARY DESTINATION lib 
-	ARCHIVE DESTINATION lib 
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
 )
 
 # Install headers
 if (INSTALL_HEADERS)
   install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/genann.h DESTINATION include/genann)
-endif() 
+endif()

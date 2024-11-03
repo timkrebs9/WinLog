@@ -4,7 +4,7 @@ index 9fa4269..f950363 100644
 +++ b/CMakeLists.txt
 @@ -111,8 +111,8 @@ elseif (saucer_backend STREQUAL "WebView2")
      endif()
- 
+
      if (NOT saucer_remote_webview2)
 -        find_package(webview2 CONFIG REQUIRED)
 -        target_link_libraries(${PROJECT_NAME} PRIVATE webview2::webview2)

@@ -9,7 +9,7 @@ index 4137ed1..167fde2 100644
 -    set(FLANN_ROOT "@FLANN_ROOT@")
 +    set(FLANN_ROOT "${VCPKG_IMPORT_PREFIX}")
    endif()
- 
+
    set(FLANN_USE_STATIC @FLANN_USE_STATIC@)
 @@ -402,7 +402,6 @@ elseif(EXISTS "${PCL_DIR}/include/pcl/pcl_config.h")
    # pcl_message("PCL found into a build tree.")

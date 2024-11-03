@@ -14,7 +14,7 @@ index 682f416..a8cbec8 100644
 @@ -159,9 +157,7 @@ if(NOT LAPACK_FOUND)
      endif()
  endif()
- 
+
 -set(SPDLOG_BUILD_TESTING OFF CACHE INTERNAL "Disable testing in spdlog")
 -add_subdirectory(extern/spdlog EXCLUDE_FROM_ALL)
 -add_subdirectory(extern/glad)
@@ -25,7 +25,7 @@ index 682f416..a8cbec8 100644
 @@ -269,10 +265,6 @@ install(DIRECTORY examples/ #NOTE The slash at the end is important
      DESTINATION ${AF_INSTALL_EXAMPLE_DIR}
      COMPONENT examples)
- 
+
 -install(DIRECTORY assets/examples/ #NOTE The slash at the end is important
 -    DESTINATION ${AF_INSTALL_EXAMPLE_DIR}
 -    COMPONENT examples)
@@ -39,7 +39,7 @@ index 2c7b96e..b5006ee 100644
 +++ b/CMakeModules/AFInstallDirs.cmake
 @@ -7,8 +7,12 @@ include(GNUInstallDirs)
  # NOTE: These paths are all relative to the project installation prefix.
- 
+
  # Executables
 -if(NOT DEFINED AF_INSTALL_BIN_DIR)
 -  set(AF_INSTALL_BIN_DIR "lib" CACHE PATH "Installation path for executables")
@@ -50,7 +50,7 @@ index 2c7b96e..b5006ee 100644
 +    set(AF_INSTALL_BIN_DIR "${AF_BIN_DIR}/bin")
 +    message(STATUS " Setting install to release path ${AF_INSTALL_BIN_DIR}")
  endif()
- 
+
  # Libraries
 diff --git a/CMakeModules/AFconfigure_forge_submodule.cmake b/CMakeModules/AFconfigure_forge_submodule.cmake
 index d16849f..36ab01b 100644
@@ -95,7 +95,7 @@ index c9fe088..8c128fa 100644
 @@ -77,12 +77,15 @@ else()
    target_sources(afcommon_interface INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/module_loading_unix.cpp)
  endif()
- 
+
 +find_package(glad CONFIG REQUIRED)
 +
  target_link_libraries(afcommon_interface
@@ -108,7 +108,7 @@ index c9fe088..8c128fa 100644
      ${CMAKE_DL_LIBS}
 +    glad::glad
  )
- 
+
  if(AF_BUILD_FORGE)
 @@ -93,10 +96,9 @@ target_include_directories(afcommon_interface
    INTERFACE
@@ -120,14 +120,14 @@ index c9fe088..8c128fa 100644
 -    ${ArrayFire_SOURCE_DIR}/extern/forge/include
 -    ${ArrayFire_BINARY_DIR}/extern/forge/include
    )
- 
+
  if(APPLE AND NOT USE_MKL)
 diff --git a/src/backend/cpu/CMakeLists.txt b/src/backend/cpu/CMakeLists.txt
 index 170bb0f..c6e2017 100644
 --- a/src/backend/cpu/CMakeLists.txt
 +++ b/src/backend/cpu/CMakeLists.txt
 @@ -266,9 +266,10 @@ endif(AF_WITH_CPUID)
- 
+
  target_sources(afcpu
    PRIVATE
 -    ${CMAKE_CURRENT_SOURCE_DIR}/threads/async_queue.hpp
@@ -136,9 +136,9 @@ index 170bb0f..c6e2017 100644
 +    ${AF_CPU_THREAD_PATH}/include/threads/event.hpp
    )
 +target_include_directories(afcpu PRIVATE ${AF_CPU_THREAD_PATH}/include)
- 
+
  arrayfire_set_default_cxx_flags(afcpu)
- 
+
 diff --git a/src/backend/cuda/CMakeLists.txt b/src/backend/cuda/CMakeLists.txt
 index 7e3e408..2edaacd 100644
 --- a/src/backend/cuda/CMakeLists.txt
@@ -154,26 +154,26 @@ index 7e3e408..2edaacd 100644
 +  endif()
 +  cuda_include_directories(${CUB_INCLUDE_DIRS})
  endif()
- 
+
  file(GLOB jit_src "kernel/jit.cuh")
 @@ -242,7 +246,7 @@ endif()
- 
+
  if(CUDA_VERSION_MAJOR VERSION_GREATER 10 OR
     (UNIX AND
 -    CUDA_VERSION_MAJOR VERSION_EQUAL 10 AND CUDA_VERSION_MINOR VERSION_GREATER 0))
 +    CUDA_VERSION_MAJOR VERSION_EQUAL 10 AND CUDA_VERSION_MINOR VERSION_GREATER 1))
    list(APPEND cxx_definitions -DAF_USE_NEW_CUSPARSE_API)
  endif()
- 
+
 @@ -301,7 +305,7 @@ set_target_properties(af_cuda_static_cuda_library
- 
+
  if(CUDA_VERSION_MAJOR VERSION_GREATER 10 OR
     (UNIX AND
 -    CUDA_VERSION_MAJOR VERSION_EQUAL 10 AND CUDA_VERSION_MINOR VERSION_GREATER 0))
 +    CUDA_VERSION_MAJOR VERSION_EQUAL 10 AND CUDA_VERSION_MINOR VERSION_GREATER 1))
    target_compile_definitions(af_cuda_static_cuda_library PRIVATE AF_USE_NEW_CUSPARSE_API)
  endif()
- 
+
 diff --git a/src/backend/opencl/kernel/scan_by_key/CMakeLists.txt b/src/backend/opencl/kernel/scan_by_key/CMakeLists.txt
 index 9a796c9..d9864b0 100644
 --- a/src/backend/opencl/kernel/scan_by_key/CMakeLists.txt
@@ -181,7 +181,7 @@ index 9a796c9..d9864b0 100644
 @@ -27,6 +27,7 @@ foreach(SBK_BINARY_OP ${SBK_BINARY_OPS})
      add_dependencies(opencl_scan_by_key_${SBK_BINARY_OP}
                          ${cl_kernel_targets} OpenCL::cl2hpp Boost::boost)
- 
+
 +    find_package(glad CONFIG REQUIRED)
      target_include_directories(opencl_scan_by_key_${SBK_BINARY_OP}
        PRIVATE
@@ -195,7 +195,7 @@ index 9a796c9..d9864b0 100644
 -        ${ArrayFire_BINARY_DIR}/extern/forge/include
 +        $<TARGET_PROPERTY:glad::glad,INTERFACE_INCLUDE_DIRECTORIES>
        )
- 
+
      set_target_properties(opencl_scan_by_key_${SBK_BINARY_OP}
 diff --git a/src/backend/opencl/kernel/sort_by_key/CMakeLists.txt b/src/backend/opencl/kernel/sort_by_key/CMakeLists.txt
 index d618ff2..9f51739 100644
@@ -204,7 +204,7 @@ index d618ff2..9f51739 100644
 @@ -32,14 +32,13 @@ foreach(SBK_TYPE ${SBK_TYPES})
          ../../../include
          ${CMAKE_CURRENT_BINARY_DIR})
- 
+
 +    find_package(glad CONFIG REQUIRED)
      target_include_directories(opencl_sort_by_key_${SBK_TYPE}
        SYSTEM PRIVATE
@@ -216,5 +216,5 @@ index d618ff2..9f51739 100644
 -        ${ArrayFire_BINARY_DIR}/extern/forge/include
 +        $<TARGET_PROPERTY:glad::glad,INTERFACE_INCLUDE_DIRECTORIES>
        )
- 
+
      set_target_properties(opencl_sort_by_key_${SBK_TYPE}

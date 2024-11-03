@@ -14,4 +14,3 @@ file(ARCHIVE_EXTRACT
     INPUT "${archive_path}"
     DESTINATION "${CURRENT_PACKAGES_DIR}/tools/${PORT}"
 )
-

@@ -83,7 +83,7 @@ function(vcpkg_configure_qmake)
         file(REMOVE_RECURSE "${current_binary_dir}")
 
         configure_file("${CURRENT_INSTALLED_DIR}/tools/qt5/qt_release.conf" "${current_binary_dir}/qt.conf")
-    
+
         message(STATUS "Configuring ${TARGET_TRIPLET}-rel")
         file(MAKE_DIRECTORY "${current_binary_dir}")
 
@@ -160,7 +160,7 @@ function(vcpkg_configure_qmake)
             file(REMOVE "${CURRENT_BUILDTREES_DIR}/internal-config-${TARGET_TRIPLET}-dbg.log")
             file(RENAME "${current_binary_dir}/config.log" "${CURRENT_BUILDTREES_DIR}/internal-config-${TARGET_TRIPLET}-dbg.log")
         endif()
-        
+
         z_vcpkg_restore_pkgconfig_path()
     endif()
 

@@ -5,7 +5,7 @@ index 0362420..2b09073 100644
 @@ -86,6 +86,10 @@ draco_set_cxx_flags()
  draco_set_exe_linker_flags()
  draco_generate_features_h()
- 
+
 +if (MSVC)
 +  add_compile_options(/wd4996)
 +endif()
@@ -27,4 +27,3 @@ index 378de73..be7e032 100644
 +  *value = v;
    return true;
  }
- 

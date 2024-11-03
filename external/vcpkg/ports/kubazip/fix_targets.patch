@@ -4,20 +4,20 @@ index cf86d70..c2bc2f9 100644
 +++ b/CMakeLists.txt
 @@ -1,6 +1,6 @@
  cmake_minimum_required(VERSION 3.14)
- 
+
 -project(zip
 +project(kubazip
    LANGUAGES C
    VERSION "0.2.3")
  set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 @@ -46,11 +46,11 @@ endif()
- 
+
  target_include_directories(${PROJECT_NAME} PUBLIC
    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
 -  $<INSTALL_INTERFACE:include>
 +  $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
  )
- 
+
  # test
 -if (NOT CMAKE_DISABLE_TESTING)
 +if (0)
@@ -31,11 +31,10 @@ index cf86d70..c2bc2f9 100644
 -  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror -pedantic")
 +  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -pedantic")
  endif (MSVC)
- 
+
  ####
  set(CONFIG_INSTALL_DIR "lib/cmake/${PROJECT_NAME}")
 -set(INCLUDE_INSTALL_DIR "include")
 +set(INCLUDE_INSTALL_DIR "include/${PROJECT_NAME}")
- 
+
  set(GENERATED_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
- 

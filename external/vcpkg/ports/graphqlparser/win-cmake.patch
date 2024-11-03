@@ -3,9 +3,9 @@ index c4c8b3e..3373d82 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -3,9 +3,26 @@ PROJECT(libgraphqlparser C CXX)
- 
+
  SET(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" "${CMAKE_MODULE_PATH}")
- 
+
 -INCLUDE(version)
 +IF(UNIX)
 +  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
@@ -25,15 +25,15 @@ index c4c8b3e..3373d82 100644
 +  # Let CMake figure out the exports for the SHARED library (DLL) on Windows.
 +  SET(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 +ENDIF()
- 
+
 -SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 +INCLUDE(version)
- 
+
  FIND_PACKAGE(PythonInterp 2 REQUIRED)
  IF (NOT PYTHON_VERSION_MAJOR EQUAL 2)
 @@ -21,7 +38,7 @@ IF (BISON_FOUND)
  ENDIF()
- 
+
  IF(FLEX_FOUND)
 -  FLEX_TARGET(GraphQLScanner lexer.lpp ${CMAKE_CURRENT_SOURCE_DIR}/lexer.cpp COMPILE_FLAGS "--header-file=lexer.h")
 +  FLEX_TARGET(GraphQLScanner lexer.lpp ${CMAKE_CURRENT_SOURCE_DIR}/lexer.cpp COMPILE_FLAGS ${FLEX_COMPILE_FLAGS})
@@ -43,23 +43,23 @@ index c4c8b3e..3373d82 100644
 @@ -31,7 +48,7 @@ FILE(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/c)
  INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
  INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
- 
+
 -ADD_LIBRARY(graphqlparser SHARED
 +ADD_LIBRARY(graphqlparser
    JsonVisitor.cpp
    ${CMAKE_CURRENT_BINARY_DIR}/Ast.h
    ${CMAKE_CURRENT_BINARY_DIR}/Ast.cpp
 @@ -87,7 +104,9 @@ ADD_SUBDIRECTORY(python)
- 
+
  OPTION(test "Build tests." OFF)
- 
+
 -INSTALL(DIRECTORY c ${CMAKE_CURRENT_BINARY_DIR}/c DESTINATION include/graphqlparser
 +INSTALL(DIRECTORY c ${CMAKE_CURRENT_BINARY_DIR}/c
 +  DESTINATION include/graphqlparser
 +  CONFIGURATIONS Release
    FILES_MATCHING PATTERN "*.h"
    PATTERN "build" EXCLUDE)
- 
+
 @@ -103,9 +122,13 @@ INSTALL(FILES
    position.hh
    stack.hh
@@ -73,7 +73,7 @@ index c4c8b3e..3373d82 100644
 +  ARCHIVE DESTINATION lib
 +  LIBRARY DESTINATION lib
 +  RUNTIME DESTINATION bin)
- 
+
  if (UNIX)
    # generate pkgconfig file
 @@ -116,6 +139,11 @@ if (UNIX)
@@ -86,7 +86,7 @@ index c4c8b3e..3373d82 100644
 +  INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/graphqlparser.pdb
 +	DESTINATION bin)
  endif()
- 
+
  IF (test)
 @@ -126,6 +154,8 @@ IF (test)
      ADD_CUSTOM_TARGET(memcheck

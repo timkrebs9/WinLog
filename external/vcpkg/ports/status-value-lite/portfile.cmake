@@ -12,10 +12,10 @@ vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
 
 vcpkg_configure_cmake(
     SOURCE_PATH ${SOURCE_PATH}
-    PREFER_NINJA  
+    PREFER_NINJA
     OPTIONS
        -DNSSV_OPT_BUILD_TESTS=${BUILD_TESTS}
-       -DNSSV_OPT_BUILD_EXAMPLES=OFF  
+       -DNSSV_OPT_BUILD_EXAMPLES=OFF
 )
 
 vcpkg_install_cmake()

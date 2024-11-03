@@ -6,9 +6,9 @@
 
 /* Define to 1 if the compiler supports __builtin_expect. */
 #if WIN32 || WIN64
-#	define HAVE_BUILTIN_EXPECT 0
+#define HAVE_BUILTIN_EXPECT 0
 #else
-#	define HAVE_BUILTIN_EXPECT 1
+#define HAVE_BUILTIN_EXPECT 1
 #endif
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
@@ -69,13 +69,13 @@
 /* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
    significant byte first (like Motorola and SPARC, unlike Intel). */
 #if defined AC_APPLE_UNIVERSAL_BUILD
-# if defined __BIG_ENDIAN__
-#  define WORDS_BIGENDIAN 1
-# endif
+#if defined __BIG_ENDIAN__
+#define WORDS_BIGENDIAN 1
+#endif
 #else
-# ifndef WORDS_BIGENDIAN
+#ifndef WORDS_BIGENDIAN
 /* #  undef WORDS_BIGENDIAN */
-# endif
+#endif
 #endif
 
 /* Define for Solaris 2.5.1 so the uint32_t typedef from <sys/synch.h>,

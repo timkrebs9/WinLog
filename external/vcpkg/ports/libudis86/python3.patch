@@ -13,5 +13,3 @@ index fe1833d..30c9f43 100644
 -                    self.log("%s    |-<%02x> %s" % (indent, k, e))
 +                    self.log("%s    |-<%02x> %s" % (indent, int(k), e))
          printWalk(self.root)
- 
- 

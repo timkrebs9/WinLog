@@ -4,7 +4,7 @@ project(cppcoro VERSION 2020.2 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 add_library(cppcoro
-    lib/async_mutex.cpp 
+    lib/async_mutex.cpp
     lib/lightweight_manual_reset_event.cpp
     lib/async_auto_reset_event.cpp
     lib/async_manual_reset_event.cpp
@@ -135,7 +135,7 @@ write_basic_package_version_file(${VERSION_FILE_PATH}
     COMPATIBILITY       SameMajorVersion
 )
 
-install(FILES           ${VERSION_FILE_PATH} 
+install(FILES           ${VERSION_FILE_PATH}
         DESTINATION     share/${PROJECT_NAME}
 )
 

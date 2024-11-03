@@ -1,6 +1,6 @@
 diff --git a/src/XlibInt.c b/src/XlibInt.c
 index bab39bc00..31b6511cb 100644
---- a/src/XlibInt.c	
+--- a/src/XlibInt.c
 +++ b/src/XlibInt.c
 @@ -45,6 +45,7 @@ from The Open Group.
  #include <stdio.h>
@@ -8,5 +8,5 @@ index bab39bc00..31b6511cb 100644
  #include <direct.h>
 +#include <io.h>
  #endif
- 
+
  /* Needed for FIONREAD on Solaris */

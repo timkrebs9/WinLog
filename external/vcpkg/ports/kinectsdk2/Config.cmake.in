@@ -11,12 +11,12 @@ if (EXISTS "${_kinectsdk2_rel_lib}" OR EXISTS "${_kinectsdk2_dbg_lib}")
     set_target_properties(unofficial::kinectsdk2::kinectsdk2 PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_kinectsdk2_root}/include")
 
     if (EXISTS "${_kinectsdk2_rel_lib}")
-        set_target_properties(unofficial::kinectsdk2::kinectsdk2 
+        set_target_properties(unofficial::kinectsdk2::kinectsdk2
             PROPERTIES IMPORTED_LOCATION_RELEASE "${_kinectsdk2_rel_lib}")
         set_property(TARGET unofficial::kinectsdk2::kinectsdk2 APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
     endif()
     if (EXISTS "${_kinectsdk2_dbg_lib}")
-        set_target_properties(unofficial::kinectsdk2::kinectsdk2 
+        set_target_properties(unofficial::kinectsdk2::kinectsdk2
             PROPERTIES IMPORTED_LOCATION_DEBUG "${_kinectsdk2_dbg_lib}")
         set_property(TARGET unofficial::kinectsdk2::kinectsdk2 APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
     endif()

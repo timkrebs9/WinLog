@@ -5,7 +5,7 @@ index 6cbfc5c3d..ba7845b20 100644
 @@ -31,13 +31,6 @@
  #include <stdint.h>
  #endif
- 
+
 -/* The x264.h header says this isn't needed with MinGW, but sometimes the
 - * compiler is unable to correctly do the pointer indirection for us, which
 - * leads to a segfault when you try to dereference any const values provided
@@ -14,5 +14,5 @@ index 6cbfc5c3d..ba7845b20 100644
 -# define X264_API_IMPORTS
 -#endif
  #include <x264.h>
- 
+
  G_BEGIN_DECLS

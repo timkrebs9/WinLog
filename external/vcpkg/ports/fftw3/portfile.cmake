@@ -35,7 +35,7 @@ foreach(PRECISION ENABLE_FLOAT ENABLE_LONG_DOUBLE ENABLE_DEFAULT_PRECISION)
     if(PRECISION STREQUAL "ENABLE_LONG_DOUBLE")
         vcpkg_cmake_configure(
         SOURCE_PATH "${SOURCE_PATH}"
-        OPTIONS 
+        OPTIONS
             -D${PRECISION}=ON
             -DENABLE_OPENMP=${ENABLE_OPENMP}
             -DENABLE_THREADS=${HAVE_THREADS}
@@ -45,7 +45,7 @@ foreach(PRECISION ENABLE_FLOAT ENABLE_LONG_DOUBLE ENABLE_DEFAULT_PRECISION)
     else()
         vcpkg_cmake_configure(
         SOURCE_PATH "${SOURCE_PATH}"
-        OPTIONS 
+        OPTIONS
             -D${PRECISION}=ON
             ${FEATURE_OPTIONS}
             -DBUILD_TESTS=OFF

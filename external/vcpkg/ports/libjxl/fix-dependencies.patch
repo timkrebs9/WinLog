@@ -5,7 +5,7 @@ index 72c07f4..5675d1e 100644
 @@ -3,6 +3,15 @@
  # Use of this source code is governed by a BSD-style
  # license that can be found in the LICENSE file.
- 
+
 +find_package(unofficial-brotli CONFIG REQUIRED)
 +find_package(lcms2 CONFIG REQUIRED)
 +
@@ -24,7 +24,7 @@ index 50cc72c..fed027e 100644
 +++ b/third_party/CMakeLists.txt
 @@ -45,36 +45,7 @@ else()
  endif()
- 
+
  # brotli
 -if (NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/brotli/c/include/brotli/decode.h" OR
 -    JPEGXL_FORCE_SYSTEM_BROTLI)
@@ -57,7 +57,7 @@ index 50cc72c..fed027e 100644
 -  endif()  # BROTLI_EMSCRIPTEN
 -endif()
 +find_package(unofficial-brotli CONFIG REQUIRED)
- 
+
  # *cms
  if (JPEGXL_ENABLE_SKCMS OR JPEGXL_ENABLE_PLUGINS)
 @@ -86,18 +57,7 @@ if (JPEGXL_ENABLE_SKCMS OR JPEGXL_ENABLE_PLUGINS)
@@ -77,6 +77,6 @@ index 50cc72c..fed027e 100644
 -  endif()
 -endif()
 +find_package(lcms2 CONFIG REQUIRED)
- 
+
  # libpng
  if (JPEGXL_EMSCRIPTEN)

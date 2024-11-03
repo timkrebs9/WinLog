@@ -7,13 +7,13 @@ index d37c4e6..ec477f5 100644
  #include <k4ainternal/common.h>
  #include <cjson/cJSON.h>
 -#include <locale.h> //cJSON.h need this set correctly.
- 
+
  // System dependencies
  #include <stdlib.h>
 @@ -637,27 +636,6 @@ k4a_result_t calibration_create_from_raw(char *raw_calibration,
- 
+
      k4a_result_t result = K4A_RESULT_SUCCEEDED;
- 
+
 -#ifdef _WIN32
 -    int previous_thread_locale = -1;
 -    if (K4A_SUCCEEDED(result))
@@ -41,7 +41,7 @@ index d37c4e6..ec477f5 100644
 @@ -680,29 +658,6 @@ k4a_result_t calibration_create_from_raw(char *raw_calibration,
                                       "CALIBRATION_InertialSensorType_Accelerometer");
      }
- 
+
 -#ifdef _WIN32
 -    if (previous_thread_locale == _ENABLE_PER_THREAD_LOCALE || previous_thread_locale == _DISABLE_PER_THREAD_LOCALE)
 -    {
@@ -67,4 +67,3 @@ index d37c4e6..ec477f5 100644
 -
      return result;
  }
- 

@@ -9,7 +9,7 @@ index 23a8114..f430146 100644
 +option(USE_SYSTEM_RYML "Use the system-provided rapidyaml library" OFF)
  set(GLOBAL_OUTPUT_PATH_SUFFIX "" CACHE STRING
      "Output artifacts directory.")
- 
+
 @@ -104,6 +105,11 @@ if(USE_SYSTEM_JSON)
  else()
      add_subdirectory(third_party/json)
@@ -19,7 +19,7 @@ index 23a8114..f430146 100644
 +else()
 +    add_subdirectory(third_party/rapidyaml/rapidyaml ryml)
 +endif()
- 
+
  # Look for libraries in global output path.
  link_directories(${GLOBAL_OUTPUT_PATH})
 @@ -124,7 +130,6 @@ endif()

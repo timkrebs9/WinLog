@@ -18,7 +18,7 @@ vcpkg_cmake_config_fixup(CONFIG_PATH lib/cmake/KDBindings)
 
 file(REMOVE_RECURSE
   "${CURRENT_PACKAGES_DIR}/debug/"
-  "${CURRENT_PACKAGES_DIR}/lib/" 
+  "${CURRENT_PACKAGES_DIR}/lib/"
 )
 
 file(INSTALL "${SOURCE_PATH}/LICENSES/MIT.txt" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME copyright)

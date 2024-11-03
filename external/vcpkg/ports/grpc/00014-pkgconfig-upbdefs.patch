@@ -10,4 +10,3 @@ index 8498b6e435..4e2e9a6130 100644
 +  "-lgrpc -laddress_sorting -lre2 -ldescriptor_upb_proto -lupb_collections -lupb_extension_registry -lupb_fastdecode -lupb_json -lupb_reflection -lupb_textformat -lupb_utf8_range -lupb -lcares -lz"
    ""
    "grpc.pc")
- 

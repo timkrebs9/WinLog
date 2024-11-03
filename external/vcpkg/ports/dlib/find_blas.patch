@@ -8,6 +8,6 @@ index 806b938..507f871 100644
     include(CheckFortranFunctionExists)
 -   set(CMAKE_REQUIRED_LIBRARIES ${lapack_libraries})
 +   set(CMAKE_REQUIRED_LIBRARIES ${lapack_libraries} ${blas_libraries})
- 
+
     check_function_exists("sgesv" LAPACK_FOUND_C_UNMANGLED)
     check_function_exists("sgesv_" LAPACK_FOUND_C_MANGLED)

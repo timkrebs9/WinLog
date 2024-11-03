@@ -10,4 +10,3 @@ index b50a923..c3250b9 100644
 +if (WIN32 AND BUILD_SHARED_LIBS)
      add_definitions (-DOPENEXR_DLL) # Is this needed for new versions?
  endif ()
- 

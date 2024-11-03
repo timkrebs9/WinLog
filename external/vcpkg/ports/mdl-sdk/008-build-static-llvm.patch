@@ -12,6 +12,6 @@ index ce2057f..7ad8dfe 100644
 -    llvm_add_library(${name} ${ARG_UNPARSED_ARGUMENTS})
 -  endif()
 +  llvm_add_library(${name} STATIC ${ARG_UNPARSED_ARGUMENTS})
- 
+
    # Libraries that are meant to only be exposed via the build tree only are
    # never installed and are only exported as a target in the special build tree

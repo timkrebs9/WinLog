@@ -7,6 +7,6 @@ index b116fd0..653da0e 100644
  #include <cctype>
  #include <cmath>
 +#include <limits>
- 
+
  #include <xlnt/utils/exceptions.hpp>
  #include <detail/default_case.hpp>

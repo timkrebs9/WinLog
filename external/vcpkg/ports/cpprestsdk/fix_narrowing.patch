@@ -3,9 +3,9 @@ index e15aeb7fc..128f6d6af 100644
 --- a/Release/src/CMakeLists.txt
 +++ b/Release/src/CMakeLists.txt
 @@ -185,12 +185,12 @@ endif()
- 
+
  configure_pch(cpprest stdafx.h pch/stdafx.cpp /Zm120)
- 
+
 -if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 +if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND NOT MSVC)
    if(WERROR)
@@ -24,7 +24,7 @@ index 057dd9b67..a65439cb7 100644
 @@ -616,7 +616,7 @@ size_t _fill_buffer_fsb(_In_ _file_info_impl* fInfo,
                  // pending
                  return read;
- 
+
 -            case (-1):
 +            case ((size_t)(-1)):
                  // error
@@ -33,7 +33,7 @@ index 057dd9b67..a65439cb7 100644
 @@ -668,7 +668,7 @@ size_t _fill_buffer_fsb(_In_ _file_info_impl* fInfo,
                  // pending
                  return read;
- 
+
 -            case (-1):
 +            case ((size_t)(-1)):
                  // error
@@ -42,7 +42,7 @@ index 057dd9b67..a65439cb7 100644
 @@ -719,7 +719,7 @@ size_t _fill_buffer_fsb(_In_ _file_info_impl* fInfo,
                  // pending
                  return read;
- 
+
 -            case (-1):
 +            case ((size_t)(-1)):
                  // error

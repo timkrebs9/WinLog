@@ -3,8 +3,8 @@ index 011577a..e52d19d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -42,11 +42,13 @@ include(cmake/GenerateTemplateExportHeader.cmake)
- # 
- 
+ #
+
  # Get git revision
 +if(NOT DEFINED GIT_REV)
  get_git_head_revision(GIT_REFSPEC GIT_SHA1)
@@ -13,12 +13,12 @@ index 011577a..e52d19d 100644
      set(GIT_REV "0")
  endif()
 +endif()
- 
+
  # Meta information about the project
  set(META_PROJECT_NAME        "glbinding")
 @@ -135,7 +137,7 @@ if("${CMAKE_INSTALL_PREFIX}" STREQUAL "/usr" OR "${CMAKE_INSTALL_PREFIX}" STREQU
  endif()
- 
+
  # Installation paths
 -if(UNIX AND SYSTEM_DIR_INSTALL)
 +if(1)

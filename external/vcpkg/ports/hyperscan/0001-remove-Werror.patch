@@ -20,8 +20,7 @@ index 83197af..d27eb76 100644
 +        #set(EXTRA_C_FLAGS "${EXTRA_C_FLAGS} -Werror")
 +        #set(EXTRA_CXX_FLAGS "${EXTRA_CXX_FLAGS} -Werror")
      endif()
- 
-     if (DISABLE_ASSERTS)
--- 
-2.24.3 (Apple Git-128)
 
+     if (DISABLE_ASSERTS)
+--
+2.24.3 (Apple Git-128)

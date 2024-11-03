@@ -1,4 +1,4 @@
-set(VCPKG_POLICY_EMPTY_INCLUDE_FOLDER enabled) 
+set(VCPKG_POLICY_EMPTY_INCLUDE_FOLDER enabled)
 
 if(NOT X_VCPKG_FORCE_VCPKG_X_LIBRARIES AND NOT VCPKG_TARGET_IS_WINDOWS)
     message(STATUS "Utils and libraries provided by '${PORT}' should be provided by your system! Install the required packages or force vcpkg libraries by setting X_VCPKG_FORCE_VCPKG_X_LIBRARIES in your triplet")
@@ -14,7 +14,7 @@ vcpkg_from_gitlab(
     HEAD_REF master
     PATCHES win32.patch
             symbols.patch
-) 
+)
 
 set(ENV{ACLOCAL} "aclocal -I \"${CURRENT_INSTALLED_DIR}/share/xorg/aclocal/\"")
 vcpkg_configure_make(
@@ -33,8 +33,8 @@ file(MAKE_DIRECTORY "${CURRENT_PACKAGES_DIR}/lib")
 if(NOT VCPKG_BUILD_TYPE)
     file(MAKE_DIRECTORY "${CURRENT_PACKAGES_DIR}/debug/lib")
 endif()
-file(RENAME "${CURRENT_PACKAGES_DIR}/include/" "${CURRENT_PACKAGES_DIR}/share/${PORT}/include/") 
-# the include folder is moved since it contains source files. It is not meant as a traditional include folder but as a shared files folder for different x libraries. 
+file(RENAME "${CURRENT_PACKAGES_DIR}/include/" "${CURRENT_PACKAGES_DIR}/share/${PORT}/include/")
+# the include folder is moved since it contains source files. It is not meant as a traditional include folder but as a shared files folder for different x libraries.
 file(RENAME "${CURRENT_PACKAGES_DIR}/share/${PORT}/pkgconfig/" "${CURRENT_PACKAGES_DIR}/lib/pkgconfig")
 file(RENAME "${CURRENT_PACKAGES_DIR}/share/${PORT}/aclocal/" "${CURRENT_PACKAGES_DIR}/share/xorg/aclocal")
 
@@ -43,7 +43,7 @@ if(NOT VCPKG_BUILD_TYPE)
     file(RENAME "${CURRENT_PACKAGES_DIR}/debug/share/" "${CURRENT_PACKAGES_DIR}/share/xorg/debug")
 endif()
 
-vcpkg_fixup_pkgconfig() # must be called after files have been moved 
+vcpkg_fixup_pkgconfig() # must be called after files have been moved
 
 set(_file "${CURRENT_PACKAGES_DIR}/lib/pkgconfig/xtrans.pc" )
 file(READ "${_file}" _contents)

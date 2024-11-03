@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 PROJECT(mecab VERSION 1.0)
-                          
+
 file(GLOB SOURCE_FILE
 	"*.cpp"
 	"*.c"
@@ -52,7 +52,7 @@ install(EXPORT ${targets_export_name}
 
 configure_package_config_file(
 	"${PROJECT_SOURCE_DIR}/Config.cmake.in"
-	"${PROJECT_BINARY_DIR}/mecabConfig.cmake" 
+	"${PROJECT_BINARY_DIR}/mecabConfig.cmake"
 	INSTALL_DESTINATION ${mecab_CMAKE_DIR})
 
 
@@ -61,7 +61,7 @@ write_basic_package_version_file(
   VERSION ${PROJECT_VERSION}
   COMPATIBILITY SameMajorVersion )
 
-install(FILES 
-	${PROJECT_BINARY_DIR}/mecabConfig.cmake 
-	${PROJECT_BINARY_DIR}/mecabConfigVersion.cmake 
+install(FILES
+	${PROJECT_BINARY_DIR}/mecabConfig.cmake
+	${PROJECT_BINARY_DIR}/mecabConfigVersion.cmake
 	DESTINATION ${mecab_CMAKE_DIR})

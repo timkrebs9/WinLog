@@ -4,7 +4,7 @@ index 1310b6c..de14385 100644
 +++ b/win32/vorbis.def
 @@ -1,6 +1,5 @@
  ; vorbis.def
- ; 
+ ;
 -LIBRARY
  EXPORTS
  _floor_P
@@ -17,7 +17,7 @@ index 79af064..40a3e39 100644
  ; vorbisenc.def
  ;
 -LIBRARY
- 
+
  EXPORTS
  vorbis_encode_init
 diff --git a/win32/vorbisfile.def b/win32/vorbisfile.def

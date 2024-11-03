@@ -5,10 +5,10 @@ index f3c8116..b9a6d38 100644
 @@ -39,10 +39,10 @@ set(SOURCES
    src/misc.c
  )
- 
+
 -find_package(LibUSB)
 +find_package(libusb CONFIG REQUIRED)
- 
+
  # JpegPkg name to differ from shipped with CMake
 -find_package(JpegPkg QUIET)
 +find_package(JPEG REQUIRED)
@@ -34,11 +34,11 @@ index b9887ea..e8f09dc 100644
 @@ -10,8 +10,8 @@ if(${CMAKE_FIND_PACKAGE_NAME}_FIND_REQUIRED)
    list(APPEND extraArgs REQUIRED)
  endif()
- 
+
 -find_package(JpegPkg ${extraArgs})
 -find_package(LibUSB ${extraArgs})
 +include(CMakeFindDependencyMacro)
 +find_dependency(JPEG ${extraArgs})
  include("${CMAKE_CURRENT_LIST_DIR}/libuvcTargets.cmake")
- 
+
  set(libuvc_FOUND TRUE)

@@ -5,7 +5,7 @@ index 17b64a80e..f45d9d0fe 100644
 @@ -260,7 +260,7 @@ if XCB_SERVERSIDE_SUPPORT
  C_CLIENT_PY_EXTRA_ARGS += --server-side
  endif
- 
+
 -$(EXTSOURCES): c_client.py $(XCBPROTO_XCBINCLUDEDIR)/$(@:.c=.xml)
 +$(EXTSOURCES): c_client.py /$(@:.c=.xml)
  	$(AM_V_GEN)$(PYTHON) $(srcdir)/c_client.py	-c "$(PACKAGE_STRING)" -l "$(XORG_MAN_PAGE)" \

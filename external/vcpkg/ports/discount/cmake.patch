@@ -19,9 +19,9 @@ index e08220d..e630934 100644
 --- a/cmake/config.h.in
 +++ b/cmake/config.h.in
 @@ -74,4 +74,6 @@
- 
+
  #define TABSTOP @TABSTOP@
- 
+
 +#define DESTRUCTOR
 +
  #endif /* _CONFIG_D */

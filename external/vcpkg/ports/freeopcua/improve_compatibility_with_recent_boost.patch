@@ -4,7 +4,7 @@ index f138831..4732a59 100644
 +++ b/include/opc/ua/services/services.h
 @@ -26,20 +26,7 @@
  #include <vector>
- 
+
  #include <boost/version.hpp>
 -
 -
@@ -21,7 +21,7 @@ index f138831..4732a59 100644
 -}
 -}
 +#include <boost/asio/io_service.hpp>
- 
+
  namespace OpcUa
  {
 diff --git a/src/server/internal_subscription.cpp b/src/server/internal_subscription.cpp
@@ -39,7 +39,7 @@ index edf4715..69ef74a 100644
  {
 @@ -105,7 +105,7 @@ void InternalSubscription::PublishResults(const boost::system::error_code & erro
      }
- 
+
    TimerStopped = false;
 -  Timer.expires_at(Timer.expires_at() + boost::posix_time::milliseconds(Data.RevisedPublishingInterval));
 +  Timer.expires_at(Timer.expires_at() + boost::posix_time::milliseconds((int)Data.RevisedPublishingInterval));
@@ -47,7 +47,7 @@ index edf4715..69ef74a 100644
    Timer.async_wait([self](const boost::system::error_code & error) { self->PublishResults(error); });
  }
 @@ -615,5 +615,3 @@ std::vector<Variant> InternalSubscription::GetEventFields(const EventFilter & fi
- 
+
  }
  }
 -

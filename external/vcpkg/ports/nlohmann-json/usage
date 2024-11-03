@@ -8,5 +8,5 @@ The package nlohmann-json can be configured to not provide implicit conversions 
     set(nlohmann-json_IMPLICIT_CONVERSIONS OFF)
 
 For more information, see the docs here:
-    
+
     https://json.nlohmann.me/api/macros/json_use_implicit_conversions/

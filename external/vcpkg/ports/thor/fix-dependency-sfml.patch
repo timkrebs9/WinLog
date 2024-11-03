@@ -9,7 +9,7 @@ index 03536be..abcff44 100644
 -find_package(SFML 2 COMPONENTS audio graphics window system)
 +find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED)
 +set(SFML_LIBRARIES sfml-system sfml-network sfml-graphics sfml-window)
- 
+
 -if(SFML_FOUND)
 -	include_directories(${SFML_INCLUDE_DIR})
 -else()
@@ -27,5 +27,3 @@ index 75e118e..0f90ac8 100644
  	set_target_properties(${THOR_LIB} PROPERTIES RELEASE_POSTFIX -s)
 +    thor_link_sfml(${THOR_LIB})
  endif()
- 
- 

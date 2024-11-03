@@ -11,4 +11,3 @@ index 6483339..71710de 100644
 +    )
  	endif ()
  	set_target_properties(${PROJECTNAME} PROPERTIES FOLDER ${SOLUTIONFOLDER})
- 

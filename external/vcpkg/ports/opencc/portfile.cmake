@@ -4,7 +4,7 @@ vcpkg_from_github(
     REF ver.1.1.4
     SHA512 ab8e7e6a0cc71106cf09eb32899fa8620b946a406f042d75a2444096e0b383cb1993d6c2d12cd7862e71854da4cd5893442bce51df84c32ed09fdfb4a2846f46
     HEAD_REF master
-    PATCHES 
+    PATCHES
         fix-dependencies.patch
 )
 

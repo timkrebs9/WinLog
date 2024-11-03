@@ -4,7 +4,7 @@ index fd76961..396251c 100644
 +++ b/src/shogun/CMakeLists.txt
 @@ -170,10 +170,10 @@ IF(MSVC)
    ENDIF()
- 
+
    # bundle dirent
 -  include(external/MSDirent)
 +  find_path(MSDIRENT_INCLUDE_DIR NAMES dirent.h)
@@ -13,5 +13,5 @@ index fd76961..396251c 100644
 -    $<INSTALL_INTERFACE:include/shogun/lib/external/MSDirent>
 +    $<INSTALL_INTERFACE:include>
    )
- 
+
    target_link_libraries(shogun PUBLIC winmm)

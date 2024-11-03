@@ -7,16 +7,16 @@ index 963c530..656ce14 100644
  # improved by Ryan Pavlik
 -cmake_minimum_required(VERSION 2.6)
 +cmake_minimum_required(VERSION 2.8.12)
- 
+
  project(Alut C)
- 
+
 @@ -27,7 +27,6 @@ include_directories(${Alut_SOURCE_DIR}/include)
- 
+
  # What to build?
  option(BUILD_EXAMPLES "build example applications" ON)
 -option(BUILD_STATIC "build static library too" OFF)
  option(BUILD_TESTS "build the test-suite" ON)
- 
+
  # How to build it?
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index b72d1a1..5fc6cdc 100644
@@ -25,7 +25,7 @@ index b72d1a1..5fc6cdc 100644
 @@ -39,35 +39,7 @@ set(ALUT_HEADERS
  	../include/AL/alut.h)
  source_group(APIHeader FILES ${ALUT_HEADERS})
- 
+
 -
 -if(BUILD_STATIC)
 -	# we can't create a static library with the same name
@@ -34,7 +34,7 @@ index b72d1a1..5fc6cdc 100644
 -	target_link_libraries(alut_static ${OPENAL_LIBRARY} ${ADD_LIBS})
 -	if(UNIX)
 -		target_link_libraries(alut_static m)
--	endif()	
+-	endif()
 -	if(NOT WIN32)
 -		# TODO this is an inelegant hack...
 -		add_custom_command(TARGET
@@ -66,11 +66,11 @@ index b72d1a1..5fc6cdc 100644
 +target_include_directories(alut PUBLIC ${OPENAL_INCLUDE_DIR})
  if(UNIX)
  	target_link_libraries(alut m)
- endif()	
+ endif()
 +if(NOT BUILD_SHARED_LIBS)
 +    target_compile_definitions(alut PUBLIC ALUT_BUILD_STATIC)
 +endif()
- 
+
  install(TARGETS alut
 +	EXPORT "FreeALUTTargets"
  	LIBRARY DESTINATION lib${LIB_SUFFIX}

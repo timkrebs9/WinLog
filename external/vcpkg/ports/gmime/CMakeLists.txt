@@ -40,7 +40,7 @@ endif()
 
 add_library(${PROJECT_NAME} ${LIB_SRC} ${MSVC_SRC})
 
-set_target_properties(${PROJECT_NAME} PROPERTIES 
+set_target_properties(${PROJECT_NAME} PROPERTIES
     OUTPUT_NAME ${PROJECT_NAME}-${GMIME_DLL_SUFFIX}
     ARCHIVE_OUTPUT_NAME ${PROJECT_NAME}-${GMIME_LIB_SUFFIX}
 )

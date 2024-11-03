@@ -5,7 +5,7 @@ index d109b2c90..75c7446e6 100644
 @@ -89,10 +89,10 @@ sub Install
  	my $majorver = DetermineMajorVersion();
  	print "Installing version $majorver for $conf in $target\n";
- 
+
 -	my @client_dirs = ('bin', 'lib', 'share', 'symbols');
 +	my @client_dirs = ('bin', 'lib', 'share', 'tools', 'share/libpq', 'tools/libpq');
  	my @all_dirs = (
@@ -66,7 +66,7 @@ index d109b2c90..75c7446e6 100644
  			[ glob("src\\backend\\tsearch\\dicts\\*_sample*") ],
 -			$target . '/share/tsearch_data/');
 +			$target . '/share/libpq/tsearch_data/');
- 
+
  		my $pl_extension_files = [];
  		my @pldirs             = ('src/pl/plpgsql/src');
 @@ -178,7 +178,7 @@ sub Install
@@ -76,7 +76,7 @@ index d109b2c90..75c7446e6 100644
 -			$pl_extension_files, $target . '/share/extension/');
 +			$pl_extension_files, $target . '/share/libpq/extension/');
  	}
- 
+
  	GenerateNLSFiles($target, $config->{nls}, $majorver) if ($config->{nls});
 @@ -293,23 +293,26 @@ sub CopySolutionOutput
  		{
@@ -146,7 +146,7 @@ index d109b2c90..75c7446e6 100644
  	}
 @@ -374,5 +374,5 @@ sub GenerateTimezoneFiles
  	print "Generating timezone files...";
- 
+
 -	my @args = ("$conf/zic/zic", '-d', "$target/share/timezone");
 +	my @args = ("$conf/zic/zic", '-d', "$target/share/libpq/timezone");
  	foreach (@tzfiles)
@@ -159,7 +159,7 @@ index d109b2c90..75c7446e6 100644
 +	open($F, '>', "$target/share/libpq/snowball_create.sql")
  	  || die "Could not write snowball_create.sql";
  	print $F read_file('src/backend/snowball/snowball_func.sql.in');
- 
+
 @@ -483,7 +483,7 @@ sub CopySubdirFiles
  		foreach my $f (split /\s+/, $flist)
  		{
@@ -198,7 +198,7 @@ index d109b2c90..75c7446e6 100644
  		}
 @@ -708,7 +708,7 @@ sub GenerateNLSFiles
  	my $majorver = shift;
- 
+
  	print "Installing NLS files...";
 -	EnsureDirectories($target, "share/locale");
 +	EnsureDirectories($target, "share/libpq/locale");
@@ -208,7 +208,7 @@ index d109b2c90..75c7446e6 100644
 @@ -730,12 +730,12 @@ sub GenerateNLSFiles
  			next unless /([^\/]+)\.po/;
  			$lang = $1;
- 
+
 -			EnsureDirectories($target, "share/locale/$lang",
 -				"share/locale/$lang/LC_MESSAGES");
 +			EnsureDirectories($target, "share/libpq/locale/$lang",

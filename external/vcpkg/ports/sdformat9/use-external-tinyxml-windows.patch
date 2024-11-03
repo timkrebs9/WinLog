@@ -3,7 +3,7 @@ index 3dad12e5..e290a3be 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -113,7 +113,7 @@ include (${sdf_cmake_dir}/SDFUtils.cmake)
- 
+
  message (STATUS "\n\n====== Finding 3rd Party Packages ======")
   # Use of tinyxml. System installation on UNIX. Internal copy on WIN
 -if (UNIX)

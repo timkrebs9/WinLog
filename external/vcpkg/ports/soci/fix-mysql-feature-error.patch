@@ -7,6 +7,6 @@ index 383248c..86a5bfd 100644
  // http://www.boost.org/LICENSE_1_0.txt)
  //
 +typedef bool my_bool;
- 
+
  #define SOCI_MYSQL_SOURCE
  #include "soci/mysql/soci-mysql.h"

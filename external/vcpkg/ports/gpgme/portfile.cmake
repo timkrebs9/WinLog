@@ -39,7 +39,7 @@ vcpkg_install_make()
 # CMake config needs work for linkage and build type
 # vcpkg_cmake_config_fixup(CONFIG_PATH lib/cmake/Gpgmepp PACKAGE_NAME Gpgmepp)
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/lib/cmake" "${CURRENT_PACKAGES_DIR}/debug/lib/cmake")
-vcpkg_copy_pdbs() 
+vcpkg_copy_pdbs()
 # We have no dependency on glib, so remove this extra .pc file
 file(REMOVE "${CURRENT_PACKAGES_DIR}/lib/pkgconfig/gpgme-glib.pc" "${CURRENT_PACKAGES_DIR}/debug/lib/pkgconfig/gpgme-glib.pc")
 vcpkg_fixup_pkgconfig()

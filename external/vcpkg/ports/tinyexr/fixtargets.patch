@@ -3,9 +3,9 @@ index 3613642..93fb6c1 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -7,6 +7,20 @@ set(SAMPLE_TARGET "test_tinyexr")
- 
+
  project(${BUILD_TARGET} CXX)
- 
+
 +set(INSTALL_BIN_DIR      "bin"                      CACHE PATH "Path where exe and dll will be installed")
 +set(INSTALL_LIB_DIR      "lib"                      CACHE PATH "Path where lib will be installed")
 +set(INSTALL_INCLUDE_DIR  "include"                  CACHE PATH "Path where headers will be installed")
@@ -22,10 +22,10 @@ index 3613642..93fb6c1 100644
 +
  # options
  option(TINYEXR_BUILD_SAMPLE "Build a sample" ON)
- 
+
 @@ -60,3 +74,20 @@ if (TINYEXR_BUILD_SAMPLE)
    endif(WIN32)
- 
+
  endif (TINYEXR_BUILD_SAMPLE)
 +
 +target_include_directories(${BUILD_TARGET} PUBLIC $<INSTALL_INTERFACE:${RELATIVE_INSTALL_INCLUDE_DIR}> $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)

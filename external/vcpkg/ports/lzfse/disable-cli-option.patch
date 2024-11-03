@@ -5,7 +5,7 @@ index 336a68d..96a2a74 100644
 @@ -67,18 +67,20 @@ add_library(lzfse
    src/lzvn_encode_base.c)
  lzfse_add_compiler_flags(lzfse -Wall -Wno-unknown-pragmas -Wno-unused-variable)
- 
+
 -add_executable(lzfse_cli
 -  src/lzfse_main.c)
 -target_link_libraries(lzfse_cli lzfse)
@@ -33,12 +33,12 @@ index 336a68d..96a2a74 100644
 +    set_property(TARGET lzfse_cli PROPERTY C_STANDARD 99)
 +  endif()
  endif()
- 
+
  set_target_properties(lzfse PROPERTIES
 @@ -95,7 +97,12 @@ endif()
  if(NOT LZFSE_BUNDLE_MODE)
    include(GNUInstallDirs)
- 
+
 -  install(TARGETS lzfse lzfse_cli
 +  if(NOT LZFSE_DISABLE_CLI)
 +    install(TARGETS lzfse_cli

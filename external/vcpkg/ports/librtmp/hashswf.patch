@@ -1,6 +1,6 @@
 diff --git a/librtmp/hashswf.c b/librtmp/hashswf.c
 index 3c56b6922..964a64d01 100644
---- a/librtmp/hashswf.c	
+--- a/librtmp/hashswf.c
 +++ b/librtmp/hashswf.c
 @@ -57,10 +57,10 @@
  #include <openssl/sha.h>
@@ -15,7 +15,7 @@ index 3c56b6922..964a64d01 100644
 +#define HMAC_finish(ctx, dig, dlen)	HMAC_Final(ctx, (unsigned char *)dig, &dlen);
 +#define HMAC_close(ctx)	HMAC_CTX_free(ctx)
  #endif
- 
+
  extern void RTMP_TLS_Init();
 @@ -289,7 +289,7 @@ leave:
  struct info

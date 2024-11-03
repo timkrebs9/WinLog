@@ -5,7 +5,7 @@ vcpkg_from_gitlab(
     REF  eabdbd54ee38fa658be574c4fa4574a05c755f16 #v1.50.11
     SHA512 06077e3cda5f1f5cda1fa37958e981b462715ac119af42e48e78f33807d082c31e903c2e4e753624e5fbf9759f0a66ee1dda055286b11a9e3d8698d5d8dffcb7
     HEAD_REF master # branch name
-) 
+)
 
 vcpkg_configure_meson(
     SOURCE_PATH ${SOURCE_PATH}

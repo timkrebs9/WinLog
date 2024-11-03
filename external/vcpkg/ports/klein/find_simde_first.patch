@@ -5,7 +5,7 @@ index c5d6f3f..a3ba161 100644
 @@ -29,16 +29,7 @@ endif()
  option(KLEIN_BUILD_SYM "Enable compilation of symbolic Klein utility" ON)
  option(KLEIN_BUILD_C_BINDINGS "Enable compilation of the Klein C bindings" ON)
- 
+
 -include(FetchContent)
 -FetchContent_Declare(
 -    simde
@@ -19,5 +19,5 @@ index c5d6f3f..a3ba161 100644
 -endif()
 +find_path(SIMDE_INCLUDE_DIR "simde/x86/sse4.1.h" REQUIRED)
 +set(simde_SOURCE_DIR ${SIMDE_INCLUDE_DIR}/simde)
- 
+
  # The default platform and instruction set is x86 SSE3

@@ -15,7 +15,7 @@ string(COMPARE EQUAL "${VCPKG_LIBRARY_LINKAGE}" "dynamic" JAS_ENABLE_SHARED)
 
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
     FEATURES
-        opengl    JAS_ENABLE_OPENGL        
+        opengl    JAS_ENABLE_OPENGL
 )
 
 vcpkg_cmake_configure(

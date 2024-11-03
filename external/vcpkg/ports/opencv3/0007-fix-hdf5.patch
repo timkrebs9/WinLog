@@ -2,7 +2,7 @@
 +++ b/modules/hdf/CMakeLists.txt
 @@ -1,25 +1,8 @@
  set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR})
- 
+
 -if(WIN32)
 -  # windows cmake internal lookups are broken for now
 -  # will lookup for headers and shared libs given HDF_DIR env
@@ -23,6 +23,6 @@
      find_package(HDF5)
    endif()
 -endif()
- 
+
  if(NOT HDF5_FOUND)
      ocv_module_disable(hdf) # no return

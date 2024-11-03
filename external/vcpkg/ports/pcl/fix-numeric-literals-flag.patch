@@ -12,15 +12,14 @@ index 7cf86f74b..e07fd430a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -420,6 +420,9 @@ endif()
- 
+
  # Boost (required)
  include("${PCL_SOURCE_DIR}/cmake/pcl_find_boost.cmake")
 +if (NOT APPLE AND NOT WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 +    add_definitions(-fext-numeric-literals)
 +endif()
- 
+
  ### ---[ Create the config.h file
  set(pcl_config_h_in "${CMAKE_CURRENT_SOURCE_DIR}/pcl_config.h.in")
--- 
+--
 2.32.0.windows.1
-

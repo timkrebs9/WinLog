@@ -4,7 +4,7 @@ get_filename_component(_sparsehash_root "${_sparsehash_root}" PATH)
 get_filename_component(_sparsehash_root "${_sparsehash_root}" PATH)
 
 add_library(sparsehash::sparsehash INTERFACE IMPORTED)
-set_target_properties(sparsehash::sparsehash 
+set_target_properties(sparsehash::sparsehash
 	PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_sparsehash_root}/include")
 
 unset(_sparsehash_root)

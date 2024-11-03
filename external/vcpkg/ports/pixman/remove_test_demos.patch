@@ -4,12 +4,12 @@ index 1cec22728..fa6199ed0 100644
 +++ b/meson.build
 @@ -528,8 +528,8 @@ version_conf.set('PIXMAN_VERSION_MICRO', split[2])
  add_project_arguments('-DHAVE_CONFIG_H', language : ['c'])
- 
+
  subdir('pixman')
 -subdir('test')
 -subdir('demos')
 +# subdir('test')
 +# subdir('demos')
- 
+
  pkg = import('pkgconfig')
  pkg.generate(

@@ -20,7 +20,7 @@ if(VCPKG_TARGET_IS_WINDOWS)
     foreach (DEL_PROJ ${DEL_PROJS})
         file(REMOVE_RECURSE ${SOURCE_PATH}/${DEL_PROJ})
     endforeach()
-    
+
     # Clear
     vcpkg_execute_required_process(
         COMMAND "devenv.exe"
@@ -28,7 +28,7 @@ if(VCPKG_TARGET_IS_WINDOWS)
                 /Clean
         WORKING_DIRECTORY ${SOURCE_PATH}/mswin32
     )
-    
+
     # Uprade
     message(STATUS "Upgrade solution...")
     vcpkg_execute_required_process(
@@ -44,7 +44,7 @@ if(VCPKG_TARGET_IS_WINDOWS)
     PLATFORM ${MSBUILD_PLATFORM}
     USE_VCPKG_INTEGRATION
     )
-    
+
     # Install
     if (NOT VCPKG_BUILD_TYPE OR VCPKG_BUILD_TYPE STREQUAL Release)
         file(INSTALL ${SOURCE_PATH}/mswin32/Release/nmap.exe
@@ -60,7 +60,7 @@ else()
     set(ENV{LDFLAGS} "$ENV{LDFLAGS} -pthread")
     set(OPTIONS --without-nmap-update --with-openssl=${CURRENT_INSTALLED_DIR} --with-libssh2=${CURRENT_INSTALLED_DIR} --with-libz=${CURRENT_INSTALLED_DIR} --with-libpcre=${CURRENT_INSTALLED_DIR})
     message(STATUS "Building Options: ${OPTIONS}")
-    
+
     # Since nmap makefile has strong relationshop with codes, copy codes to obj path
     message(STATUS "Configuring ${TARGET_TRIPLET}-rel")
     vcpkg_extract_source_archive(source_path_release
@@ -73,17 +73,17 @@ else()
     WORKING_DIRECTORY "${source_path_release}"
         LOGNAME config-${TARGET_TRIPLET}-rel
     )
-    
+
     message(STATUS "Building ${TARGET_TRIPLET}-rel")
     vcpkg_execute_required_process(
         COMMAND make
         WORKING_DIRECTORY "${source_path_release}"
         LOGNAME build-${TARGET_TRIPLET}-rel
     )
-    
+
     message(STATUS "Installing ${TARGET_TRIPLET}-rel")
     file(INSTALL "${source_path_release}/nmap" DESTINATION "${CURRENT_PACKAGES_DIR}/tools")
-    
+
     if (NOT VCPKG_BUILD_TYPE)
         # Since nmap makefile has strong relationshop with codes, copy codes to obj path
         message(STATUS "Configuring ${TARGET_TRIPLET}-dbg")
@@ -97,18 +97,18 @@ else()
             WORKING_DIRECTORY ${source_path_debug}
             LOGNAME config-${TARGET_TRIPLET}-dbg
         )
-        
+
         message(STATUS "Building ${TARGET_TRIPLET}-dbg")
         vcpkg_execute_required_process(
             COMMAND make
             WORKING_DIRECTORY ${source_path_debug}
             LOGNAME build-${TARGET_TRIPLET}-dbg
         )
-        
+
         message(STATUS "Installing ${TARGET_TRIPLET}-dbg")
         file(INSTALL ${source_path_release}/nmap DESTINATION ${CURRENT_PACKAGES_DIR}/debug/tools)
     endif()
-    
+
     set(SOURCE_PATH "${source_path_release}")
 endif()
 

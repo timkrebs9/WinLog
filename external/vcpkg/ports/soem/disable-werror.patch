@@ -3,7 +3,7 @@ index 1778965..4c481b7 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -13,21 +13,18 @@ set(BUILD_TESTS TRUE)
- 
+
  if(WIN32)
    set(OS "win32")
 -  find_path(winpcap_INCLUDE_DIRS NAMES pcap.h)

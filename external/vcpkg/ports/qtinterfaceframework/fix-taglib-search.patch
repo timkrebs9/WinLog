@@ -9,5 +9,5 @@ index e82d2c1a9..14463c791 100644
 -
 +unset(PKG_CONFIG_EXECUTABLE CACHE)
  find_package(PkgConfig)
- 
+
  pkg_check_modules(TagLib taglib IMPORTED_TARGET)

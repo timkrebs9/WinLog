@@ -4,8 +4,8 @@ index 5087ca0..fdf8135 100644
 +++ b/common/cmake/embree-config.cmake
 @@ -52,6 +52,21 @@ IF (EMBREE_STATIC_LIB)
    INCLUDE("${EMBREE_ROOT_DIR}/@EMBREE_CMAKEEXPORT_DIR@/tasking-targets.cmake")
- 
-   
+
+
 +  IF(EMBREE_ISA_SSE42)
 +    INCLUDE("${EMBREE_ROOT_DIR}/@EMBREE_CMAKEEXPORT_DIR@/embree_sse42-targets.cmake")
 +  ENDIF()
@@ -22,5 +22,5 @@ index 5087ca0..fdf8135 100644
 +      INCLUDE("${EMBREE_ROOT_DIR}/@EMBREE_CMAKEEXPORT_DIR@/embree_avx512skx-targets.cmake")
 +  ENDIF()
  ENDIF()
- 
+
  INCLUDE("${EMBREE_ROOT_DIR}/@EMBREE_CMAKEEXPORT_DIR@/embree-targets.cmake")

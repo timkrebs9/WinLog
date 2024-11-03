@@ -8,7 +8,6 @@ index 4c2762356..5376a34fb 100644
 +#ifdef _MSC_VER
 +#include <direct.h>
 +#endif
- 
+
  #define IsNewline(str) ((str) == '\n')
  #define IsWhitespace(str) ((str)== ' ' || (str) == '\t')
- 

@@ -3,7 +3,7 @@
 @@ -82,12 +82,42 @@ macro(ocv_check_environment_variables)
    endforeach()
  endmacro()
- 
+
 +# check if "sub" (file or dir) is below "dir"
 +function(is_subdir res dir sub )
 +  get_filename_component(dir "${dir}" ABSOLUTE)

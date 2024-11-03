@@ -4,7 +4,7 @@ index 11a51ac..33b9313 100644
 +++ b/CMakeLists.txt
 @@ -156,18 +156,20 @@ if(UNIX)
  endif()
- 
+
  if(MSVC)
 -	if((NOT CBOR_INCLUDE_DIRS) OR (NOT CBOR_LIBRARY_DIRS) OR
 -	   (NOT CBOR_BIN_DIRS) OR (NOT CRYPTO_INCLUDE_DIRS) OR
@@ -22,7 +22,7 @@ index 11a51ac..33b9313 100644
 +
 +	find_package(LIBCBOR REQUIRED)
 +	find_package(OpenSSL REQUIRED)
-+	find_package(ZLIB REQUIRED) 
++	find_package(ZLIB REQUIRED)
 +
 +	# Handling of different Packagenames in VCPKG
 +	set(CBOR_INCLUDE_DIRS ${LIBCBOR_INCLUDE_DIR})
@@ -38,7 +38,7 @@ index 11a51ac..33b9313 100644
 @@ -403,6 +402,9 @@ message(STATUS "USE_HIDAPI: ${USE_HIDAPI}")
  message(STATUS "USE_WINHELLO: ${USE_WINHELLO}")
  message(STATUS "NFC_LINUX: ${NFC_LINUX}")
- 
+
 +set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} /wd4996")
 +set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} /wd4996")
 +

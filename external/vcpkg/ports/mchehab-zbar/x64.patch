@@ -7,11 +7,11 @@ index 7f7336f..e9ffc45 100644
  #include <stdio.h>      /* snprintf */
  #include <string.h>     /* memset, strlen */
 +#include <stddef.h>     /* offsetof */
- 
+
  #include <zbar.h>
- 
+
 @@ -113,7 +114,7 @@ void zbar_decoder_destroy (zbar_decoder_t *dcode)
- 
+
  void zbar_decoder_reset (zbar_decoder_t *dcode)
  {
 -    memset(dcode, 0, (long)&dcode->buf_alloc - (long)dcode);

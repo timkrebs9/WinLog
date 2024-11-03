@@ -22,4 +22,3 @@ vcpkg_install_cmake()
 # Handle copyright
 file(COPY ${SOURCE_PATH}/LICENSE DESTINATION ${CURRENT_PACKAGES_DIR}/share/genann)
 file(RENAME ${CURRENT_PACKAGES_DIR}/share/genann/LICENSE ${CURRENT_PACKAGES_DIR}/share/genann/copyright)
-

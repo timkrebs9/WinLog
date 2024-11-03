@@ -4,7 +4,7 @@ index 672561e62..b6930b834 100644
 +++ b/CMakeLists.txt
 @@ -38,7 +38,7 @@ if(NOT CMAKE_CXX_STANDARD)
  endif(NOT CMAKE_CXX_STANDARD)
- 
+
  # https://github.com/izenecloud/cmake/blob/master/SetCompilerWarningAll.cmake
 -if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 +if(MSVC)

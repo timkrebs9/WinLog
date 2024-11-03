@@ -3,16 +3,16 @@ index e83fb38..c09cae4 100644
 --- a/json5_parser/CMakeLists.txt
 +++ b/json5_parser/CMakeLists.txt
 @@ -15,3 +15,22 @@ INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
- 
+
  ADD_LIBRARY(json5_parser STATIC ${JSON_SPIRIT_SRCS})
- 
+
 +if(MSVC)
 +    target_compile_options(json5_parser PRIVATE "/bigobj")
 +endif()
 +
 +target_include_directories(json5_parser PUBLIC $<INSTALL_INTERFACE:include>)
 +
-+install(TARGETS json5_parser EXPORT json5-parser-config 
++install(TARGETS json5_parser EXPORT json5-parser-config
 +    RUNTIME DESTINATION bin
 +    ARCHIVE DESTINATION lib
 +    LIBRARY DESTINATION lib

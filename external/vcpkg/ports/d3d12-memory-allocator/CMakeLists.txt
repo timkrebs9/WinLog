@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 project(d3d12-memory-allocator)
 
-add_library(${PROJECT_NAME} STATIC 
+add_library(${PROJECT_NAME} STATIC
     "src/D3D12MemAlloc.h"
     "src/D3D12MemAlloc.cpp"
 )

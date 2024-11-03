@@ -19,7 +19,7 @@ index 051f06692c..e16da68dec 100644
 @@ -351,6 +351,10 @@ int ff_h264_decode_seq_parameter_set(GetBitContext *gb, AVCodecContext *avctx,
      }
      memcpy(sps->data, gb->buffer, sps->data_size);
- 
+
 +    // Re-add the removed stop bit (may be used by hwaccels).
 +    if (!(gb->size_in_bits & 7) && sps->data_size < sizeof(sps->data))
 +        sps->data[sps->data_size++] = 0x80;
@@ -30,7 +30,7 @@ index 051f06692c..e16da68dec 100644
 @@ -775,6 +779,10 @@ int ff_h264_decode_picture_parameter_set(GetBitContext *gb, AVCodecContext *avct
      }
      memcpy(pps->data, gb->buffer, pps->data_size);
- 
+
 +    // Re-add the removed stop bit (may be used by hwaccels).
 +    if (!(bit_length & 7) && pps->data_size < sizeof(pps->data))
 +        pps->data[pps->data_size++] = 0x80;
@@ -38,6 +38,5 @@ index 051f06692c..e16da68dec 100644
      pps->sps_id = get_ue_golomb_31(gb);
      if ((unsigned)pps->sps_id >= MAX_SPS_COUNT ||
          !ps->sps_list[pps->sps_id]) {
--- 
+--
 2.20.1
-

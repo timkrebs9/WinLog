@@ -43,7 +43,7 @@ function(z_vcpkg_fixup_pkgconfig_check_files file config)
 endfunction()
 
 function(vcpkg_fixup_pkgconfig)
-    cmake_parse_arguments(PARSE_ARGV 0 arg 
+    cmake_parse_arguments(PARSE_ARGV 0 arg
         "SKIP_CHECK"
         ""
         "RELEASE_FILES;DEBUG_FILES;SYSTEM_LIBRARIES;SYSTEM_PACKAGES;IGNORE_FLAGS"

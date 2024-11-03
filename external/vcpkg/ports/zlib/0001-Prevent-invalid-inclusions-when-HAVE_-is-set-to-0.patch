@@ -4,7 +4,7 @@ index a7f24cc..a1b359b 100644
 +++ b/zconf.h.cmakein
 @@ -434,11 +434,19 @@ typedef uLong FAR uLongf;
  #endif
- 
+
  #ifdef HAVE_UNISTD_H    /* may be set to #if 1 by ./configure */
 -#  define Z_HAVE_UNISTD_H
 +#  if ~(~HAVE_UNISTD_H + 0) == 0 && ~(~HAVE_UNISTD_H + 1) == 1
@@ -13,7 +13,7 @@ index a7f24cc..a1b359b 100644
 +#    define Z_HAVE_UNISTD_H
 +#  endif
  #endif
- 
+
  #ifdef HAVE_STDARG_H    /* may be set to #if 1 by ./configure */
 -#  define Z_HAVE_STDARG_H
 +#  if ~(~HAVE_STDARG_H + 0) == 0 && ~(~HAVE_STDARG_H + 1) == 1
@@ -22,7 +22,7 @@ index a7f24cc..a1b359b 100644
 +#    define Z_HAVE_STDARG_H
 +#  endif
  #endif
- 
+
  #ifdef STDC
 diff --git a/zconf.h.in b/zconf.h.in
 index 5e1d68a..32f53c8 100644
@@ -30,7 +30,7 @@ index 5e1d68a..32f53c8 100644
 +++ b/zconf.h.in
 @@ -432,11 +432,19 @@ typedef uLong FAR uLongf;
  #endif
- 
+
  #ifdef HAVE_UNISTD_H    /* may be set to #if 1 by ./configure */
 -#  define Z_HAVE_UNISTD_H
 +#  if ~(~HAVE_UNISTD_H + 0) == 0 && ~(~HAVE_UNISTD_H + 1) == 1
@@ -39,7 +39,7 @@ index 5e1d68a..32f53c8 100644
 +#    define Z_HAVE_UNISTD_H
 +#  endif
  #endif
- 
+
  #ifdef HAVE_STDARG_H    /* may be set to #if 1 by ./configure */
 -#  define Z_HAVE_STDARG_H
 +#  if ~(~HAVE_STDARG_H + 0) == 0 && ~(~HAVE_STDARG_H + 1) == 1
@@ -48,6 +48,5 @@ index 5e1d68a..32f53c8 100644
 +#    define Z_HAVE_STDARG_H
 +#  endif
  #endif
- 
- #ifdef STDC
 
+ #ifdef STDC

@@ -26,9 +26,9 @@ Pour une description des commandes disponibles, quand vous avez installé vcpkg,
   - [Introduction Windows](#Introduction:-Windows)
   - [Introduction Unix](#Introduction-aux-Systèmes-Unix)
   - [Installer les prérequis pour linux](#installation-des-prérequis-linux)
-  - [Installer les prérequis pour macOS](#installation-des-prérequis-macos) 
+  - [Installer les prérequis pour macOS](#installation-des-prérequis-macos)
     - [Installer GCC pour macOS avant 10.15](#installer-gcc-pour-macos-avant-10.15)
-    - [Utiliser vcpkg avec CMake](#utiliser-vcpkg-avec-cmake) 
+    - [Utiliser vcpkg avec CMake](#utiliser-vcpkg-avec-cmake)
       - [Visual Studio Code avec CMake Tools](#visual-studio-code-avec-cmake-tools)
       - [Vcpkg avec Visual Studio pour un projet CMake](#vcpkg-avec-visual-studio-un-projet-cmake)
       - [Vcpkg avec CLion](#vcpkg-avec-clion)
@@ -38,14 +38,14 @@ Pour une description des commandes disponibles, quand vous avez installé vcpkg,
     - [Contribuer](#contribuer)
     - [Licence](#licence)
     - [Télémétrie](#Télémétrie)
-    
+
 # Introduction
 
 Premièrement, suivez le guide d'introduction [Windows](#Introduction:-Windows), ou [macOS et Linux](#Unix), en fonction de vos besoins.
 
-Pour plus d'information, regardez [utiliser des paquets][getting-started:utiliser-un-paquet].  
+Pour plus d'information, regardez [utiliser des paquets][getting-started:utiliser-un-paquet].
 Si la bibliothèque dont vous avez besoin n'est pas présente dans la liste, vous pouvez [ouvrir une issue sur le repo github](contribuer:faire-une-issue) où l'équipe de vcpkg et la communauté peuvent le voir, et possiblement ajouter le port de vcpkg.
- 
+
 Après avoir installé et lancé vcpkg vous pourriez vouloir ajouter [l'auto-complétion](auto-completion) à votre shell.
 
 Si vous êtes intéressé par le futur de vcpkg, regardez le guide du [manifeste][getting-started:manifest-spec] !
@@ -84,7 +84,7 @@ Pour utiliser vcpkg avec Visual Studio, lancez cette commande (pourrait nécessi
 > .\vcpkg\vcpkg integrate install
 ```
 
-Ensuite, vous pouvez créer un nouveau projet n'utilisant pas CMake (ou en ouvrir un préexistant). 
+Ensuite, vous pouvez créer un nouveau projet n'utilisant pas CMake (ou en ouvrir un préexistant).
 Toutes les bibliothèques installées sont directement prêtes à être `#include` et utilisées sans davantage de configuration.
 
 Si vous utilisez CMake avec Visual Studio continuez [ici](#vcpkg-avec-cmake-et-visual-studio).
@@ -284,7 +284,7 @@ Regardez une [démo vidéo]((https://www.youtube.com/watch?v=y41WFKbQFTw) de 4 m
 
 # Contribuer
 
-Vcpkg est un projet open source, et évolue ainsi avec vos contributions. 
+Vcpkg est un projet open source, et évolue ainsi avec vos contributions.
 Voici quelques moyens pour vous d'y contribuer :
 * [Soumettre des Issues][contributing:submit-issue] sur vcpkg ou des paquets existants
 * [Proposer des corrections et de nouveaux paquets][contributing:submit-pr]

@@ -5,7 +5,7 @@ index 6e0d9c8..3bb97a9 100644
 @@ -57,9 +57,6 @@
  	#define INVALID_SOCKET -1
  #endif
- 
+
 -namespace std {
 -	class thread;
 -} /* namespace std */
@@ -19,7 +19,7 @@ index 31eeeb5..c5da451 100644
 @@ -60,10 +60,6 @@
  	#define INVALID_SOCKET -1
  #endif
- 
+
 -namespace std {
 -	class thread;
 -} /* namespace std */

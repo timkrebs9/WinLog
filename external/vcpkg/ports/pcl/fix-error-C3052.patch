@@ -16,5 +16,5 @@ index a996887..37232bd 100644
 +  shared(f, factors, Fout, fstride, in_stride, m, p, st) \
 +  private(k)
  #endif
-         for (k=0;k<p;++k) 
+         for (k=0;k<p;++k)
              kf_work( Fout +k*m, f+ fstride*in_stride*k,fstride*p,in_stride,factors,st);

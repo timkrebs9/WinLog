@@ -56,7 +56,7 @@ if (BUILD_EXAMPLES)
     if (WIN32)
         target_link_libraries(schnorr_example PRIVATE Bcrypt)
     endif()
-    
+
     install(TARGETS ecdsa_example ecdh_example schnorr_example RUNTIME DESTINATION bin)
 endif()
 

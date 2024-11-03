@@ -10,7 +10,7 @@ vcpkg list [options]
 
 ## Description
 
-Shows a list of the packages in the installed tree, along with the version and description of each. 
+Shows a list of the packages in the installed tree, along with the version and description of each.
 
 ## Example
 ```no-highlight

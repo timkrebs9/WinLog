@@ -4,12 +4,12 @@ index 3930be2..f57a46b 100644
 +++ b/CMakeLists.txt
 @@ -87,7 +87,7 @@ else()
  endif()
- 
+
  if (USE_VCPKG_LIBUV)
 -set (LIBUV_VCPKG_REPLACE "find_package(unofficial-libuv CONFIG)")
 +set (LIBUV_VCPKG_REPLACE "find_package(libuv CONFIG)")
  endif()
- 
+
  if (USE_VCPKG_EIGEN)
 diff --git a/wpiutil/CMakeLists.txt b/wpiutil/CMakeLists.txt
 index 559c8ed..0fe60e9 100644
@@ -28,5 +28,5 @@ index 559c8ed..0fe60e9 100644
 +        target_link_libraries(wpiutil uv_a)
 +    endif()
  endif()
- 
+
  if (MSVC)

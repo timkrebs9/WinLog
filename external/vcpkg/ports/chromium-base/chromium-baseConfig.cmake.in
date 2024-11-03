@@ -49,7 +49,7 @@ if(WIN32)
         kernel32
         ole32)
 elseif(APPLE)
-    list(APPEND LIBRARIES_ 
+    list(APPEND LIBRARIES_
         ApplicationServices
         AppKit
         CoreFoundation

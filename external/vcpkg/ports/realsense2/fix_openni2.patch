@@ -4,7 +4,7 @@ index 0eee84c2..769e67ff 100755
 +++ b/wrappers/openni2/CMakeLists.txt
 @@ -6,12 +6,7 @@ set(OPENNI2_DIR "c:/Program Files/OpenNI2" CACHE FILEPATH "OpenNI2 SDK directory
  set(REALSENSE2_DIR "c:/Program Files (x86)/Intel RealSense SDK 2.0" CACHE FILEPATH "RealSense2 SDK directory")
- 
+
  # INCLUDE DIR
 -if (UNIX)
 -    include_directories (${OPENNI2_DIR})
@@ -15,4 +15,3 @@ index 0eee84c2..769e67ff 100755
 +include_directories (${OPENNI2_DIR})
  include_directories (${REALSENSE2_DIR}/include)
  include_directories (src)
- 

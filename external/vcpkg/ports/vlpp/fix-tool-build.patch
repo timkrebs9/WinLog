@@ -7,13 +7,13 @@ index c65ab65..2101e86 100644
  cmake_dependent_option(GACUI_REFLECTION "Use GacUIReflection" ON "GACUI_CORE;WORKFLOW_RUNTIME;REFLECTION" OFF)
  cmake_dependent_option(GACUI_COMPILER "Use GacUICompiler" ON "GACUI_REFLECTION;WORKFLOW_COMPILER" OFF)
 +option(BUILD_TOOLS "Build tools" OFF)
- 
+
  # core library
  set(CORE_HDRS
 @@ -144,6 +145,11 @@ if (GACUI_CORE)
      list(APPEND EXPORT_TARGETS gacui_core)
  endif()
- 
+
 +if (BUILD_TOOLS)
 +    add_subdirectory(gacgen/Tools/GacGen)
 +    add_subdirectory(workflow/Tools/CppMerge)

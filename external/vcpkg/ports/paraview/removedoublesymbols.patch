@@ -22,7 +22,7 @@ index db64a0534..0d987d8e7 100644
 +    class Quad
 +    {
 +        friend class   Tri;
- 
+
 -class Quad
 -{
 -    friend class   Tri;
@@ -40,7 +40,7 @@ index db64a0534..0d987d8e7 100644
 -                         }
 +      public:
 +                       Quad() { ordering_case = 255; };
- 
+
 -    inline void    SetOriginalZone(const int &oz) { orig_zone = oz; };
 -    inline int     GetOriginalZone(void) { return orig_zone; };
 +        vtkIdType      AssignNodes(const vtkIdType *);
@@ -51,16 +51,16 @@ index db64a0534..0d987d8e7 100644
 +                             {
 +                                 hashEntryList->qmm.ReRegisterQuad(this);
 +                             }
- 
+
 -    void           OutputCell(int,vtkPolyData *, vtkCellData *, vtkCellData *);
 +        inline void    SetOriginalZone(const int &oz) { orig_zone = oz; };
 +        inline int     GetOriginalZone(void) { return orig_zone; };
- 
+
 -    inline void    RegisterHashEntryList(HashEntryList *hel)
 -                          { hashEntryList = hel; };
 -    inline void    SetNumberOfPoints(int np) { npts = np; };
 +        void           OutputCell(int,vtkPolyData *, vtkCellData *, vtkCellData *);
- 
+
 -  protected:
 -    unsigned char  ordering_case;
 -    vtkIdType      nodes[3];
@@ -68,19 +68,19 @@ index db64a0534..0d987d8e7 100644
 +        inline void    RegisterHashEntryList(HashEntryList *hel)
 +                              { hashEntryList = hel; };
 +        inline void    SetNumberOfPoints(int np) { npts = np; };
- 
+
 -    HashEntryList *hashEntryList;
 -    int            npts;
 +      protected:
 +        unsigned char  ordering_case;
 +        vtkIdType      nodes[3];
 +        vtkIdType      orig_zone;
- 
+
 -    void           AddInRemainingTriangle(int, int);
 -};
 +        HashEntryList *hashEntryList;
 +        int            npts;
- 
+
 +        void           AddInRemainingTriangle(int, int);
 +    };
 +}

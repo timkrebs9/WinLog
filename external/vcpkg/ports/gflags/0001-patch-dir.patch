@@ -10,4 +10,3 @@ index 3709073..8e919cb 100644
 +set (INSTALL_PREFIX_REL2CONFIG_DIR "../..")
  configure_file (cmake/config.cmake.in  "${PROJECT_BINARY_DIR}/${PACKAGE_NAME}-config-install.cmake" @ONLY)
  configure_file (cmake/version.cmake.in "${PROJECT_BINARY_DIR}/${PACKAGE_NAME}-config-version.cmake" @ONLY)
- 

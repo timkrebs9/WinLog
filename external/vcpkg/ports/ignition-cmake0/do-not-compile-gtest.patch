@@ -9,6 +9,6 @@ diff --git a/cmake/IgnConfigureBuild.cmake b/cmake/IgnConfigureBuild.cmake
 +    if(BUILD_TESTING)
 +      add_subdirectory(test)
 +    endif()
- 
- 
+
+
      #--------------------------------------

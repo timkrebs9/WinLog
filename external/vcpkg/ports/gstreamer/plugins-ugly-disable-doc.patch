@@ -12,5 +12,5 @@ index c5c78fc..14be48c 100644
  subdir('docs')
 +endif
  subdir('scripts')
- 
+
  # Set release date

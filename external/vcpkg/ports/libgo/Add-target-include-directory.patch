@@ -5,7 +5,7 @@ index e21eee0..017cc7a 100644
 @@ -176,6 +176,8 @@ if (WIN32)
      set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS "/wd4819 /wd4267")
  endif()
- 
+
 +TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} INTERFACE $<INSTALL_INTERFACE:include>)
 +
  install(TARGETS ${PROJECT_NAME}

@@ -3,9 +3,9 @@ index 0ecec53..45d994c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -38,7 +38,13 @@ enable_testing()
- 
+
  list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
- 
+
 -include(OpenCensusDeps)
 +find_package(absl CONFIG REQUIRED)
 +find_package(prometheus-cpp CONFIG REQUIRED)
@@ -14,9 +14,9 @@ index 0ecec53..45d994c 100644
 +  find_package(GTest CONFIG REQUIRED)
 +  find_package(benchmark CONFIG REQUIRED)
 +endif()
- 
+
  include(OpenCensusHelpers)
- 
+
 diff --git a/cmake/OpenCensusHelpers.cmake b/cmake/OpenCensusHelpers.cmake
 index 8fdfe96..6667085 100644
 --- a/cmake/OpenCensusHelpers.cmake
@@ -37,7 +37,7 @@ index 8fdfe96..6667085 100644
 +    )
    endif()
  endfunction()
- 
+
 @@ -49,7 +56,14 @@ function(opencensus_benchmark NAME SRC)
      set(_NAME "opencensus_${NAME}")
      add_executable(${_NAME} ${SRC})
@@ -53,7 +53,7 @@ index 8fdfe96..6667085 100644
 +    )
    endif()
  endfunction()
- 
+
 @@ -71,6 +85,12 @@ function(opencensus_lib NAME)
    if(ARG_PUBLIC)
      add_library(${PROJECT_NAME}::${NAME} ALIAS ${_NAME})
@@ -65,7 +65,7 @@ index 8fdfe96..6667085 100644
 +    ARCHIVE DESTINATION lib
 +  )
  endfunction()
- 
+
  # Helper function for fuzzing. Usage:
 @@ -83,5 +103,12 @@ function(opencensus_fuzzer NAME SRC)
      prepend_opencensus(DEPS "${ARGN}")
@@ -102,7 +102,7 @@ index a9dbd87..810a8c8 100644
 @@ -23,6 +23,12 @@ opencensus_lib(
    absl::synchronization
    absl::time)
- 
+
 +file(GLOB HDRS ${CMAKE_CURRENT_LIST_DIR}/*.h)
 +install(FILES ${HDRS} DESTINATION include/opencensus-cpp/opencensus/common/internal)
 +
@@ -110,7 +110,7 @@ index a9dbd87..810a8c8 100644
 +install(FILES ${HDRS} DESTINATION include/opencensus-cpp/opencensus/common/internal/grpc)
 +
  opencensus_lib(common_stats_object DEPS absl::time)
- 
+
  # Define NOMINMAX to fix build errors when compiling with MSVC.
 diff --git a/opencensus/context/CMakeLists.txt b/opencensus/context/CMakeLists.txt
 index 149958c..2474a66 100644
@@ -119,7 +119,7 @@ index 149958c..2474a66 100644
 @@ -22,6 +22,9 @@ opencensus_lib(
    tags
    trace)
- 
+
 +file(GLOB HDRS ${CMAKE_CURRENT_LIST_DIR}/*.h)
 +install(FILES ${HDRS} DESTINATION include/opencensus-cpp/opencensus/context)
 +
@@ -133,7 +133,7 @@ index 01038cc..0ad712b 100644
 @@ -21,6 +21,12 @@ opencensus_lib(
    exporters_stats_prometheus_utils
    stats)
- 
+
 +file(GLOB HDRS ${CMAKE_CURRENT_LIST_DIR}/*.h)
 +install(FILES ${HDRS} DESTINATION include/opencensus-cpp/opencensus/exporters/stats/prometheus)
 +
@@ -150,7 +150,7 @@ index 5278e65..2930817 100644
 @@ -23,5 +23,8 @@ opencensus_lib(
    absl::strings
    absl::time)
- 
+
 +file(GLOB HDRS ${CMAKE_CURRENT_LIST_DIR}/*.h)
 +install(FILES ${HDRS} DESTINATION include/opencensus-cpp/opencensus/exporters/stats/stdout)
 +
@@ -163,7 +163,7 @@ index c7c580f..d9befa1 100644
 @@ -22,5 +22,8 @@ opencensus_lib(
    absl::base
    absl::memory)
- 
+
 +file(GLOB HDRS ${CMAKE_CURRENT_LIST_DIR}/*.h)
 +install(FILES ${HDRS} DESTINATION include/opencensus-cpp/opencensus/exporters/trace/stdout)
 +
@@ -176,7 +176,7 @@ index 9b0d7af..a8a9d50 100644
 @@ -71,6 +71,12 @@ opencensus_lib(
    absl::strings
    absl::time)
- 
+
 +file(GLOB HDRS ${CMAKE_CURRENT_LIST_DIR}/*.h)
 +install(FILES ${HDRS} DESTINATION include/opencensus-cpp/opencensus/stats)
 +
@@ -193,7 +193,7 @@ index 7219a2a..97a0de1 100644
 @@ -53,6 +53,12 @@ opencensus_lib(
    context
    absl::strings)
- 
+
 +file(GLOB HDRS ${CMAKE_CURRENT_LIST_DIR}/*.h)
 +install(FILES ${HDRS} DESTINATION include/opencensus-cpp/opencensus/tags)
 +
@@ -202,7 +202,7 @@ index 7219a2a..97a0de1 100644
 +
  opencensus_test(tags_context_util_test internal/context_util_test.cc tags
                  tags_context_util tags_with_tag_map context)
- 
+
 diff --git a/opencensus/trace/CMakeLists.txt b/opencensus/trace/CMakeLists.txt
 index 2c4e656..25d7241 100644
 --- a/opencensus/trace/CMakeLists.txt
@@ -210,7 +210,7 @@ index 2c4e656..25d7241 100644
 @@ -122,6 +122,18 @@ opencensus_lib(
    trace
    context)
- 
+
 +file(GLOB HDRS ${CMAKE_CURRENT_LIST_DIR}/*.h)
 +install(FILES ${HDRS} DESTINATION include/opencensus-cpp/opencensus/trace)
 +

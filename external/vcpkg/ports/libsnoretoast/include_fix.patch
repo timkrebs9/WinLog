@@ -22,7 +22,6 @@ index eef57f7..6c35b71 100644
 +    $<INSTALL_INTERFACE:include/snoretoast>
  )
  add_library(SnoreToast::SnoreToastActions ALIAS SnoreToastActions)
- 
--- 
-GitLab
 
+--
+GitLab

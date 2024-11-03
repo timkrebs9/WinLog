@@ -3,7 +3,7 @@ index f1b404f..19babf4 100644
 --- a/src/Magnum/Platform/CMakeLists.txt
 +++ b/src/Magnum/Platform/CMakeLists.txt
 @@ -292,7 +292,7 @@ endif()
- 
+
  # SDL2 application
  if(WITH_SDL2APPLICATION)
 -    find_package(SDL2)

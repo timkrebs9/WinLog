@@ -3,7 +3,7 @@ index 42094d2..d4eda66 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -43,7 +43,7 @@ endif()
- 
+
  # --- optional re2c
  find_program(RE2C re2c)
 -if(RE2C)

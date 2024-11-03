@@ -5,7 +5,7 @@ index 874a237..3974956 100644
 @@ -1617,8 +1617,17 @@ if(CURL_ENABLE_EXPORT_TARGET)
    )
  endif()
- 
+
 +set(components_file "${CMAKE_CURRENT_BINARY_DIR}/CURLConfigComponents.cmake")
 +file(CONFIGURE OUTPUT "${components_file}" CONTENT [[
 +foreach(z_vcpkg_curl_component IN ITEMS @SUPPORT_FEATURES@ @SUPPORT_PROTOCOLS@)
@@ -20,4 +20,3 @@ index 874a237..3974956 100644
 +        FILES ${version_config} ${project_config} ${components_file}
          DESTINATION ${CURL_INSTALL_CMAKE_DIR}
  )
- 

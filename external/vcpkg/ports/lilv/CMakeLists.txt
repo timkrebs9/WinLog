@@ -66,7 +66,7 @@ if(BUILD_SHARED_LIBS)
 endif()
 
 install(
-    TARGETS lilv 
+    TARGETS lilv
     EXPORT lilv-targets
     INCLUDES DESTINATION include
 )

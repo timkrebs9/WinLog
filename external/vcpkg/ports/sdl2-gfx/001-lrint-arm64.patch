@@ -23,4 +23,3 @@ index f81e6da..91817fd 100755
 +#error lrint needed for MSVC on non X86/AMD64/ARM/ARM64 targets.
  #endif
  #endif
- 

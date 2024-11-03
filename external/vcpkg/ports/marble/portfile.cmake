@@ -5,7 +5,7 @@ vcpkg_from_github(
     REF 7def3b68fd5de9b7f0734410a9f955bd1082097b #v22.04.0
     SHA512 2977a051a7f91603dea5960ddf0fed2fd5a991d554bce899ce4d8a0d3648546ff2c4c75bebcd3704d07d875b656ab7dc64c567b1bc9f6975745be327375faa90
     HEAD_REF master
-    PATCHES 
+    PATCHES
         qtfix.patch
 )
 

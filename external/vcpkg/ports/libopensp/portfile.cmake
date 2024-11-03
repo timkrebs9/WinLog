@@ -30,7 +30,7 @@ if (VCPKG_TARGET_IS_WINDOWS OR VCPKG_TARGET_IS_UWP)
 else()
     if(VCPKG_TARGET_IS_OSX)
         # libintl links to those
-        set(EXTRA_LIBS "-framework CoreFoundation -lintl -liconv") 
+        set(EXTRA_LIBS "-framework CoreFoundation -lintl -liconv")
     endif()
 
     vcpkg_configure_make(

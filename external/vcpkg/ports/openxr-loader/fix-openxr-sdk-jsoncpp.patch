@@ -4,11 +4,11 @@ index c75b145..386494c 100644
 +++ b/src/CMakeLists.txt
 @@ -89,7 +89,7 @@ if(NOT VULKAN_INCOMPATIBLE)
  endif()
- 
+
  find_package(Threads REQUIRED)
 -find_package(JsonCpp)
 +find_package(jsoncpp CONFIG REQUIRED)
- 
+
  ### All options defined here
  option(BUILD_LOADER "Build loader" ON)
 diff --git a/src/loader/CMakeLists.txt b/src/loader/CMakeLists.txt

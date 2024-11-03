@@ -13,7 +13,7 @@ vcpkg_from_gitlab(
     PATCHES build.patch
             build2.patch
             configure.patch
-) 
+)
 
 set(ENV{ACLOCAL} "aclocal -I \"${CURRENT_INSTALLED_DIR}/share/xorg/aclocal/\"")
 if(VCPKG_TARGET_IS_WINDOWS)

@@ -7,6 +7,6 @@ diff -pruN aom-3.0.0.o/CMakeLists.txt aom-3.0.0/CMakeLists.txt
    add_library(aom_static STATIC ${AOM_SOURCES} $<TARGET_OBJECTS:aom_rtcd>)
 -  set_target_properties(aom_static PROPERTIES OUTPUT_NAME aom)
 +  set_target_properties(aom_static PROPERTIES OUTPUT_NAME aom_static)
- 
+
    if(NOT MSVC)
      # Extract version string and set VERSION/SOVERSION for the aom target.

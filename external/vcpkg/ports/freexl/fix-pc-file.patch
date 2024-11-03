@@ -12,7 +12,7 @@ index a44dbf4..55bd768 100644
  AC_SEARCH_LIBS(locale_charset,charset,,
  	AC_SEARCH_LIBS(nl_langinfo,c,,AC_MSG_ERROR(['libcharset' is required but it doesn't seem to be installed on this system.]),))
 +AC_SUBST(ICONV_LIBS, "${LIBS%${SAVED_LIBS}}")
- 
+
  AC_OUTPUT
 
 diff --git a/freexl.pc.in b/freexl.pc.in
@@ -22,5 +22,5 @@ index 5813e68..8fc671d 100644
 @@ -10,3 +10,4 @@ Description: a simple library extracting data from .xls (Excel BIFF) files
  Version: @VERSION@
  Libs: -L${libdir} -lfreexl -lm
- Cflags: -I${includedir} 
+ Cflags: -I${includedir}
 +Libs.private: @ICONV_LIBS@

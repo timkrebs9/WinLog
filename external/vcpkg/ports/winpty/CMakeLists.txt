@@ -167,6 +167,3 @@ endif()
 install(TARGETS winpty-agent DESTINATION ${WINPTY_INSTALL_BIN_DIR})
 install(TARGETS winpty-debugserver DESTINATION ${WINPTY_INSTALL_BIN_DIR})
 install(FILES src/include/winpty.h src/include/winpty_constants.h DESTINATION ${WINPTY_INSTALL_INCLUDE_DIR})
-
-
-

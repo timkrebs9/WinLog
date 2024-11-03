@@ -31,7 +31,8 @@
 #define U2F_SERVER_VERSION_H
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 /**

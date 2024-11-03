@@ -4,9 +4,9 @@ diff --urN a/source/data/Makefile.in b/source/data/Makefile.in
 @@ -236,11 +236,12 @@
  ## Include the main build rules for data files
  include $(top_builddir)/$(subdir)/rules.mk
- 
+
 +PKGDATA_LIST = $(TMP_DIR)/icudata.lst
- 
+
  ifeq ($(ENABLE_SO_VERSION_DATA),1)
  ifeq ($(PKGDATA_MODE),dll)
  SO_VERSION_DATA = $(OUTTMPDIR)/icudata.res
@@ -18,8 +18,8 @@ diff --urN a/source/data/Makefile.in b/source/data/Makefile.in
 @@ -249,7 +250,6 @@
  endif
  endif
- 
+
 -PKGDATA_LIST = $(TMP_DIR)/icudata.lst
- 
- 
+
+
  #####################################################

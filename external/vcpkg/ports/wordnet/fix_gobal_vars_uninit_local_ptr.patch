@@ -5,7 +5,7 @@ index d3ffa08..8452377 100644
 @@ -151,14 +151,6 @@
  #define PREDICATIVE		PADJ
  #define IMMED_POSTNOMINAL	IPADJ
- 
+
 -extern char *wnrelease;		/* WordNet release/version number */
 -
 -extern char *lexfiles[];	/* names of lexicographer files */
@@ -14,13 +14,13 @@ index d3ffa08..8452377 100644
 -extern char partchars[];	/* single chars for each POS */
 -extern char *adjclass[];	/* adjective class strings */
 -extern char *frametext[];	/* text of verb frames */
- 
+
  /* Data structures used by search code functions. */
- 
+
 @@ -236,6 +228,21 @@ typedef struct {
- 
+
  typedef SearchResults *SearchResultsPtr;
- 
+
 +/* Make all the functions compatible with c++ files */
 +#ifdef __cplusplus
 +extern "C" {
@@ -37,19 +37,19 @@ index d3ffa08..8452377 100644
 +
 +
  /* Global variables and flags */
- 
+
  extern SearchResults wnresults;	/* structure containing results of search */
 @@ -271,11 +278,6 @@ extern int default_display_message(char *);
  extern int (*display_message)(char *);
- 
- 
+
+
 -/* Make all the functions compatible with c++ files */
 -#ifdef __cplusplus
 -extern "C" {
 -#endif
 -
  /* External library function prototypes */
- 
+
  /*** Search and database functions (search.c) ***/
 diff --git a/lib/search.c b/lib/search.c
 index 1cdedc3..72c4bb5 100644
@@ -74,5 +74,5 @@ index 1cdedc3..72c4bb5 100644
 +        last->next = rel;
 +    }
  }
- 
+
  static struct relgrp *mkrellist(void)

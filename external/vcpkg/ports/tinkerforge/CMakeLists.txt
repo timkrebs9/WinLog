@@ -26,7 +26,7 @@ add_library(${PROJECT_NAME} ${CPP_FILES} ${H_FILES} ${DEF_FILE})
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/source>
     $<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/${PROJECT_NAME}>)
-    
+
 find_package(Threads)
 target_link_libraries(${PROJECT_NAME} PUBLIC Threads::Threads)
 
@@ -34,7 +34,7 @@ if("${CMAKE_SYSTEM_NAME}" MATCHES "Windows")
     target_link_libraries(${PROJECT_NAME} PUBLIC Ws2_32 advapi32)
 endif()
 ##---------------------------------------------------------------------------------------##
-##----- Package definition. 
+##----- Package definition.
 ##---------------------------------------------------------------------------------------##
 include(CMakePackageConfigHelpers)
 
@@ -52,7 +52,7 @@ configure_package_config_file(
 write_basic_package_version_file(cmake/${PROJECT_NAME}ConfigVersion.cmake COMPATIBILITY SameMinorVersion)
 
 #Install the target and all it build outputs.
-install (TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets 
+install (TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets
     LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT Runtime
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT Development
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT Runtime

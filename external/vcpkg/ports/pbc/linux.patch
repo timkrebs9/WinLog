@@ -3,14 +3,14 @@
 @@ -10,7 +10,6 @@
  LT_INIT
  #AC_CANONICAL_HOST
- 
+
 -CFLAGS=
  default_fink_path=/sw
  case $host_os in
-      darwin*) 
+      darwin*)
 @@ -78,20 +77,7 @@
  AC_PROG_MAKE_SET
- 
+
  AC_PROG_LEX
 -if test "x$LEX" != xflex; then
 -  echo "************************"
@@ -26,11 +26,11 @@
 -  echo "************************"
 -  exit -1
 -fi
- 
+
  # Checks for libraries.
  lib_err_msg="add its path to LDFLAGS\nsee ./configure --help"
 @@ -121,13 +134,6 @@
- 
+
  CFLAGS="$CFLAGS -Wall -W -Wfloat-equal -Wpointer-arith -Wcast-align -Wstrict-prototypes -Wredundant-decls \
  -Wendif-labels -Wshadow -pipe -ffast-math -U__STRICT_ANSI__ -std=gnu99"
 -if test "$with_debug" == "y"; then
@@ -40,6 +40,6 @@
 -else
 -	CFLAGS="$CFLAGS -fomit-frame-pointer -O3"
 -fi
- 
+
  if test "$with_safe_clean" != "n"; then
    CFLAGS="$CFLAGS -DSAFE_CLEAN"

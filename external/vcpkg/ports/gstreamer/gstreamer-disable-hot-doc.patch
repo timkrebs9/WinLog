@@ -3,7 +3,7 @@ index 4a2eb27..1316366 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -70,19 +70,19 @@ endif
- 
+
  # Ordered list of subprojects (dict has no ordering guarantees)
  subprojects = [
 -  ['gstreamer', {'build-hotdoc': true}],

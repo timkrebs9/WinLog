@@ -5,7 +5,7 @@ index 564ba97..f748212 100644
 @@ -89,9 +89,6 @@ else()
          set(LIBCRYPTO_FOUND true)
          set(LibCrypto_FOUND true)
- 
+
 -        message(STATUS "LibCrypto Include Dir: ${LibCrypto_INCLUDE_DIR}")
 -        message(STATUS "LibCrypto Shared Lib:  ${LibCrypto_SHARED_LIBRARY}")
 -        message(STATUS "LibCrypto Static Lib:  ${LibCrypto_STATIC_LIBRARY}")

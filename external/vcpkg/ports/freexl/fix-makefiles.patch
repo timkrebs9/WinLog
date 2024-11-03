@@ -4,7 +4,7 @@ index cb8bd36..85c0352 100644
 +++ b/makefile.vc
 @@ -23,9 +23,9 @@ freexl.lib:	$(LIBOBJ)
  $(FREEXL_DLL):	freexl_i.lib
- 
+
  freexl_i.lib:	$(LIBOBJ)
 -	link /debug /dll /out:$(FREEXL_DLL) \
 +	link $(LINK_FLAGS) /dll /out:$(FREEXL_DLL) \
@@ -12,5 +12,4 @@ index cb8bd36..85c0352 100644
 -		C:\OSGeo4w\lib\iconv.lib
 +		$(LIBS_ALL)
  	if exist $(FREEXL_DLL).manifest mt -manifest \
- 		$(FREEXL_DLL).manifest -outputresource:$(FREEXL_DLL);2 
- 
+ 		$(FREEXL_DLL).manifest -outputresource:$(FREEXL_DLL);2

@@ -5,7 +5,7 @@ index b412dc7..f46c8e6 100644
 @@ -194,6 +194,7 @@ endif()
  # Example binaries
  #============================================================================
- 
+
 +if (0)
  add_executable(example test/example.c)
  target_link_libraries(example zlib)

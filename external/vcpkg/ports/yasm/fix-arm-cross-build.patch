@@ -4,7 +4,7 @@ index ab1be00..918f51b 100644
 +++ b/cmake/modules/YasmMacros.cmake
 @@ -58,7 +58,9 @@ macro (YASM_ADD_MODULE _module_NAME)
  endmacro (YASM_ADD_MODULE)
- 
+
  macro (YASM_GENPERF _in_NAME _out_NAME)
 +    if (NOT _tmp_GENPERF_EXE)
      get_target_property(_tmp_GENPERF_EXE genperf LOCATION)
@@ -14,7 +14,7 @@ index ab1be00..918f51b 100644
          COMMAND ${_tmp_GENPERF_EXE} ${_in_NAME} ${_out_NAME}
 @@ -68,7 +70,9 @@ macro (YASM_GENPERF _in_NAME _out_NAME)
  endmacro (YASM_GENPERF)
- 
+
  macro (YASM_RE2C _in_NAME _out_NAME)
 +    if (NOT _tmp_RE2C_EXE)
      get_target_property(_tmp_RE2C_EXE re2c LOCATION)
@@ -24,7 +24,7 @@ index ab1be00..918f51b 100644
          COMMAND ${_tmp_RE2C_EXE} ${ARGN} -o ${_out_NAME} ${_in_NAME}
 @@ -78,7 +82,9 @@ macro (YASM_RE2C _in_NAME _out_NAME)
  endmacro (YASM_RE2C)
- 
+
  macro (YASM_GENMACRO _in_NAME _out_NAME _var_NAME)
 +    if (NOT _tmp_GENMACRO_EXE)
      get_target_property(_tmp_GENMACRO_EXE genmacro LOCATION)

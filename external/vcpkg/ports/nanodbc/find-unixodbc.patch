@@ -19,6 +19,6 @@
      endif()
    endif()
 +  endif()
- 
+
    if(NOT ODBC_CONFIG)
      message(FATAL_ERROR "can not find a suitable odbc driver manager")

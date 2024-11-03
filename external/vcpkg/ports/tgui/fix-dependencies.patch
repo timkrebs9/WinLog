@@ -5,7 +5,7 @@ index 5b58350..c9398b7 100644
 @@ -44,6 +44,28 @@
  #   add_executable(myapp ...)
  #   target_link_libraries(myapp tgui)
- 
+
 +include(CMakeFindDependencyMacro)
 +if("@TGUI_HAS_BACKEND_SFML@")
 +    find_dependency(SFML CONFIG COMPONENTS graphics)
@@ -33,7 +33,7 @@ index 5b58350..c9398b7 100644
      ${TGUI_ROOT}
 @@ -58,7 +80,7 @@ set(FIND_TGUI_PATHS
      /opt)
- 
+
  # Choose which target definitions must be imported
 -if (TGUI_STATIC_LIBRARIES)
 +if (NOT "@BUILD_SHARED_LIBS@")
@@ -42,7 +42,7 @@ index 5b58350..c9398b7 100644
          message(WARNING "Static frameworks are not supported by TGUI. Clear TGUI_DIR cache entry, \
 @@ -77,7 +99,10 @@ if (EXISTS "${targets_config_file}")
      include("${targets_config_file}")
- 
+
      # Search for X11 on Linux and BSD
 -    if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux" OR CMAKE_SYSTEM_NAME MATCHES "^k?FreeBSD$" OR CMAKE_SYSTEM_NAME MATCHES "^OpenBSD$")
 +    if(TARGET TGUI_X11)
@@ -58,7 +58,7 @@ index d86f11d..3f3f3ce 100644
 +++ b/src/Backends/SDL/CMakeLists.txt
 @@ -4,7 +4,11 @@ find_package(SDL2 REQUIRED)
  find_package(SDL2_ttf REQUIRED)
- 
+
  # Link to SDL and set include and library search directories
 -target_link_libraries(tgui PRIVATE SDL2::Core SDL2::TTF)
 +if(TARGET SDL2_ttf::SDL2_ttf)
@@ -66,12 +66,12 @@ index d86f11d..3f3f3ce 100644
 +else()
 +    target_link_libraries(tgui PRIVATE SDL2::SDL2 SDL2_ttf::SDL2_ttf-static)
 +endif()
- 
+
  # Add the backend source files to the library
  target_sources(tgui PRIVATE
 @@ -19,10 +23,15 @@ target_sources(tgui PRIVATE
  )
- 
+
  add_library(tgui-sdl-interface INTERFACE)
 -target_link_libraries(tgui-sdl-interface INTERFACE SDL2::Core SDL2::TTF SDL2::Main)
 +if(TARGET SDL2_ttf::SDL2_ttf)
@@ -79,7 +79,7 @@ index d86f11d..3f3f3ce 100644
 +else()
 +    target_link_libraries(tgui-sdl-interface INTERFACE SDL2::SDL2 SDL2_ttf::SDL2_ttf-static SDL2::SDL2main)
 +endif()
- 
+
  # Also link to OpenGL or OpenGL ES
  if(NOT TGUI_USE_GLES)
 +    set(EXPORT_USE_OPENGL 1 CACHE INTERNAL "")
@@ -92,7 +92,7 @@ index 4a166dc..a53b58f 100755
 +++ b/src/CMakeLists.txt
 @@ -213,6 +213,7 @@ if(TGUI_OS_LINUX OR TGUI_OS_BSD)
      target_link_libraries(tgui PRIVATE TGUI_X11)
- 
+
      # For the FileDialog we need to link to pthreads and dl on Linux and BSD (to load system icons in the background)
 +    set(EXPORT_USE_THREADS 1 CACHE INTERNAL "")
      set(THREADS_PREFER_PTHREAD_FLAG ON)

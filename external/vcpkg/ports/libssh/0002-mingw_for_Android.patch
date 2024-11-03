@@ -5,7 +5,7 @@ index a576cf7..1f6a048 100644
 @@ -359,7 +359,7 @@ if (WITH_VISIBILITY_HIDDEN)
      set_target_properties(ssh PROPERTIES C_VISIBILITY_PRESET hidden)
  endif (WITH_VISIBILITY_HIDDEN)
- 
+
 -if (MINGW)
 +if (MINGW AND NOT ANDROID)
      target_link_libraries(ssh PRIVATE "-Wl,--enable-stdcall-fixup")

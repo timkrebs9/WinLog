@@ -5,7 +5,7 @@ index 9602cce..dafb434 100644
 @@ -5,14 +5,6 @@
  # Updated by jesnault (jerome.esnault@inria.fr) 2014-01-21
  # -----------------------------------------------------------------
- 
+
 -option(HUNTER_ENABLED "Enable Hunter package manager support" OFF)
 -include(cmake/HunterGate.cmake)
 -
@@ -15,12 +15,12 @@ index 9602cce..dafb434 100644
 -)
 -
  PROJECT(SuiteSparseProject)
- 
+
  cmake_minimum_required(VERSION 3.1)
 @@ -47,29 +39,9 @@ else()
      message(STATUS "Using user defined CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
  endif()
- 
+
 -# Fix GKlib path:
 -IF(NOT WIN32)
 -  SET(GKLIB_PATH "${${PROJECT_NAME}_SOURCE_DIR}/SuiteSparse/metis-5.1.0/GKlib" CACHE INTERNAL "Path to GKlib (for METIS)" FORCE)
@@ -33,7 +33,7 @@ index 9602cce..dafb434 100644
 -
  ## get CMAKE_INSTALL_BINDIR and CMAKE_INSTALL_LIBDIR
  include(GNUInstallDirs)
- 
+
 -if(CMAKE_SIZEOF_VOID_P MATCHES "8")
 -  set(SUITESPARSE_LIB_POSTFIX "64")
 -else()
@@ -50,7 +50,7 @@ index 9602cce..dafb434 100644
 @@ -77,59 +49,6 @@ IF(MSVC)
  	set(SP_LIB_PREFIX "lib")  # Libs are: "libXXX"
  ENDIF(MSVC)
- 
+
 -## check if we can build metis
 -SET(BUILD_METIS_DEFAULT ON)
 -if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/SuiteSparse/metis-5.1.0/CMakeLists.txt")
@@ -130,7 +130,7 @@ index 9602cce..dafb434 100644
  	)
 @@ -211,44 +130,30 @@ MACRO(REMOVE_MATCHING_FILES_FROM_LIST match_expr lst_files)
  ENDMACRO(REMOVE_MATCHING_FILES_FROM_LIST)
- 
+
  if(WITH_CUDA)
 -	FIND_PACKAGE(cuda)
 -	IF(${CUDA_FOUND})
@@ -140,7 +140,7 @@ index 9602cce..dafb434 100644
 -	ENDIF(${CUDA_FOUND})
 +	ENDIF()
  endif()
- 
+
 -hunter_add_package(LAPACK) # only in effect if HUNTER_ENABLED is set
 -# prefer LAPACK config file
 -find_package(LAPACK CONFIG)
@@ -167,7 +167,7 @@ index 9602cce..dafb434 100644
 -    message(FATAL_ERROR "lapack not found")
 -  endif()
 -endif()
- 
+
 -IF(BUILD_METIS)
 +IF(USE_VCPKG_METIS)
 +	find_package(metis REQUIRED)
@@ -181,12 +181,12 @@ index 9602cce..dafb434 100644
  	set(SuiteSparse_EXPORTED_METIS_LIBS "")
 +	set(SuiteSparse_FIND_PACKAGE_METIS "")
  ENDIF()
- 
+
  add_subdirectory(SuiteSparse)
 @@ -287,7 +192,7 @@ endmacro()
  # get SuiteSparse version
  get_SuiteSparse_Version()
- 
+
 -set(ConfigPackageLocation ${CMAKE_INSTALL_LIBDIR}/cmake/suitesparse-${SuiteSparse_VERSION})
 +set(ConfigPackageLocation ${CMAKE_INSTALL_LIBDIR}/cmake/suitesparse)
  ## create targets file
@@ -207,7 +207,7 @@ index c6e2834..6fdfb01 100644
 +++ b/SuiteSparse/CMakeLists.txt
 @@ -1,23 +1,5 @@
  PROJECT(SuiteSparse)
- 
+
 -# Set optimized building:
 -IF(CMAKE_COMPILER_IS_GNUCXX AND NOT CMAKE_BUILD_TYPE MATCHES "Debug")
 -	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
@@ -233,13 +233,13 @@ index c6e2834..6fdfb01 100644
  	set(SUBPROJECTS_TO_ADD
  		${SUBPROJECTS_TO_ADD}
  		SuiteSparse_GPURuntime
--		GPUQREngine	
+-		GPUQREngine
 +		GPUQREngine
  		)
  endif()
- 
+
  set(SUBPROJECTS_TO_ADD
--    ${SUBPROJECTS_TO_ADD} 
+-    ${SUBPROJECTS_TO_ADD}
 +    ${SUBPROJECTS_TO_ADD}
  	SuiteSparse_config
  	AMD
@@ -253,7 +253,7 @@ index 1e587d1..fd8f3a7 100644
  get_filename_component(_SuiteSparse_PREFIX "${_SuiteSparse_SELF_DIR}" PATH)
  get_filename_component(_SuiteSparse_PREFIX "${_SuiteSparse_PREFIX}" PATH)
 -get_filename_component(_SuiteSparse_PREFIX "${_SuiteSparse_PREFIX}" PATH)
- 
+
  include(CMakeFindDependencyMacro)
 -if (@SuiteSparse_LAPACK_used_CONFIG@) # SuiteSparse_LAPACK_used_CONFIG
 -  # use config file which provides LAPACK (and BLAS) for us
@@ -264,15 +264,15 @@ index 1e587d1..fd8f3a7 100644
    find_dependency(LAPACK)
 -endif ()
 +  @SuiteSparse_FIND_DEPENDENCY_METIS@
- 
+
  # Load targets from the install tree.
 -include(${_SuiteSparse_SELF_DIR}/SuiteSparse-targets.cmake)
 +include(${_SuiteSparse_SELF_DIR}/suitesparse-targets.cmake)
- 
+
  # Report SuiteSparse header search locations.
  set(SuiteSparse_INCLUDE_DIRS ${_SuiteSparse_PREFIX}/include)
 @@ -39,3 +33,7 @@ set(SuiteSparse_LIBRARIES
- 
+
  unset(_SuiteSparse_PREFIX)
  unset(_SuiteSparse_SELF_DIR)
 +set(SUITESPARSE_FOUND TRUE)

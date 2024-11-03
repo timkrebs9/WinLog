@@ -5,7 +5,7 @@ index ce06eed..fb25d03 100644
 @@ -879,15 +879,9 @@ class alignas(2) half {
          return *this;
      }
- 
+
 -#if defined(NVCC) || defined(__CUDACC_RTC__)
 -    AF_CONSTEXPR __DH__ explicit half(__half value) noexcept
  #ifdef __CUDA_ARCH__

@@ -14,9 +14,9 @@ index 44fa03e..c3c50aa 100644
 --- a/include/ao/ao_private.h
 +++ b/include/ao/ao_private.h
 @@ -138,13 +138,13 @@ struct ao_functions {
- 
+
  void ao_read_config_files (ao_config *config);
- 
+
 -#define adebug(format, args...) {\
 +#define adebug(format, ...) {\
      if(!device || device->verbose==2){                                  \
@@ -33,7 +33,7 @@ index 44fa03e..c3c50aa 100644
 @@ -152,13 +152,13 @@ void ao_read_config_files (ao_config *config);
      }                                                                   \
    }
- 
+
 -#define averbose(format, args...) {\
 +#define averbose(format, ...) {\
      if(!device || device->verbose>0){                                   \
@@ -50,7 +50,7 @@ index 44fa03e..c3c50aa 100644
 @@ -166,13 +166,13 @@ void ao_read_config_files (ao_config *config);
      }                                                                   \
    }
- 
+
 -#define ainfo(format, args...) {\
 +#define ainfo(format, ...) {\
      if(!device || device->verbose>=0){                                  \
@@ -67,7 +67,7 @@ index 44fa03e..c3c50aa 100644
 @@ -180,13 +180,13 @@ void ao_read_config_files (ao_config *config);
      }                                                                   \
    }
- 
+
 -#define awarn(format, args...) {\
 +#define awarn(format, ...) {\
      if(!device || device->verbose>=0){                                  \
@@ -84,7 +84,7 @@ index 44fa03e..c3c50aa 100644
 @@ -194,13 +194,13 @@ void ao_read_config_files (ao_config *config);
      }                                                                   \
    }
- 
+
 -#define aerror(format, args...) {                                       \
 +#define aerror(format, ...) {                                           \
      if(!device || device->verbose>=0){                                  \
@@ -108,7 +108,7 @@ index eec6b83..d18d2a4 100644
  #include <mmsystem.h>
 +#include <ks.h>
  #include <ksmedia.h>
- 
+
  #include <stdlib.h>
 diff --git a/src/audio_out.c b/src/audio_out.c
 index bd8f6fc..e3af366 100644
@@ -119,9 +119,8 @@ index bd8f6fc..e3af366 100644
  # include <unistd.h>
  #endif
 -#include <dirent.h>
- 
+
  #include "ao/ao.h"
  #include "ao_private.h"
--- 
+--
 2.30.0.windows.2
-

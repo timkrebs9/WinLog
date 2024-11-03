@@ -3,7 +3,7 @@
 @@ -934,10 +934,19 @@
  # Installation
  SET(CMAKE_INSTALL_ALWAYS 1)
- 
+
 -INSTALL(TARGETS ${targets}
 +foreach(target ${targets})
 +    INSTALL(TARGETS ${target}
@@ -18,6 +18,5 @@
 +    NAMESPACE unofficial::pcre::
 +    FILE unofficial-pcre-targets.cmake
 +    DESTINATION "share/unofficial-pcre")
- 
+
  INSTALL(FILES ${PCRE_HEADERS} ${PCREPOSIX_HEADERS} DESTINATION include)
- 

@@ -33,7 +33,7 @@ if(APPLE)
     find_library(APPLICATIONSERVICES_LIBRARY ApplicationServices)
     if(APPLICATIONSERVICES_LIBRARY)
         target_link_libraries(harfbuzz INTERFACE ${APPLICATIONSERVICES_LIBRARY})
-    endif()    
+    endif()
 endif()
 
 find_dependency(freetype CONFIG)

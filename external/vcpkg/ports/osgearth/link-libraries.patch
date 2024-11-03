@@ -3,7 +3,7 @@ index 7dd0998..730af85 100644
 --- a/CMakeModules/OsgEarthMacroUtils.cmake
 +++ b/CMakeModules/OsgEarthMacroUtils.cmake
 @@ -92,6 +92,11 @@ ENDMACRO(DETECT_OSG_VERSION)
- 
+
  MACRO(LINK_WITH_VARIABLES TRGTNAME)
      FOREACH(varname ${ARGN})
 +        string(REPLACE "_LIBRARY" "_LIBRARIES" lwv_libraries "${varname}")

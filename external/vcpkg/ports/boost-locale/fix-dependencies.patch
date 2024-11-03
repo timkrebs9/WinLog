@@ -8,7 +8,7 @@ index 450ec87..653f592 100644
 +++ b/build/Jamfile.v2
 @@ -20,6 +20,7 @@ project /boost/locale
  # Features
- 
+
  feature.feature boost.locale.iconv : on off : optional propagated ;
 +feature.feature boost.locale.force-found-iconv : on off : optional propagated ;
  feature.feature boost.locale.icu : on off :  optional propagated ;
@@ -72,7 +72,7 @@ index 450ec87..653f592 100644
 +    alias icudt : /user-config//icudt ;
 +
 +    explicit icuuc icuin icudt ;
- 
+
      ICU_OPTS =   <include>$(icu-path)/include
 -      <library>icuuc/<link>shared/<runtime-link>shared
 -      <library>icudt/<link>shared/<runtime-link>shared
@@ -83,13 +83,13 @@ index 450ec87..653f592 100644
 +      <library>icuin
 +      <library>icudt
 +      <dll-path>$(icu-path)/bin ;
- 
- 
- 
+
+
+
 @@ -221,6 +177,11 @@ rule configure-full ( properties * : flags-only )
- 
+
      local found-iconv ;
- 
+
 +    if <boost.locale.force-found-iconv>on in $(properties)
 +    {
 +        found-iconv = true ;
@@ -105,7 +105,7 @@ index 344c8ea..f200bce 100644
 @@ -9,10 +9,6 @@
  #include <unicode/uchar.h>
  #include <unicode/coll.h>
- 
+
 -#if defined(_MSC_VER) && !defined(_DLL)
 -#error "Mixing ICU with a static runtime doesn't work"
 -#endif

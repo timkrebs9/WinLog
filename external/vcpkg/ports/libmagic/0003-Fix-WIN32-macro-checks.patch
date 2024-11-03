@@ -23,21 +23,20 @@ index 299ac0c..2c365a6 100644
 @@ -95,7 +95,7 @@
  #define MAGIC "/etc/magic"
  #endif
- 
+
 -#if defined(__EMX__) || defined (WIN32)
 +#if defined(__EMX__) || defined (_WIN32)
  #define PATHSEP	';'
  #else
  #define PATHSEP	':'
 @@ -103,7 +103,7 @@
- 
+
  #define private static
- 
+
 -#if HAVE_VISIBILITY && !defined(WIN32)
 +#if HAVE_VISIBILITY && !defined(_WIN32)
  #define public  __attribute__ ((__visibility__("default")))
  #ifndef protected
  #define protected __attribute__ ((__visibility__("hidden")))
--- 
+--
 2.29.2.windows.2
-

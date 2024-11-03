@@ -12,7 +12,7 @@ index 055452ec3..0ce530a96 100644
 +#include <process.h>
 +#endif
  #include <errno.h>
- 
+
  void
 diff --git a/src/iceauth.c b/src/iceauth.c
 index 147efc76c..ea6d1a67b 100644
@@ -29,6 +29,5 @@ index 147efc76c..ea6d1a67b 100644
 +#include <process.h>
 +#define ITIMER_REAL
 +#endif
- 
+
  static int was_called_state;
- 

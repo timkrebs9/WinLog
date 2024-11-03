@@ -1,6 +1,6 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 69e45541..19b86129 100644
---- a/CMakeLists.txt	
+--- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -35,7 +35,7 @@ IF(NOT EXISTS "${APR_INCLUDE_DIR}/apr.h")
    MESSAGE(FATAL_ERROR "APR include directory ${APR_INCLUDE_DIR} is not correct.")

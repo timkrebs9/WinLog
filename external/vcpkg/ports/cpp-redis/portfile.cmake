@@ -6,7 +6,7 @@ vcpkg_from_github(
     REF 4.3.1
     SHA512 abf372542c53f37f504b3211b840b100d07a8f4b2e7f5584cc7550ab16ed617838e2df79064374c7a409458d8567f4834686318ea3a40249c767e36c744c7a47
     HEAD_REF master
-    PATCHES 
+    PATCHES
         "fix-sleep_for.patch"
 )
 

@@ -3,7 +3,7 @@
 @@ -281,15 +281,63 @@ struct MD5CE {
      return IntermediateDataToMD5Digest(ProcessMessage(data, n));
    }
- 
+
 -  static constexpr uint64_t Hash64(const char* data, uint32_t n) {
 -    IntermediateData intermediate = ProcessMessage(data, n);
 -    return (static_cast<uint64_t>(SwapEndian(intermediate.a)) << 32) |
@@ -37,7 +37,7 @@
 +    return (static_cast<uint64_t>(SwapEndian(intermediate0.a)) << 32) |
 +           static_cast<uint64_t>(SwapEndian(intermediate0.b));
    }
- 
+
 -  static constexpr uint32_t Hash32(const char* data, uint32_t n) {
 -    IntermediateData intermediate = ProcessMessage(data, n);
 -    return SwapEndian(intermediate.a);
@@ -70,13 +70,13 @@
 +    return SwapEndian(intermediate0.a);
    }
  };
- 
+
 --- a/src/3rdparty/chromium/net/third_party/quiche/src/quic/core/quic_versions.h
 +++ b/src/3rdparty/chromium/net/third_party/quiche/src/quic/core/quic_versions.h
 @@ -26,6 +26,7 @@
  #include <string>
  #include <vector>
- 
+
 +#include "absl/base/macros.h"
  #include "net/third_party/quiche/src/quic/core/quic_tag.h"
  #include "net/third_party/quiche/src/quic/core/quic_types.h"
@@ -98,4 +98,3 @@
        const QuicTransportVersion& trans_vers = supported_transport_versions[i];
        if (trans_vers == transport_version) {
          transport_version_is_valid = true;
-

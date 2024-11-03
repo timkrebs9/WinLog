@@ -1,6 +1,6 @@
 diff --git a/src/gui/configure.json b/src/gui/configure.json
 index c51e3ceee..7f7e206b6 100644
---- a/src/gui/configure.json	
+--- a/src/gui/configure.json
 +++ b/src/gui/configure.json
 @@ -239,9 +239,9 @@
              "headers": "ft2build.h",

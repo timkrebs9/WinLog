@@ -10,4 +10,3 @@ index 142c203..f4e710d 100644
 +      comparator_(LinearRgb(width_, height_, *rgb), 1.0f),
        distance_(0.0),
        stats_(stats) {}
- 

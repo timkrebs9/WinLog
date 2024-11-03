@@ -43,7 +43,7 @@ With [MSYS2](https://www.msys2.org/), it is possible to easily create
 a full environment for building ports with Mingw-w64 on a Windows PC.
 
 Note that for building software for native windows environments, you
-must use a mingw subsystem of MSYS2, and install some packages 
+must use a mingw subsystem of MSYS2, and install some packages
 (with a specific prefix) for this subsystem.
 
 | architecture | vcpkg triplets                      | subsystem | package prefix    |
@@ -152,4 +152,3 @@ cd vcpkg
 ./bootstrap-vcpkg.sh
 ./vcpkg install zlib:x64-mingw-dynamic
 ```
-

@@ -5,7 +5,7 @@ index 249b7d5..41a31e2 100644
 @@ -38,15 +38,6 @@ function(aws_set_common_properties target)
              list(APPEND AWS_C_FLAGS /DAWS_SUPPORT_WIN7=1)
          endif()
- 
+
 -        string(TOUPPER "${CMAKE_BUILD_TYPE}" _CMAKE_BUILD_TYPE)
 -        if(STATIC_CRT)
 -            string(REPLACE "/MD" "/MT" _FLAGS "${CMAKE_C_FLAGS_${_CMAKE_BUILD_TYPE}}")
@@ -17,4 +17,3 @@ index 249b7d5..41a31e2 100644
 -
      else()
          list(APPEND AWS_C_FLAGS -Wall -Wstrict-prototypes)
- 

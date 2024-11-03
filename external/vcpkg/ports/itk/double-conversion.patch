@@ -1,6 +1,6 @@
 diff --git a/Modules/ThirdParty/DoubleConversion/CMakeLists.txt b/Modules/ThirdParty/DoubleConversion/CMakeLists.txt
 index 16c611fd3..13978724c 100644
---- a/Modules/ThirdParty/DoubleConversion/CMakeLists.txt	
+--- a/Modules/ThirdParty/DoubleConversion/CMakeLists.txt
 +++ b/Modules/ThirdParty/DoubleConversion/CMakeLists.txt
 @@ -9,7 +9,10 @@ mark_as_advanced(ITK_USE_SYSTEM_DOUBLECONVERSION)
  if(ITK_USE_SYSTEM_DOUBLECONVERSION)

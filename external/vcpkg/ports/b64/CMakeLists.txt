@@ -23,7 +23,7 @@ target_include_directories(b64
     INTERFACE $<INSTALL_INTERFACE:include>
 )
 
-set_property(TARGET b64 
+set_property(TARGET b64
             PROPERTY PUBLIC_HEADER ${HEADER_FILES})
 
 install(TARGETS b64
@@ -37,4 +37,3 @@ install(EXPORT unofficial-b64-config
     NAMESPACE unofficial::b64::
     DESTINATION share/unofficial-b64
 )
-

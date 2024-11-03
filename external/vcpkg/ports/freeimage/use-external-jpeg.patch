@@ -5,7 +5,7 @@ index 573989c..aaeefa4 100644
 @@ -35,9 +35,9 @@ extern "C" {
  #undef FAR
  #include <setjmp.h>
- 
+
 -#include "../LibJPEG/jinclude.h"
 -#include "../LibJPEG/jpeglib.h"
 -#include "../LibJPEG/jerror.h"
@@ -13,5 +13,5 @@ index 573989c..aaeefa4 100644
 +#include <jpeglib.h>
 +#include <jerror.h>
  }
- 
+
  #include "FreeImage.h"

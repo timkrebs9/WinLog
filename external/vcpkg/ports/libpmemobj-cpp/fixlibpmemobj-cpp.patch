@@ -13,5 +13,5 @@ index bb29b8d..839a77f 100644
 +	ARCHIVE DESTINATION lib
 +	)
  endfunction()
- 
+
  add_check_whitespace(benchmarks-cmake ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt)

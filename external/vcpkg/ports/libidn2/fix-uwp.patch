@@ -27,16 +27,16 @@ index adb6123..5afefb2 100644
 @@ -194,6 +194,7 @@ rpl_stat (char const *name, struct stat *buf)
    {
      int ret;
- 
+
 +#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
      {
        /* Approach based on the file.  */
- 
+
 @@ -219,6 +220,7 @@ rpl_stat (char const *name, struct stat *buf)
            goto done;
          }
      }
 +#endif
- 
+
      /* Test for root and UNC root directories.  */
      if ((rlen == drive_prefix_len + 1 && ISSLASH (rname[drive_prefix_len]))

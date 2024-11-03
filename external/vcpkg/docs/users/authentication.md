@@ -35,7 +35,7 @@ The `<uri>` can be filled in with a variety of options, documented in https://gi
 **Note for Azure DevOps users:** You may need to enable access via Job authorization scope https://docs.microsoft.com/en-us/azure/devops/pipelines/process/access-tokens?view=azure-devops&tabs=yaml#job-authorization-scope. You may also need to "reference" the repo in your yaml via:
 
 ```yaml
-resources: 
+resources:
   repositories:
     - repository: <FRIENDLYNAME>
       type: git

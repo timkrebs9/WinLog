@@ -7,7 +7,7 @@ file(GLOB_RECURSE LIBU2F_SERVER_SOURCE u2f-server/*.c)
 
 add_library(libu2f-server ${LIBU2F_SERVER_SOURCE})
 
-target_include_directories(libu2f-server PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> $<INSTALL_INTERFACE:include>) 
+target_include_directories(libu2f-server PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> $<INSTALL_INTERFACE:include>)
 target_compile_definitions(libu2f-server PRIVATE _CRT_SECURE_NO_WARNINGS _CRT_NONSTDC_NO_DEPRECATE)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /wd4996")
 

@@ -9,5 +9,5 @@ index c4698f0..20226f5 100644
 -  const upb_FieldDef* f;
 +  const upb_FieldDef* f = 0;
    upb_Message* submsg;
- 
+
    switch (jsondec_peek(d)) {

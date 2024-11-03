@@ -19,7 +19,7 @@ target_compile_definitions(libusb0 PRIVATE "-D_CRT_SECURE_NO_WARNINGS")
 install(
     TARGETS libusb0
     RUNTIME DESTINATION bin
-    ARCHIVE DESTINATION lib   
+    ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib)
 
 install(

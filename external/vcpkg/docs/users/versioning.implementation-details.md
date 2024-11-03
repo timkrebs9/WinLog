@@ -16,7 +16,7 @@ Vcpkg uses a minimal selection approach to versioning, inspired by the one [used
 * Allow unconstrained dependencies by introducing baselines.
 
 The minimal selection principle, however, stays the same. Given a set of constraints, vcpkg will use the "oldest" possible versions of packages that can satisfy all the constraints.
- 
+
 Using a minimum version approach has the following advantages:
 * Is predictable and easy to understand.
 * User controls when upgrades happen, as in, no upgrades are performed automatically when a new version is released.
@@ -25,10 +25,10 @@ Using a minimum version approach has the following advantages:
 To give an example, consider the following package graph:
 ```
     (A 1.0) -> (B 1.0)
-    
-    (A 1.1) -> (B 1.0) 
-            -> (C 3.0) 
-    
+
+    (A 1.1) -> (B 1.0)
+            -> (C 3.0)
+
     (A 1.2) -> (B 2.0)
             -> (C 3.0)
 
@@ -40,10 +40,10 @@ And the following manifest:
 {
     "name": "example",
     "version": "1.0.0",
-    "dependencies": [ 
+    "dependencies": [
         { "name": "A", "version>=": "1.1" },
         { "name": "C", "version>=": "2.0" }
-    ], 
+    ],
     "builtin-baseline": "<some git commit with A's baseline at 1.0>"
 }
 ```
@@ -61,7 +61,7 @@ Since vcpkg has to satisfy all the constraints, the set of installed packages be
 * `C 3.0`, upgraded by the transitive constraint added by `B 1.0` in order to satisfy version constraints.
 
 ## Constraint resolution
-Given a manifest with a set of versioned dependencies, vcpkg will attempt to calculate a package installation plan that satisfies all the constraints. 
+Given a manifest with a set of versioned dependencies, vcpkg will attempt to calculate a package installation plan that satisfies all the constraints.
 
 Version constraints come in the following flavors:
 * **Declared constraints**: Constraints declared explicitly in the top-level manifest using `version>=`.
@@ -78,7 +78,7 @@ To compute an installation plan, vcpkg follows roughly these steps:
     * If an override exists for the package
         * Select the version in the override.
     * Otherwise:
-        * If there is no previous version selected. 
+        * If there is no previous version selected.
             * Select the minimal version that satisfies the constraint.
         * If there is a previous version selected:
             * If the versioning scheme of the new constraint does not match that of the previously selected version:
@@ -87,7 +87,7 @@ To compute an installation plan, vcpkg follows roughly these steps:
                 * Add a version conflict.
             * If the constraints version is higher than the previously selected version:
                 * Select the highest version.
-            * Otherwise: 
+            * Otherwise:
                 * Keep the previous selection.
 * Review the plan:
   * If there are no conflicts
@@ -130,5 +130,3 @@ Example: `zlib.json`
 ```
 
 For each port, its corresponding versions file should be located in `versions/{first letter of port name}-/{port name}.json`. For example, zlib's version file will be located in `versions/z-/zlib.json`. Aside from port version files, the current baseline file is located in `versions/baseline.json`.
-
-

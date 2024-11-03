@@ -16,7 +16,7 @@ if(VCPKG_HOST_IS_LINUX OR VCPKG_TARGET_IS_LINUX OR VCPKG_TARGET_IS_ANDROID)
         URL https://chromium.googlesource.com/linux-syscall-support
         REF 7bde79cc274d06451bf65ae82c012a5d3e476b5a
     )
-    
+
     file(RENAME "${LSS_SOURCE_PATH}" "${SOURCE_PATH}/src/third_party/lss")
 endif()
 

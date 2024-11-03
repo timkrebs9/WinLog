@@ -1,6 +1,6 @@
 diff --git a/configure.ac b/configure.ac
 index 92b740b88..083e37ee5 100644
---- a/configure.ac	
+--- a/configure.ac
 +++ b/configure.ac
 @@ -106,8 +106,12 @@ if test "x$ac_cv_search_dlopen" = xno; then
  		AC_DEFINE(HAVE_SHL_LOAD,1,
@@ -21,11 +21,11 @@ index 92b740b88..083e37ee5 100644
  fi
 +AC_SUBST(XLDLIB)
  AC_MSG_RESULT($HAVE_LOADABLE_MODULES)
- 
+
  AC_MSG_CHECKING([if loadable i18n module support should be enabled])
 diff --git a/x11.pc.in b/x11.pc.in
 index 25c7e7cd0..4ecf23e8d 100644
---- a/x11.pc.in	
+--- a/x11.pc.in
 +++ b/x11.pc.in
 @@ -11,5 +11,5 @@ Version: @PACKAGE_VERSION@
  Requires: xproto @XKBPROTO_REQUIRES@

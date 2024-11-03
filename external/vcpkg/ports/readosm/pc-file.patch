@@ -9,4 +9,4 @@ index c1a0961..2417433 100644
 -Libs: -L${libdir} -lreadosm -lz -lexpat
 +Requires.private: expat zlib
 +Libs: -L${libdir} -lreadosm
- Cflags: -I${includedir} 
+ Cflags: -I${includedir}

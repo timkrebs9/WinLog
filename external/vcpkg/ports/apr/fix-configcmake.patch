@@ -4,7 +4,7 @@ index b4632c3..0b86d12 100644
 +++ b/CMakeLists.txt
 @@ -259,27 +259,35 @@ SET(install_targets)
  SET(install_bin_pdb)
- 
+
  # libapr-1 is shared, apr-1 is static
 +IF(BUILD_SHARED_LIBS)
  ADD_LIBRARY(libapr-1 SHARED ${APR_SOURCES} ${APR_PUBLIC_HEADERS_GENERATED} libapr.rc)
@@ -23,7 +23,7 @@ index b4632c3..0b86d12 100644
  ADD_DEPENDENCIES(apr-1 test_char_header)
 +TARGET_INCLUDE_DIRECTORIES(apr-1 INTERFACE $<INSTALL_INTERFACE:include>)
 +ENDIF()
- 
+
  # libaprapp-1 and aprapp-1 are static
 +IF(BUILD_SHARED_LIBS)
  ADD_LIBRARY(libaprapp-1 STATIC misc/win32/apr_app.c misc/win32/internal.c ${APR_PUBLIC_HEADERS_GENERATED})
@@ -37,20 +37,20 @@ index b4632c3..0b86d12 100644
  SET_TARGET_PROPERTIES(aprapp-1 PROPERTIES COMPILE_DEFINITIONS "APR_DECLARE_STATIC;APR_APP;WINNT")
 +TARGET_INCLUDE_DIRECTORIES(aprapp-1 INTERFACE $<INSTALL_INTERFACE:include>)
 +ENDIF()
- 
+
  IF(APR_BUILD_TESTAPR)
    ENABLE_TESTING()
 @@ -385,12 +393,18 @@ ENDIF (APR_BUILD_TESTAPR)
- 
+
  # Installation
- 
+
 -INSTALL(TARGETS ${install_targets}
 +INSTALL(TARGETS ${install_targets} EXPORT unofficial-apr-config
          RUNTIME DESTINATION bin
          LIBRARY DESTINATION lib
          ARCHIVE DESTINATION lib
         )
- 
+
 +INSTALL(EXPORT unofficial-apr-config
 +    NAMESPACE unofficial::apr::
 +    DESTINATION share/unofficial-apr

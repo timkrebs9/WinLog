@@ -3,7 +3,7 @@ index 8a85aa7..c0619bc 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -247,8 +247,8 @@ endif()
- 
+
  macro(createSingleASL name sourcedir sources)
    add_library(${name} STATIC ${${sources}} ${GENERATED_INCLUDE_DIR}/arith.h)
 -  target_include_directories(${name} PUBLIC ${GENERATED_INCLUDE_DIR}
@@ -14,9 +14,9 @@ index 8a85aa7..c0619bc 100644
    target_link_libraries(${name} PUBLIC ${CMAKE_DL_LIBS})
    if(NOT WIN32)
 @@ -322,14 +322,16 @@ install(FILES ${ASL_HEADERS} ${ASL_SOURCE_DIR}/opcode.hd ${ASL_SOURCE_DIR}/r_opn
- install(FILES ${ASL2_HEADERS} ${ASL2_SOURCE_DIR}/opcode.hd ${ASL2_SOURCE_DIR}/r_opn.hd 
-         DESTINATION include/asl2  COMPONENT asl) 
- 
+ install(FILES ${ASL2_HEADERS} ${ASL2_SOURCE_DIR}/opcode.hd ${ASL2_SOURCE_DIR}/r_opn.hd
+         DESTINATION include/asl2  COMPONENT asl)
+
 -install(TARGETS asl asl2 DESTINATION lib COMPONENT asl)
 +install(TARGETS asl asl2 EXPORT unofficial-asl-config DESTINATION lib COMPONENT asl)
  if(BUILD_MT_LIBS)
@@ -28,7 +28,7 @@ index 8a85aa7..c0619bc 100644
 +  install(TARGETS asl-dynrt asl2-dynrt EXPORT unofficial-asl-config DESTINATION lib COMPONENT asl)
  endif()
  if(TARGET aslcpp)
-     install(FILES ${ASL_CPP_HEADERS} DESTINATION include/aslcpp  COMPONENT asl) 
+     install(FILES ${ASL_CPP_HEADERS} DESTINATION include/aslcpp  COMPONENT asl)
 -    install(TARGETS aslcpp DESTINATION lib  COMPONENT asl)
 -endif()
 \ No newline at end of file

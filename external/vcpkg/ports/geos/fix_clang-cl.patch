@@ -5,7 +5,7 @@ index 074986f38..bb092ed13 100644
 @@ -184,12 +184,16 @@ target_compile_features(geos_cxx_flags INTERFACE cxx_std_11)
  #   https://gcc.gnu.org/bugzilla/show_bug.cgi?id=98207
  #-----------------------------------------------------------------------------
- 
+
 +if(MSVC)
 +target_compile_options(geos_cxx_flags INTERFACE
 +    /fp:precise /wd4996
@@ -24,7 +24,7 @@ index 074986f38..bb092ed13 100644
 @@ -225,13 +229,14 @@ target_compile_definitions(geos_cxx_flags
    INTERFACE
      USE_UNSTABLE_GEOS_CPP_API)
- 
+
 +if(MSVC)
  target_compile_definitions(geos_developer_cxx_flags
    INTERFACE
@@ -43,7 +43,7 @@ index 074986f38..bb092ed13 100644
      $<$<CXX_COMPILER_ID:MSVC>:-W4>
 @@ -268,9 +273,10 @@ add_subdirectory(src)
  option(VERSION_MINGW_SHARED_LIBS "Add version suffix to MinGW shared libraries" OFF)
- 
+
  if(BUILD_SHARED_LIBS)
 -  target_compile_definitions(geos
 -    PRIVATE $<IF:$<CXX_COMPILER_ID:MSVC>,GEOS_DLL_EXPORT,DLL_EXPORT>)
@@ -57,14 +57,14 @@ index 074986f38..bb092ed13 100644
    if(MINGW AND VERSION_MINGW_SHARED_LIBS)
 @@ -286,8 +292,10 @@ add_library(GEOS::geos_c ALIAS geos_c)
  target_link_libraries(geos_c PRIVATE geos)
- 
+
  if(BUILD_SHARED_LIBS)
 +  if(MSVC)
    target_compile_definitions(geos_c
 -    PRIVATE $<IF:$<CXX_COMPILER_ID:MSVC>,GEOS_DLL_EXPORT,DLL_EXPORT>)
 +    PRIVATE GEOS_DLL_EXPORT DLL_EXPORT)
 +  endif()
- 
+
    set_target_properties(geos_c PROPERTIES VERSION ${CAPI_VERSION})
    if(NOT WIN32 OR MINGW)
 diff --git a/include/geos/algorithm/locate/IndexedPointInAreaLocator.h b/include/geos/algorithm/locate/IndexedPointInAreaLocator.h
@@ -77,9 +77,9 @@ index 7a647e461..73da77942 100644
       */
 -    geom::Location locate(const geom::Coordinate* /*const*/ p) override;
 +    GEOS_DLL geom::Location locate(const geom::Coordinate* /*const*/ p) override;
- 
+
  };
- 
+
 diff --git a/include/geos/export.h b/include/geos/export.h
 index 1a26f8c7a..ba89e0f82 100644
 --- a/include/geos/export.h

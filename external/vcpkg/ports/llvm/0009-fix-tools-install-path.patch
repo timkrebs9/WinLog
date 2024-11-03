@@ -35,7 +35,7 @@ index fb17e353c39f..4b409e47446a 100644
 +++ b/clang-tools-extra/modularize/CMakeLists.txt
 @@ -23,5 +23,5 @@ clang_target_link_libraries(modularize
    )
- 
+
  install(TARGETS modularize
 -        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
 +        RUNTIME DESTINATION "${LLVM_TOOLS_INSTALL_DIR}"
@@ -51,7 +51,7 @@ index 9bbbfc032b7d..bd238ff249cd 100644
 -      RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
 +      RUNTIME DESTINATION "${LLVM_TOOLS_INSTALL_DIR}"
        COMPONENT ${name})
- 
+
      if(NOT LLVM_ENABLE_IDE)
 diff --git a/clang/tools/c-index-test/CMakeLists.txt b/clang/tools/c-index-test/CMakeLists.txt
 index 0ae1b4e55244..e8a34e136194 100644
@@ -64,7 +64,7 @@ index 0ae1b4e55244..e8a34e136194 100644
 -    set(INSTALL_DESTINATION "${CMAKE_INSTALL_BINDIR}")
 +    set(INSTALL_DESTINATION "${LLVM_TOOLS_INSTALL_DIR}")
    endif()
- 
+
    install(TARGETS c-index-test
 diff --git a/clang/tools/clang-format/CMakeLists.txt b/clang/tools/clang-format/CMakeLists.txt
 index bbdef93b576b..8744e414da0a 100644
@@ -84,7 +84,7 @@ index 1614f40fb60e..0e78982310c7 100644
 @@ -37,4 +37,4 @@ target_link_libraries(clang-linker-wrapper
    ${CLANG_LINKER_WRAPPER_LIB_DEPS}
    )
- 
+
 -install(TARGETS clang-linker-wrapper RUNTIME DESTINATION bin)
 +install(TARGETS clang-linker-wrapper RUNTIME DESTINATION "${LLVM_TOOLS_INSTALL_DIR}")
 diff --git a/clang/tools/clang-nvlink-wrapper/CMakeLists.txt b/clang/tools/clang-nvlink-wrapper/CMakeLists.txt
@@ -94,7 +94,7 @@ index 2c979e509795..f22b801fe19a 100644
 @@ -22,4 +22,4 @@ target_link_libraries(clang-nvlink-wrapper
    ${CLANG_NVLINK_WRAPPER_LIB_DEPS}
    )
- 
+
 -install(TARGETS clang-nvlink-wrapper RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
 +install(TARGETS clang-nvlink-wrapper RUNTIME DESTINATION "${LLVM_TOOLS_INSTALL_DIR}")
 diff --git a/clang/tools/scan-build-py/CMakeLists.txt b/clang/tools/scan-build-py/CMakeLists.txt
@@ -131,7 +131,7 @@ index 4a578b4c6f3e..05574a4919f6 100644
 +            DESTINATION "${LLVM_TOOLS_INSTALL_DIR}"
              COMPONENT scan-build)
    endforeach()
- 
+
 diff --git a/clang/tools/scan-view/CMakeLists.txt b/clang/tools/scan-view/CMakeLists.txt
 index 07aec76ee66f..ca6a3380ad0c 100644
 --- a/clang/tools/scan-view/CMakeLists.txt
@@ -144,19 +144,19 @@ index 07aec76ee66f..ca6a3380ad0c 100644
 +            DESTINATION "${LLVM_TOOLS_INSTALL_DIR}"
              COMPONENT scan-view)
    endforeach()
- 
+
 diff --git a/clang/utils/hmaptool/CMakeLists.txt b/clang/utils/hmaptool/CMakeLists.txt
 index f0d9866782b8..5fcdfc04425f 100644
 --- a/clang/utils/hmaptool/CMakeLists.txt
 +++ b/clang/utils/hmaptool/CMakeLists.txt
 @@ -10,7 +10,7 @@ add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/${CMAKE_CFG_INTDIR}/bin/${CLANG_HM
- 
+
  list(APPEND Depends ${CMAKE_BINARY_DIR}/${CMAKE_CFG_INTDIR}/bin/${CLANG_HMAPTOOL})
  install(PROGRAMS ${CLANG_HMAPTOOL}
 -        DESTINATION "${CMAKE_INSTALL_BINDIR}"
 +        DESTINATION "${LLVM_TOOLS_INSTALL_DIR}"
          COMPONENT hmaptool)
- 
+
  add_custom_target(hmaptool ALL DEPENDS ${Depends})
 diff --git a/flang/cmake/modules/AddFlang.cmake b/flang/cmake/modules/AddFlang.cmake
 index 369e303e148a..3c3697c07406 100644
@@ -169,7 +169,7 @@ index 369e303e148a..3c3697c07406 100644
 -      RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
 +      RUNTIME DESTINATION "${LLVM_TOOLS_INSTALL_DIR}"
        COMPONENT ${name})
- 
+
      if(NOT LLVM_ENABLE_IDE)
 diff --git a/flang/tools/f18/CMakeLists.txt b/flang/tools/f18/CMakeLists.txt
 index aa77676c6229..dd15b0b7727b 100644
@@ -189,7 +189,7 @@ index b3e90746e786..b327e69aaeaa 100644
 @@ -34,4 +34,4 @@ if(FLANG_PLUGIN_SUPPORT)
    export_executable_symbols_for_plugins(flang-new)
  endif()
- 
+
 -install(TARGETS flang-new DESTINATION "${CMAKE_INSTALL_BINDIR}")
 +install(TARGETS flang-new DESTINATION "${LLVM_TOOLS_INSTALL_DIR}")
 diff --git a/lld/cmake/modules/AddLLD.cmake b/lld/cmake/modules/AddLLD.cmake
@@ -203,7 +203,7 @@ index dd2898ce6236..86560bddd5e4 100644
 -      RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
 +      RUNTIME DESTINATION "${LLVM_TOOLS_INSTALL_DIR}"
        COMPONENT ${name})
- 
+
      if(NOT CMAKE_CONFIGURATION_TYPES)
 diff --git a/lld/tools/lld/CMakeLists.txt b/lld/tools/lld/CMakeLists.txt
 index df48cc0d6c51..1363144fd8e1 100644
@@ -211,11 +211,11 @@ index df48cc0d6c51..1363144fd8e1 100644
 +++ b/lld/tools/lld/CMakeLists.txt
 @@ -20,7 +20,7 @@ target_link_libraries(lld
    )
- 
+
  install(TARGETS lld
 -  RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
 +  RUNTIME DESTINATION "${LLVM_TOOLS_INSTALL_DIR}")
- 
+
  if(NOT LLD_SYMLINKS_TO_CREATE)
    set(LLD_SYMLINKS_TO_CREATE
 diff --git a/lldb/cmake/modules/AddLLDB.cmake b/lldb/cmake/modules/AddLLDB.cmake
@@ -224,7 +224,7 @@ index 3291a7c808e1..9fe9b9a7940d 100644
 +++ b/lldb/cmake/modules/AddLLDB.cmake
 @@ -189,7 +189,7 @@ function(add_lldb_executable name)
    endif()
- 
+
    if(ARG_GENERATE_INSTALL)
 -    set(install_dest bin)
 +    set(install_dest "${LLVM_TOOLS_INSTALL_DIR}")

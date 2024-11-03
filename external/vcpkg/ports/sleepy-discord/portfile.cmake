@@ -28,9 +28,9 @@ configure_file(
 
 vcpkg_cmake_configure(
     SOURCE_PATH ${SOURCE_PATH}
-    OPTIONS 
-        -DSLEEPY_VCPKG=ON 
-        -DAUTO_DOWNLOAD_LIBRARY=OFF 
+    OPTIONS
+        -DSLEEPY_VCPKG=ON
+        -DAUTO_DOWNLOAD_LIBRARY=OFF
         -DUSE_BOOST_ASIO=ON
         ${FEATURE_OPTIONS}
 )

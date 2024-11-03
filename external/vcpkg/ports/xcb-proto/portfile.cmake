@@ -1,4 +1,4 @@
-set(VCPKG_POLICY_EMPTY_INCLUDE_FOLDER enabled) 
+set(VCPKG_POLICY_EMPTY_INCLUDE_FOLDER enabled)
 if(NOT X_VCPKG_FORCE_VCPKG_X_LIBRARIES AND NOT VCPKG_TARGET_IS_WINDOWS)
     message(STATUS "Utils and libraries provided by '${PORT}' should be provided by your system! Install the required packages or force vcpkg libraries by setting X_VCPKG_FORCE_VCPKG_X_LIBRARIES in your triplet")
     set(VCPKG_POLICY_EMPTY_PACKAGE enabled)
@@ -27,7 +27,7 @@ vcpkg_from_gitlab(
     REF  70ca65fa35c3760661b090bc4b2601daa7a099b8 #v1.14.1 + patches
     SHA512   9e08e1d2ab1fe7a8d3985568918a858ddfb31b8016ccac8ea2447631e7cede3bcc7b1ed86491d497ab871674c9b55d94fab25ee13ff6de9a44590b91d9166fda
     HEAD_REF master
-) 
+)
 
 set(ENV{ACLOCAL} "aclocal -I \"${CURRENT_INSTALLED_DIR}/share/xorg/aclocal/\"")
 

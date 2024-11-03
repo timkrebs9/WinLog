@@ -3,7 +3,7 @@ index ce55be0..9b7107c 100644
 --- a/CMakeModules/OsgMacroUtils.cmake
 +++ b/CMakeModules/OsgMacroUtils.cmake
 @@ -37,6 +37,16 @@ SET(VALID_BUILDER_VERSION OFF)
- 
+
  MACRO(LINK_WITH_VARIABLES TRGTNAME)
      FOREACH(varname ${ARGN})
 +        string(REPLACE "_LIBRARY" "_LINK_LIBRARIES" lwv_link_libraries "${varname}")

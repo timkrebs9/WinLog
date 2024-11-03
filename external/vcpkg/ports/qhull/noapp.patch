@@ -6,13 +6,13 @@ diff -Naur b/CMakeLists.txt ff11b5d37d-0697029c1a.clean/CMakeLists.txt
      ${BUILD_SHARED_LIBS}
  )
 +option(BUILD_APPLICATIONS "Build applications" ON)
- 
+
  if(INCLUDE_INSTALL_DIR)
  else()
 @@ -517,131 +518,133 @@
  # If LINK_APPS_SHARED, applications are linked to reentrant qhull
  # ---------------------------------------
- 
+
 -if(${LINK_APPS_SHARED})
 -    add_executable(qconvex src/qconvex/qconvex_r.c)
 -    target_link_libraries(qconvex ${qhull_SHAREDR})
@@ -91,23 +91,23 @@ diff -Naur b/CMakeLists.txt ff11b5d37d-0697029c1a.clean/CMakeLists.txt
 +        if(NOT ${BUILD_STATIC_LIBS})
 +            message(FATAL_ERROR, " Nothing to build -- BUILD_SHARED_LIBS=OFF and BUILD_STATIC_LIBS=OFF")
 +        endif()
- 
+
 -    add_executable(qhull src/qhull/unix_r.c)
 -    target_link_libraries(qhull ${qhull_STATICR})
 +        add_executable(qconvex src/qconvex/qconvex.c)
 +        target_link_libraries(qconvex ${qhull_STATIC})
- 
+
 -    add_executable(qvoronoi src/qvoronoi/qvoronoi.c)
 -    target_link_libraries(qvoronoi ${qhull_STATIC})
 +        add_executable(qdelaunay src/qdelaunay/qdelaun.c)
 +        target_link_libraries(qdelaunay ${qhull_STATIC})
- 
+
 -    add_executable(rbox src/rbox/rbox.c)
 -    target_link_libraries(rbox ${qhull_STATIC})
 -endif()
 +        add_executable(qhalf src/qhalf/qhalf.c)
 +        target_link_libraries(qhalf ${qhull_STATIC})
- 
+
 -# #@# 20
 -# ---------------------------------------
 -# Define testqset linked to qset.o, mem.o, and usermem.o
@@ -115,12 +115,12 @@ diff -Naur b/CMakeLists.txt ff11b5d37d-0697029c1a.clean/CMakeLists.txt
 -# ---------------------------------------
 +        add_executable(qhull src/qhull/unix_r.c)
 +        target_link_libraries(qhull ${qhull_STATICR})
- 
+
 -add_executable(testqset ${testqset_SOURCES})
 -add_executable(testqset_r ${testqsetr_SOURCES})
 +        add_executable(qvoronoi src/qvoronoi/qvoronoi.c)
 +        target_link_libraries(qvoronoi ${qhull_STATIC})
- 
+
 -# ---------------------------------------
 -# Define user_eg linked to reentrant qhull shared library
 -# ---------------------------------------
@@ -129,7 +129,7 @@ diff -Naur b/CMakeLists.txt ff11b5d37d-0697029c1a.clean/CMakeLists.txt
 +        add_executable(rbox src/rbox/rbox.c)
 +        target_link_libraries(rbox ${qhull_STATIC})
 +    endif()
- 
+
 -if(${BUILD_SHARED_LIBS})
 -    target_link_libraries(user_eg ${qhull_SHAREDR})
 -    set_target_properties(user_eg PROPERTIES
@@ -159,17 +159,17 @@ diff -Naur b/CMakeLists.txt ff11b5d37d-0697029c1a.clean/CMakeLists.txt
 +    else()
 +        target_link_libraries(user_eg ${qhull_STATICR})
 +    endif()
- 
+
 -# ---------------------------------------
 -# Define user_eg2 linked to reentrant qhull static library
 -# ---------------------------------------
 +    # ---------------------------------------
 +    # Define user_eg2 linked to reentrant qhull static library
 +    # ---------------------------------------
- 
+
 -add_executable(user_eg2 src/user_eg2/user_eg2_r.c)
 +    add_executable(user_eg2 src/user_eg2/user_eg2_r.c)
- 
+
 -if(${BUILD_STATIC_LIBS})
 -    target_link_libraries(user_eg2 ${qhull_STATICR})
 -else()
@@ -184,16 +184,16 @@ diff -Naur b/CMakeLists.txt ff11b5d37d-0697029c1a.clean/CMakeLists.txt
 +        set_target_properties(user_eg2 PROPERTIES
 +        COMPILE_DEFINITIONS "${user_eg2_DEFINES}")
 +    endif()
- 
+
 -# ---------------------------------------
 -# Define user_eg3 linked to qhullcpp and qhullstatic_r static libraries
--# 
+-#
 -# user_eg3 is not defined for shared libraries
 -#   user_eg3 and qhullcpp must be compiled with the same compiler for setjmp/longjmp
 -# ---------------------------------------
 +    # ---------------------------------------
 +    # Define user_eg3 linked to qhullcpp and qhullstatic_r static libraries
-+    # 
++    #
 +    # user_eg3 is not defined for shared libraries
 +    #   user_eg3 and qhullcpp must be compiled with the same compiler for setjmp/longjmp
 +    # ---------------------------------------
@@ -203,14 +203,14 @@ diff -Naur b/CMakeLists.txt ff11b5d37d-0697029c1a.clean/CMakeLists.txt
 +        # qhull_STATICR must be last, otherwise qh_fprintf,etc. are not loaded from qhull_CPP
 +        target_link_libraries(user_eg3 ${qhull_CPP} ${qhull_STATICR})
 +    endif()
- 
+
 -if(${BUILD_STATIC_LIBS})
 -    add_executable(user_eg3 src/user_eg3/user_eg3_r.cpp)
 -    # qhull_STATICR must be last, otherwise qh_fprintf,etc. are not loaded from qhull_CPP
 -    target_link_libraries(user_eg3 ${qhull_CPP} ${qhull_STATICR})
 +    # ---------------------------------------
 +    # qhullp is qhull/unix.c linked to unsuported qh_QHpointer libqhull_p
-+    # Included for testing qh_QHpointer 
++    # Included for testing qh_QHpointer
 +    # ---------------------------------------
 +
 +    add_executable(qhullp EXCLUDE_FROM_ALL src/qhull/unix.c)
@@ -220,7 +220,7 @@ diff -Naur b/CMakeLists.txt ff11b5d37d-0697029c1a.clean/CMakeLists.txt
 +
 +    # ---------------------------------------
 +    # user_egp is user_eg/user_eg.c linked to unsuported qh_QHpointer libqhull_p
-+    # Included for compatibility with qhull-2012.1 
++    # Included for compatibility with qhull-2012.1
 +    # ---------------------------------------
 +
 +    add_executable(user_egp EXCLUDE_FROM_ALL src/user_eg/user_eg.c)
@@ -228,10 +228,10 @@ diff -Naur b/CMakeLists.txt ff11b5d37d-0697029c1a.clean/CMakeLists.txt
 +    set_target_properties(user_egp PROPERTIES
 +        COMPILE_DEFINITIONS "${user_egp_DEFINES}")
  endif()
- 
+
  # ---------------------------------------
 -# qhullp is qhull/unix.c linked to unsuported qh_QHpointer libqhull_p
--# Included for testing qh_QHpointer 
+-# Included for testing qh_QHpointer
 -# ---------------------------------------
 -
 -add_executable(qhullp EXCLUDE_FROM_ALL src/qhull/unix.c)
@@ -241,7 +241,7 @@ diff -Naur b/CMakeLists.txt ff11b5d37d-0697029c1a.clean/CMakeLists.txt
 -
 -# ---------------------------------------
 -# user_egp is user_eg/user_eg.c linked to unsuported qh_QHpointer libqhull_p
--# Included for compatibility with qhull-2012.1 
+-# Included for compatibility with qhull-2012.1
 -# ---------------------------------------
 -
 -add_executable(user_egp EXCLUDE_FROM_ALL src/user_eg/user_eg.c)
@@ -252,11 +252,11 @@ diff -Naur b/CMakeLists.txt ff11b5d37d-0697029c1a.clean/CMakeLists.txt
 -# ---------------------------------------
  # Define test
  # ---------------------------------------
- 
+
 @@ -676,7 +679,9 @@
  # Define install
  # ---------------------------------------
- 
+
 -set(qhull_TARGETS_INSTALL ${qhull_TARGETS_APPLICATIONS})
 +if(BUILD_APPLICATIONS)
 +    set(qhull_TARGETS_INSTALL ${qhull_TARGETS_APPLICATIONS})

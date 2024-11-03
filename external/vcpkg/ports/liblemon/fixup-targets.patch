@@ -12,7 +12,7 @@ index 9a7c918..3d6cf35 100644
      FILES ${PROJECT_BINARY_DIR}/cmake/LEMONConfig.cmake
      DESTINATION share/lemon/cmake
 @@ -282,9 +282,9 @@ ENDIF()
- 
+
  install(
      EXPORT lemon-targets
 -    FILE lemon-config.cmake
@@ -22,7 +22,7 @@ index 9a7c918..3d6cf35 100644
 +    NAMESPACE unofficial::lemon::
 +    DESTINATION share/lemon/cmake
  )
- 
+
  CONFIGURE_FILE(
 diff --git a/cmake/LEMONConfig.cmake.in b/cmake/LEMONConfig.cmake.in
 index b0d2d8b..ce54986 100644
@@ -32,19 +32,19 @@ index b0d2d8b..ce54986 100644
 -SET(LEMON_INCLUDE_DIR "@CMAKE_INSTALL_PREFIX@/include" CACHE PATH "LEMON include directory")
 +SET(LEMON_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/../../include" CACHE PATH "LEMON include directory")
  SET(LEMON_INCLUDE_DIRS "${LEMON_INCLUDE_DIR}")
- 
+
  IF(UNIX)
 @@ -7,7 +7,12 @@ ELSEIF(WIN32)
    SET(LEMON_LIB_NAME "lemon.lib")
  ENDIF(UNIX)
- 
+
 -SET(LEMON_LIBRARY "@CMAKE_INSTALL_PREFIX@/lib/${LEMON_LIB_NAME}" CACHE FILEPATH "LEMON library")
 +SET(LEMON_LIBRARY
 +  optimized "${CMAKE_CURRENT_LIST_DIR}/../../lib/${LEMON_LIB_NAME}"
 +  debug "${CMAKE_CURRENT_LIST_DIR}/../../debug/lib/${LEMON_LIB_NAME}"
 +  CACHE FILEPATH "LEMON library")
  SET(LEMON_LIBRARIES "${LEMON_LIBRARY}")
- 
+
  MARK_AS_ADVANCED(LEMON_LIBRARY LEMON_INCLUDE_DIR)
 +
 +include(${CMAKE_CURRENT_LIST_DIR}/lemon-targets.cmake)

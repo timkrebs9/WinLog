@@ -8,7 +8,7 @@ index 4de5b57..5f483a3 100644
  find_package(BZip2)
 +find_package(OpenSSL REQUIRED)
 +find_package(ZLIB REQUIRED)
- 
+
  # PThread
 -set(CMAKE_THREAD_PREFER_PTHREAD)
 -set(THREADS_PREFER_PTHREAD_FLAG)
@@ -32,13 +32,13 @@ index 4de5b57..5f483a3 100644
 +
 +# OpenSSL
 +link_libraries(OpenSSL::SSL OpenSSL::Crypto)
- 
+
  # WITH_CRYPTO
  set(WITH_CRYPTO "gcrypt" CACHE STRING "gcrypt|nss3")
 @@ -373,19 +383,9 @@ message(STATUS "asciidoc: ${ASCIIDOC_EXECUTABLE}")
- 
+
  # ---------- PATHS
- 
+
 -if(WIN32)
 -	# Windows installer does not allow full paths.
 -	# The install path can be changed by user in Windows installer.
@@ -56,7 +56,7 @@ index 4de5b57..5f483a3 100644
 +set(OSCAP_DEFAULT_XSLT_PATH share/openscap/xsl)
 +set(OSCAP_DEFAULT_CPE_PATH share/openscap/cpe)
  set(OSCAP_TEMP_DIR "/tmp" CACHE STRING "use different temporary directory to execute sce scripts (default=/tmp)")
- 
+
  # ---------- RPATHS for linking
 diff --git a/utils/CMakeLists.txt b/utils/CMakeLists.txt
 index 2a3f373..781d05a 100644
@@ -72,13 +72,13 @@ index 2a3f373..781d05a 100644
 +        find_library(GETOPT_LIBRARY_RELEASE NAMES getopt)
 +        find_library(GETOPT_LIBRARY_DEBUG NAMES getopt PATH_SUFFIXES debug/lib)
 +        select_library_configurations(GETOPT)
-+        
++
 +        message("GETOPT_INCLUDE_DIR: ${GETOPT_INCLUDE_DIR}")
 +        message("GETOPT_LIBRARY: ${GETOPT_LIBRARY}")
-+        
++
 +        target_include_directories(oscap PRIVATE ${GETOPT_INCLUDE_DIR})
 +        target_link_libraries(oscap PRIVATE ${GETOPT_LIBRARY})
-+        
++
 +		set(OSCAP_UTIL_DESTINATION tools)
  		# Install the 'oscap' utility
  		install(TARGETS "oscap"
@@ -112,7 +112,7 @@ index 9e18613..e84a21f 100644
 @@ -125,4 +125,8 @@ else()
  	set(OPENSCAP_INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR})
  endif()
- 
+
 -install(TARGETS openscap DESTINATION ${OPENSCAP_INSTALL_DESTINATION})
 +install(TARGETS openscap
 +  RUNTIME DESTINATION bin

@@ -15,5 +15,5 @@ index 51bc7b2..f04bf4c 100644
 +        set(HDF5_C_LIBRARIES hdf5::hdf5-static)
 +    endif()
    endif()
- 
+
    if(HIGHFIVE_PARALLEL_HDF5 AND NOT HDF5_IS_PARALLEL)

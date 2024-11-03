@@ -28,7 +28,7 @@ if ("ax" IN_LIST FEATURES)
   if(NOT VCPKG_TARGET_IS_WINDOWS)
     set(OPENVDB_BUILD_AX ON)
   else()
-    message(FATAL_ERROR "Currently no support for building OpenVDB AX on Windows.")  
+    message(FATAL_ERROR "Currently no support for building OpenVDB AX on Windows.")
   endif()
 endif()
 

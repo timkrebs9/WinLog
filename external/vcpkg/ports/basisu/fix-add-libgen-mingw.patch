@@ -5,9 +5,8 @@ index 468f43b..02ec3c4 100644
 @@ -24,7 +24,7 @@
  #include <unordered_map>
  #include <ostream>
- 
+
 -#ifndef _WIN32
 +#if !defined(_WIN32) || defined(__MINGW32__)
  #include <libgen.h>
  #endif
- 

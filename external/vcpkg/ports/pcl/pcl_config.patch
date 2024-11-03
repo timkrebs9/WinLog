@@ -21,7 +21,7 @@ index a1283a810..4137ed18c 100644
    endif()
 @@ -393,16 +394,9 @@ else()
  endif()
- 
+
  # check whether PCLConfig.cmake is found into a PCL installation or in a build tree
 -if(EXISTS "${PCL_ROOT}/include/pcl-${PCL_VERSION_MAJOR}.${PCL_VERSION_MINOR}/pcl/pcl_config.h")
 -  # Found a PCL installation
@@ -38,6 +38,5 @@ index a1283a810..4137ed18c 100644
  elseif(EXISTS "${PCL_DIR}/include/pcl/pcl_config.h")
    # Found PCLConfig.cmake in a build tree of PCL
    # pcl_message("PCL found into a build tree.")
--- 
+--
 2.32.0.windows.1
-

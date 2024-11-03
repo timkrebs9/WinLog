@@ -10,7 +10,7 @@ vcpkg_from_github(
     REF 7c444a4bbae16fe43c676824a26419bb740a6ab8
     SHA512 4503b033a5319caee5570f25a05009c0d05a8c61a43ed78317899faaeba82fbc1f9a8c8433772bb36547c74e850a2e68d20a16f6f22b12b3004da7e1aa2f334b
     HEAD_REF master
-    PATCHES 
+    PATCHES
         "fix_install_paths_lastools.patch"
 )
 
@@ -30,4 +30,3 @@ file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/share")
 # Handle copyright
 file(COPY ${SOURCE_PATH}/LICENSE.txt DESTINATION ${CURRENT_PACKAGES_DIR}/share/${PORT})
 file(RENAME ${CURRENT_PACKAGES_DIR}/share/${PORT}/LICENSE.txt ${CURRENT_PACKAGES_DIR}/share/${PORT}/copyright)
-

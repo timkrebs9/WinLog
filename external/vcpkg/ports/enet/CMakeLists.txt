@@ -23,7 +23,7 @@ if(MSVC)
 else()
 	add_definitions(-Wno-error)
 endif()
- 
+
 if(HAS_FCNTL)
     add_definitions(-DHAS_FCNTL=1)
 endif()
@@ -54,7 +54,7 @@ endif()
 if(HAS_SOCKLEN_T)
     add_definitions(-DHAS_SOCKLEN_T=1)
 endif()
- 
+
 add_library(enet
         callbacks.c
         compress.c
@@ -80,7 +80,7 @@ if (BUILD_SHARED_LIBS)
         PRIVATE ENET_BUILDING_LIB
     )
 endif()
-	
+
 
 if (WIN32)
     target_link_libraries(enet winmm ws2_32)

@@ -15,7 +15,7 @@ file(REMOVE_RECURSE ${SOURCE_PATH}/include/dmlc)
 
 vcpkg_configure_cmake(
     SOURCE_PATH ${SOURCE_PATH}
-    PREFER_NINJA 
+    PREFER_NINJA
     OPTIONS
       -DRABIT_BUILD_TESTS=OFF
       -DRABIT_BUILD_MPI=OFF

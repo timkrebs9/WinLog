@@ -8,7 +8,7 @@ vcpkg_from_github(
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
-    OPTIONS 
+    OPTIONS
         -DCPP_JWT_BUILD_EXAMPLES=off
         -DCPP_JWT_BUILD_TESTS=off
         -DCPP_JWT_USE_VENDORED_NLOHMANN_JSON=off

@@ -3,7 +3,7 @@ index 6885221..cd2136c 100644
 --- a/apps/pdal.pc.in
 +++ b/apps/pdal.pc.in
 @@ -5,7 +5,6 @@ includedir=@CMAKE_INSTALL_PREFIX@/include
- 
+
  Name: PDAL
  Description: Point Data Abstraction Library
 -Requires:  @PKGCONFIG_LIBRARY_DEFINITIONS@

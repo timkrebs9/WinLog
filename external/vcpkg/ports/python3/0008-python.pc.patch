@@ -29,6 +29,5 @@ index 87e04decc2..0349dc81ba 100644
  Libs:
 -Cflags: -I${includedir}/python@VERSION@@ABIFLAGS@
 +Cflags: -I${includedir}/python@VERSION@
--- 
+--
 2.37.3.windows.1
-

@@ -5,7 +5,7 @@ index b83fbbd..2f675d1 100644
 @@ -2678,9 +2678,12 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/pcap.h DESTINATION include)
  install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/pcap-bpf.h DESTINATION include)
  install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/pcap-namedb.h DESTINATION include)
- 
+
 -# On UN*X, and on Windows when not using MSVC, generate libpcap.pc and
 -# pcap-config and process man pages and arrange that they be installed.
 -if(NOT MSVC)
@@ -26,12 +26,12 @@ index b83fbbd..2f675d1 100644
      configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libpcap.pc.in ${CMAKE_CURRENT_BINARY_DIR}/libpcap.pc @ONLY)
 -    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/pcap-config DESTINATION bin)
      install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libpcap.pc DESTINATION lib/pkgconfig)
-+    
++
 +# On UN*X, and on Windows when not using MSVC, generate libpcap.pc and
 +# pcap-config and process man pages and arrange that they be installed.
 +if(NOT MSVC)
 +    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/pcap-config.in ${CMAKE_CURRENT_BINARY_DIR}/pcap-config @ONLY)
 +    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/pcap-config DESTINATION bin)
- 
+
      #
      # Man pages.

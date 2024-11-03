@@ -11,7 +11,7 @@ vcpkg_from_gitlab(
     SHA512 d1ef49c1e16b7643a7afeca1495a96ab9ab9c537ea7669a13b3adda400a204626714afc8ed7fcc3d7532ebe1f89a3aa31e3ca0ee9617330d4df5b65b0c8e6dbc
     HEAD_REF master
     PATCHES ssize.patch
-) 
+)
 
 file(TOUCH "${SOURCE_PATH}/m4/dummy")
 set(ENV{ACLOCAL} "aclocal -I \"${CURRENT_INSTALLED_DIR}/share/xorg/aclocal/\"")

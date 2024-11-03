@@ -9,7 +9,7 @@ index e8de0c7e4..064c18eab 100644
 +  BUNDLE  DESTINATION "${CMAKE_INSTALL_BINDIR}" # For MACOSX.
    PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
  )
- 
+
 diff --git a/src/shell/CMakeLists.txt b/src/shell/CMakeLists.txt
 index 278246341..b6cd2f1c1 100644
 --- a/src/shell/CMakeLists.txt

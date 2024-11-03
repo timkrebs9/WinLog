@@ -27,10 +27,10 @@ index bac8dce188..44004fd9bb 100644
 -    TARGETS LibHaru::LibHaru
 +    TARGETS unofficial::libharu::hpdf
      STANDARD_INCLUDE_DIRS)
- 
+
  include(vtkDetectLibraryType)
 -vtk_detect_library_shared(vtklibharu LibHaru::LibHaru)
 +vtk_detect_library_shared(vtklibharu unofficial::libharu::hpdf)
- 
+
  set(HPDF_DLL 0)
  if (WIN32 AND vtklibharu_is_shared)

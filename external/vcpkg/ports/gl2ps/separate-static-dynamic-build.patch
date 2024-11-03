@@ -43,10 +43,10 @@ index 0001c4f..36ec0f7 100644
 +
  #
  #  Please report all bugs and problems to <gl2ps@geuz.org>.
- 
+
 @@ -59,7 +67,7 @@ set(GL2PS_VERSION "${GL2PS_MAJOR_VERSION}.${GL2PS_MINOR_VERSION}")
  set(GL2PS_VERSION "${GL2PS_VERSION}.${GL2PS_PATCH_VERSION}${GL2PS_EXTRA_VERSION}")
- 
+
  execute_process(COMMAND date "+%Y%m%d" OUTPUT_VARIABLE DATE
 -                OUTPUT_STRIP_TRAILING_WHITESPACE)
 +OUTPUT_STRIP_TRAILING_WHITESPACE)
@@ -56,7 +56,7 @@ index 0001c4f..36ec0f7 100644
 @@ -138,30 +146,30 @@ if(APPLE)
    endif()
  endif()
- 
+
 -if(OPENGL_FOUND)
 -  add_library(lib STATIC gl2ps.c gl2ps.h)
 -  set_target_properties(lib PROPERTIES OUTPUT_NAME gl2ps)
@@ -82,7 +82,7 @@ index 0001c4f..36ec0f7 100644
 +if(BUILD_SHARED_LIBS)
 +  target_compile_definitions(gl2ps PRIVATE -DGL2PSDLL -DGL2PSDLL_EXPORTS)
  endif()
- 
+
 +install(
 +  TARGETS gl2ps
 +  RUNTIME DESTINATION bin
@@ -96,7 +96,7 @@ index 0001c4f..36ec0f7 100644
  else()
    set(GL2PS_DOC share/doc/gl2ps)
  endif()
- 
+
 +if(NOT DISABLE_INSTALL_HEADERS)
  install(FILES gl2ps.h DESTINATION include)
  install(FILES ${CMAKE_SOURCE_DIR}/README.txt DESTINATION ${GL2PS_DOC})
@@ -104,14 +104,14 @@ index 0001c4f..36ec0f7 100644
 @@ -169,30 +177,36 @@ install(FILES ${CMAKE_SOURCE_DIR}/COPYING.GL2PS DESTINATION ${GL2PS_DOC})
  install(FILES ${CMAKE_SOURCE_DIR}/gl2psTest.c DESTINATION ${GL2PS_DOC})
  install(FILES ${CMAKE_SOURCE_DIR}/gl2psTestSimple.c DESTINATION ${GL2PS_DOC})
- 
+
 -if(GLUT_FOUND)
 -  add_executable(gl2psTest WIN32 gl2psTest.c)
 -  target_link_libraries(gl2psTest lib ${EXTERNAL_LIBRARIES})
 -  add_executable(gl2psTestSimple WIN32 gl2psTestSimple.c)
 -  target_link_libraries(gl2psTestSimple lib ${EXTERNAL_LIBRARIES})
  endif()
- 
+
 -find_package(LATEX)
 -if(PDFLATEX_COMPILER)
 -  add_custom_command(OUTPUT gl2ps.pdf DEPENDS gl2ps.tex
@@ -158,7 +158,7 @@ index 0001c4f..36ec0f7 100644
 +  endif(PDFLATEX_COMPILER)
 +
  endif()
- 
+
  set(CPACK_PACKAGE_VENDOR "Christophe Geuzaine")
 @@ -201,27 +215,22 @@ set(CPACK_PACKAGE_VERSION_MINOR ${GL2PS_MINOR_VERSION})
  set(CPACK_PACKAGE_VERSION_PATCH ${GL2PS_PATCH_VERSION})

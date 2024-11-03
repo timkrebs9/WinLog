@@ -26,6 +26,5 @@ index b5db60a..09163ec 100644
 -install(FILES ${FREETYPE_GL_HDR} DESTINATION include
 -	COMPONENT headers)
 -
--- 
+--
 2.27.0
-

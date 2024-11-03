@@ -4,7 +4,7 @@ index f82bfd2..a062170 100644
 +++ b/CMakeLists.txt
 @@ -375,7 +375,10 @@ else()
  endif()
- 
+
  if(GDCM_USE_SYSTEM_OPENJPEG)
 -  find_package(OpenJPEG 2.0.0 REQUIRED)
 +  find_package(OpenJPEG REQUIRED)

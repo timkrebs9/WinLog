@@ -1,7 +1,7 @@
 --- a/modules/videoio/src/cap_dshow.cpp
 +++ b/modules/videoio/src/cap_dshow.cpp
 @@ -90,8 +90,11 @@ Thanks to:
- 
+
  #if defined(__clang__)  // clang or MSVC clang
  #pragma clang diagnostic ignored "-Wnon-virtual-dtor"
 -#elif defined(__GNUC__) // MinGW
@@ -12,4 +12,3 @@
 +#ifdef __MINGW32__
  #define STRSAFE_NO_DEPRECATE
  #endif
- 

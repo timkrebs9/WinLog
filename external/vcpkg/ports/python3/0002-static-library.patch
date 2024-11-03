@@ -14,7 +14,7 @@ index d7d3cf081e..34269f0b75 100644
 --- a/PC/pyconfig.h
 +++ b/PC/pyconfig.h
 @@ -251,6 +251,7 @@ typedef int pid_t;
- 
+
  /* For Windows the Python core is in a DLL by default.  Test
  Py_NO_ENABLE_SHARED to find out.  Also support MS_NO_COREDLL for b/w compat */
 +#define Py_NO_ENABLE_SHARED
@@ -34,7 +34,7 @@ index d7d3cf081e..34269f0b75 100644
 +#           pragma comment(lib, "pathcch.lib")
 +#       endif /* Py_WINVER */
  #endif /* MS_COREDLL */
- 
+
  #if defined(MS_WIN64)
 diff --git a/PCbuild/pcbuild.proj b/PCbuild/pcbuild.proj
 index 70c336a9d3..ba797e8afd 100644
@@ -85,6 +85,5 @@ index ac49f7867a..f3583345ff 100644
  #endif
  #ifdef ABIFLAGS
      SET_SYS_FROM_STRING("abiflags", ABIFLAGS);
--- 
+--
 2.28.0.windows.1
-

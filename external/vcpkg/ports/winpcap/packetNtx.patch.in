@@ -646,7 +646,7 @@ index 9ac30be..ed68158 100644
 -# ADD LINK32 npptools.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /libpath:"..\..\WanPacket\Release\\" /opt:ref
 +# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /libpath:"..\..\WanPacket\Release\\" /opt:ref
  # SUBTRACT LINK32 /pdb:none
- 
+
  !ELSEIF  "$(CFG)" == "WanPacket - Win32 Debug"
 @@ -70,8 +70,8 @@ LINK32=link.exe
  # PROP Intermediate_Dir "Debug"
@@ -665,13 +665,13 @@ index 9ac30be..ed68158 100644
  # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
 -# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib npptools.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
 +# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
- 
- !ENDIF 
- 
+
+ !ENDIF
+
 @@ -131,10 +131,6 @@ SOURCE=.\version.rc
  # End Source File
  # Begin Source File
- 
+
 -SOURCE=.\WanPacket.cpp
 -# End Source File
 -# Begin Source File
@@ -689,18 +689,18 @@ index 056db10..fc9b0ee 100644
  //
 -#include "afxres.h"
 +#include "winres.h"
- 
+
  /////////////////////////////////////////////////////////////////////////////
  #undef APSTUDIO_READONLY_SYMBOLS
 @@ -34,7 +34,7 @@ END
- 
- 2 TEXTINCLUDE 
+
+ 2 TEXTINCLUDE
  BEGIN
 -    "#include ""afxres.h""\r\n"
 +    "#include ""winres.h""\r\n"
      "\0"
  END
- 
+
 diff --git a/packetNtx/Dll/version.rc b/packetNtx/Dll/version.rc
 index 056db10..fc9b0ee 100644
 --- a/packetNtx/Dll/version.rc
@@ -711,15 +711,14 @@ index 056db10..fc9b0ee 100644
  //
 -#include "afxres.h"
 +#include "winres.h"
- 
+
  /////////////////////////////////////////////////////////////////////////////
  #undef APSTUDIO_READONLY_SYMBOLS
 @@ -34,7 +34,7 @@ END
- 
- 2 TEXTINCLUDE 
+
+ 2 TEXTINCLUDE
  BEGIN
 -    "#include ""afxres.h""\r\n"
 +    "#include ""winres.h""\r\n"
      "\0"
  END
- 

@@ -21,8 +21,7 @@ index d4204bc..4d8d054 100644
 +            static_cast<intmax_t>((std::numeric_limits<T>::max)())
 +                    - static_cast<intmax_t>((std::numeric_limits<T>::min)()) + 1);
  }
- 
- template <typename CodecVariant, alphabet_index_t InvalidIdx, size_t I>
--- 
-2.32.0.windows.1
 
+ template <typename CodecVariant, alphabet_index_t InvalidIdx, size_t I>
+--
+2.32.0.windows.1

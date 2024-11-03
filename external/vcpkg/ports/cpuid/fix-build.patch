@@ -3,7 +3,7 @@ index 08e78d4..9e84c7f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -26,5 +26,3 @@ endif(UNIX)
- 
+
  # Include subdirectories
  add_subdirectory(libcpuid)
 -add_subdirectory(cpuid_tool)
@@ -15,7 +15,7 @@ index 7031650..9355436 100644
 @@ -12,7 +12,7 @@ if("${MSVC_CXX_ARCHITECTURE_ID}" MATCHES "x64")
    list(APPEND cpuid_sources masm-x64.asm)
  endif()
- 
+
 -if(UNIX)
 +if(0)
    add_library(cpuid SHARED ${cpuid_sources})

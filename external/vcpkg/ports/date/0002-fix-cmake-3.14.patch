@@ -21,7 +21,7 @@ index ad74900..42d55af 100644
      if( NOT MSVC )
 @@ -169,8 +169,8 @@ write_basic_package_version_file( "${version_config}"
      COMPATIBILITY SameMajorVersion )
- 
+
  install( TARGETS date
 -    EXPORT dateConfig
 -    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/date )

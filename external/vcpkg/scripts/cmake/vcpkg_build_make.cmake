@@ -95,7 +95,7 @@ function(vcpkg_build_make)
                 set(LINKER_FLAGS_${cmake_buildtype} "${VCPKG_DETECTED_CMAKE_STATIC_LINKER_FLAGS_${cmake_buildtype}}")
             else() # dynamic
                 set(LINKER_FLAGS_${cmake_buildtype} "${VCPKG_DETECTED_CMAKE_SHARED_LINKER_FLAGS_${cmake_buildtype}}")
-            endif()            
+            endif()
             set(LDFLAGS_${cmake_buildtype} "")
             if(EXISTS "${Z_VCPKG_INSTALLED}${path_suffix}/lib")
                 string(APPEND LDFLAGS_${cmake_buildtype} " -L${Z_VCPKG_INSTALLED}${path_suffix}/lib")
@@ -108,7 +108,7 @@ function(vcpkg_build_make)
             else()
                 string(APPEND LDFLAGS_${cmake_buildtype} " ${LINKER_FLAGS_${cmake_buildtype}}")
             endif()
-            
+
             # Setup environment
             set(ENV{CPPFLAGS} "${CPPFLAGS_${cmake_buildtype}}")
             set(ENV{CFLAGS} "${CFLAGS_${cmake_buildtype}}")
@@ -154,7 +154,7 @@ function(vcpkg_build_make)
                 )
             endif()
 
-            file(READ "${CURRENT_BUILDTREES_DIR}/${arg_LOGFILE_ROOT}-${TARGET_TRIPLET}${short_buildtype}-out.log" logdata) 
+            file(READ "${CURRENT_BUILDTREES_DIR}/${arg_LOGFILE_ROOT}-${TARGET_TRIPLET}${short_buildtype}-out.log" logdata)
             if(logdata MATCHES "Warning: linker path does not have real file for library")
                 message(FATAL_ERROR "libtool could not find a file being linked against!")
             endif()
@@ -192,7 +192,7 @@ function(vcpkg_build_make)
         file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}_tmp")
     endif()
 
-    # Remove libtool files since they contain absolute paths and are not necessary. 
+    # Remove libtool files since they contain absolute paths and are not necessary.
     file(GLOB_RECURSE libtool_files "${CURRENT_PACKAGES_DIR}/**/*.la")
     if(libtool_files)
         file(REMOVE ${libtool_files})

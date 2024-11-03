@@ -17,8 +17,8 @@ index 4bb8611..cc416ab 100644
 --- a/gk_getopt.h
 +++ b/gk_getopt.h
 @@ -52,10 +52,10 @@ struct gk_option {
- 
- 
+
+
  /* Function prototypes */
 -extern int gk_getopt(int __argc, char **__argv, char *__shortopts);
 -extern int gk_getopt_long(int __argc, char **__argv, char *__shortopts,
@@ -28,5 +28,3 @@ index 4bb8611..cc416ab 100644
 -extern int gk_getopt_long_only (int __argc, char **__argv,
 +extern int gk_getopt_long_only (int argc, char ** argv,
                char *__shortopts, struct gk_option *__longopts, int *__longind);
- 
- 

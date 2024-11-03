@@ -5,7 +5,7 @@ index b69ce50c..1e8938b7 100755
 @@ -3042,7 +3032,7 @@ ELSE()
    ENDIF()
  ENDIF()
- 
+
 -TARGET_INCLUDE_DIRECTORIES(XNNPACK PUBLIC include)
 +TARGET_INCLUDE_DIRECTORIES(XNNPACK PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
  TARGET_INCLUDE_DIRECTORIES(XNNPACK PRIVATE src)
@@ -13,7 +13,7 @@ index b69ce50c..1e8938b7 100755
    # Target Windows 7+ API
 @@ -3057,7 +3047,7 @@ IF(LIBM)
  ENDIF()
- 
+
  # ---[ Configure clog
 -IF(NOT TARGET clog)
 +IF(FALSE)
@@ -25,7 +25,7 @@ index b69ce50c..1e8938b7 100755
    ENDIF()
  ENDIF()
 -TARGET_LINK_LIBRARIES(XNNPACK PRIVATE clog)
- 
+
  # ---[ Configure cpuinfo
 -IF(NOT TARGET cpuinfo)
 +IF(FALSE)
@@ -39,7 +39,7 @@ index b69ce50c..1e8938b7 100755
 -TARGET_LINK_LIBRARIES(XNNPACK PRIVATE cpuinfo)
 +find_package(cpuinfo CONFIG REQUIRED)
 +target_link_libraries(XNNPACK PUBLIC cpuinfo::clog cpuinfo::cpuinfo)
- 
+
  # ---[ Configure pthreadpool
 -IF(NOT TARGET pthreadpool)
 +IF(FALSE)
@@ -48,7 +48,7 @@ index b69ce50c..1e8938b7 100755
      SET(PTHREADPOOL_BUILD_BENCHMARKS OFF CACHE BOOL "")
 @@ -3119,7 +3109,7 @@ ENDIF()
  TARGET_LINK_LIBRARIES(XNNPACK PUBLIC pthreadpool)
- 
+
  # ---[ Configure FXdiv
 -IF(NOT TARGET fxdiv)
 +IF(FALSE)
@@ -62,7 +62,7 @@ index b69ce50c..1e8938b7 100755
 -TARGET_LINK_LIBRARIES(XNNPACK PRIVATE fxdiv)
 +find_path(FXDIV_INCLUDE_DIRS "fxdiv.h")
 +target_include_directories(XNNPACK PRIVATE ${FXDIV_INCLUDE_DIRS})
- 
+
  # ---[ Configure FP16
 -IF(NOT TARGET fp16)
 +IF(FALSE)
@@ -76,7 +76,7 @@ index b69ce50c..1e8938b7 100755
 -TARGET_LINK_LIBRARIES(XNNPACK PRIVATE fp16)
 +find_path(FP16_INCLUDE_DIRS "fp16.h")
 +target_include_directories(XNNPACK PRIVATE ${FP16_INCLUDE_DIRS})
- 
+
  INSTALL(TARGETS XNNPACK
 +    EXPORT xnnpack-config
 +    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -85,6 +85,6 @@ index b69ce50c..1e8938b7 100755
      PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 +install(EXPORT  xnnpack-config NAMESPACE unofficial::
 +    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/xnnpack)
- 
+
  # ---[ XNNPACK unit tests
  IF(XNNPACK_BUILD_TESTS)

@@ -123,6 +123,6 @@ Most Eigen source code is subject to the terms of the Mozilla Public License
 v. 2.0. You can obtain a copy the MPL 2.0 at http://mozilla.org/MPL/2.0/.
 
 Some files included in Eigen are under one of the following licenses:
- - Apache License, Version 2.0 
+ - Apache License, Version 2.0
  - BSD 3-Clause \"New\" or \"Revised\" License
 ")

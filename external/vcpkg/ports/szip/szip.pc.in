@@ -13,4 +13,3 @@ Requires:
 Cflags: -I"${includedir}" @SZIP_LINKAGE_FLAGS@
 Libs: -L"${libdir}" @SZIP_LIB@
 Libs.private: @SZIP_LIBS_PRIVATE@
-

@@ -2,38 +2,38 @@ diff --color -ur a/cmake/FindLog4cplus.cmake b/cmake/FindLog4cplus.cmake
 --- a/cmake/FindLog4cplus.cmake	2020-01-13 18:31:55.000000000 +0100
 +++ b/cmake/FindLog4cplus.cmake	2022-07-19 19:35:41.701935383 +0200
 @@ -61,12 +61,12 @@
- 
+
  endif ()
- 
+
 +# needed to use find_package_handle_standard_args
 +include(FindPackageHandleStandardArgs)
 +
  if (LOG4CPLUS_INCLUDE_DIR)
- 	# set the correct variable name for the header directories         
+ 	# set the correct variable name for the header directories
  	set(LOG4CPLUS_INCLUDE_DIRS ${LOG4CPLUS_INCLUDE_DIR})
 -
 -	# needed to use find_package_handle_standard_args
 -	include(FindPackageHandleStandardArgs)
- 	
+
      if (LOG4CPLUS_LIBRARY_RELEASE AND LOG4CPLUS_LIBRARY_DEBUG)
      	# set the libaries varible to use the release and debug versions
 diff --color -ur a/cmake/FindMsgpack.cmake b/cmake/FindMsgpack.cmake
 --- a/cmake/FindMsgpack.cmake	2020-01-13 18:31:55.000000000 +0100
 +++ b/cmake/FindMsgpack.cmake	2022-07-19 19:35:41.702935385 +0200
 @@ -61,13 +61,13 @@
- 
+
  endif ()
- 
+
 +# needed to use find_package_handle_standard_args
 +include(FindPackageHandleStandardArgs)
-+	
++
  if (MSGPACK_INCLUDE_DIR)
- 	# set the correct variable name for the header directories         
+ 	# set the correct variable name for the header directories
  	set(MSGPACK_INCLUDE_DIRS ${MSGPACK_INCLUDE_DIR})
- 
+
 -	# needed to use find_package_handle_standard_args
 -	include(FindPackageHandleStandardArgs)
--	
+-
      if (MSGPACK_LIBRARY_RELEASE AND MSGPACK_LIBRARY_DEBUG)
      	# set the libaries varible to use the release and debug versions
      	find_package_handle_standard_args(MSGPACK DEFAULT_MSG MSGPACK_INCLUDE_DIR MSGPACK_LIBRARY_RELEASE MSGPACK_LIBRARY_DEBUG)
@@ -52,10 +52,10 @@ diff --color -ur a/example/CMakeLists.txt b/example/CMakeLists.txt
 --- a/example/CMakeLists.txt	2020-01-13 18:31:55.000000000 +0100
 +++ b/example/CMakeLists.txt	2022-07-19 19:35:41.696935371 +0200
 @@ -48,5 +48,13 @@
- 
+
      # Add the necessary external library references
      target_link_libraries( ${SOURCEFILE} anyrpc ${ASAN_LIBRARY} ${LOG4CPLUS_LIBRARIES} ${MSGPACK_LIBRARIES})
-+    
++
 +    if (WIN32)
 +        target_compile_definitions(${SOURCEFILE}
 +            PRIVATE
@@ -64,13 +64,13 @@ diff --color -ur a/example/CMakeLists.txt b/example/CMakeLists.txt
 +        )
 +    endif ()
  endforeach ()
- 
+
 diff --color -ur a/include/anyrpc/connection.h b/include/anyrpc/connection.h
 --- a/include/anyrpc/connection.h	2020-01-13 18:31:55.000000000 +0100
 +++ b/include/anyrpc/connection.h	2022-07-19 19:35:41.698935376 +0200
 @@ -22,11 +22,7 @@
  #define ANYRPC_CONNECTION_H_
- 
+
  #if defined(ANYRPC_THREADING)
 -# if defined(__MINGW32__)
 -#  include "internal/mingw.thread.h"
@@ -79,7 +79,7 @@ diff --color -ur a/include/anyrpc/connection.h b/include/anyrpc/connection.h
 -# endif // defined(__MINGW32__)
 +# include <thread>
  #endif // defined(ANYRPC_THREADING)
- 
+
  #if defined(ANYRPC_REGEX)
 diff --color -ur a/include/anyrpc/internal/time.h b/include/anyrpc/internal/time.h
 --- a/include/anyrpc/internal/time.h	2020-01-13 18:31:55.000000000 +0100
@@ -87,20 +87,20 @@ diff --color -ur a/include/anyrpc/internal/time.h b/include/anyrpc/internal/time
 @@ -32,10 +32,6 @@
  int gettimeofday(struct timeval * tp, struct timezone * tzp);
  #endif
- 
+
 -#if defined(__MINGW32__)
 -struct tm* localtime_r(const time_t *timep, struct tm *result);
 -#endif
 -
  //! Compute the difference between the two times in milliseconds
  ANYRPC_API int MilliTimeDiff(struct timeval &time1, struct timeval &time2);
- 
+
 diff --color -ur a/include/anyrpc/server.h b/include/anyrpc/server.h
 --- a/include/anyrpc/server.h	2020-01-13 18:31:55.000000000 +0100
 +++ b/include/anyrpc/server.h	2022-07-19 19:35:41.699935378 +0200
 @@ -22,24 +22,9 @@
  #define ANYRPC_SERVER_H_
- 
+
  #if defined(ANYRPC_THREADING)
 -# if defined(__MINGW32__)
 -// These constants are not defined for mingw but are needed in the following libraries
@@ -124,7 +124,7 @@ diff --color -ur a/include/anyrpc/server.h b/include/anyrpc/server.h
 +# include <condition_variable>
 +# include <mutex>
  #endif //defined(ANYRPC_THREADING)
- 
+
  namespace anyrpc
 diff --color -ur a/src/CMakeLists.txt b/src/CMakeLists.txt
 --- a/src/CMakeLists.txt	2020-01-13 18:31:55.000000000 +0100
@@ -134,13 +134,13 @@ diff --color -ur a/src/CMakeLists.txt b/src/CMakeLists.txt
  if (WIN32)
      target_link_libraries(anyrpc ws2_32)
 +
-+    target_compile_definitions(anyrpc 
++    target_compile_definitions(anyrpc
 +        PRIVATE
 +            WINVER=0x0A00
 +            _WIN32_WINNT=0x0A00
 +    )
  endif ()
- 
+
  set_target_properties( anyrpc PROPERTIES VERSION ${ANYRPC_VERSION} SOVERSION ${ANYRPC_VERSION_MAJOR} )
 diff --color -ur a/src/internal/time.cpp b/src/internal/time.cpp
 --- a/src/internal/time.cpp	2020-01-13 18:31:55.000000000 +0100
@@ -148,7 +148,7 @@ diff --color -ur a/src/internal/time.cpp b/src/internal/time.cpp
 @@ -26,11 +26,8 @@
  #include <chrono>
  #endif
- 
+
 -#if defined(_MSC_VER)
 -#elif defined(__MINGW32__)
 -#include <unistd.h>
@@ -157,12 +157,12 @@ diff --color -ur a/src/internal/time.cpp b/src/internal/time.cpp
 +#if !defined(_MSC_VER)
 +# include <time.h>
  #endif
- 
+
  namespace anyrpc
 @@ -57,16 +54,6 @@
  }
  #endif
- 
+
 -#if defined(__MINGW32__)
 -struct tm* localtime_r(const time_t *timep, struct tm *result)
 -{
@@ -198,9 +198,9 @@ diff --color -ur a/src/socket.cpp b/src/socket.cpp
  #elif (__APPLE__)
      int result = setsockopt( fd_, IPPROTO_TCP, TCP_KEEPALIVE, (char*)&startTime, sizeof(startTime) );
 @@ -554,15 +554,11 @@
- 
+
      port = ntohs(receiveAddr.sin_port);
- 
+
 -#if defined(__MINGW32__)
 -    // should be thread-safe since it would use the Windows call
 -    ipAddress = inet_ntoa(receiveAddr.sin_addr);
@@ -212,5 +212,5 @@ diff --color -ur a/src/socket.cpp b/src/socket.cpp
 -#endif
 +
      log_debug("Udp Receive: address=" << ipAddress << ", port=" << port);
- 
+
      eof = (numBytes == 0);

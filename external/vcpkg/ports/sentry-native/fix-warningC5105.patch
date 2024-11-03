@@ -5,8 +5,7 @@ index e56fe8b..902e373 100644
 @@ -8,6 +8,7 @@
   * For conditions of distribution and use, see copyright notice in zlib.h
   */
- 
+
 +#pragma warning(disable : 5105)
  #include "x86.h"
  #include "zutil.h"
- 

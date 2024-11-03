@@ -48,6 +48,5 @@ index 57b7aa8..3f53fb5 100644
      int       run_count;
      /*Make sure this coefficient has tokens at all.*/
      if(_enc->ndct_tokens[pli][zzi]<=0)continue;
--- 
+--
 2.12.2.windows.2
-

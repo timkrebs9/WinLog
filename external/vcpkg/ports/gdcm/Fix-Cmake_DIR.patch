@@ -5,7 +5,7 @@ index f8e9d0b..ab28546 100644
 @@ -33,28 +33,28 @@ if(GDCM_USE_VTK)
    set(GDCM_VTK_DIR "@GDCM_VTK_DIR_CONFIG@")
  endif()
- 
+
 -get_filename_component(SELF_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 -if(EXISTS ${SELF_DIR}/GDCMTargets.cmake)
 +get_filename_component(GDCM_SELF_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
@@ -25,17 +25,17 @@ index f8e9d0b..ab28546 100644
      # This is a build tree
      set( GDCM_INCLUDE_DIRS "@GDCM_INCLUDE_PATH@")
      set(GDCM_LIBRARY_DIRS "@GDCM_LIBRARY_DIR@")
- 
+
 -    include(${SELF_DIR}/GDCMExports.cmake)
 +    include(${GDCM_SELF_DIR}/GDCMExports.cmake)
- 
+
    else()
      message(FATAL_ERROR "ooops")
    endif()
  endif()
- 
+
 -set(GDCM_USE_FILE ${SELF_DIR}/UseGDCM.cmake)
 +set(GDCM_USE_FILE ${GDCM_SELF_DIR}/UseGDCM.cmake)
- 
+
  # Backward compatible part:
  set(GDCM_FOUND       TRUE)

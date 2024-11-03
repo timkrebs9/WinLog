@@ -12,7 +12,7 @@ index f98816cb..71a3b4f9 100644
 +prefix=@CMAKE_INSTALL_PREFIX@
 +libdir=${prefix}@/lib
 +includedir=${prefix}/include
- 
+
  Name: tree-sitter
  Description: An incremental parsing system for programming tools
  URL: https://tree-sitter.github.io/

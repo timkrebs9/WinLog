@@ -33,8 +33,7 @@ index d87d02da9..7c951bfd5 100644
 -      endif()
 +    set(PCLCONFIG_INSTALL_DIR "share/pcl")
  endmacro()
- 
- 
--- 
-2.32.0.windows.1
 
+
+--
+2.32.0.windows.1

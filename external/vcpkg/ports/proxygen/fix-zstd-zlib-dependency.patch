@@ -27,4 +27,3 @@ index b3fa2d1..5c50ee1 100644
 +    ZLIB::ZLIB
      ${HTTP3_DEPEND_LIBS}
  )
- 

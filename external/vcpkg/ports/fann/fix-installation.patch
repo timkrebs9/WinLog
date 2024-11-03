@@ -17,7 +17,7 @@ index 644cf1b..81e7c74 100644
      )
 +endif()
  endif (UNIX)
- 
+
 -if (WIN32)
 +if (0)
  	# Same same
@@ -29,42 +29,41 @@ index 644cf1b..81e7c74 100644
  	SET(LOCALE_INSTALL_DIR lang)
 -endif (WIN32)
 +endif (0)
- 
+
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index fade00c..a4e6c3f 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -14,7 +14,7 @@ floatfann.c
  ADD_LIBRARY(floatfann SHARED ${floatfann_LIB_SRCS})
- 
+
  SET_TARGET_PROPERTIES(floatfann PROPERTIES VERSION ${VERSION} SOVERSION 2 )
 -INSTALL(TARGETS floatfann DESTINATION ${LIB_INSTALL_DIR} )
 +INSTALL(TARGETS floatfann RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib )
- 
- 
+
+
  ########### next target ###############
 @@ -26,7 +26,7 @@ doublefann.c
  ADD_LIBRARY(doublefann SHARED ${doublefann_LIB_SRCS})
- 
+
  SET_TARGET_PROPERTIES(doublefann PROPERTIES VERSION ${VERSION} SOVERSION 2 )
 -INSTALL(TARGETS doublefann DESTINATION ${LIB_INSTALL_DIR} )
 +INSTALL(TARGETS doublefann RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib )
- 
- 
+
+
  ########### next target ###############
 @@ -38,7 +38,7 @@ fixedfann.c
  ADD_LIBRARY(fixedfann SHARED ${fixedfann_LIB_SRCS})
- 
+
  SET_TARGET_PROPERTIES(fixedfann PROPERTIES VERSION ${VERSION} SOVERSION 2 )
 -INSTALL(TARGETS fixedfann DESTINATION ${LIB_INSTALL_DIR} )
 +INSTALL(TARGETS fixedfann RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib )
- 
- 
+
+
  ########### next target ###############
 @@ -50,5 +50,5 @@ floatfann.c
  ADD_LIBRARY(fann SHARED ${fann_LIB_SRCS})
- 
+
  SET_TARGET_PROPERTIES(fann PROPERTIES VERSION ${VERSION} SOVERSION 2 )
 -INSTALL(TARGETS fann DESTINATION ${LIB_INSTALL_DIR} )
 +INSTALL(TARGETS fann RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib )
- 

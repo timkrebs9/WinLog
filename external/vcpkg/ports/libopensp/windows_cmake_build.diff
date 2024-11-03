@@ -28,7 +28,7 @@ diff -Nru -x '*~' OpenSP-1.5.2.orig/config.h OpenSP-1.5.2/config.h
 @@ -26,6 +26,12 @@
  #endif
  #endif /* __GNUG__ */
- 
+
 +#ifdef __MINGW32__
 +#define SP_HAVE_BOOL
 +#define SP_HAVE_TYPENAME
@@ -41,7 +41,7 @@ diff -Nru -x '*~' OpenSP-1.5.2.orig/config.h OpenSP-1.5.2/config.h
 @@ -80,6 +86,11 @@
  #define SP_HAVE_TYPENAME
  #endif
- 
+
 +#if _MSC_VER >=1800
 +// Visual Studio 2013
 +#define SP_ANSI_FOR_SCOPE
@@ -53,7 +53,7 @@ diff -Nru -x '*~' OpenSP-1.5.2.orig/config.h OpenSP-1.5.2/config.h
 @@ -301,12 +312,5 @@
  #define PATH_SEPARATOR ':'
  #endif
- 
+
 -
 -/* new stuff */
 -
@@ -93,9 +93,9 @@ diff -Nru -x '*~' OpenSP-1.5.2.orig/lib/MessageReporter.cxx OpenSP-1.5.2/lib/Mes
    }
    if (options_ & messageNumbers)
 +#ifdef _WIN64
-+    os() << (unsigned long long)message.type->module() << "." 
++    os() << (unsigned long long)message.type->module() << "."
 +#else
-     os() << (unsigned long)message.type->module() << "." 
+     os() << (unsigned long)message.type->module() << "."
 +#endif
        << (unsigned long)message.type->number() << ":";
    switch (message.type->severity()) {
@@ -106,7 +106,7 @@ diff -Nru -x '*~' OpenSP-1.5.2.orig/lib/OutputCharStream.cxx OpenSP-1.5.2/lib/Ou
 @@ -61,6 +61,13 @@
    return *this << buf;
  }
- 
+
 +OutputCharStream &OutputCharStream::operator<<(unsigned long long n)
 +{
 +  char buf[sizeof(unsigned long long)*3 + 1];
@@ -123,7 +123,7 @@ diff -Nru -x '*~' OpenSP-1.5.2.orig/lib/SGMLApplication.cxx OpenSP-1.5.2/lib/SGM
 @@ -9,6 +9,10 @@
  #include "Boolean.h"
  #include "SGMLApplication.h"
- 
+
 +SGMLApplication::SGMLApplication()
 +{
 +}

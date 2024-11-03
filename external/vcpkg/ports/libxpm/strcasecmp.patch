@@ -1,6 +1,6 @@
 diff --git a/include/X11/xpm.h b/include/X11/xpm.h
 index f108f1f6e..143b6657d 100644
---- a/include/X11/xpm.h	
+--- a/include/X11/xpm.h
 +++ b/include/X11/xpm.h
 @@ -69,6 +69,10 @@
  # include <malloc.h>

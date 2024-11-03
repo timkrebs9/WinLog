@@ -12,7 +12,7 @@ function(vcpkg_fixup_cmake_targets)
     if(NOT arg_TARGET_PATH)
         set(arg_TARGET_PATH share/${PORT})
     endif()
-    
+
     if(NOT arg_TOOLS_PATH)
         set(arg_TOOLS_PATH tools/${PORT})
     endif()
@@ -182,5 +182,3 @@ function(vcpkg_fixup_cmake_targets)
         file(WRITE ${CMAKE_FILE} "${_contents}")
     endforeach()
 endfunction()
-
-

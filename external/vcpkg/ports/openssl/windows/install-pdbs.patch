@@ -8,7 +8,7 @@ index 5946c89..f71f3bf 100644
  	@if "$(SHLIBS)"=="" \
 +	 @if "$(INSTALL_PDBS)"=="ON" \
  	 "$(PERL)" "$(SRCDIR)\util\copy.pl" ossl_static.pdb "$(libdir)"
- 
+
  uninstall_dev:
 @@ -569,6 +570,7 @@ install_engines: _install_modules_deps
  	@if not "$(INSTALL_ENGINES)"=="" \
@@ -16,7 +16,7 @@ index 5946c89..f71f3bf 100644
  	@if not "$(INSTALL_ENGINES)"=="" \
 +	 @if "$(INSTALL_PDBS)"=="ON" \
  	 "$(PERL)" "$(SRCDIR)\util\copy.pl" $(INSTALL_ENGINEPDBS) "$(ENGINESDIR)"
- 
+
  uninstall_engines:
 @@ -580,6 +582,7 @@ install_modules: _install_modules_deps
  	@if not "$(INSTALL_MODULES)"=="" \
@@ -24,7 +24,7 @@ index 5946c89..f71f3bf 100644
  	@if not "$(INSTALL_MODULES)"=="" \
 +	 @if "$(INSTALL_PDBS)"=="ON" \
  	 "$(PERL)" "$(SRCDIR)\util\copy.pl" $(INSTALL_MODULEPDBS) "$(MODULESDIR)"
- 
+
  uninstall_modules:
 @@ -593,6 +596,7 @@ install_runtime_libs: build_libs
  	@if not "$(SHLIBS)"=="" \
@@ -33,7 +33,7 @@ index 5946c89..f71f3bf 100644
 +	 @if "$(INSTALL_PDBS)"=="ON" \
  	 "$(PERL)" "$(SRCDIR)\util\copy.pl" $(INSTALL_SHLIBPDBS) \
                                          "$(INSTALLTOP)\bin"
- 
+
 @@ -605,6 +609,7 @@ install_programs: install_runtime_libs build_programs
  	 "$(PERL)" "$(SRCDIR)\util\copy.pl" $(INSTALL_PROGRAMS) \
                                          "$(INSTALLTOP)\bin"

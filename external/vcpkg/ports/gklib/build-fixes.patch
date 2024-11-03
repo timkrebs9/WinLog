@@ -6,12 +6,12 @@ index 9cd1b4b..a6b629e 100644
 -cmake_minimum_required(VERSION 2.8)
 +cmake_minimum_required(VERSION 3.22)
  project(GKlib C)
- 
+
  option(BUILD_SHARED_LIBS "Build shared libraries (.dll/.so) instead of static ones (.lib/.a)" OFF)
 @@ -22,10 +22,12 @@ if(UNIX)
    target_link_libraries(GKlib m)
  endif(UNIX)
- 
+
 -include_directories("test")
 -add_subdirectory("test")
 -
@@ -33,7 +33,7 @@ index d83b208..8019067 100644
 --- a/GKlibSystem.cmake
 +++ b/GKlibSystem.cmake
 @@ -16,7 +16,6 @@ option(GKRAND "enable GKRAND support" OFF)
- 
+
  # Add compiler flags.
  if(MSVC)
 -  set(GKlib_COPTS "/Ox")
@@ -57,16 +57,16 @@ index d83b208..8019067 100644
 +elseif(0)
    set(GKlib_COPTS "-O3")
  endif(GDB)
- 
+
 diff --git a/gk_arch.h b/gk_arch.h
 index 8c8ac50..122e087 100644
 --- a/gk_arch.h
 +++ b/gk_arch.h
 @@ -31,9 +31,9 @@
  #endif
- 
- 
--#ifdef __MSC__ 
+
+
+-#ifdef __MSC__
 -  #include "ms_stdint.h"
 -  #include "ms_inttypes.h"
 +#ifdef __MSC__
@@ -78,7 +78,7 @@ index 8c8ac50..122e087 100644
 @@ -60,9 +60,4 @@ typedef ptrdiff_t ssize_t;
  #define PTRDIFF_MAX  INT64_MAX
  #endif
- 
+
 -/* MSC does not have INFINITY defined */
 -#ifndef INFINITY
 -#define INFINITY FLT_MAX

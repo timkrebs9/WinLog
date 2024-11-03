@@ -4,7 +4,7 @@ index 9c15f36a..5afff016 100644
 +++ b/builds/cmake/Config.cmake.in
 @@ -1,4 +1,12 @@
  @PACKAGE_INIT@
- 
+
 +include(CMakeFindDependencyMacro)
 +
 +find_dependency(ZeroMQ)

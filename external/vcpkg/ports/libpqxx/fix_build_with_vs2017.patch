@@ -5,8 +5,8 @@ index abc1a39..cba0242 100644
 @@ -90,6 +90,12 @@
  // Workarounds for Microsoft Visual C++
  #  ifdef _MSC_VER
- 
-+ 
+
++
 +// Workarounds for deprecated attribute syntax error in Visual Studio 2017.
 +#    if _MSC_VER < 1920
 +#      define PQXX_DEPRECATED(MESSAGE) __declspec(deprecated( #MESSAGE ))
@@ -14,11 +14,11 @@ index abc1a39..cba0242 100644
 +
  // Suppress vtables on abstract classes.
  #    define PQXX_NOVTABLE __declspec(novtable)
- 
+
 @@ -159,6 +165,10 @@
  #  define PQXX_NOVTABLE /* novtable */
  #endif
- 
+
 +#ifndef PQXX_DEPRECATED
 +#  define PQXX_DEPRECATED(MESSAGE) [[deprecated( #MESSAGE )]]
 +#endif
@@ -38,7 +38,7 @@ index ff4a93d..5b300d6 100644
 +  PQXX_DEPRECATED("Use table() or raw_table() factory instead.") stream_from(
      transaction_base &, from_table_t, std::string_view table,
      Iter columns_begin, Iter columns_end);
- 
+
 @@ -161,13 +161,13 @@ public:
    /** @deprecated Use factory function @ref query instead.
     */
@@ -47,7 +47,7 @@ index ff4a93d..5b300d6 100644
 +  PQXX_DEPRECATED("Use table() or raw_table() factory instead.") stream_from(
      transaction_base &tx, from_table_t, std::string_view table,
      Columns const &columns);
- 
+
  #include "pqxx/internal/ignore-deprecated-pre.hxx"
    /// @deprecated Use factories @ref table or @ref raw_table instead.
 -  [[deprecated("Use the from_table_t overload instead.")]] stream_from(
@@ -56,7 +56,7 @@ index ff4a93d..5b300d6 100644
            stream_from{tx, from_table, table}
    {}
 @@ -175,14 +175,14 @@ public:
- 
+
    /// @deprecated Use factories @ref table or @ref raw_table instead.
    template<typename Columns>
 -  [[deprecated("Use the from_table_t overload instead.")]] stream_from(
@@ -64,14 +64,14 @@ index ff4a93d..5b300d6 100644
      transaction_base &tx, std::string_view table, Columns const &columns) :
            stream_from{tx, from_table, table, columns}
    {}
- 
+
    /// @deprecated Use factories @ref table or @ref raw_table instead.
    template<typename Iter>
 -  [[deprecated("Use the from_table_t overload instead.")]] stream_from(
 +  PQXX_DEPRECATED("Use the from_table_t overload instead.") stream_from(
      transaction_base &, std::string_view table, Iter columns_begin,
      Iter columns_end);
- 
+
 diff --git a/include/pqxx/stream_to.hxx b/include/pqxx/stream_to.hxx
 index 2a49d8f..06e602e 100644
 --- a/include/pqxx/stream_to.hxx
@@ -92,7 +92,7 @@ index 2a49d8f..06e602e 100644
 -  [[deprecated("Use table() or raw_table() factory.")]] stream_to(
 +  PQXX_DEPRECATED("Use table() or raw_table() factory.") stream_to(
      transaction_base &, std::string_view table_name, Columns const &columns);
- 
+
    /// Create a stream, specifying column names as a sequence of strings.
    /** @deprecated Use @ref table or @ref raw_table as a factory.
     */
@@ -101,4 +101,3 @@ index 2a49d8f..06e602e 100644
 +  PQXX_DEPRECATED("Use table() or raw_table() factory.") stream_to(
      transaction_base &, std::string_view table_name, Iter columns_begin,
      Iter columns_end);
- 

@@ -14,7 +14,7 @@ set(loguru_sources
 )
 
 add_library(loguru ${loguru_sources})
-target_include_directories(loguru PUBLIC 
+target_include_directories(loguru PUBLIC
                                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
                                $<INSTALL_INTERFACE:include/loguru>)
 

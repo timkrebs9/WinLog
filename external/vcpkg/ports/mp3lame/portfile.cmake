@@ -33,11 +33,11 @@ if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
     string(REPLACE "\"vc11_" "\"${machine}_vc11_" sln_con "${sln_con}")
     file(WRITE "${SOURCE_PATH}/vc_solution/${machine}_vc11_lame.sln" "${sln_con}")
 
-    
+
     file(GLOB vcxprojs RELATIVE "${SOURCE_PATH}/vc_solution" "${SOURCE_PATH}/vc_solution/vc11_*.vcxproj")
     foreach(vcxproj ${vcxprojs})
         file(READ "${SOURCE_PATH}/vc_solution/${vcxproj}" vcxproj_con)
-        
+
         if(NOT VCPKG_CRT_LINKAGE STREQUAL dynamic)
             string(REPLACE "DLL</RuntimeLibrary>" "</RuntimeLibrary>" vcxproj_con "${vcxproj_con}")
         endif()
@@ -46,11 +46,11 @@ if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
         string(REPLACE "<Platform>Win32</Platform>" "<Platform>${platform}</Platform>" vcxproj_con "${vcxproj_con}")
         string(REPLACE "|Win32" "|${platform}" vcxproj_con "${vcxproj_con}")
         string(REPLACE "Include=\"vc11_" "Include=\"${machine}_vc11_" vcxproj_con "${vcxproj_con}")
- 
+
         if(NOT VCPKG_CMAKE_SYSTEM_NAME STREQUAL "WindowsStore")
             string(REPLACE "/APPCONTAINER" "" vcxproj_con "${vcxproj_con}")
         endif()
-        
+
         file(WRITE "${SOURCE_PATH}/vc_solution/${machine}_${vcxproj}" "${vcxproj_con}")
     endforeach()
 

@@ -4,7 +4,7 @@ index 75b82ee..47bed29 100644
 +++ b/src/CMakeLists.txt
 @@ -3,11 +3,7 @@ cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
  project(uthenticode)
- 
+
  find_package(pe-parse REQUIRED)
 -find_package(
 -  OpenSSL 1.1
@@ -12,16 +12,16 @@ index 75b82ee..47bed29 100644
 -  REQUIRED
 -)
 +find_package(OpenSSL REQUIRED)
- 
+
  add_library("${PROJECT_NAME}" uthenticode.cpp)
- 
+
 @@ -38,7 +34,7 @@ else ()
    target_link_libraries("${PROJECT_NAME}" PUBLIC pe-parse::pe-parser-library)
  endif ()
- 
+
 -target_link_libraries("${PROJECT_NAME}" PUBLIC OpenSSL::Crypto)
 +target_link_libraries("${PROJECT_NAME}" PUBLIC OpenSSL::SSL OpenSSL::Crypto)
- 
+
  install(
    TARGETS "${PROJECT_NAME}"
 diff --git a/src/include/uthenticode.h b/src/include/uthenticode.h
@@ -33,7 +33,7 @@ index 8422cc3..938d8b8 100644
   */
  void OpenSSL_free(void *ptr);
 +void SK_X509_free(stack_st_X509 *ptr);
- 
+
  /* Convenient self-releasing aliases for libcrypto and custom ASN.1 types.
   */
 @@ -56,7 +57,7 @@ using ASN1_OBJECT_ptr = std::unique_ptr<ASN1_OBJECT, decltype(&ASN1_OBJECT_free)
@@ -42,9 +42,9 @@ index 8422cc3..938d8b8 100644
  using BN_ptr = std::unique_ptr<BIGNUM, decltype(&BN_free)>;
 -using STACK_OF_X509_ptr = std::unique_ptr<STACK_OF(X509), decltype(&sk_X509_free)>;
 +using STACK_OF_X509_ptr = std::unique_ptr<STACK_OF(X509), decltype(&SK_X509_free)>;
- 
+
  using SectionList = std::vector<const peparse::bounded_buffer *>;
- 
+
 diff --git a/src/uthenticode.cpp b/src/uthenticode.cpp
 index b1be0bc..7043589 100644
 --- a/src/uthenticode.cpp
@@ -60,13 +60,13 @@ index b1be0bc..7043589 100644
 +
  // clang-format on
  }  // namespace impl
- 
+
 @@ -252,7 +257,7 @@ std::vector<Certificate> SignedData::get_signers() const {
    if (signers_stack_ptr == nullptr) {
      return {};
    }
 -  auto signers_stack = impl::STACK_OF_X509_ptr(signers_stack_ptr, sk_X509_free);
 +  auto signers_stack = impl::STACK_OF_X509_ptr(signers_stack_ptr, impl::SK_X509_free);
- 
+
    std::vector<Certificate> signers;
    for (auto i = 0; i < sk_X509_num(signers_stack.get()); ++i) {

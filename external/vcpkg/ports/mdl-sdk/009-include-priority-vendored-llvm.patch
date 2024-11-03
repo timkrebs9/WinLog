@@ -5,8 +5,8 @@ index e477c57..0e323d0 100644
 @@ -100,7 +100,7 @@ set(_LLVM_LIB_NAMES
      LLVMSupport
      )
-     
--target_include_directories(${__TARGET_ADD_DEPENDENCY_TARGET} 
+
+-target_include_directories(${__TARGET_ADD_DEPENDENCY_TARGET}
 +target_include_directories(${__TARGET_ADD_DEPENDENCY_TARGET} BEFORE
      PRIVATE
          ${mdl-jit-llvm_SOURCE_DIR}/dist/include

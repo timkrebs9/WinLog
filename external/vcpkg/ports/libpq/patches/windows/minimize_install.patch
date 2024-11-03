@@ -3,7 +3,7 @@ index d109b2c90..75c7446e6 100644
 --- a/src/tools/msvc/Install.pm
 +++ b/src/tools/msvc/Install.pm
 @@ -22,13 +22,13 @@ our (@ISA, @EXPORT_OK);
- 
+
  my $insttype;
  my @client_contribs = ('oid2name', 'pgbench', 'vacuumlo');
 -my @client_program_files = (
@@ -20,7 +20,7 @@ index d109b2c90..75c7446e6 100644
 +	#'pg_config',     'pg_dump',        'pg_dumpall', 'pg_isready',
 +	#'pg_receivewal', 'pg_recvlogical', 'pg_restore', 'psql',
 +	#'reindexdb',     'vacuumdb',       @client_contribs);
- 
+
  sub lcopy
  {
 @@ -121,7 +121,7 @@ sub Install
@@ -32,4 +32,3 @@ index d109b2c90..75c7446e6 100644
  		"libpgport\\libpgport.lib");
  	CopyContribFiles($config, $target);
  	CopyIncludeFiles($target);
-

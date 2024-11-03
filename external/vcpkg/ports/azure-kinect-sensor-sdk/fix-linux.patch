@@ -34,6 +34,5 @@ index 05264c5f..6cd41d32 100644
  #include <stdio.h>
  #include <string.h>
 +#include <stdarg.h>
- 
+
  // External dependencies
- 

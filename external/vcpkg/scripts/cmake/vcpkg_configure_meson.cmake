@@ -229,7 +229,7 @@ function(z_vcpkg_get_build_and_host_system build_system host_system is_cross) #h
         set(host_unkown TRUE)
     endif()
 
-    set(host "[host_machine]\n") # host=target in vcpkg. 
+    set(host "[host_machine]\n") # host=target in vcpkg.
     string(APPEND host "endian = 'little'\n")
     if(NOT VCPKG_CMAKE_SYSTEM_NAME OR VCPKG_TARGET_IS_MINGW OR VCPKG_TARGET_IS_UWP)
         set(meson_system_name "windows")

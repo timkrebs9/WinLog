@@ -3,16 +3,16 @@ index 70f7f50..13857be 100644
 --- a/src/mdl/jit/llvm/CMakeLists.txt
 +++ b/src/mdl/jit/llvm/CMakeLists.txt
 @@ -289,11 +289,16 @@ endforeach()
- 
+
  # -------------------------------------------------------------------------------------------------
  # set options for all other projects that are build in addition to the libs we need
--set(ADDITIONAL_LLVM_TARGETS 
+-set(ADDITIONAL_LLVM_TARGETS
 -    obj.llvm-tblgen
--    llvm-tblgen 
+-    llvm-tblgen
 +set(ADDITIONAL_LLVM_TARGETS
 +    llvm-tblgen
      )
- 
+
 +
 +# LLVM_ENABLE_OBJLIB cf. dist\cmake\modules\TableGen.cmake:125
 +if(NOT (CMAKE_GENERATOR STREQUAL "Ninja" AND NOT CMAKE_VERSION VERSION_LESS 3.9) AND NOT XCODE)
@@ -25,8 +25,8 @@ index 70f7f50..13857be 100644
 @@ -360,9 +365,10 @@ if(WINDOWS)
              )
      endif()
- 
--    set(_LLVM_EXCLUDE ${_LLVM_EXCLUDE} 
+
+-    set(_LLVM_EXCLUDE ${_LLVM_EXCLUDE}
 -        LLVMVisualizers
 -        )
 +    # LLVM_ADD_NATIVE_VISUALIZERS_TO_SOLUTION cf. dist\CMakeLists.txt:559
@@ -34,5 +34,3 @@ index 70f7f50..13857be 100644
 +      list(APPEND _LLVM_EXCLUDE LLVMVisualizers)
 +    endif()
  endif()
- 
- 

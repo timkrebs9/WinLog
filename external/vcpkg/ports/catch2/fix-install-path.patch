@@ -2,7 +2,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -164,7 +164,7 @@
- 
+
      ## Provide some pkg-config integration
      set(PKGCONFIG_INSTALL_DIR
 -        "${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig"
@@ -20,7 +20,7 @@ diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 -        Catch2WithMain
        EXPORT
          Catch2Targets
-       LIBRARY DESTINATION 
+       LIBRARY DESTINATION
          ${CMAKE_INSTALL_LIBDIR}
        ARCHIVE DESTINATION
          ${CMAKE_INSTALL_LIBDIR}
@@ -40,6 +40,6 @@ diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 +      RUNTIME DESTINATION
 +        ${CMAKE_INSTALL_BINDIR}
 +    )
- 
- 
+
+
      install(

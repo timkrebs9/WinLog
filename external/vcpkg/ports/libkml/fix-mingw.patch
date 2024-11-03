@@ -9,7 +9,7 @@ index 028f50a..bb63ffb 100644
 +if(WIN32)
 +  add_definitions(-DUNICODE -D_UNICODE)
 +endif()
- 
+
  else()
   if(MSVC)
 diff --git a/src/kml/base/file_win32.cc b/src/kml/base/file_win32.cc
@@ -24,7 +24,7 @@ index 28ccb36..6ba79cd 100644
  #include <xstring>
 +#endif
  #include <algorithm>
- 
+
  namespace kmlbase {
 diff --git a/src/kml/base/string_util.cc b/src/kml/base/string_util.cc
 index b3a9654..842f1cd 100644
@@ -32,7 +32,7 @@ index b3a9654..842f1cd 100644
 +++ b/src/kml/base/string_util.cc
 @@ -113,7 +113,7 @@ bool StringEndsWith(const string& str, const string& end) {
  }
- 
+
  bool StringCaseEqual(const string& a, const string& b) {
 -#ifdef WIN32
 +#if defined(WIN32) && !defined(__MINGW32__)

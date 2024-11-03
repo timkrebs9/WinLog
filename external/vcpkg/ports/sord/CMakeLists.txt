@@ -28,7 +28,7 @@ if(BUILD_SHARED_LIBS)
 endif()
 
 install(
-    TARGETS sord 
+    TARGETS sord
     EXPORT sord-targets
     INCLUDES DESTINATION include
 )

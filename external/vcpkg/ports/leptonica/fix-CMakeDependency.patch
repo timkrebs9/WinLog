@@ -10,7 +10,7 @@ index 6d300da..fae4ca7 100644
 -    if (PKG_CONFIG_FOUND)
 +    find_package(WEBP NAMES WebP REQUIRED)
 +    find_package(JP2K NAMES OpenJPEG REQUIRED)
-+    
++
 +    set(GIF_LIBRARIES GIF::GIF)
 +    set(JPEG_LIBRARIES JPEG::JPEG)
 +    set(PNG_LIBRARIES PNG::PNG)
@@ -49,16 +49,16 @@ index 342c37d..506fb2a 100644
 +find_dependency(GIF)
 +find_dependency(WebP)
 +find_dependency(OpenJPEG)
- 
+
  include(${CMAKE_CURRENT_LIST_DIR}/LeptonicaTargets.cmake)
- 
+
 @@ -36,7 +44,8 @@ SET(Leptonica_VERSION_PATCH     @VERSION_PATCH@)
  # ======================================================
- 
+
  # Provide the include directories to the caller
 -set(Leptonica_INCLUDE_DIRS      "@INCLUDE_DIR@")
 +get_filename_component(Leptonica_INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/../../include" ABSOLUTE)
 +list(APPEND Leptonica_INCLUDE_DIRS "${Leptonica_INCLUDE_DIRS}/leptonica")
- 
+
  # ====================================================================
  # Link libraries:

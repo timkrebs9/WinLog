@@ -14,7 +14,7 @@ index 09163ec..fd40e68 100644
 @@ -217,7 +217,7 @@ if(freetype-gl_BUILD_MAKEFONT)
      endif()
  endif()
- 
+
 -install(TARGETS freetype-gl
 +install(TARGETS freetype-gl EXPORT freetype-glConfig
    RUNTIME DESTINATION bin
@@ -29,6 +29,5 @@ index 09163ec..fd40e68 100644
 +    EXPORT freetype-glConfig
 +    DESTINATION share/freetype-gl
 +)
--- 
+--
 2.27.0
-

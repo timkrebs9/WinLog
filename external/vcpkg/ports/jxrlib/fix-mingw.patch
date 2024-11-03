@@ -24,7 +24,7 @@ index 695a454..9fad5b6 100644
 -#include "..\x86\x86.h"
 +#include "../x86/x86.h"
  #endif
- 
+
  #ifndef UNREFERENCED_PARAMETER
 diff --git a/jxrgluelib/JXRMeta.h b/jxrgluelib/JXRMeta.h
 index b7b5880..7c9d653 100644
@@ -33,7 +33,7 @@ index b7b5880..7c9d653 100644
 @@ -111,6 +111,18 @@
  #define __out_win   __out
  #endif
- 
+
 +#ifndef __in
 +#define __in
 +#endif
@@ -46,6 +46,5 @@ index b7b5880..7c9d653 100644
 +#ifndef __out_ecount
 +#define __out_ecount(x)
 +#endif
- 
+
  //================================================================
- 

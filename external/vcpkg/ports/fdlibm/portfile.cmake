@@ -10,7 +10,7 @@ file(COPY ${CMAKE_CURRENT_LIST_DIR}/libm5.def DESTINATION ${SOURCE_PATH})
 vcpkg_configure_cmake(
     SOURCE_PATH ${SOURCE_PATH}
     PREFER_NINJA
-    OPTIONS_DEBUG 
+    OPTIONS_DEBUG
         -DDISABLE_INSTALL_HEADERS=ON
 )
 
@@ -19,4 +19,3 @@ vcpkg_copy_pdbs()
 
 # Handle copyright
 configure_file(${SOURCE_PATH}/NOTICE ${CURRENT_PACKAGES_DIR}/share/fdlibm/copyright COPYONLY)
- 

@@ -7,6 +7,5 @@ index 3e89ebe..8dade84 100755
    esac
  done
 +skip_gnulib=true
- 
+
  TEXINFO_VERSION=6.5
- 

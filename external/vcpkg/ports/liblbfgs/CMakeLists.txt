@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 PROJECT(liblbfgs)
-                          
+
 file(GLOB SOURCE_FILE
 	"lib/*.c"
 )

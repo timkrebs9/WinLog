@@ -16,5 +16,5 @@ index 7d7aa1b..81c8bf6 100644
          # Treat warnings as errors.
 -        _YACMA_CHECK_ENABLE_DEBUG_CXX_FLAG(/WX)
      endif()
- 
+
      # Set the cache variables.

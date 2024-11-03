@@ -8,7 +8,7 @@ diff --git a/src/regcomp.c b/src/regcomp.c
 -      Node* prev_node;
 +      Node* prev_node = NULL;
        Node* next_node;
- 
+
        prev = NULL_NODE;
 diff --git a/src/regexec.c b/src/regexec.c
 index ce498c6..6848c0f 100644

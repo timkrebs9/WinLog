@@ -12,4 +12,3 @@ index 2d4e76d..6acffe2 100644
 +if ("${GIT_DESCRIBE}" STREQUAL "")
      set(GIT_DESCRIBE "v${MAJOR_VERSION}.${MINOR_VERSION}.x-xxx-xunknown")
  endif()
- 

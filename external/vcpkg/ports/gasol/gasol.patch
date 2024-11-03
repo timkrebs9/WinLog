@@ -12,7 +12,7 @@ index 4a21f65..a4cede0 100644
 -    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -Wall -Wextra -Werror -pedantic")
 +    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -pedantic")
  endif()
- 
+
 +if(CMAKE_COMPILER_IS_GNUCXX)
 +    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
 +endif(CMAKE_COMPILER_IS_GNUCXX)
@@ -22,10 +22,10 @@ index 4a21f65..a4cede0 100644
  endif()
 @@ -39,7 +43,7 @@ endif()
  add_subdirectory(src)
- 
+
  # GASol test dir.
 -add_subdirectory(unittest)
 +# add_subdirectory(unittest)
- 
+
  # GASol run dir.
  add_subdirectory(example)

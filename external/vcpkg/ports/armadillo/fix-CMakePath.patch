@@ -8,6 +8,6 @@ index c60cd53..855391a 100644
  set(ARMADILLO_LIB_DIR      "${CMAKE_INSTALL_FULL_LIBDIR}")
 -set(ARMADILLO_CMAKE_DIR    "${CMAKE_INSTALL_FULL_DATADIR}/Armadillo/CMake")
 +set(ARMADILLO_CMAKE_DIR    "${CMAKE_INSTALL_FULL_DATADIR}/Armadillo")
- 
- 
+
+
  message(STATUS "Generating '${PROJECT_BINARY_DIR}/InstallFiles/ArmadilloConfig.cmake'")

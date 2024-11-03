@@ -5,9 +5,9 @@ index 2afbcac..baa9cab 100644
 @@ -7,8 +7,6 @@
   * of patent rights can be found in the PATENTS file in the same directory.
   */
- 
+
 -%require "3"
 -
  %skeleton "lalr1.cc"
- 
+
  %defines

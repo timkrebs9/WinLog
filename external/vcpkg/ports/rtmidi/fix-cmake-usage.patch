@@ -3,7 +3,7 @@ index 616fdaf..e6af930 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -280,7 +280,7 @@ include(CMakePackageConfigHelpers)
- 
+
  # Write cmake package version file
  write_basic_package_version_file(
 -    RtMidi-config-version.cmake
@@ -19,7 +19,7 @@ index 616fdaf..e6af930 100644
 +    rtmidi-config.cmake
      INSTALL_DESTINATION "${RTMIDI_CMAKE_DESTINATION}"
  )
- 
+
  # Install package files
  install (
      FILES

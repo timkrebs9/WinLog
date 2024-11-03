@@ -10,6 +10,6 @@ index cdede78..6967abf 100644
 +  if(APPLE)
 +     target_link_libraries(Hwloc::hwloc INTERFACE  "-framework CoreFoundation" "-framework IOKit")
 +  endif()
-+  
++
    mark_as_advanced(HWLOC_ROOT HWLOC_LIBRARY HWLOC_INCLUDE_DIR)
  endif()

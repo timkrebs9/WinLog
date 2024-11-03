@@ -17,7 +17,7 @@ index 52010c6..0a3f4b5 100644
 +++ b/utils/CMakeLists.txt
 @@ -1,5 +1,7 @@
  include_directories("../libproxy")
- 
+
 +if (BUILD_TOOLS)
  add_executable(proxy proxy.c)
  target_link_libraries(proxy libproxy)

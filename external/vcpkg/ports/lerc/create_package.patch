@@ -4,7 +4,7 @@ index e90fcdd..17c79e8 100644
 +++ b/CMakeLists.txt
 @@ -26,12 +26,19 @@ add_library(LercLib ${SOURCES})
  endif()
- 
+
  install(
      TARGETS Lerc
 +    EXPORT LercTargets
@@ -19,6 +19,6 @@ index e90fcdd..17c79e8 100644
 +  NAMESPACE unofficial::Lerc::
 +  DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/unofficial-lerc"
 +)
- 
+
  # Configure and install pkgconfig file
  configure_file(Lerc.pc.in ${CMAKE_CURRENT_BINARY_DIR}/Lerc.pc @ONLY)

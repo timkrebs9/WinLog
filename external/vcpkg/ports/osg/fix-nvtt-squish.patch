@@ -3,7 +3,7 @@ index d0e7414..f6fb761 100644
 --- a/CMakeModules/FindNVTT.cmake
 +++ b/CMakeModules/FindNVTT.cmake
 @@ -120,7 +120,7 @@ FIND_LIBRARY(NVTHREAD_LIBRARY_DEBUG
- 
+
  # SQUISH
  FIND_LIBRARY(NVSQUISH_LIBRARY_RELEASE
 -  NAMES squish

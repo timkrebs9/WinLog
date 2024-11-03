@@ -136,7 +136,7 @@ index 2a8dfb6..abf5ae3 100644
  //
 -#include "afxres.h"
 +#include "windows.h"
- 
+
  /////////////////////////////////////////////////////////////////////////////
  #undef APSTUDIO_READONLY_SYMBOLS
 diff --git a/EasyHookDll/EasyHookDll_64.rc b/EasyHookDll/EasyHookDll_64.rc
@@ -149,6 +149,6 @@ index 163a2f0..b32a4d4 100644
  //
 -#include "afxres.h"
 +#include "windows.h"
- 
+
  /////////////////////////////////////////////////////////////////////////////
  #undef APSTUDIO_READONLY_SYMBOLS

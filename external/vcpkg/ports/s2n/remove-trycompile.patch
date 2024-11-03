@@ -4,7 +4,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 @@ -409,32 +409,6 @@
      endif()
  endif()
- 
+
 -# Determine if EVP_md5_sha1 is available in libcrypto
 -try_compile(
 -        LIBCRYPTO_SUPPORTS_EVP_MD5_SHA1_HASH

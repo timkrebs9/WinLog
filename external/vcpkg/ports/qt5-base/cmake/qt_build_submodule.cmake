@@ -13,7 +13,7 @@ function(qt_build_submodule SOURCE_PATH)
     #Fix the installation location within the makefiles
     qt_fix_makefile_install("${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-dbg/")
     qt_fix_makefile_install("${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-rel/")
-    
+
     #Install the module files
     vcpkg_build_qmake(TARGETS install SKIP_MAKEFILES BUILD_LOGNAME install)
 
@@ -38,13 +38,13 @@ function(qt_build_submodule SOURCE_PATH)
 
     foreach(_buildname ${BUILDTYPES})
         set(CURRENT_BUILD_PACKAGE_DIR "${CURRENT_PACKAGES_DIR}${_path_suffix_${_buildname}}")
-        #Fix PRL files 
-        file(GLOB_RECURSE PRL_FILES "${CURRENT_BUILD_PACKAGE_DIR}/lib/*.prl" "${CURRENT_PACKAGES_DIR}/tools/qt5${_path_suffix_${_buildname}}/lib/*.prl" 
+        #Fix PRL files
+        file(GLOB_RECURSE PRL_FILES "${CURRENT_BUILD_PACKAGE_DIR}/lib/*.prl" "${CURRENT_PACKAGES_DIR}/tools/qt5${_path_suffix_${_buildname}}/lib/*.prl"
                                     "${CURRENT_PACKAGES_DIR}/tools/qt5${_path_suffix_${_buildname}}/mkspecs/*.pri")
         qt_fix_prl("${CURRENT_BUILD_PACKAGE_DIR}" "${PRL_FILES}")
 
         # This makes it impossible to use the build tools in any meaningful way. qt5 assumes they are all in one folder!
-        # So does the Qt VS Plugin which even assumes all of the in a bin folder  
+        # So does the Qt VS Plugin which even assumes all of the in a bin folder
         #Move tools to the correct directory
         #if(EXISTS ${CURRENT_BUILD_PACKAGE_DIR}/tools/qt5)
         #    file(RENAME ${CURRENT_BUILD_PACKAGE_DIR}/tools/qt5 ${CURRENT_PACKAGES_DIR}/tools/${PORT})

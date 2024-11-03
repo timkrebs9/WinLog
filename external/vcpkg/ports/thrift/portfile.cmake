@@ -67,7 +67,7 @@ vcpkg_cmake_configure(
         CMAKE_FIND_PACKAGE_REQUIRE_Libevent
         CMAKE_FIND_PACKAGE_REQUIRE_OpenSSL
         CMAKE_FIND_PACKAGE_REQUIRE_ZLIB
-    
+
 )
 
 vcpkg_cmake_install()

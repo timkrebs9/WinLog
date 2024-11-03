@@ -11,5 +11,5 @@ index 413a02376..2f8af0efc 100644
 +# define S_ISDIR(m) (((m) & S_IFMT) == S_IFDIR)
 +#endif
  #endif
- 
+
  #ifdef X11_t

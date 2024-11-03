@@ -24,7 +24,7 @@ index 227015a..f3d8efa 100644
 +++ b/src/buffer.c
 @@ -31,7 +31,9 @@ FILE_RCSID("@(#)$File: buffer.c,v 1.8 2020/02/16 15:52:49 christos Exp $")
  #endif	/* lint */
- 
+
  #include "magic.h"
 +#ifdef HAVE_UNISTD_H
  #include <unistd.h>
@@ -52,21 +52,21 @@ index 027a64f..873c547 100644
 +++ b/src/dprintf.c
 @@ -32,7 +32,9 @@ FILE_RCSID("@(#)$File: dprintf.c,v 1.2 2018/09/09 20:33:28 christos Exp $")
  #endif	/* lint */
- 
+
  #include <assert.h>
 +#ifdef HAVE_UNISTD_H
  #include <unistd.h>
 +#endif
  #include <stdio.h>
  #include <stdarg.h>
- 
+
 diff --git a/src/file.c b/src/file.c
 index 87b9ab1..2889f8a 100644
 --- a/src/file.c
 +++ b/src/file.c
 @@ -38,7 +38,6 @@ FILE_RCSID("@(#)$File: file.c,v 1.189 2021/02/05 21:33:49 christos Exp $")
  #include "magic.h"
- 
+
  #include <stdlib.h>
 -#include <unistd.h>
  #include <string.h>
@@ -85,7 +85,7 @@ index b00de01..c2d41ca 100644
 +#endif
  #include <errno.h>
  #include <string.h>
- 
+
 diff --git a/src/is_csv.c b/src/is_csv.c
 index 937ab5f..2f704c5 100644
 --- a/src/is_csv.c
@@ -120,7 +120,7 @@ index 81a0840..e9aeafa 100644
 +++ b/src/magic.c
 @@ -39,7 +39,9 @@ FILE_RCSID("@(#)$File: magic.c,v 1.114 2021/02/05 21:33:49 christos Exp $")
  #include "magic.h"
- 
+
  #include <stdlib.h>
 +#ifdef HAVE_UNISTD_H
  #include <unistd.h>
@@ -141,7 +141,7 @@ index f9506f6..ea50242 100644
 +#endif
  #include <dlfcn.h>
  #include <magic.h>
- 
+
 diff --git a/src/mygetopt.h b/src/mygetopt.h
 index d766762..b8e044c 100644
 --- a/src/mygetopt.h
@@ -149,11 +149,11 @@ index d766762..b8e044c 100644
 @@ -39,7 +39,9 @@
  #ifndef _GETOPT_H_
  #define _GETOPT_H_
- 
+
 +#ifdef HAVE_UNISTD_H
  #include <unistd.h>
 +#endif
- 
+
  /*
   * Gnu like getopt_long() and BSD4.4 getsubopt()/optreset extensions
 diff --git a/src/pread.c b/src/pread.c
@@ -167,7 +167,7 @@ index 3ab52d1..fc48d84 100644
 +#ifdef HAVE_UNISTD_H
  #include <unistd.h>
 +#endif
- 
+
  ssize_t
  pread(int fd, void *buf, size_t len, off_t off) {
 diff --git a/src/readcdf.c b/src/readcdf.c
@@ -175,7 +175,7 @@ index 7622c7b..977cb75 100644
 --- a/src/readcdf.c
 +++ b/src/readcdf.c
 @@ -31,7 +31,9 @@ FILE_RCSID("@(#)$File: readcdf.c,v 1.74 2019/09/11 15:46:30 christos Exp $")
- 
+
  #include <assert.h>
  #include <stdlib.h>
 +#ifdef HAVE_UNISTD_H
@@ -184,6 +184,5 @@ index 7622c7b..977cb75 100644
  #include <string.h>
  #include <time.h>
  #include <ctype.h>
--- 
+--
 2.29.2.windows.2
-

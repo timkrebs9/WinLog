@@ -18,7 +18,7 @@ index 09722a9..7bf9952 100644
 -        lib/telnetpp-${TELNETPP_VERSION}
 +        lib
  )
- 
+
  install(
      DIRECTORY
          include/
@@ -26,7 +26,7 @@ index 09722a9..7bf9952 100644
 -        include/telnetpp-${TELNETPP_VERSION}
 +        include
  )
- 
+
  export(
 @@ -302,7 +302,7 @@ install(
      EXPORT
@@ -35,7 +35,7 @@ index 09722a9..7bf9952 100644
 -        lib/telnetpp-${TELNETPP_VERSION}
 +        share/telnetpp
  )
- 
+
  include(CMakePackageConfigHelpers)
 @@ -317,7 +317,7 @@ install(
      FILES
@@ -44,5 +44,5 @@ index 09722a9..7bf9952 100644
 -        lib/telnetpp-${TELNETPP_VERSION}
 +        share/telnetpp
  )
- 
+
  if (TELNETPP_WITH_TESTS)

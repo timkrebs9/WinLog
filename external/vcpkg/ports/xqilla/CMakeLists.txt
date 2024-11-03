@@ -9,7 +9,7 @@ endif()
 
 project(xqilla C CXX)
 
-add_library(xqilla  
+add_library(xqilla
 ./src/exceptions/XQException.cpp
 ./src/exceptions/XQillaException.cpp
 ./src/fastxdm/FastXDMSequenceBuilder.cpp

@@ -6,7 +6,7 @@ vcpkg_from_github(
     REF 1ecd45775d96f35170458e6b148eb0708967e402 # 0.1.36
     SHA512 f6292e9dbce503a95b6eca927a90cf8a06f5e3de39b84f9a47e0d9273a6ea3f6591a64d35f2e33b5ea353e0c784f15c38579fc15aa6c5b180154e241ccbb16fe
     HEAD_REF master
-    PATCHES 
+    PATCHES
         encoding.patch
         find_python.patch
 )

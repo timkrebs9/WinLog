@@ -4,7 +4,7 @@ index 2dcb2a2..9d68601 100644
 +++ b/lib/TH/cmake/FindARM.cmake
 @@ -45,7 +45,7 @@ ELSEIF(CMAKE_SYSTEM_NAME MATCHES "Darwin")
        CPUINFO)
- 
+
     #neon instruction can be found on the majority part of modern ARM processor
 -   STRING(REGEX REPLACE "^.*(neon).*$" "\\1" NEON_THERE ${CPUINFO})
 +   STRING(REGEX REPLACE "^.*(neon).*$" "\\1" NEON_THERE "${CPUINFO}")

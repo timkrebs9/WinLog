@@ -10,6 +10,6 @@ index eeb28f7..ec50f15 100644
 -     endforeach()
 +        endforeach()
 +     endif()
- 
+
        # See if the model type already exists.
        file(READ "${SERIALIZATION_FILE}" SERIALIZATION_FILE_CONTENTS)

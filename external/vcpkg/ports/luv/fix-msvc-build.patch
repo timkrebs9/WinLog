@@ -5,7 +5,7 @@ index e63a431..aa46c07 100644
 @@ -25,20 +25,6 @@ if (MINGW)
    add_definitions(-D_WIN32_WINNT=0x0600)
  endif (MINGW)
- 
+
 -if (WIN32)
 -  # replace /MD to /MT to avoid link msvcr*.dll
 -  # this needs to be before add_subdirectory calls so that they inherit the modified flags
@@ -23,4 +23,3 @@ index e63a431..aa46c07 100644
  if (NOT WITH_LUA_ENGINE)
    set(WITH_LUA_ENGINE "LuaJIT"
      CACHE STRING "Link to LuaJIT or PUC Lua" FORCE)
-

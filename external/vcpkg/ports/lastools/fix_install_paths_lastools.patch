@@ -5,7 +5,7 @@ index 1b170bf..b5c40cb 100644
 @@ -99,17 +99,8 @@ if(MSVC)
      )
  endif()
- 
+
 +install(TARGETS LASlib EXPORT LASlib-targets
 +	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
  install(FILES ${LAS_INCLUDES} DESTINATION include/LASlib)

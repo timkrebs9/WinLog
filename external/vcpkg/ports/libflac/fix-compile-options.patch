@@ -5,7 +5,7 @@ index c83dd83..2d1a7e6 100644
 @@ -82,9 +82,11 @@ if(HAVE_WERROR_FLAG)
      option(ENABLE_WERROR "Enable -Werror in all Makefiles" OFF)
  endif()
- 
+
 +if(MSVC AND NOT WITH_ASM)
 +    add_compile_options(/wd4267 /wd4996)
 +endif()

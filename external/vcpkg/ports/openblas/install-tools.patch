@@ -6,7 +6,7 @@ index 0c126e3..bb0124b 100644
      if (NOT ${GETARCH_RESULT})
        MESSAGE(FATAL_ERROR "Compiling getarch failed ${GETARCH_LOG}")
      endif ()
-+    
++
 +    install(FILES "${PROJECT_BINARY_DIR}/${GETARCH_BIN}" DESTINATION bin)
    endif ()
    unset (HAVE_AVX2)
@@ -15,8 +15,8 @@ index 0c126e3..bb0124b 100644
      if (NOT ${GETARCH2_RESULT})
        MESSAGE(FATAL_ERROR "Compiling getarch_2nd failed ${GETARCH2_LOG}")
      endif ()
-+    
++
 +    install(FILES "${PROJECT_BINARY_DIR}/${GETARCH2_BIN}" DESTINATION bin)
    endif ()
- 
+
    # use the cmake binary w/ the -E param to run a shell command in a cross-platform way

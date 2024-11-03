@@ -5,7 +5,7 @@ index 34fc37a..60d201a 100644
 @@ -4,15 +4,21 @@
  cmake_minimum_required(VERSION 3.1)
  project(EAThread CXX)
- 
+
 +include(GNUInstallDirs)
 +include(CMakePackageConfigHelpers)
 +
@@ -13,7 +13,7 @@ index 34fc37a..60d201a 100644
  # Options
  #-------------------------------------------------------------------------------------------
  option(EATHREAD_BUILD_TESTS "Enable generation of build files for tests" OFF)
- 
+
 +find_package(EABase CONFIG REQUIRED)
 +find_package(EASTL CONFIG REQUIRED)
 +
@@ -23,7 +23,7 @@ index 34fc37a..60d201a 100644
 -set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/test/packages/EASTL/scripts/CMake")
 +set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${_VCPKG_ROOT_DIR}/installed/${VCPKG_TARGET_TRIPLET}/share/eastl")
  include(CommonCppFlags)
- 
+
  #-------------------------------------------------------------------------------------------
 @@ -34,10 +40,45 @@ add_definitions(-D_CRT_SECURE_NO_WARNINGS)
  #-------------------------------------------------------------------------------------------
@@ -34,9 +34,9 @@ index 34fc37a..60d201a 100644
 +        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
 +        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 +    )
- 
+
  #-------------------------------------------------------------------------------------------
- # Package Dependencies 
+ # Package Dependencies
  #-------------------------------------------------------------------------------------------
 -target_link_libraries(EAThread EABase)
 +target_link_libraries(EAThread PUBLIC EABase)
@@ -66,7 +66,7 @@ index 34fc37a..60d201a 100644
 +
 +install(TARGETS EAThread LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 +install(DIRECTORY "include/" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
- 
+
 +install(
 +    FILES
 +        "${CMAKE_CURRENT_BINARY_DIR}/EAThreadConfig.cmake"

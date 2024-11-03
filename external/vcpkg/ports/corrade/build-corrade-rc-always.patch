@@ -20,7 +20,7 @@
      endif()
      set_target_properties(corrade-rc PROPERTIES FOLDER "Corrade/Utility")
      install(TARGETS corrade-rc DESTINATION ${CORRADE_BINARY_INSTALL_DIR})
- 
+
 +if(NOT CMAKE_CROSSCOMPILING)
      # Corrade::rc target alias for superprojects
      add_executable(Corrade::rc ALIAS corrade-rc)

@@ -5,9 +5,9 @@ index e9bd5bf..c7f8758 100644
 @@ -19,7 +19,7 @@
  // Use at your own risk!
  // ==========================================================
- 
+
 -#include "../LibRawLite/libraw/libraw.h"
 +#include <libraw/libraw.h>
- 
+
  #include "FreeImage.h"
  #include "Utilities.h"

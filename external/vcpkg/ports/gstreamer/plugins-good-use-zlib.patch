@@ -5,7 +5,7 @@ index 9de3b01..091a7f0 100644
 @@ -326,7 +326,7 @@ if have_gstgl
    endif
  endif
- 
+
 -zlib_dep = dependency('zlib', required : false)
 +zlib_dep = dependency('zlib', required : true)
  if not zlib_dep.found()

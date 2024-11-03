@@ -14,14 +14,14 @@ index d00c48981e..b14ce8454e 100644
 @@ -13,7 +13,7 @@
    * link shared library handled by 'cc -shared'
  """
- 
+
 -import os, sys, re
 +import os, sys, re, shutil
- 
+
  from distutils import sysconfig
  from distutils.dep_util import newer
 @@ -216,7 +216,27 @@ def library_dir_option(self, dir):
- 
+
      def _is_gcc(self, compiler_name):
          # clang uses same syntax for rpath as gcc
 -        return any(name in compiler_name for name in ("gcc", "g++", "clang"))
@@ -46,9 +46,8 @@ index d00c48981e..b14ce8454e 100644
 +                        name in real_compiler_path \
 +                        for name in valid_compiler_names)
 +        return is_gcc
- 
+
      def runtime_library_dir_option(self, dir):
          # XXX Hackish, at the very least.  See Python bug #445902:
--- 
+--
 2.37.3.windows.1
-

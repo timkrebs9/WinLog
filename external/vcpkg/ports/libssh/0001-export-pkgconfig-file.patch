@@ -4,7 +4,7 @@ index 7bc3331..5c7275d 100644
 +++ b/CMakeLists.txt
 @@ -124,8 +124,28 @@ add_subdirectory(include)
  add_subdirectory(src)
- 
+
  # pkg-config file
 -if (UNIX OR MINGW)
  configure_file(libssh.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libssh.pc)
@@ -37,6 +37,6 @@ index 7bc3331..5c7275d 100644
      pkgconfig
  )
 -endif (UNIX OR MINGW)
- 
+
  # CMake config files
  include(CMakePackageConfigHelpers)

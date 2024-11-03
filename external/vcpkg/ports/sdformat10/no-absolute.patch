@@ -16,7 +16,7 @@ index 20dcd4c6..802cbde3 100644
 @@ -98,22 +98,6 @@ std::string findFile(const std::string &_filename, bool _searchLocalPath,
      filename = filename.substr(idx + sep.length());
    }
- 
+
 -  // Next check the install path.
 -  path = sdf::filesystem::append(SDF_SHARE_PATH, filename);
 -  if (sdf::filesystem::exists(path))

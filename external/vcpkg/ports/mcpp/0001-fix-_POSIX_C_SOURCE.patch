@@ -33,6 +33,5 @@ index 2e01c15..250f441 100644
  #define CHARBIT             CHAR_BIT
  #define UCHARMAX            UCHAR_MAX
  #define USHRTMAX            USHRT_MAX
--- 
+--
 2.24.3 (Apple Git-128)
-

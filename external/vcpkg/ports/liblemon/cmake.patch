@@ -5,7 +5,7 @@ index 03e1cc7..fd9d737 100644
 @@ -280,6 +280,13 @@ ELSEIF(WIN32)
    )
  ENDIF()
- 
+
 +install(
 +    EXPORT lemon-targets
 +    FILE lemon-config.cmake
@@ -23,7 +23,7 @@ index 4e6567e..76f9cae 100644
 @@ -71,6 +71,11 @@ INSTALL(
    COMPONENT library
  )
- 
+
 +install(TARGETS lemon EXPORT lemon-targets
 +    LIBRARY DESTINATION lib
 +    ARCHIVE DESTINATION lib

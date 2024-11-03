@@ -16,9 +16,9 @@ index 9747b3e1..5e2469d3 100644
 --- a/build/Templates/OpenMVSConfig.cmake.in
 +++ b/build/Templates/OpenMVSConfig.cmake.in
 @@ -15,9 +15,67 @@ set(OpenMVS_INCLUDE_DIRS "@INSTALL_INCLUDE_DIR_IN@")
- 
+
  set(OpenMVS_DEFINITIONS "@OpenMVS_DEFINITIONS@")
- 
+
 +list(APPEND CMAKE_MODULE_PATH "${OpenMVS_CMAKE_DIR}")
 +
 +if (MSVC)
@@ -123,8 +123,8 @@ index 106d43167..33390d192 100644
 -		set(PACKAGE_LIB_SUFFIX_REL "${PACKAGE_LIB_SUFFIX}/Release")
 -	endif()
  endmacro()
- 
- 
+
+
 @@ -806,12 +780,8 @@ macro(ConfigLibrary)
  	# Offer the user the choice of overriding the installation directories
  	set(INSTALL_LIB_DIR "lib" CACHE PATH "Installation directory for libraries")
@@ -148,7 +148,7 @@ index 106d43167..33390d192 100644
 +		set(${var} "${${varp}}")
  	endforeach()
  endmacro()
- 
+
 
 diff --git a/libs/Common/Strings.h b/libs/Common/MVSStrings.h
 similarity index 100%
@@ -159,9 +159,9 @@ index bcac65c..9abeefb 100644
 --- a/libs/Common/Types.h
 +++ b/libs/Common/Types.h
 @@ -380,7 +380,7 @@ typedef TAliasCast<double,int32_t> CastD2I;
- 
+
  // I N C L U D E S /////////////////////////////////////////////////
- 
+
 -#include "Strings.h"
 +#include "MVSStrings.h"
  #include "AutoPtr.h"

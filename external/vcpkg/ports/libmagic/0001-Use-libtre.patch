@@ -20,7 +20,7 @@ index 02eac8f..b05c334 100644
 -  AC_CHECK_LIB(gnurx,regexec,,AC_MSG_ERROR([libgnurx is required to build file(1) with MinGW]))
 +  AC_SEARCH_LIBS(tre_regexec,tre,,AC_MSG_ERROR([libtre is required to build file(1) with MinGW]))
  fi
- 
+
  dnl See if we are cross-compiling
 diff --git a/src/Makefile.am b/src/Makefile.am
 index 3f67f2c..34781b9 100644
@@ -48,6 +48,5 @@ index c548e97..299ac0c 100644
  #include <time.h>
  #include <sys/types.h>
  #ifndef WIN32
--- 
+--
 2.29.2.windows.2
-

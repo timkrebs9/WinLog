@@ -4,15 +4,15 @@ index 0ce903fe7..16524b8e2 100644
 +++ b/src/src.pro
 @@ -20,6 +20,7 @@ TEMPLATE          = lib
  TARGET            = $$qwtLibraryTarget(qwt)
- 
+
  DESTDIR           = $${QWT_OUT_ROOT}/lib
 +DLLDESTDIR        = $${QWT_OUT_ROOT}/bin
- 
+
  contains(QWT_CONFIG, QwtDll) {
- 
+
 @@ -49,9 +50,13 @@ contains(QWT_CONFIG, QwtFramework) {
  include ( $${PWD}/src.pri )
- 
+
  # Install directives
 -
 +win32 {
@@ -20,9 +20,8 @@ index 0ce903fe7..16524b8e2 100644
 +    INSTALLS += dlltarget
 +}
  target.path    = $${QWT_INSTALL_LIBS}
--INSTALLS       = target 
+-INSTALLS       = target
 +!static: target.CONFIG = no_dll
-+INSTALLS     += target 
- 
++INSTALLS     += target
+
  CONFIG(lib_bundle) {
- 

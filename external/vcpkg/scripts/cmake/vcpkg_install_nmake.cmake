@@ -15,7 +15,7 @@ function(vcpkg_install_nmake)
     if(NOT DEFINED arg_SOURCE_PATH)
         message(FATAL_ERROR "SOURCE_PATH must be specified")
     endif()
-    
+
     if(NOT VCPKG_HOST_IS_WINDOWS)
         message(FATAL_ERROR "${CMAKE_CURRENT_FUNCTION} only support windows.")
     endif()
@@ -25,7 +25,7 @@ function(vcpkg_install_nmake)
     # so we need to split them again
     set(arg_OPTIONS_DEBUG ${arg_OPTIONS_DEBUG})
     set(arg_OPTIONS_RELEASE ${arg_OPTIONS_RELEASE})
-    
+
     vcpkg_list(SET extra_args)
     # switch args
     if(arg_NO_DEBUG)

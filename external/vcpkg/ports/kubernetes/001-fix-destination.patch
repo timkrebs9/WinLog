@@ -7,6 +7,6 @@ diff --git a/kubernetes/CMakeLists.txt b/kubernetes/CMakeLists.txt
      include(GNUInstallDirs)
 -    install(TARGETS ${pkgName} DESTINATION lib EXPORT ${pkgName}Targets)
 +    install(TARGETS ${pkgName} EXPORT ${pkgName}Targets)
- 
+
      foreach(HDR_FILE ${HDRS})
          get_filename_component(HDR_DIRECTORY ${HDR_FILE} DIRECTORY)

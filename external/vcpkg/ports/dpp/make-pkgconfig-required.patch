@@ -12,5 +12,5 @@ index 23c5317..abbd08f 100644
 -    pkg_check_modules(sodium_PKG QUIET libsodium)
 +    pkg_check_modules(sodium_PKG REQUIRED libsodium)
    endif()
- 
+
    if(sodium_USE_STATIC_LIBS)

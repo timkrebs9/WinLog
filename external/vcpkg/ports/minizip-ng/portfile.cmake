@@ -8,7 +8,7 @@ vcpkg_from_github(
     REF 241428886216f0f0efd6926efcaaaa13794e51bd #v3.0.7
     SHA512 779a53fafe63b64f5f703448262871c323f5753cbb58001dd0d0ef10de8d3bd7bb6055db4e763e664ccb5b781ce8dd06bf7c3e6b38eca019de835322a833fa06
     HEAD_REF master
-    PATCHES 
+    PATCHES
         Modify-header-file-path.patch
 )
 
@@ -28,7 +28,7 @@ vcpkg_check_features(
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
     DISABLE_PARALLEL_CONFIGURE
-    OPTIONS 
+    OPTIONS
         ${FEATURE_OPTIONS}
         -DMZ_FETCH_LIBS=OFF
         -DMZ_PROJECT_SUFFIX:STRING=-ng

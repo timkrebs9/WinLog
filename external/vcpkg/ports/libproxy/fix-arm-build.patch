@@ -5,7 +5,7 @@ index 1c68939..9ef6895 100644
 @@ -42,6 +42,9 @@ else()
      include_directories(${CMAKE_CURRENT_SOURCE_DIR})
  endif()
- 
+
 +if (WIN32)
 +    link_libraries(Advapi32)
 +endif()

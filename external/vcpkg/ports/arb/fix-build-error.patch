@@ -4,7 +4,7 @@ index d6136a8..9e260eb 100644
 +++ b/CMakeLists.txt
 @@ -76,7 +76,8 @@ set (pthreads_header pthread.h)
  set (flint2_header flint/flint.h)
- 
+
  if(MSVC)
 -    set(DEPS ${DEPS} pthreads)
 +    find_package(pthreads REQUIRED)

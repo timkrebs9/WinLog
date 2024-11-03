@@ -3,7 +3,7 @@ index 9d9eacb..b530743 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -183,7 +183,7 @@ if (FL_BUILD_CORE)
- 
+
    # If cereal is found in a user-defined location, use it rather than
    # downloading from source
 -  find_package(cereal)
@@ -16,7 +16,7 @@ index 9d9eacb..b530743 100644
      target_link_libraries(flashlight PRIVATE cereal)
    endif()
 -  setup_install_find_module(${CMAKE_MODULE_PATH}/Findcereal.cmake)
- 
+
    # -------------------- Locate Backend-specific Dependencies --------------------
    # TODO: rather than conditionally searching for backend-specific dependencies,
 diff --git a/cmake/flashlightConfig.cmake.in b/cmake/flashlightConfig.cmake.in

@@ -3,7 +3,7 @@ index 5c5926f..c25da97 100644
 --- a/cmake/configs/Sqlpp11Config.cmake
 +++ b/cmake/configs/Sqlpp11Config.cmake
 @@ -55,7 +55,7 @@ endforeach()
- 
+
  # Import "ddl2cpp" script
  if(NOT TARGET sqlpp11::ddl2cpp)
 -  get_filename_component(sqlpp11_ddl2cpp_location "${CMAKE_CURRENT_LIST_DIR}/../../../bin/sqlpp11-ddl2cpp" REALPATH)

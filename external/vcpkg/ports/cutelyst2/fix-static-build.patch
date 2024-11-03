@@ -5,7 +5,7 @@ index 9a695fd..0667668 100644
 @@ -129,6 +129,33 @@ add_definitions(
      -DQT_DISABLE_DEPRECATED_BEFORE=0x050c00
  )
- 
+
 +if (BUILD_WIN_STATIC)
 +    add_definitions(
 +        -DCutelyst2Qt5_EXPORTS

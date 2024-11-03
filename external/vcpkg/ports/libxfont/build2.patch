@@ -5,27 +5,27 @@ index 5b0299345..5abffb6e0 100644
 @@ -41,6 +41,10 @@ THE SOFTWARE.
  #include FT_XFREE86_H
  #include "ft.h"
- 
+
 +#if (defined(WIN32) || defined(WIN64) || defined(_WIN32) || defined(_WIN64)) && !defined(HAVE_STRCASECMP)
 +#define strcasecmp _stricmp
 +#endif
 +
  static int find_cmap(int, int, int, FT_Face, FT_CharMap *);
- 
+
  static int
 diff --git a/src/FreeType/xttcap.c b/src/FreeType/xttcap.c
 index f54f76c85..a5a047ee6 100644
 --- a/src/FreeType/xttcap.c
 +++ b/src/FreeType/xttcap.c
 @@ -56,6 +56,10 @@ static char const * const releaseID =
- 
+
  #include "xttcap.h"
- 
+
 +#if (defined(WIN32) || defined(WIN64) || defined(_WIN32) || defined(_WIN64)) && !defined(HAVE_STRCASECMP)
 +#define strcasecmp _stricmp
 +#endif
 +
- 
+
  /**************************************************************************
    Private Data Types
 diff --git a/src/fontfile/renderers.c b/src/fontfile/renderers.c
@@ -45,5 +45,5 @@ index a457fb7bb..c44591f13 100644
 +#define strcasecmp _stricmp
 +#endif
  static FontRenderersRec	renderers;
- 
+
  /*

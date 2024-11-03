@@ -3,11 +3,10 @@ index 22570b5..15a750b 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -154,7 +154,7 @@ if(BUILD_TESTS)
- 
+
  endif()
- 
+
 -set(CMAKE_CXX_STANDARD 14)
 +set(CMAKE_CXX_STANDARD 17)
- 
+
  include(CheckCXXCompilerFlag)
- 

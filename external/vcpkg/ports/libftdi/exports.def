@@ -1,4 +1,4 @@
-EXPORTS 
+EXPORTS
 	ftdi_deinit
 	ftdi_disable_bitbang
 	ftdi_eeprom_build

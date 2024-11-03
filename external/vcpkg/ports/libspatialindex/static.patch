@@ -8,8 +8,8 @@ index c34ee8d71..84e4a9247 100644
  SET(SIDX_LIB_SOVERSION "6")
 -SET(BUILD_SHARED_LIBS ON)
 +option(BUILD_SHARED_LIBS "Build shared libs" ON)
- 
- 
+
+
  set(SIDX_VERSION_STRING "${SIDX_VERSION_MAJOR}.${SIDX_VERSION_MINOR}.${SIDX_VERSION_PATCH}")
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
@@ -18,8 +18,8 @@ index 90f4501bc..aad327181 100644
 +++ b/src/CMakeLists.txt
 @@ -188,9 +188,13 @@ set(SIDX_SOURCES
  #endif()
- 
- 
+
+
 -add_library(${SIDX_LIB_NAME} ${SIDX_SOURCES})
 -
 -add_library(${SIDX_C_LIB_NAME} ${SIDX_CAPI_CPP})
@@ -30,13 +30,13 @@ index 90f4501bc..aad327181 100644
 +  add_library(${SIDX_LIB_NAME} STATIC ${SIDX_SOURCES})
 +  add_library(${SIDX_C_LIB_NAME} STATIC ${SIDX_CAPI_CPP})
 +endif(BUILD_SHARED_LIBS)
- 
+
  target_link_libraries(${SIDX_C_LIB_NAME}
    ${SIDX_LIB_NAME}
 @@ -208,9 +212,10 @@ if(WIN32)
      target_compile_options(${SIDX_LIB_NAME} PRIVATE "/wd4068")
      target_compile_options(${SIDX_C_LIB_NAME} PRIVATE "/wd4068")
- 
+
 -    target_compile_definitions(${SIDX_C_LIB_NAME} PRIVATE "-DSIDX_DLL_EXPORT=1")
 -    target_compile_definitions(${SIDX_LIB_NAME} PRIVATE "-DSIDX_DLL_EXPORT=1")
 -    if (NOT WITH_STATIC_SIDX)
@@ -54,7 +54,7 @@ index b6c84f1ef..7b0a39364 100644
 +++ b/include/spatialindex/capi/sidx_export.h
 @@ -29,7 +29,7 @@
  #pragma once
- 
+
  #ifndef SIDX_C_DLL
 -#if defined(_MSC_VER)
 +#if defined(_MSC_VER) && defined(SIDX_DLL_EXPORT)
@@ -73,5 +73,5 @@ index 322bc819e..46b62fa00 100644
 -    #define SIDX_DLL __declspec(dllimport)
 +    #define SIDX_DLL
    #endif
- 
+
    // Nuke this annoying warning.  See http://www.unknownroad.com/rtfm/VisualStudio/warningC4251.html

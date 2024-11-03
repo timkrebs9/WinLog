@@ -12,7 +12,7 @@ if (VCPKG_TARGET_IS_WINDOWS)
     else()
         set(TCL_BUILD_MACHINE_STR MACHINE=IX86)
     endif()
-    
+
     # Handle features
     set(TCL_BUILD_OPTS OPTS=pdbs)
     set(TCL_BUILD_STATS STATS=none)
@@ -23,7 +23,7 @@ if (VCPKG_TARGET_IS_WINDOWS)
     if (VCPKG_CRT_LINKAGE STREQUAL dynamic)
         set(TCL_BUILD_OPTS ${TCL_BUILD_OPTS},msvcrt)
     endif()
-    
+
     if ("thrdalloc" IN_LIST FEATURES)
         set(TCL_BUILD_OPTS ${TCL_BUILD_OPTS},thrdalloc)
     endif()
@@ -36,7 +36,7 @@ if (VCPKG_TARGET_IS_WINDOWS)
     if ("utfmax" IN_LIST FEATURES)
         set(TCL_BUILD_OPTS ${TCL_BUILD_OPTS},time64bit)
     endif()
-    
+
     vcpkg_install_nmake(
         SOURCE_PATH ${SOURCE_PATH}
         PROJECT_SUBPATH win
@@ -79,7 +79,7 @@ if (VCPKG_TARGET_IS_WINDOWS)
                 "${CURRENT_PACKAGES_DIR}/lib/tcl8.6/*"
                 "${CURRENT_PACKAGES_DIR}/lib/tdbcsqlite31.1.0/*"
         )
-        
+
         foreach(TOOL ${TOOLS})
             get_filename_component(DST_DIR ${TOOL} PATH)
             file(COPY "${TOOL}" DESTINATION ${DST_DIR})
@@ -104,7 +104,7 @@ if (VCPKG_TARGET_IS_WINDOWS)
                 "${CURRENT_PACKAGES_DIR}/debug/bin/*.exe"
         )
         file(REMOVE ${EXES})
-    
+
         file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/lib/dde1.4"
                             "${CURRENT_PACKAGES_DIR}/debug/lib/nmake"
                             "${CURRENT_PACKAGES_DIR}/debug/lib/reg1.3"
@@ -113,13 +113,13 @@ if (VCPKG_TARGET_IS_WINDOWS)
                             "${CURRENT_PACKAGES_DIR}/debug/lib/tdbcsqlite31.1.0"
         )
     endif()
-    
+
     if(VCPKG_LIBRARY_LINKAGE STREQUAL static)
         file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/bin" "${CURRENT_PACKAGES_DIR}/debug/bin")
     endif()
-    
+
     file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
-    
+
     file(CHMOD_RECURSE
             "${CURRENT_PACKAGES_DIR}/tools/tcl/debug/lib/tcl9.0/msgs" "${CURRENT_PACKAGES_DIR}/tools/tcl/debug/lib/tcl9.0/tzdata"
             "${CURRENT_PACKAGES_DIR}/tools/tcl/lib/tcl9.0/msgs" "${CURRENT_PACKAGES_DIR}/tools/tcl/lib/tcl9.0/tzdata"
@@ -134,16 +134,16 @@ else()
         SOURCE_PATH "${SOURCE_PATH}"
         PROJECT_SUBPATH unix
     )
-    
+
     vcpkg_install_make()
     vcpkg_fixup_pkgconfig()
-    
+
     if(VCPKG_LIBRARY_LINKAGE STREQUAL static)
         file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/bin" "${CURRENT_PACKAGES_DIR}/debug/bin")
     endif()
     file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include" "${CURRENT_PACKAGES_DIR}/debug/share")
 endif()
-    
+
 file(REMOVE "${CURRENT_PACKAGES_DIR}/lib/tclConfig.sh" "${CURRENT_PACKAGES_DIR}/debug/lib/tclConfig.sh")
 
 file(INSTALL "${SOURCE_PATH}/license.terms" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME copyright)

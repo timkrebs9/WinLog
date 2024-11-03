@@ -5,7 +5,7 @@ index a618083..5299c77 100644
 @@ -56,7 +56,7 @@
  #elif defined( HAVE_CYGWIN_FS_H )
  #include <cygwin/fs.h>
- 
+
 -#elif defined( HAVE_LINUX_FS_H )
 +#elif defined( __linux__ ) && defined( HAVE_LINUX_FS_H )
  /* Required for Linux platforms that use a sizeof( u64 )
@@ -14,7 +14,7 @@ index a618083..5299c77 100644
 @@ -4128,6 +4128,11 @@ ssize_t libcfile_internal_file_io_control_read_with_error_code(
  #error Missing file IO control with data function
  #endif
- 
+
 +// Force disable on Darwin, it can be erroneously defined
 +#if defined ( __APPLE__ )
 +#undef HAVE_POSIX_FADVISE
@@ -28,7 +28,7 @@ index 96d1a31..621e748 100644
 --- a/libqcow/libqcow_i18n.c
 +++ b/libqcow/libqcow_i18n.c
 @@ -40,7 +40,7 @@ int libqcow_i18n_initialize(
- 
+
  	if( libqcow_i18n_initialized == 0 )
  	{
 -#if defined( HAVE_BINDTEXTDOMAIN )

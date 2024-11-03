@@ -6,10 +6,10 @@
 -# ----------------------------------------------------------------------------
 -CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 +cmake_minimum_required(VERSION 3.10)
- 
+
 -set(CMAKE_CXX_STANDARD 11)
 +project(DBow3 VERSION 1.0.0)
- 
+
 -PROJECT(DBoW3)
 -set(PROJECT_VERSION "0.0.1")
 -string(REGEX MATCHALL "[0-9]" PROJECT_VERSION_PARTS "${PROJECT_VERSION}")
@@ -20,26 +20,26 @@
 +option(BUILD_EXAMPLES "Set to ON to build examples" OFF)
 +option(BUILD_TESTS "Set to ON to build tests" OFF)
 +option(BUILD_SHARED_LIBS "Set to OFF to build static libraries" ON)
- 
+
 -message("LIB_INSTALL_DIR: ${LIB_INSTALL_DIR}")
 +# OpenCV
 +option(USE_OPENCV_CONTRIB "Set on to use opencv-contrib" ON)
- 
+
 -#------------------------------------------------------
 -# Build type
 -#------------------------------------------------------
 +# Optimization
 +option(USE_SIMD "Set on to enabel avx optimization" ON)
- 
+
 -IF(NOT CMAKE_BUILD_TYPE )
 -   SET( CMAKE_BUILD_TYPE "Release" )
 -ENDIF()
- 
+
 -#------------------------------------------------------
 -# Lib Names and Dirs
 -#------------------------------------------------------
 +add_subdirectory(Lib)
- 
+
 -if(WIN32)
 -    # Postfix of DLLs:
 -    SET(PROJECT_DLLVERSION "${PROJECT_VERSION_MAJOR}${PROJECT_VERSION_MINOR}${PROJECT_VERSION_PATCH}")
@@ -55,11 +55,11 @@
 +if(BUILD_EXAMPLES)
 +    add_subdirectory(examples)
 +endif(BUILD_EXAMPLES)
- 
+
 +if(BUILD_TESTS)
 +    add_subdirectory(tests)
 +endif(BUILD_TESTS)
- 
+
 -
 -#
 -OPTION(BUILD_UTILS	"Set to OFF to not build utils" ON)
@@ -95,7 +95,7 @@
 -    INCLUDE("${PROJECT_SOURCE_DIR}/generateDoc.cmake")
 -    GENERATE_DOCUMENTATION(${PROJECT_SOURCE_DIR}/dox.in)
 -ENDIF()
-- 
+-
 -# ----------------------------------------------------------------------------
 -#   Uninstall target, for "make uninstall"
 -# ----------------------------------------------------------------------------
@@ -299,19 +299,19 @@
 +if(BUILD_SHARED_LIBS)
 +    add_library(DBow3 SHARED)
 +
-+    target_compile_definitions(DBow3 
-+                               PUBLIC 
++    target_compile_definitions(DBow3
++                               PUBLIC
 +                               DBOW_API
 +    )
-+    
++
 +else()
 +    add_library(DBow3 STATIC)
 +endif()
 +
 +add_library(DBow3::DBow3 ALIAS DBow3)
 +
-+target_sources(DBow3 
-+               PRIVATE 
++target_sources(DBow3
++               PRIVATE
 +               src/BowVector.cpp
 +               src/Database.cpp
 +               src/DescManip.cpp
@@ -335,7 +335,7 @@
 +
 +if(USE_OPENCV_CONTRIB)
 +target_link_libraries(DBow3
-+                      PUBLIC 
++                      PUBLIC
 +                      ${OpenCV_LIBS}
 +)
 +
@@ -345,14 +345,14 @@
 +)
 +endif()
 +
-+target_compile_definitions(DBow3 
-+                           PUBLIC 
-+                           NOMINMAX 
++target_compile_definitions(DBow3
++                           PUBLIC
++                           NOMINMAX
 +                           _USE_MATH_DEFINES
 +)
 +
 +target_compile_features(DBow3
-+                        PRIVATE 
++                        PRIVATE
 +                        cxx_std_14
 +)
 +
@@ -397,7 +397,7 @@ index d8c17e0..cdbf517 100644
 --- a/src/BowVector.h
 +++ b/Lib/include/DBow3/BowVector.h
 @@ -12,6 +12,7 @@
- 
+
  #include <map>
  #include <vector>
 +#include <ostream>
@@ -442,7 +442,7 @@ index c324953..a31b317 100644
 @@ -35,17 +35,15 @@ or implied, of Rafael Muñoz Salinas.
  #define _CRT_SECURE_NO_DEPRECATE /* to avoid multiple Visual Studio 2005 warnings */
  #endif
- 
+
 -#if (defined WIN32 || defined _WIN32 || defined WINCE)   && defined DBOW_DSO_EXPORTS
 -    #define DBOW_API __declspec(dllexport)
 -    #pragma warning ( disable : 4251 ) //disable warning to templates with dll linkage.
@@ -460,7 +460,7 @@ index c324953..a31b317 100644
 -    #define DBOW_API
 +#    define DBOW_API
  #endif
- 
+
 -
  #define  DBOW_VERSION "3.0.0"
  #endif
@@ -482,12 +482,12 @@ index d132213..f61d421 100644
 @@ -13,7 +13,7 @@
  #include <algorithm>
  #include <cmath>
- 
+
 -#include "BowVector.h"
 +#include "DBow3/BowVector.h"
- 
+
  namespace DBoW3 {
- 
+
 diff --git a/src/Database.cpp b/Lib/src/Database.cpp
 similarity index 99%
 rename from src/Database.cpp
@@ -498,9 +498,9 @@ index d8a1b81..25610a0 100644
 @@ -1,4 +1,4 @@
 -#include "Database.h"
 +#include "DBow3/Database.h"
- 
+
  namespace DBoW3{
- 
+
 diff --git a/src/DescManip.cpp b/Lib/src/DescManip.cpp
 similarity index 96%
 rename from src/DescManip.cpp
@@ -517,7 +517,7 @@ index d6331af..430ce2b 100644
 - * License: see the LICENSE.txt file
 - *
 - */
-- 
+-
 -#include <vector>
 -#include <string>
 -#include <sstream>
@@ -644,7 +644,7 @@ index d6331af..430ce2b 100644
 -
 -
 -// --------------------------------------------------------------------------
--  
+-
 -std::string DescManip::toString(const cv::Mat &a)
 -{
 -    stringstream ss;
@@ -671,7 +671,7 @@ index d6331af..430ce2b 100644
 -}
 -
 -// --------------------------------------------------------------------------
--  
+-
 -void DescManip::fromString(cv::Mat &a, const std::string &s)
 -{
 -
@@ -790,7 +790,7 @@ index d6331af..430ce2b 100644
 + * License: see the LICENSE.txt file
 + *
 + */
-+ 
++
 +#include <vector>
 +#include <string>
 +#include <sstream>
@@ -917,7 +917,7 @@ index d6331af..430ce2b 100644
 +
 +
 +// --------------------------------------------------------------------------
-+  
++
 +std::string DescManip::toString(const cv::Mat &a)
 +{
 +    stringstream ss;
@@ -944,7 +944,7 @@ index d6331af..430ce2b 100644
 +}
 +
 +// --------------------------------------------------------------------------
-+  
++
 +void DescManip::fromString(cv::Mat &a, const std::string &s)
 +{
 +
@@ -1065,7 +1065,7 @@ index 880eab1..a9cd792 100644
 @@ -7,7 +7,7 @@
   *
   */
- 
+
 -#include "FeatureVector.h"
 +#include "DBow3/FeatureVector.h"
  #include <map>
@@ -1079,14 +1079,14 @@ index 7062400..b852979 100644
 --- a/src/QueryResults.cpp
 +++ b/Lib/src/QueryResults.cpp
 @@ -9,7 +9,7 @@
- 
+
  #include <iostream>
  #include <fstream>
 -#include "QueryResults.h"
 +#include "DBow3/QueryResults.h"
- 
+
  using namespace std;
- 
+
 diff --git a/src/ScoringObject.cpp b/Lib/src/ScoringObject.cpp
 similarity index 99%
 rename from src/ScoringObject.cpp
@@ -1096,15 +1096,15 @@ index 7cf0812..adde8e9 100644
 +++ b/Lib/src/ScoringObject.cpp
 @@ -8,8 +8,8 @@
   */
- 
+
  #include <cfloat>
 -#include "Vocabulary.h"
 -#include "BowVector.h"
 +#include "DBow3/Vocabulary.h"
 +#include "DBow3/BowVector.h"
- 
+
  using namespace DBoW3;
- 
+
 diff --git a/src/Vocabulary.cpp b/Lib/src/Vocabulary.cpp
 similarity index 99%
 rename from src/Vocabulary.cpp
@@ -1124,7 +1124,7 @@ index 9f0eff3..6ccbbea 100644
 +#include "DBow3/timers.h"
  namespace DBoW3{
  // --------------------------------------------------------------------------
- 
+
 diff --git a/src/quicklz.c b/Lib/src/quicklz.c
 similarity index 99%
 rename from src/quicklz.c
@@ -1133,12 +1133,12 @@ index 3742129..bd3cb11 100644
 --- a/src/quicklz.c
 +++ b/Lib/src/quicklz.c
 @@ -9,7 +9,7 @@
- 
+
  // 1.5.0 final
- 
+
 -#include "quicklz.h"
 +#include "DBow3/quicklz.h"
- 
+
  #if QLZ_VERSION_MAJOR != 1 || QLZ_VERSION_MINOR != 5 || QLZ_VERSION_REVISION != 0
  	#error quicklz.c and quicklz.h have different versions
 diff --git a/cmake/instructionSet.cmake b/cmake/instructionSet.cmake
@@ -1274,11 +1274,11 @@ index 4fd78f6..c48a3c4 100644
 -class CmdLineParser{int argc; char **argv; public: CmdLineParser(int _argc,char **_argv):argc(_argc),argv(_argv){}  bool operator[] ( string param ) {int idx=-1;  for ( int i=0; i<argc && idx==-1; i++ ) if ( string ( argv[i] ) ==param ) idx=i;    return ( idx!=-1 ) ;    } string operator()(string param,string defvalue="-1"){int idx=-1;    for ( int i=0; i<argc && idx==-1; i++ ) if ( string ( argv[i] ) ==param ) idx=i; if ( idx==-1 ) return defvalue;   else  return ( argv[  idx+1] ); }};
 -
 -
--// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 -
 -// extended surf gives 128-dimensional vectors
 -const bool EXTENDED_SURF = false;
--// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 -
 -void wait()
 -{
@@ -1400,11 +1400,11 @@ index 4fd78f6..c48a3c4 100644
 +class CmdLineParser{int argc; char **argv; public: CmdLineParser(int _argc,char **_argv):argc(_argc),argv(_argv){}  bool operator[] ( string param ) {int idx=-1;  for ( int i=0; i<argc && idx==-1; i++ ) if ( string ( argv[i] ) ==param ) idx=i;    return ( idx!=-1 ) ;    } string operator()(string param,string defvalue="-1"){int idx=-1;    for ( int i=0; i<argc && idx==-1; i++ ) if ( string ( argv[i] ) ==param ) idx=i; if ( idx==-1 ) return defvalue;   else  return ( argv[  idx+1] ); }};
 +
 +
-+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
++// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 +
 +// extended surf gives 128-dimensional vectors
 +const bool EXTENDED_SURF = false;
-+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
++// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 +
 +void wait()
 +{
@@ -1689,11 +1689,11 @@ index 63db40b..b4bc391 100644
 -class CmdLineParser{int argc; char **argv; public: CmdLineParser(int _argc,char **_argv):argc(_argc),argv(_argv){}  bool operator[] ( string param ) {int idx=-1;  for ( int i=0; i<argc && idx==-1; i++ ) if ( string ( argv[i] ) ==param ) idx=i;    return ( idx!=-1 ) ;    } string operator()(string param,string defvalue="-1"){int idx=-1;    for ( int i=0; i<argc && idx==-1; i++ ) if ( string ( argv[i] ) ==param ) idx=i; if ( idx==-1 ) return defvalue;   else  return ( argv[  idx+1] ); }};
 -
 -
--// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 -
 -// extended surf gives 128-dimensional vectors
 -const bool EXTENDED_SURF = false;
--// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 -
 -void wait()
 -{
@@ -1891,11 +1891,11 @@ index 63db40b..b4bc391 100644
 +class CmdLineParser{int argc; char **argv; public: CmdLineParser(int _argc,char **_argv):argc(_argc),argv(_argv){}  bool operator[] ( string param ) {int idx=-1;  for ( int i=0; i<argc && idx==-1; i++ ) if ( string ( argv[i] ) ==param ) idx=i;    return ( idx!=-1 ) ;    } string operator()(string param,string defvalue="-1"){int idx=-1;    for ( int i=0; i<argc && idx==-1; i++ ) if ( string ( argv[i] ) ==param ) idx=i; if ( idx==-1 ) return defvalue;   else  return ( argv[  idx+1] ); }};
 +
 +
-+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
++// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 +
 +// extended surf gives 128-dimensional vectors
 +const bool EXTENDED_SURF = false;
-+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
++// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 +
 +void wait()
 +{
@@ -2094,7 +2094,7 @@ index a9c52b4..0000000
 -
 -
 -ADD_LIBRARY(${PROJECT_NAME} ${srcs} ${hdrs})
--INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR} ) 
+-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR} )
 -
 -SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES 				# create *nix style library versions + symbolic links
 -        DEFINE_SYMBOL DBOW_DSO_EXPORTS

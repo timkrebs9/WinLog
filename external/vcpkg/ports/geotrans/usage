@@ -8,4 +8,3 @@ The geotrans library depends on being able to read it's model data so you'll nee
 set an environment variable to let geotrans know where the models are installed:
 
 export MSPCCS_DATA=@CURRENT_INSTALLED_DIR@/share/@PORT@/data
-

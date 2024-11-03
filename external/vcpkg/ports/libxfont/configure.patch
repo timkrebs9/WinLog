@@ -1,6 +1,6 @@
 diff --git a/configure.ac b/configure.ac
 index f507c285a..a821e7311 100644
---- a/configure.ac	
+--- a/configure.ac
 +++ b/configure.ac
 @@ -122,14 +122,14 @@ AC_SUBST(FREETYPE_REQUIRES)
  AC_DEFINE(X_GZIP_FONT_COMPRESSION,1,[Support gzip for bitmap fonts])
@@ -8,7 +8,7 @@ index f507c285a..a821e7311 100644
  AC_SUBST(X_GZIP_FONT_COMPRESSION)
 -AC_CHECK_LIB(z, gzopen, [Z_LIBS=-lz], AC_MSG_ERROR([*** zlib is required]))
 +AC_SEARCH_LIBS(gzopen, [z zlib zlibd] , [Z_LIBS="$ac_cv_search_gzopen"], AC_MSG_ERROR([*** zlib is required]))
- 
+
  AC_ARG_WITH(bzip2,
  	AS_HELP_STRING([--with-bzip2],
  	  [Use libbz2 to support bzip2 compressed bitmap fonts (default: no)]),
@@ -21,17 +21,16 @@ index f507c285a..a821e7311 100644
  fi
 @@ -204,8 +204,13 @@ if test "x$XFONT_FC" = xyes; then
  fi
- 
- 
+
+
 -AC_CHECK_LIB(m, hypot, [MATH_LIBS=-lm
 -AC_SUBST(MATH_LIBS)], AC_MSG_ERROR([*** libm is required]))
-+AC_SEARCH_LIBS([hypot], [m], [MATH_LIBS=-lm AC_SUBST(MATH_LIBS)], 
++AC_SEARCH_LIBS([hypot], [m], [MATH_LIBS=-lm AC_SUBST(MATH_LIBS)],
 +[if test "x$ac_cv_search_hypot" != "xnone required"; then
-+	AC_MSG_ERROR([*** libm is required])	
++	AC_MSG_ERROR([*** libm is required])
 +else
 +	AC_MSG_ERROR([*** libm is not required])
 +fi]
 +)
- 
+
  PKG_CHECK_MODULES(XFONT, [xproto xtrans fontsproto >= 2.1.3 fontenc])
- 

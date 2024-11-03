@@ -14,6 +14,6 @@ index 3804a24e2..91fdd593a 100644
 -$<$<BOOL:${_vtk_client_server_genex_include_directories}>:\n-I\'$<JOIN:${_vtk_client_server_genex_include_directories},\'\n-I\'>\'>\n")
 +             $<$<BOOL:${_vtk_client_server_genex_include_directories}>:\n-I\'$<JOIN:${_vtk_client_server_genex_include_directories},\'\n-I\'>\'>\n
 +             $<$<BOOL:${_vtk_client_server_genex_interface_include_directories}>:\n-I\'$<JOIN:${_vtk_client_server_genex_interface_include_directories},\'\n-I\'>\'>\n")
- 
+
    _vtk_module_get_module_property("${module}"
      PROPERTY  "hierarchy"

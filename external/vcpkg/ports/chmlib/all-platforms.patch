@@ -3,9 +3,9 @@ index 6c6736c..d532691 100644
 --- a/src/chm_lib.c
 +++ b/src/chm_lib.c
 @@ -175,8 +175,13 @@ typedef unsigned long           UInt64;
- 
+
  #else
- 
+
 -/* yielding an error is preferable to yielding incorrect behavior */
 -#error "Please define the sized types for your platform in chm_lib.c"
 +typedef unsigned char           UChar;
@@ -16,5 +16,5 @@ index 6c6736c..d532691 100644
 +typedef int64_t                 Int64;
 +typedef uint64_t                UInt64;
  #endif
- 
+
  /* GCC */

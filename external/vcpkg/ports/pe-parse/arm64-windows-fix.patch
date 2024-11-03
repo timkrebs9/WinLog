@@ -9,5 +9,5 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
  list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
 -find_package(Filesystem COMPONENTS Experimental Final REQUIRED)
  list(APPEND GLOBAL_CXXFLAGS ${DEFAULT_CXX_FLAGS})
- 
+
  option(BUILD_SHARED_LIBS "Build Shared Libraries" ON)

@@ -26,7 +26,7 @@ index 6fa3598..c855e38 100644
 -        ARCHIVE DESTINATION lib)
 +        ARCHIVE DESTINATION lib
 +        INCLUDES DESTINATION include)
- 
+
 diff --git a/SRC/CMakeLists.txt b/SRC/CMakeLists.txt
 index 07dc8c7..2355225 100644
 --- a/SRC/CMakeLists.txt
@@ -42,4 +42,3 @@ index 07dc8c7..2355225 100644
 -        ARCHIVE DESTINATION lib)
 +        ARCHIVE DESTINATION lib
 +        INCLUDES DESTINATION include)
- 

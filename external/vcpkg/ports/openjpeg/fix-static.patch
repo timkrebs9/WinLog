@@ -5,7 +5,7 @@ index 4d4bd952f..e14b5a692 100644
 @@ -33,14 +33,6 @@ include_directories(
    ${TIFF_INCLUDE_DIRNAME}
    )
- 
+
 -if(WIN32)
 -  if(BUILD_SHARED_LIBS)
 -    add_definitions(-DOPJ_EXPORTS)
@@ -22,7 +22,7 @@ index ea4131a3e..dc63f49dd 100644
 --- a/src/lib/openjp2/CMakeLists.txt
 +++ b/src/lib/openjp2/CMakeLists.txt
 @@ -84,12 +84,12 @@ endif()
- 
+
  # Build the library
  if(WIN32)
 +  add_library(${OPENJPEG_LIBRARY_NAME} ${OPENJPEG_SRCS})
@@ -42,7 +42,7 @@ index b3cb8ce88..fc6a9dde3 100644
 +++ b/src/lib/openjpip/CMakeLists.txt
 @@ -52,14 +52,14 @@ set(LOCAL_SRCS
    )
- 
+
  # Build the library
 +add_library(openjpip ${OPENJPIP_SRCS} ${LOCAL_SRCS})
  if(WIN32)

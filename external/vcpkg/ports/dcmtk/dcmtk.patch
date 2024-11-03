@@ -12,5 +12,5 @@ index 23a9278..15e9391 100644
 -  set(DCMTK_INSTALL_CMKDIR "cmake")
 +  set(DCMTK_INSTALL_CMKDIR "share/dcmtk")
  endif()
- 
+
  #-----------------------------------------------------------------------------

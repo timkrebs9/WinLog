@@ -39,7 +39,7 @@ Specifies a log file prefix.
 The underlying buildsystem will be instructed to not parallelize
 
 ### SUBPATH
-Additional subdir to invoke make in. Useful if only parts of a port should be built. 
+Additional subdir to invoke make in. Useful if only parts of a port should be built.
 
 ## Notes:
 This command should be preceded by a call to [`vcpkg_configure_make()`](vcpkg_configure_make.md).

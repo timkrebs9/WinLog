@@ -3,7 +3,7 @@ index 3729ad4..099a46b 100644
 --- a/src/Generator.cc
 +++ b/src/Generator.cc
 @@ -67,7 +67,7 @@ Generator::~Generator()
- 
+
  /////////////////////////////////////////////////
  bool Generator::Generate(const FileDescriptor *_file,
 -                               const string &/*_parameter*/,
@@ -24,6 +24,6 @@ index c0f2336..6132274 100644
                OutputDirectory *_generatorContext,
 -              string *_error) const;
 +              std::string *_error) const;
- 
+
    // private: GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(Generator);
  };

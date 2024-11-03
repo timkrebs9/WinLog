@@ -46,10 +46,10 @@ index 61b3266..4c2cfb4 100644
 @@ -1234,7 +1238,7 @@ def detect_crypt(self):
          else:
              libs = []
- 
+
 -        self.add(Extension('_crypt', ['_cryptmodule.c'], libraries=libs))
 +        self.add(Extension('_crypt', ['_cryptmodule.c'], runtime_library_dirs=self.lib_dirs, libraries=libs))
- 
+
      def detect_socket(self):
          # socket(2)
 @@ -1525,6 +1529,7 @@ class db_found(Exception): pass
@@ -90,7 +90,7 @@ index 61b3266..4c2cfb4 100644
                             libraries=libraries,
 +                           runtime_library_dirs=self.lib_dirs,
                             extra_link_args=extra_link_args))
- 
+
          # Gustavo Niemeyer's bz2 module.
 @@ -1742,6 +1751,7 @@ def detect_compress_exts(self):
                  bz2_extra_link_args = ()
@@ -123,7 +123,7 @@ index 61b3266..4c2cfb4 100644
 +                           runtime_library_dirs=self.lib_dirs,
                             sources=['pyexpat.c'] + expat_sources,
                             depends=expat_depends))
- 
+
 @@ -1831,6 +1844,7 @@ def detect_expat_elementtree(self):
                                 define_macros=define_macros,
                                 include_dirs=expat_inc,
@@ -142,12 +142,12 @@ index 61b3266..4c2cfb4 100644
              self.missing.append('_uuid')
 @@ -2319,6 +2334,7 @@ def detect_ctypes(self):
                  ext.extra_compile_args.append("-DHAVE_FFI_CLOSURE_ALLOC=1")
- 
+
              ext.include_dirs.append(ffi_inc)
 +            ext.runtime_library_dirs = self.lib_dirs
              ext.libraries.append(ffi_lib)
              self.use_system_libffi = True
- 
+
 @@ -2485,7 +2501,7 @@ def split_var(name, sep):
              include_dirs=openssl_includes,
              library_dirs=openssl_libdirs,
@@ -155,7 +155,7 @@ index 61b3266..4c2cfb4 100644
 -            runtime_library_dirs=runtime_library_dirs,
 +            runtime_library_dirs=self.lib_dirs,
          )
- 
+
          # This static linking is NOT OFFICIALLY SUPPORTED.
 @@ -2639,6 +2655,7 @@ def detect_nis(self):
          self.add(Extension('nis', ['nismodule.c'],
@@ -163,8 +163,7 @@ index 61b3266..4c2cfb4 100644
                             library_dirs=library_dirs,
 +                           runtime_library_dirs=self.lib_dirs,
                             include_dirs=includes_dirs))
- 
- 
--- 
-2.37.3.windows.1
 
+
+--
+2.37.3.windows.1

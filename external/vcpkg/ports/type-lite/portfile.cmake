@@ -15,7 +15,7 @@ vcpkg_configure_cmake(
     PREFER_NINJA
     OPTIONS
         -DTYPE_LITE_OPT_BUILD_TESTS=${BUILD_TESTS}
-        -DTYPE_LITE_OPT_BUILD_EXAMPLES=OFF           
+        -DTYPE_LITE_OPT_BUILD_EXAMPLES=OFF
 )
 
 vcpkg_install_cmake()

@@ -30,7 +30,7 @@ See our [Maintainer Guidelines and Policies](maintainer-guide.md#versioning) for
 A description only one or a few sentences long is helpful. Consider using the library's official description from their `README.md` or similar if possible. Automatic translations are acceptable and we are happy to clean up translations to English for our contributors.
 
 See our [manifest file documentation](manifest-files.md#description) for more information.
-    
+
 </details>
 
 <details id="c000004">
@@ -84,7 +84,7 @@ To provide users with a seamless build system integration, please be sure to exp
 
 <details id="c000011">
 <summary><a href="#c000011">c000011</a>: Ports do not use applications which modify the user's system</summary>
-    
+
 Ports should uphold vcpkg's contract of not modifying the user's system by avoiding applications which do so. Examples of these applications are `sudo`, `apt`, `brew`, or `pip`. Please use an alternative to these types of programs wherever possible.
 
 </details>

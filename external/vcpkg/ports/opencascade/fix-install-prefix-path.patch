@@ -10,6 +10,5 @@ index e391ddf..c926c49 100644
  if (OpenCASCADE_INSTALL_PREFIX MATCHES "/cmake$")
    get_filename_component (OpenCASCADE_INSTALL_PREFIX "${OpenCASCADE_INSTALL_PREFIX}" PATH)
  endif()
--- 
+--
 2.14.3.windows.1
-

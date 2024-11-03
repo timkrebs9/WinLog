@@ -10,7 +10,7 @@ index cad448f..4ce4f87 100644
 +  NAMES libmspack
    PATHS ${PC_MSPack_LIBRARY_DIRS}
  )
- 
+
 diff --git a/libclamav/CMakeLists.txt b/libclamav/CMakeLists.txt
 index 136ea30..72db826 100644
 --- a/libclamav/CMakeLists.txt

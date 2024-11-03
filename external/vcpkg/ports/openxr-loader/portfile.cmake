@@ -57,7 +57,7 @@ vcpkg_cmake_configure(
 
 vcpkg_cmake_install()
 
-# Generate the OpenXR C++ bindings 
+# Generate the OpenXR C++ bindings
 set(ENV{OPENXR_REPO} "${SDK_SOURCE_PATH}")
 file(STRINGS "${HPP_SOURCE_PATH}/headers.txt" HEADER_LIST REGEX "^openxr.*")
 foreach(HEADER ${HEADER_LIST})

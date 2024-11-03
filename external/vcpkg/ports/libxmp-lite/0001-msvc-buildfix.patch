@@ -18,6 +18,5 @@ diff -Naur .\libxmp-lite-4.4.1/src/common.h .\libxmp-lite-4.4.1-orig/src/common.
  #define D_(args, ...) do {} while (0)
  #endif
 -#endif
- 
+
  #elif defined __ANDROID__
- 

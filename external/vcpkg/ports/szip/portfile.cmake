@@ -16,10 +16,10 @@ vcpkg_extract_source_archive_ex(
 
 if (VCPKG_TARGET_IS_IOS)
     # when cross-compiling, try_run will not work.
-    # LFS "large file support" is keyed on 
+    # LFS "large file support" is keyed on
     # 1) 64-bit off_t (https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/64bitPorting/transition/transition.html table 2-1)
     # 2) stat works properly, which is true
-    set(extra_opts 
+    set(extra_opts
         -DTEST_LFS_WORKS_RUN=TRUE
         -DTEST_LFS_WORKS_RUN__TRYRUN_OUTPUT=""
     )
@@ -51,7 +51,7 @@ elseif(VCPKG_LIBRARY_LINKAGE STREQUAL "static")
     set(SZIP_LIB_RELEASE  "-llibszip")
     set(SZIP_LIB_DEBUG    "-llibszip_D")
     set(SZIP_LIBS_PRIVATE "")
-else()    
+else()
     set(SZIP_LIB_RELEASE  "-lszip")
     set(SZIP_LIB_DEBUG    "-lszip_D")
     set(SZIP_LIBS_PRIVATE "")

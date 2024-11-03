@@ -3,16 +3,16 @@ index ba2ef17..c3c5cd6 100644
 --- a/Source/FreeImage/PluginPNG.cpp
 +++ b/Source/FreeImage/PluginPNG.cpp
 @@ -40,8 +40,8 @@
- 
+
  // ----------------------------------------------------------
- 
+
 -#include "../ZLib/zlib.h"
 -#include "../LibPNG/png.h"
 +#include <zlib.h>
 +#include <libpng16/png.h>
- 
+
  // ----------------------------------------------------------
- 
+
 diff --git a/Source/FreeImage/ZLibInterface.cpp b/Source/FreeImage/ZLibInterface.cpp
 index 3ab6d32..725618b 100644
 --- a/Source/FreeImage/ZLibInterface.cpp
@@ -20,15 +20,15 @@ index 3ab6d32..725618b 100644
 @@ -19,10 +19,9 @@
  // Use at your own risk!
  // ==========================================================
- 
+
 -#include "../ZLib/zlib.h"
 +#include <zlib.h>
  #include "FreeImage.h"
  #include "Utilities.h"
 -#include "../ZLib/zutil.h"	/* must be the last header because of error C3163 in VS2008 (_vsnprintf defined in stdio.h) */
- 
+
  /**
- Compresses a source buffer into a target buffer, using the ZLib library. 
+ Compresses a source buffer into a target buffer, using the ZLib library.
 @@ -115,7 +114,7 @@ FreeImage_ZLibGZip(BYTE *target, DWORD target_size, BYTE *source, DWORD source_s
  			return 0;
          case Z_OK: {

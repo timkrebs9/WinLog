@@ -28,7 +28,7 @@ index 2889f8a..12a604b 100644
 @@ -200,6 +200,11 @@ main(int argc, char *argv[])
  	_wildcard(&argc, &argv);
  #endif
- 
+
 +#ifdef _WIN32
 +	if ((progname = strrchr(argv[0], '\\')) != NULL)
 +		progname++;
@@ -37,6 +37,5 @@ index 2889f8a..12a604b 100644
  	if ((progname = strrchr(argv[0], '/')) != NULL)
  		progname++;
  	else
--- 
+--
 2.29.2.windows.2
-

@@ -14,7 +14,7 @@ index 86c1d07..6fcfc4d 100644
 +#endif
  #include <getopt.h>
  #include <assert.h>
- 
+
 diff --git a/src/asn1Decoding.c b/src/asn1Decoding.c
 index c6f192e..3e4e21d 100644
 --- a/src/asn1Decoding.c
@@ -48,7 +48,7 @@ index b6844a8..445c716 100644
 +#endif
  #include <getopt.h>
  #include <assert.h>
- 
+
 diff --git a/src/benchmark.c b/src/benchmark.c
 index 010d58e..6c613df 100644
 --- a/src/benchmark.c
@@ -68,7 +68,7 @@ index 010d58e..6c613df 100644
 +#include <io.h>
 +#endif
  #include "benchmark.h"
- 
+
  int benchmark_must_finish = 0;
 diff --git a/src/benchmark.h b/src/benchmark.h
 index 3272649..6b6bf32 100644
@@ -77,7 +77,7 @@ index 3272649..6b6bf32 100644
 @@ -21,7 +21,9 @@
  #ifndef BENCHMARK_H
  # define BENCHMARK_H
- 
+
 +#ifndef _MSC_VER
  # include <sys/time.h>
 +#endif

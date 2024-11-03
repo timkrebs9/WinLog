@@ -3,7 +3,7 @@ index 6d6af49..9e7d2ee 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -94,9 +94,8 @@ IF (NOT MSVC)
- 
+
      # Find curl library, for HTTPS support:
      IF (UseCurl)
 -        FIND_PACKAGE(CURL)
@@ -14,7 +14,7 @@ index 6d6af49..9e7d2ee 100644
          ENDIF()
      ENDIF()
 @@ -128,18 +127,20 @@ SET(SRC_FILES
- 
+
  # Only include zlib source files if we are building a shared library.
  # Users will need to link their executable with zlib independently.
 -IF (BUILD_SHARED_LIBS)
@@ -27,7 +27,7 @@ index 6d6af49..9e7d2ee 100644
 +ELSE()
 +    FIND_PACKAGE(ZLIB REQUIRED)
  ENDIF()
- 
+
  ADD_LIBRARY(${LIB_NAME} ${LIB_TYPE} ${H_FILES} ${SRC_FILES})
 -TARGET_LINK_LIBRARIES(${LIB_NAME} ${PTHREADS_LIBRARY} ${M_LIB})
 +TARGET_LINK_LIBRARIES(${LIB_NAME} ${PTHREADS_LIBRARY} ${M_LIB} ZLIB::ZLIB)
@@ -35,5 +35,5 @@ index 6d6af49..9e7d2ee 100644
 -    TARGET_LINK_LIBRARIES(${LIB_NAME} ${CURL_LIBRARIES})
 +    TARGET_LINK_LIBRARIES(${LIB_NAME} CURL::libcurl)
  ENDIF(CURL_FOUND)
- 
+
  SET_TARGET_PROPERTIES(${LIB_NAME} PROPERTIES VERSION ${${PROJECT_NAME}_VERSION} SOVERSION ${${PROJECT_NAME}_MAJOR_VERSION})

@@ -14,7 +14,7 @@ index 80af6e84..ba86310d 100644
 +++ b/cmake/modules/QcaMacro.cmake
 @@ -69,15 +69,6 @@ macro(add_qca_test TARGET DESCRIPTION)
  endmacro(add_qca_test)
- 
+
  macro(install_pdb TARGET INSTALL_PATH)
 -  if(MSVC)
 -    get_target_property(LOCATION ${TARGET} LOCATION_DEBUG)
@@ -26,7 +26,7 @@ index 80af6e84..ba86310d 100644
 -    install(FILES ${LOCATION} DESTINATION ${INSTALL_PATH} CONFIGURATIONS RelWithDebInfo)
 -  endif()
  endmacro(install_pdb)
- 
+
  macro(normalize_path PATH)
 diff --git a/plugins/qca-ossl/qca-ossl.cpp b/plugins/qca-ossl/qca-ossl.cpp
 index b2c5d3d3..4250ec26 100644
@@ -66,6 +66,5 @@ index b2c5d3d3..4250ec26 100644
          else if (type == QLatin1String("pkey"))
              return new MyPKeyContext(this);
          else if (type == QLatin1String("dlgroup"))
--- 
+--
 2.31.1
-

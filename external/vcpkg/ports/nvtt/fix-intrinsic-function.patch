@@ -4,7 +4,7 @@ index 38532eb..e68d8f8 100644
 +++ b/src/nvmath/nvmath.h
 @@ -118,12 +118,12 @@ inline float asinf_assert(const float f)
  #endif
- 
+
  #if NV_CC_MSVC
 -NV_FORCEINLINE float log2f(float x)
 +NV_FORCEINLINE float nv_log2f(float x)

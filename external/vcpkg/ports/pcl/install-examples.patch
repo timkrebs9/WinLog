@@ -9,5 +9,5 @@ index 91f2404..18f5a24 100644
 +
 +  install(TARGETS ${_name} RUNTIME DESTINATION ${BIN_INSTALL_DIR})
  endmacro()
- 
+
  ###############################################################################

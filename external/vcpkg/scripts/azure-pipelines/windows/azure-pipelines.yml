@@ -104,4 +104,3 @@ jobs:
       testResultsFormat: xUnit
       testResultsFiles: $(XML_RESULTS_FILE)
       platform: ${{ parameters.triplet }}
-

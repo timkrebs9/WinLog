@@ -29,8 +29,8 @@ else()
 endif()
 
 configure_file(
-    ${CMAKE_CURRENT_LIST_DIR}/Config.cmake.in 
-    ${CURRENT_PACKAGES_DIR}/share/sparsehash/sparsehash-config.cmake 
+    ${CMAKE_CURRENT_LIST_DIR}/Config.cmake.in
+    ${CURRENT_PACKAGES_DIR}/share/sparsehash/sparsehash-config.cmake
     @ONLY
 )
 

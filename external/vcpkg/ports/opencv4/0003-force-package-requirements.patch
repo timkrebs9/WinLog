@@ -16,7 +16,7 @@
 -    include(FindJPEG)
 +    find_package(JPEG REQUIRED)
    endif()
- 
+
    if(NOT JPEG_FOUND)
 @@ -87,7 +87,7 @@ if(WITH_TIFF)
      ocv_clear_vars(TIFF_FOUND)
@@ -43,7 +43,7 @@
 -    find_package(OpenJPEG QUIET)
 +    find_package(OpenJPEG REQUIRED)
    endif()
- 
+
    if(NOT OpenJPEG_FOUND OR OPENJPEG_MAJOR_VERSION LESS 2)
 @@ -200,7 +200,7 @@ if(WITH_JASPER AND NOT HAVE_OPENJPEG)
    if(BUILD_JASPER)
@@ -52,7 +52,7 @@
 -    include(FindJasper)
 +    find_package(Jasper REQUIRED)
    endif()
- 
+
    if(NOT JASPER_FOUND)
 @@ -225,7 +225,7 @@ if(WITH_PNG)
      ocv_clear_vars(PNG_FOUND)
@@ -64,17 +64,17 @@
        include(CheckIncludeFile)
        check_include_file("${PNG_PNG_INCLUDE_DIR}/libpng/png.h" HAVE_LIBPNG_PNG_H)
 @@ -275,7 +275,7 @@ endif()
- 
+
  # --- GDAL (optional) ---
  if(WITH_GDAL)
 -    find_package(GDAL QUIET)
 +    find_package(GDAL REQUIRED)
- 
+
      if(NOT GDAL_FOUND)
          set(HAVE_GDAL NO)
 @@ -287,7 +287,7 @@ if(WITH_GDAL)
  endif()
- 
+
  if(WITH_GDCM)
 -  find_package(GDCM QUIET)
 +  find_package(GDCM REQUIRED)

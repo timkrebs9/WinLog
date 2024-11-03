@@ -26,7 +26,7 @@ if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
     list(APPEND ${PORT}_PATCHES env.patch)
 endif()
 
-list(APPEND ${PORT}_PATCHES 
+list(APPEND ${PORT}_PATCHES
         dont_force_cmakecache_latest.patch
     )
 
@@ -147,7 +147,7 @@ vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_GUI_OPTIONS
     "xcb"                 FEATURE_xcb
     "xcb-xlib"            FEATURE_xcb_xlib
     "xkbcommon-x11"       FEATURE_xkbcommon_x11
-    "xrender"             FEATURE_xrender # requires FEATURE_xcb_native_painting; otherwise disabled. 
+    "xrender"             FEATURE_xrender # requires FEATURE_xcb_native_painting; otherwise disabled.
     "xrender"             FEATURE_xcb_native_painting # experimental
     "gles2"               FEATURE_opengles2
     #"vulkan"              CMAKE_REQUIRE_FIND_PACKAGE_Vulkan
@@ -316,7 +316,7 @@ else()
 endif()
 list(TRANSFORM other_files APPEND "${script_suffix}")
 
-list(APPEND other_files 
+list(APPEND other_files
                 android_cmakelist_patcher.sh
                 android_emulator_launcher.sh
                 ensure_pro_file.cmake
@@ -446,4 +446,3 @@ if(EXISTS "${configfile}")
     endif()
     file(WRITE "${configfile}" "${_contents}")
 endif()
-

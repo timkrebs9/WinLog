@@ -5,9 +5,9 @@ index a01937b..454ec3e 100644
 @@ -9,6 +9,8 @@
  #include <SFML/System/String.hpp>
  #include <SFML/Window/Event.hpp>
- 
+
 +#include <limits>
 +
  namespace sfg {
- 
+
  // Signals.

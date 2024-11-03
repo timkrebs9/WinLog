@@ -93,9 +93,9 @@ if(MSVC)
 endif()
 
 add_library(libexif
-    ${SOURCES} 
-    ${SOURCES_CANON} 
-    ${SOURCES_FUJI} 
+    ${SOURCES}
+    ${SOURCES_CANON}
+    ${SOURCES_FUJI}
     ${SOURCES_OLYMPUS}
     ${SOURCES_PENTAX}
     ${SOURCES_MSVC}

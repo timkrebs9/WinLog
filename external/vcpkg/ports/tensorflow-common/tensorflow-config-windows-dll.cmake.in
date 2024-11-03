@@ -48,7 +48,7 @@ if(@TENSORFLOW_HAS_DEBUG@)
 	set_target_properties(tensorflow@TF_LIB_SUFFIX@::tensorflow@TF_LIB_SUFFIX@
 		PROPERTIES
 			IMPORTED_LOCATION_DEBUG "${TENSORFLOW_INSTALL_PREFIX}/debug/bin/tensorflow@TF_LIB_SUFFIX@.dll"
-			IMPORTED_IMPLIB_DEBUG "${TENSORFLOW_INSTALL_PREFIX}/debug/lib/tensorflow@TF_LIB_SUFFIX@.lib"	
+			IMPORTED_IMPLIB_DEBUG "${TENSORFLOW_INSTALL_PREFIX}/debug/lib/tensorflow@TF_LIB_SUFFIX@.lib"
 	)
 endif()
 

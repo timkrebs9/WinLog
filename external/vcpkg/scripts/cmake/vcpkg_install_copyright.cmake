@@ -11,7 +11,7 @@ function(vcpkg_install_copyright)
 
     list(LENGTH arg_FILE_LIST FILE_LIST_LENGTH)
     set(out_string "")
-    
+
     if(FILE_LIST_LENGTH LESS_EQUAL 0)
         message(FATAL_ERROR "FILE_LIST must contain at least one file")
     elseif(FILE_LIST_LENGTH EQUAL 1)

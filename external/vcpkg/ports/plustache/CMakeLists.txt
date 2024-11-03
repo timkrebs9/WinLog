@@ -5,24 +5,24 @@ find_package(Boost REQUIRED COMPONENTS regex)
 
 add_library(
 	plustache
-	
+
      src/template.cpp
 	 src/context.cpp
 	)
-	
-	
+
+
 target_include_directories(
 	plustache
-	
+
 	PUBLIC
 	  ${CMAKE_CURRENT_LIST_DIR}/include
-	PRIVATE 
+	PRIVATE
 	  ${Boost_INCLUDE_DIRS}
 )
 
 target_link_libraries(
 	plustache
-	
+
 	PRIVATE
 	  ${Boost_LIBRARIES}
 )

@@ -8,6 +8,6 @@ index 823357c02..e1dc59aa7 100644
  	  ? 'Application'
 -	  : ($self->{type} eq "dll" ? 'DynamicLibrary' : 'StaticLibrary');
 +	  : ($self->{type} eq "dll" ? 'StaticLibrary' : 'StaticLibrary');
- 
+
  	print $f <<EOF;
    <PropertyGroup Condition="'\$(Configuration)|\$(Platform)'=='$cfgname|$self->{platform}'" Label="Configuration">

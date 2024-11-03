@@ -8,7 +8,7 @@ index cac7570ea..d0ca1243c 100644
  {
 +#pragma push_macro("CHECKSUM_TYPE_NONE")
 +#ifdef CHECKSUM_TYPE_NONE
-+// winioctl.h defines CHECKSUM_TYPE_NONE to 0 as a macro. 
++// winioctl.h defines CHECKSUM_TYPE_NONE to 0 as a macro.
 +#undef CHECKSUM_TYPE_NONE
 +#endif
  	CHECKSUM_TYPE_NONE,

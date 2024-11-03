@@ -6,7 +6,7 @@ else()
 set(PATCHES "")
 if(VCPKG_TARGET_IS_WINDOWS)
     #vcpkg_check_linkage(ONLY_STATIC_LIBRARY) # Meson is not able to automatically export symbols for DLLs
-    set(PATCHES fix_msvc_build.patch 
+    set(PATCHES fix_msvc_build.patch
                 build.patch)
 endif()
 

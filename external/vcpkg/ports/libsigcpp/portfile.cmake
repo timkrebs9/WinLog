@@ -4,7 +4,7 @@ vcpkg_from_github(
     REF 3.2.0
     SHA512 95ab0acfc2c5a151335e73bdc9b0e058af67d9706d0697bfd938e38c51e853fdb29d7a26484f192abe150640c60d5e30075a23deaa043a8deed70616bc9f508a
     HEAD_REF master
-    PATCHES 
+    PATCHES
         disable_tests_enable_static_build.patch
         fix-shared-windows-build.patch
 )

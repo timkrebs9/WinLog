@@ -18,6 +18,6 @@ index 26e512e..c0377b6 100755
 +surround_filter_select="rdft"
 +sinc_filter_deps="avcodec"
 +sinc_filter_select="rdft"
- 
+
  # examples
  avio_list_dir_deps="avformat avutil"

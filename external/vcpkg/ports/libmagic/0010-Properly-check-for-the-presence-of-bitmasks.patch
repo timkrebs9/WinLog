@@ -39,7 +39,7 @@ index 5204f20..7244841 100644
  		ret = lstat(fn, sb);
  	else
 @@ -171,17 +171,17 @@ file_fsmagic(struct magic_set *ms, const char *fn, struct stat *sb)
- 
+
  	ret = 1;
  	if (!mime && !silent) {
 -#ifdef S_ISUID
@@ -113,6 +113,5 @@ index 5204f20..7244841 100644
  #ifndef __COHERENT__
  	case S_IFSOCK:
  		if (mime) {
--- 
+--
 2.29.2.windows.2
-

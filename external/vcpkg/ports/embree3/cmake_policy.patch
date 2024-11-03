@@ -10,5 +10,5 @@ index 06f49a8..fdaaee7 100644
 +    cmake_policy(SET CMP0001 OLD)
 +  endif()
  ENDIF(COMMAND cmake_policy)
- 
+
  MARK_AS_ADVANCED(CMAKE_BACKWARDS_COMPATIBILITY)

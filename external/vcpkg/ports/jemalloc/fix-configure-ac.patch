@@ -10,4 +10,3 @@ index f6d25f334..3115504e2 100644
 +  AC_DEFINE([JEMALLOC_UAF_DETECTION], [ ], ["enable UAF"])
  fi
  AC_SUBST([enable_uaf_detection])
- 

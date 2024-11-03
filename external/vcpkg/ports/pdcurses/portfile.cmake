@@ -7,7 +7,7 @@ vcpkg_from_github(
     PATCHES
         nmake-install.patch
 )
- 
+
 if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
     cmake_path(NATIVE_PATH SOURCE_PATH  PDCURSES_SRCDIR)
     set(DLL_OPTION "")

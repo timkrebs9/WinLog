@@ -3,7 +3,7 @@ index 8761448..17321af 100644
 --- a/modules/FindMagnum.cmake
 +++ b/modules/FindMagnum.cmake
 @@ -647,9 +647,9 @@ foreach(_component ${Magnum_FIND_COMPONENTS})
- 
+
              # GLFW application dependencies
              elseif(_component STREQUAL GlfwApplication)
 -                find_package(GLFW)

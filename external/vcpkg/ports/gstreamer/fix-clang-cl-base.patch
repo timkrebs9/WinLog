@@ -3,9 +3,9 @@ index 495671ebb..fff3ea518 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -43,7 +43,7 @@ plugins = []
- 
+
  cc = meson.get_compiler('c')
- 
+
 -if cc.get_id() == 'msvc'
 +if cc.get_argument_syntax() == 'msvc'
    msvc_args = [
@@ -13,7 +13,7 @@ index 495671ebb..fff3ea518 100644
        # If a warning is completely useless and spammy, use '/wdXXXX' to suppress it
 @@ -75,7 +75,7 @@ endif
  core_conf = configuration_data()
- 
+
  # Symbol visibility
 -if cc.get_id() == 'msvc'
 +if cc.get_argument_syntax() == 'msvc'

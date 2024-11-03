@@ -27,7 +27,7 @@ vcpkg_cmake_configure(
         -DBUILD_PYTHON_BINDINGS=OFF
         -DBUILD_MATLAB_BINDINGS=OFF
         -DUSE_OPENMP=OFF
-    OPTIONS_DEBUG 
+    OPTIONS_DEBUG
         -DCMAKE_DEBUG_POSTFIX=d
 )
 

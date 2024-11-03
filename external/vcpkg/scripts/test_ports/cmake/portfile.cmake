@@ -6,7 +6,7 @@ vcpkg_from_gitlab(
     REF
         8428e39ed9cddb3b7f1a6f7a58cb8617503183d2
     SHA512
-        4a40656efe5854bd6b893d0b2b86eed5df42992d080edb9c0cb2da2c55ad8dd489a85072b138947933d94ef5ba90c7a59f0a4460e3722d0f898ceefbbf74d226 
+        4a40656efe5854bd6b893d0b2b86eed5df42992d080edb9c0cb2da2c55ad8dd489a85072b138947933d94ef5ba90c7a59f0a4460e3722d0f898ceefbbf74d226
     HEAD_REF master
     PATCHES fix-dependency-libuv.patch
 )

@@ -3,7 +3,7 @@ index 9c3c084..9ccabda 100644
 --- a/src/Socket_p.h
 +++ b/src/Socket_p.h
 @@ -548,7 +548,7 @@ namespace Arcus
- 
+
          google::protobuf::io::ArrayInputStream array(wire_message->data, wire_message->size);
          google::protobuf::io::CodedInputStream stream(&array);
 -        stream.SetTotalBytesLimit(message_size_maximum, message_size_warning);

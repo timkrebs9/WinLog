@@ -14,7 +14,7 @@ else()
     COMMAND ${MAKE_EXE} "generate"
     WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
   )
-endif() 
+endif()
 
 
 find_package(freetype NO_MODULE REQUIRED)

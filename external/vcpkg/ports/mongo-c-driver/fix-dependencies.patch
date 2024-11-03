@@ -3,7 +3,7 @@ index 71c13fd..8464824 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -205,11 +205,9 @@ if (ENABLE_BSON STREQUAL SYSTEM)
- 
+
     set (USING_SYSTEM_BSON TRUE)
     if (NOT TARGET mongo::bson_shared)
 -           message (FATAL_ERROR "System libbson built without shared library target")
@@ -34,11 +34,11 @@ index d108e5d..a097016 100644
 -      include (FindOpenSSL)
 +      find_package(OpenSSL REQUIRED)
     endif ()
- 
+
     if (ENABLE_SSL STREQUAL LIBRESSL)
 @@ -364,10 +364,10 @@ else ()
  endif ()
- 
+
  # Sets SNAPPY_LIBRARIES and SNAPPY_INCLUDE_DIRS.
 -include (FindSnappy)
 -if (SNAPPY_INCLUDE_DIRS)
@@ -48,7 +48,7 @@ index d108e5d..a097016 100644
     set (MONGOC_ENABLE_COMPRESSION 1)
 -   include_directories ("${SNAPPY_INCLUDE_DIRS}")
  endif ()
- 
+
  set (MONGOC_ENABLE_SHM_COUNTERS 0)
 diff --git a/src/libmongoc/build/cmake/libmongoc-1.0-config.cmake.in b/src/libmongoc/build/cmake/libmongoc-1.0-config.cmake.in
 index feeca02..1ec92ae 100644
@@ -57,13 +57,13 @@ index feeca02..1ec92ae 100644
 @@ -19,6 +19,10 @@ set (MONGOC_MINOR_VERSION @MONGOC_MINOR_VERSION@)
  set (MONGOC_MICRO_VERSION @MONGOC_MICRO_VERSION@)
  set (MONGOC_VERSION @MONGOC_VERSION@)
- 
+
 +include(CMakeFindDependencyMacro)
 +if("@ENABLE_SNAPPY@" STREQUAL "ON")
 +    find_dependency(Snappy CONFIG)
 +endif()
  find_package (libbson-1.0 "@MONGOC_MAJOR_VERSION@.@MONGOC_MINOR_VERSION@" REQUIRED)
- 
+
  @PACKAGE_INIT@
 diff --git a/src/libmongoc/build/cmake/libmongoc-static-1.0-config.cmake.in b/src/libmongoc/build/cmake/libmongoc-static-1.0-config.cmake.in
 index 6f05b0c..0e388e6 100644
@@ -72,13 +72,13 @@ index 6f05b0c..0e388e6 100644
 @@ -19,6 +19,10 @@ set (MONGOC_STATIC_MINOR_VERSION @MONGOC_MINOR_VERSION@)
  set (MONGOC_STATIC_MICRO_VERSION @MONGOC_MICRO_VERSION@)
  set (MONGOC_STATIC_VERSION @MONGOC_VERSION@)
- 
+
 +include(CMakeFindDependencyMacro)
 +if("@ENABLE_SNAPPY@" STREQUAL "ON")
 +    find_dependency(Snappy CONFIG)
 +endif()
  find_package (libbson-static-1.0 "@MONGOC_MAJOR_VERSION@.@MONGOC_MINOR_VERSION@" REQUIRED)
- 
+
  @PACKAGE_INIT@
 diff --git a/src/libmongoc/src/mongoc-config.cmake b/src/libmongoc/src/mongoc-config.cmake
 index 7fe7cf4..12611a3 100644

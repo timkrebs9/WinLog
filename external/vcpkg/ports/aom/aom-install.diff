@@ -3,9 +3,9 @@ index 18190f647..f4b1b359d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -23,6 +23,9 @@ endif()
- 
+
  project(AOM C CXX)
- 
+
 +include(GNUInstallDirs)
 +include(CMakePackageConfigHelpers)
 +
@@ -15,7 +15,7 @@ index 18190f647..f4b1b359d 100644
 @@ -302,6 +305,52 @@ if(BUILD_SHARED_LIBS)
    set(AOM_LIB_TARGETS ${AOM_LIB_TARGETS} aom_static)
  endif()
- 
+
 +set(PUBLIC_HEADERS
 +    aom/aom.h
 +    aom/aom_codec.h

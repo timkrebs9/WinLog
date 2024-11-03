@@ -10,4 +10,3 @@ index 2ffd45a..bbf74b4 100644
 +  Eigen::SelfAdjointEigenSolver<Eigen::Matrix<double, 9, 9>> solver
      (epipolar_constraint.transpose() * epipolar_constraint);
    f = solver.eigenvectors().leftCols<1>();
- 

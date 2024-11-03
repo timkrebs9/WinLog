@@ -4,7 +4,7 @@ index c5a82c0..3ce4719 100644
 +++ b/cmake/Config.cmake.in
 @@ -42,6 +42,7 @@
  include(CMakeFindDependencyMacro)
- 
+
  set(OpenCV_DIR @OpenCV_DIR@)
 +find_dependency(TBB)
  find_dependency(OpenCV)
@@ -21,25 +21,25 @@ index 7b64b83..5398ed4 100644
 -                       ${TBB_LIBRARIES} ${CUDA_CUDADEVRT_LIBRARY})
 +                       TBB::tbb
 +                       ${CUDA_CUDADEVRT_LIBRARY})
- 
+
    if(NOT MSVC)
     target_link_libraries(CCTag pthread dl)
 @@ -184,7 +185,7 @@ if(CCTAG_WITH_CUDA)
- 
+
    target_compile_definitions(CCTag
                           PUBLIC -DCCTAG_WITH_CUDA
 -                         PRIVATE ${TBB_DEFINITIONS})
 +)
- 
+
    if(CCTAG_HAVE_SHFL_DOWN_SYNC)
      target_compile_definitions(CCTag PRIVATE "-DCCTAG_HAVE_SHFL_DOWN_SYNC")
 @@ -220,16 +221,13 @@ else() # without CUDA
  #  get_target_property(testprop CCTag INTERFACE_INCLUDE_DIRECTORIES )
  #  message(STATUS "testprop: ${testprop}")
- 
+
 -  target_compile_definitions(CCTag
 -                             PRIVATE ${TBB_DEFINITIONS})
- 
+
    target_link_libraries(CCTag
                          PUBLIC
                            ${OpenCV_LIBS}
@@ -48,7 +48,7 @@ index 7b64b83..5398ed4 100644
 -                        PRIVATE
 -                          ${TBB_LIBRARIES})
 +                          TBB::tbb)
- 
+
    if(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
      target_link_libraries(CCTag PRIVATE pthread dl)
 diff --git a/src/applications/CMakeLists.txt b/src/applications/CMakeLists.txt
@@ -82,12 +82,12 @@ index 21c47bf..a800fbc 100644
  {
 -  static tbb::mutex G_SortMutex;
 +  static std::mutex G_SortMutex;
-   
+
    assert( seed );
    // Check if the seed has already been processed, i.e. belongs to an already
 @@ -102,7 +103,7 @@ static void constructFlowComponentFromSeed(
      }
-     
+
      {
 -      tbb::mutex::scoped_lock lock(G_SortMutex);
 +      std::lock_guard<std::mutex> lock(G_SortMutex);
@@ -102,7 +102,7 @@ index 21c47bf..a800fbc 100644
 -  static tbb::mutex G_InsertMutex;
 +  static std::mutex G_UpdateMutex;
 +  static std::mutex G_InsertMutex;
-   
+
    try
    {
 @@ -171,7 +172,7 @@ static void completeFlowComponent(
@@ -116,25 +116,25 @@ index 21c47bf..a800fbc 100644
          }
 @@ -239,7 +240,7 @@ static void completeFlowComponent(
      }
- 
+
      {
 -      tbb::mutex::scoped_lock lock(G_InsertMutex);
 +      std::lock_guard<std::mutex> lock(G_InsertMutex);
        vCandidateLoopTwo.push_back(candidate);
      }
- 
+
 @@ -384,7 +385,7 @@ static void cctagDetectionFromEdgesLoopTwoIteration(
    float scale,
    const Parameters& params)
  {
 -    static tbb::mutex G_InsertMutex;
 +    static std::mutex G_InsertMutex;
-     
+
      const Candidate& candidate = vCandidateLoopTwo[iCandidate];
- 
+
 @@ -543,7 +544,7 @@ static void cctagDetectionFromEdgesLoopTwoIteration(
  #endif
-       
+
        {
 -        tbb::mutex::scoped_lock lock(G_InsertMutex);
 +        std::lock_guard<std::mutex> lock(G_InsertMutex);
@@ -146,25 +146,25 @@ index 15c9d9b..99b616a 100644
 --- a/src/cctag/Identification.cpp
 +++ b/src/cctag/Identification.cpp
 @@ -29,6 +29,7 @@
- 
+
  #include <cmath>
  #include <vector>
 +#include <mutex>
- 
+
  #include <tbb/tbb.h>
- 
+
 @@ -71,7 +72,7 @@ bool orazioDistanceRobust(
  #endif // GRIFF_DEBUG
-   
+
    const size_t cut_count = cuts.size();
 -  static tbb::mutex vscore_mutex;
 +  static std::mutex vscore_mutex;
- 
+
    tbb::parallel_for(size_t(0), cut_count, [&](size_t i) {
      const cctag::ImageCut& cut = cuts[i];
 @@ -183,7 +184,7 @@ bool orazioDistanceRobust(
    #endif // GRIFF_DEBUG
- 
+
        {
 -        tbb::mutex::scoped_lock lock(vscore_mutex);
 +        std::lock_guard<std::mutex> lock(vscore_mutex);

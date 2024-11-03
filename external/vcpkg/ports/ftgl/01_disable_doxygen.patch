@@ -3,9 +3,9 @@ index 303fcae..718ae88 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -35,15 +35,16 @@ ENDIF(BUILD_SHARED_LIBS)
- 
+
  ADD_CUSTOM_TARGET(doc)
- 
+
 -FIND_PACKAGE(Doxygen)
 -IF(DOXYGEN_FOUND)
 -  ADD_CUSTOM_TARGET(doxygen
@@ -25,6 +25,5 @@ index 303fcae..718ae88 100644
 +     ADD_DEPENDENCIES(doc doxygen)
 +   ENDIF(DOXYGEN_FOUND)
 +ENDIF()
- 
+
  SUBDIRS(src)
- 

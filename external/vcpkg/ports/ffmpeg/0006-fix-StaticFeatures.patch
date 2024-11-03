@@ -4,10 +4,10 @@ index cc5bf29..ee26559 100755
 +++ b/configure
 @@ -6406,7 +6406,8 @@ if enabled libmfx; then
  fi
- 
+
  enabled libmodplug        && require_pkg_config libmodplug libmodplug libmodplug/modplug.h ModPlug_Load
 -enabled libmp3lame        && require "libmp3lame >= 3.98.3" lame/lame.h lame_set_VBR_quality -lmp3lame $libm_extralibs
-+enabled libmp3lame        && { check_lib libmp3lame lame/lame.h lame_set_VBR_quality -lmp3lame $libm_extralibs || 
++enabled libmp3lame        && { check_lib libmp3lame lame/lame.h lame_set_VBR_quality -lmp3lame $libm_extralibs ||
 +                               require libmp3lame lame/lame.h lame_set_VBR_quality -llibmp3lame-static -llibmpghip-static $libm_extralibs; }
  enabled libmysofa         && { check_pkg_config libmysofa libmysofa mysofa.h mysofa_neighborhood_init_withstepdefine ||
                                 require libmysofa mysofa.h mysofa_neighborhood_init_withstepdefine -lmysofa $zlib_extralibs; }
@@ -45,5 +45,5 @@ index cc5bf29..ee26559 100755
 -    check_func_headers iconv.h iconv || check_lib iconv iconv.h iconv -liconv
 +    check_func_headers iconv.h iconv || check_lib iconv iconv.h iconv -liconv || check_lib iconv iconv.h iconv -liconv -llibcharset
  fi
- 
+
  enabled debug && add_cflags -g"$debuglevel" && add_asflags -g"$debuglevel"

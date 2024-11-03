@@ -11,7 +11,7 @@ index 6c48bed..6f97c8b 100644
 +#	SET(CMAKE_C_FLAGS "")
 +#	SET(CMAKE_CXX_FLAGS "")
  ENDIF(NOT ("${BUILD_TYPE_UC}" STREQUAL "DISTRIBUTION"))
- 
+
  # CCACHE
 @@ -184,12 +184,12 @@ SET(SWIG_CXX_COMPILER_FLAGS "-O0 -g")
  SET(CMAKE_C_FLAGS "${COMPILER_WARNINGS} ${CMAKE_C_FLAGS}")
@@ -37,9 +37,9 @@ index fbca111..f6847f7 100644
 --- a/cmake/version.cmake
 +++ b/cmake/version.cmake
 @@ -5,7 +5,7 @@ SET(MAINVERSION ${VERSION})
- 
+
  SET(EXTRA "")
- 
+
 -IF(EXISTS "${ROOT_DIR}/.git/")
 +IF(EXISTS "${ROOT_DIR}/.git/" AND FALSE)
  	FIND_PACKAGE(Git QUIET)
@@ -60,7 +60,7 @@ index 9e79786..fd76961 100644
      $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/src>
 @@ -492,10 +492,12 @@ ELSE()
  ENDIF()
- 
+
  # set the desidered targets to be installed
 +if(NOT INSTALL_TARGETS)
  set(INSTALL_TARGETS shogun)
@@ -68,6 +68,6 @@ index 9e79786..fd76961 100644
    LIST(APPEND INSTALL_TARGETS shogun-static)
  endif()
 +endif()
- 
+
  INSTALL(
    TARGETS ${INSTALL_TARGETS}

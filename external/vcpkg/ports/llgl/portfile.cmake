@@ -8,19 +8,19 @@ vcpkg_from_github(
     REF 8f28437960ed60622e94f4f97b24e842b5a0e9e6
     SHA512 8a6bd4109e977f9def0f04a3d31f7bd4beebbe162c52eaa08a54daf8335871615215ece166e5a9d5b5475b834fd53a26ff9638ff270a2f00c88bab21ed156760
     HEAD_REF master
-    PATCHES 
+    PATCHES
         fix-install-error.patch
         fix-arm64-build-error.patch
 )
 
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
     opengl     LLGL_BUILD_RENDERER_OPENGL
-    direct3d11 LLGL_BUILD_RENDERER_DIRECT3D11 
+    direct3d11 LLGL_BUILD_RENDERER_DIRECT3D11
 )
 
 vcpkg_configure_cmake(
     SOURCE_PATH ${SOURCE_PATH}
-    PREFER_NINJA 
+    PREFER_NINJA
     OPTIONS ${FEATURE_OPTIONS}
 )
 

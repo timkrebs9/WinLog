@@ -5,8 +5,8 @@ index c2a0ee4..2735a07 100644
 @@ -13,7 +13,6 @@ if (WIN32)
    set(Boost_USE_STATIC_RUNTIME    OFF)
  endif()
- 
+
 -include(FindBoost)
  find_package(Boost ${MIN_BOOST_VERSION})
- 
+
  if (NOT Boost_FOUND)

@@ -14,9 +14,9 @@ target_include_directories(wintoast PUBLIC
 
 # Install targets
 install(TARGETS wintoast
-	RUNTIME DESTINATION bin 
-	LIBRARY DESTINATION lib 
-	ARCHIVE DESTINATION lib 
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
 )
 
 # Install headers

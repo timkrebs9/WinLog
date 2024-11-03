@@ -11,7 +11,7 @@ index b00fa523..1019683f 100644
 @@ -27,9 +27,13 @@ if (MINGW)
    endif()
  endif()
- 
+
 -install(TARGETS sbp
 -        EXPORT sbp-export
 -        DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
@@ -23,5 +23,5 @@ index b00fa523..1019683f 100644
 +  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 +)
  install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/libsbp/" DESTINATION "${CMAKE_INSTALL_FULL_INCLUDEDIR}/libsbp")
- 
+
  export(EXPORT sbp-export

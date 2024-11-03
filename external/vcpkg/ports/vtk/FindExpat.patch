@@ -3,7 +3,7 @@ index 45d923764..0ebcd3c83 100644
 --- a/CMake/FindEXPAT.cmake
 +++ b/CMake/FindEXPAT.cmake
 @@ -73,15 +73,37 @@ if(EXPAT_FOUND)
- 
+
    if(NOT TARGET EXPAT::EXPAT)
      include(vtkDetectLibraryType)
 -    vtk_detect_library_type(expat_library_type
@@ -45,4 +45,3 @@ index 45d923764..0ebcd3c83 100644
 +    endif()
    endif()
  endif()
- 

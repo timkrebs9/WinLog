@@ -14,7 +14,7 @@ index bd2649d..c1801a6 100644
    if(NOT CURL_LIBRARIES)
 @@ -854,7 +855,7 @@ endif()
  # ##############################################################################
- 
+
  add_executable(tesseract src/tesseract.cpp)
 -target_link_libraries(tesseract libtesseract)
 +target_link_libraries(tesseract libtesseract LibArchive::LibArchive)

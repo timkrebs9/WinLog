@@ -5,7 +5,7 @@ index 84ed0cb..b33f252 100644
 @@ -19,7 +19,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
  {
      LRESULT res = 0;
- 
+
 -    SWindowData     *window_data     = (SWindowData *) GetWindowLongPtr(hWnd, GWL_USERDATA);
 +    SWindowData     *window_data     = (SWindowData *) GetWindowLongPtr(hWnd, GWLP_USERDATA);
      SWindowData_Win *window_data_win = 0x0;
@@ -21,5 +21,5 @@ index 4b301c0..29276be 100644
  #include <stdint.h>
 +#define _USE_MATH_DEFINES
  #include <math.h>
- 
+
  #define kUnused(var)    (void) var;

@@ -1,6 +1,6 @@
 diff --git a/configure.ac b/configure.ac
 index cadc653a0..aa645af81 100644
---- a/configure.ac	
+--- a/configure.ac
 +++ b/configure.ac
 @@ -47,7 +47,7 @@ XORG_FONTSUBDIR([ENCODINGSDIR], [encodingsdir], [encodings])
  # zlib
@@ -9,5 +9,5 @@ index cadc653a0..aa645af81 100644
 -AC_CHECK_LIB(z, gzclose, [],
 +AC_SEARCH_LIBS(gzclose, [z zlib zlibd], [],
               AC_MSG_FAILURE([zlib is required to compile libfontenc]))
- 
+
  # Obtain compiler/linker options for depedencies

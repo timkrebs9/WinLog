@@ -12,7 +12,7 @@ vcpkg_from_gitlab(
     HEAD_REF master
     PATCHES fix_build.patch
             replace_macros.patch
-) 
+)
 
 set(ENV{ACLOCAL} "aclocal -I \"${CURRENT_INSTALLED_DIR}/share/xorg/aclocal/\"")
 

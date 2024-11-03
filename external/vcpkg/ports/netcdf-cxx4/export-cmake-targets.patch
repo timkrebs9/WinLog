@@ -6,20 +6,20 @@ index f06fcc0..a19ab28 100644
    VERSION ${NCXX_VERSION}
    COMPATIBILITY SameMajorVersion
    )
-+  
++
 +install(
 +  EXPORT netcdf-cxx4Targets
 +  FILE netcdf-cxx4Targets.cmake
 +  NAMESPACE netCDF::
 +  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/netCDFCxx
 +  )
- 
+
 +configure_package_config_file(
 +  "${CMAKE_CURRENT_SOURCE_DIR}/netCDFCxxConfig.cmake.in"
 +  "${CMAKE_CURRENT_BINARY_DIR}/netCDFCxxConfig.cmake"
 +  INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/netCDFCxx"
 +  )
-+  
++
  install(
    FILES
 +  "${CMAKE_CURRENT_BINARY_DIR}/netCDFCxxConfig.cmake"
@@ -32,7 +32,7 @@ index b433786..5ef4bed 100644
 +++ b/cxx4/CMakeLists.txt
 @@ -32,7 +32,7 @@ SET(ALL_TLL_LIBS ${ALL_TLL_LIBS} ${HDF5_C_LIBRARY_hdf5})
  SET(ALL_TLL_LIBS ${ALL_TLL_LIBS} ${EXTRA_DEPS} PARENT_SCOPE)
- 
+
  ADD_LIBRARY(netcdf-cxx4 ${CXX_SOURCES})
 -TARGET_INCLUDE_DIRECTORIES(netcdf-cxx4 PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 +TARGET_INCLUDE_DIRECTORIES(netcdf-cxx4 PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> $<INSTALL_INTERFACE:include>)

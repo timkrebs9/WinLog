@@ -4,13 +4,13 @@ index a0755c697..f60735a91 100644
 +++ b/cmake/FindCURSES.cmake
 @@ -107,7 +107,7 @@ else()
        set(CURSES_INCLUDE "<curses.h>")
- 
+
        find_library(CURSES_LIBRARY
 -        NAMES curses
 +        NAMES curses pdcurses
          PATHS ${PC_PDCurses_LIBRARY_DIRS}
        )
- 
+
 diff --git a/cmake/FindPthreadW32.cmake b/cmake/FindPthreadW32.cmake
 index 4fded1eb7..0d44af310 100644
 --- a/cmake/FindPthreadW32.cmake
@@ -23,4 +23,3 @@ index 4fded1eb7..0d44af310 100644
 +  NAMES pthreadVC2 pthreadVC3
    PATHS ${PC_PThreadW32_LIBRARY_DIRS}
  )
- 

@@ -7,6 +7,6 @@ index ba486b7..4323a77 100644
  # Set options and variable related to OSX rpath.
  #
 +return()
- 
+
  # per http://www.cmake.org/Wiki/CMake_RPATH_handling
  SET(CMAKE_SKIP_BUILD_RPATH FALSE)

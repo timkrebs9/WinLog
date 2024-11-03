@@ -10,7 +10,7 @@ index b59555c..4dd92f0 100644
        serialization
      REQUIRED
  )
- 
+
 +if (BUILD_TESTS)
 +    find_package(Boost "${BOOST_VERSION}"
 +        COMPONENTS
@@ -21,4 +21,3 @@ index b59555c..4dd92f0 100644
 +
  if(0)
  link_directories(${Boost_LIBRARY_DIRS})
- 

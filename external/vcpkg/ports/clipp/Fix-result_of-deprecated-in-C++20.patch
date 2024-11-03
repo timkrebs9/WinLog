@@ -14,7 +14,7 @@ index d7b101e..a1bec2d 100644
      std::integral_constant<bool,
 -        std::is_same<Ret,typename std::result_of<Fn(Args...)>::type>::value>{} );
 +        std::is_same<Ret,typename std::invoke_result<Fn,Args...>::type>::value>{} );
- 
+
 -template<class,class,class...>
 +template<class Fn, class Ret>
  constexpr auto
@@ -30,7 +30,7 @@ index d7b101e..a1bec2d 100644
 +    std::declval<Fn>()(std::declval<Args>()...),
 +    std::integral_constant<bool,
 +        std::is_same<Ret,typename std::result_of<Fn(Args...)>::type>::value>{} );
- 
+
  template<class Fn, class Ret>
  constexpr auto
 @@ -172,6 +183,11 @@ check_is_callable_without_arg(int) -> decltype(
@@ -42,6 +42,6 @@ index d7b101e..a1bec2d 100644
 +template<class,class,class...>
 +constexpr auto
 +check_is_callable(long) -> std::false_type;
- 
+
  template<class,class>
  constexpr auto

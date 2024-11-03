@@ -23,7 +23,7 @@ index 43742c7f7..44b035ebb 100644
                               PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
 +                                     ${CMAKE_CURRENT_SOURCE_DIR}/src
                                       ${CMAKE_CURRENT_BINARY_DIR})
- 
+
    # vwebp_sdl
 @@ -651,6 +658,10 @@ if(WEBP_BUILD_EXTRAS)
                                         ${SDL_INCLUDE_DIR})
@@ -35,7 +35,7 @@ index 43742c7f7..44b035ebb 100644
 +    target_compile_definitions(vwebp_sdl PRIVATE WEBP_HAVE_JUST_SDL_H)
    endif()
  endif()
- 
+
 @@ -669,7 +680,7 @@ if(WEBP_BUILD_WEBP_JS)
           -s EXPORTED_FUNCTIONS='[\"_WebpToSDL\"]' -s INVOKE_RUN=0 \
           -s EXPORTED_RUNTIME_METHODS='[\"cwrap\"]'")
@@ -43,7 +43,7 @@ index 43742c7f7..44b035ebb 100644
 -    target_compile_definitions(webp_js PUBLIC EMSCRIPTEN WEBP_HAVE_SDL)
 +    target_compile_definitions(webp_js PUBLIC EMSCRIPTEN WEBP_HAVE_SDL WEBP_HAVE_JUST_SDL_H)
    endif()
- 
+
    # WASM version
 diff --git a/src/webp/types.h b/src/webp/types.h
 index 47f7f2b00..a7a706590 100644

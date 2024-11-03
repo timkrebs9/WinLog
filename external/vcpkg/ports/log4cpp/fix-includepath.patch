@@ -10,9 +10,9 @@ index beace9e..c8264ec 100644
 +SET(includedir "\${prefix}/include")
  SET(libdir "\${prefix}/lib")
  CONFIGURE_FILE(log4cpp.pc.in ${CMAKE_CURRENT_BINARY_DIR}/orocos-log4cpp.pc @ONLY)
- 
+
 @@ -147,7 +147,7 @@ INSTALL(
- 
+
  INSTALL (
    DIRECTORY include/log4cpp
 -  DESTINATION include/orocos
@@ -21,11 +21,11 @@ index beace9e..c8264ec 100644
    PATTERN ".svn" EXCLUDE
    PATTERN "*.am" EXCLUDE
 @@ -157,7 +157,7 @@ INSTALL (
- 
+
  INSTALL (
    FILES ${CMAKE_CURRENT_BINARY_DIR}/include/log4cpp/config.h
 -  DESTINATION include/orocos/log4cpp
 +  DESTINATION include/log4cpp
    )
- 
+
  INSTALL(TARGETS ${LOG4CPP_LIBRARY_NAME}

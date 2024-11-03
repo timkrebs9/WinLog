@@ -15,5 +15,5 @@ index 2539607..eceb5a0 100644
 -  target_compile_definitions(libssh2 PRIVATE LIBSSH2_DARWIN)
 +  target_compile_definitions(libssh2 PUBLIC LIBSSH2_DARWIN)
  endif()
- 
+
  if(MSVC)

@@ -30,7 +30,7 @@ target_link_libraries(ecos-ldl ecos-suitesparse)
 
 
 add_library(ecos STATIC
-	src/cone.c src/ecos.c src/expcone.c src/preproc.c src/splamm.c src/wright_omega.c src/ctrlc.c src/equil.c src/kkt.c src/spla.c src/timer.c 
+	src/cone.c src/ecos.c src/expcone.c src/preproc.c src/splamm.c src/wright_omega.c src/ctrlc.c src/equil.c src/kkt.c src/spla.c src/timer.c
 )
 file(GLOB ECOS_HEADERS include/*.h)
 target_include_directories(ecos PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include/ecos>)

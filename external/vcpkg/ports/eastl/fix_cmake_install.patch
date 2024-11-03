@@ -5,7 +5,7 @@ index e8700dc..6d3e2f1 100644
 @@ -4,12 +4,17 @@
  cmake_minimum_required(VERSION 3.1)
  project(EASTL CXX)
- 
+
 +include(GNUInstallDirs)
 +include(CMakePackageConfigHelpers)
 +
@@ -14,7 +14,7 @@ index e8700dc..6d3e2f1 100644
  #-------------------------------------------------------------------------------------------
  option(EASTL_BUILD_BENCHMARK "Enable generation of build files for benchmark" OFF)
  option(EASTL_BUILD_TESTS "Enable generation of build files for tests" OFF)
- 
+
 +find_package(EABase CONFIG REQUIRED)
 +
  #-------------------------------------------------------------------------------------------
@@ -29,13 +29,13 @@ index e8700dc..6d3e2f1 100644
 +        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
 +        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 +    )
- 
+
  #-------------------------------------------------------------------------------------------
  # Dependencies
 @@ -50,5 +58,39 @@ if (NOT TARGET EABase)
      add_subdirectory(test/packages/EABase)
  endif()
- 
+
 -target_link_libraries(EASTL EABase)
 +target_link_libraries(EASTL PUBLIC EABase)
 +
@@ -65,11 +65,10 @@ index e8700dc..6d3e2f1 100644
 +
 +install(TARGETS EASTL LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 +install(DIRECTORY "include/" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
-+ 
++
 +install(
 +    FILES
 +        "${CMAKE_CURRENT_BINARY_DIR}/EASTLConfig.cmake"
 +        "${CMAKE_CURRENT_BINARY_DIR}/EASTLConfigVersion.cmake"
 +    DESTINATION ${EASTL_CMAKE_CONFIG_DESTINATION}
 +)
- 

@@ -51,7 +51,7 @@ o [macOS y Linux](#inicio-rápido-unix) dependiendo del SO que use.
 
 Para más información, ver [Instalando y Usando Paquetes][getting-started:using-a-package].
 Si una biblioteca que necesita no está presente en el catálogo de vcpkg,
-puede [abrir una incidencia en el repositorio de GitHub][contributing:submit-issue] 
+puede [abrir una incidencia en el repositorio de GitHub][contributing:submit-issue]
 donde el equipo de vcpkg y la comunidad pueden verlo, y potencialmente hacer un port a vcpkg.
 
 Después de tener Vcpkg instalado y funcionando,

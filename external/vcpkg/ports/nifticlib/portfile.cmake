@@ -1,6 +1,6 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO    NIFTI-Imaging/nifti_clib 
+    REPO    NIFTI-Imaging/nifti_clib
     REF 65f801b9c2f1f15f4de4a19d45e6595c25765632
     SHA512 be03cdc6cf17fd9ff74c5ecc1f6b2132121bb4b7973a731da334af2a8428d1f0dbbf7b94b2511d1ff7e515b8cc4cf3316d62b189566fb6ffc88c6146eebd48ff
     HEAD_REF master
@@ -24,7 +24,7 @@ if("tools" IN_LIST FEATURES)
     list(APPEND TOOL_NAMES nifti_stats nifti_tool nifti1_tool)
 endif()
 if("tests" IN_LIST FEATURES)
-    list(APPEND TOOL_NAMES nifit_test) 
+    list(APPEND TOOL_NAMES nifit_test)
 endif()
 
 vcpkg_configure_cmake(

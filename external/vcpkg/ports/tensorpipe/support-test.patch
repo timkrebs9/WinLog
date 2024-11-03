@@ -18,14 +18,14 @@ index 53e8643..c49ada6 100644
 +  endif()
    cuda_add_library(tensorpipe_cuda_kernel channel/kernel.cu)
    list(APPEND TP_TEST_LINK_LIBRARIES tensorpipe_cuda_kernel)
- 
+
    list(APPEND TP_TEST_LINK_LIBRARIES tensorpipe_cuda)
  endif()
- 
+
 -add_subdirectory(${PROJECT_SOURCE_DIR}/third_party/googletest
 -  ${PROJECT_BINARY_DIR}/third_party/googletest EXCLUDE_FROM_ALL)
 +find_package(GTest CONFIG REQUIRED)
- 
+
  list(APPEND TP_TEST_LINK_LIBRARIES
    tensorpipe
 -  uv::uv
@@ -34,6 +34,5 @@ index 53e8643..c49ada6 100644
 +  unofficial::libuv::libuv
 +  GTest::gmock
 +  GTest::gtest_main)
- 
+
  add_executable(tensorpipe_test ${TP_TEST_SRCS})
- 

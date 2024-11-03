@@ -7,7 +7,7 @@ vcpkg_from_github(
     REF "${release_tag}"
     SHA512 c74c0854f0afdf97651cb8ae26430a43ebb7d849b7715fdec3abcd96e61f67f0d2bac82b68b10c97dc90ee52b14ba426bbf9413f71caa7de5fa6ecb945cba0d1
     HEAD_REF master
-    PATCHES 
+    PATCHES
         pkgconfig_fixes.patch
 )
 

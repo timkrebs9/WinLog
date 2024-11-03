@@ -8,7 +8,7 @@ function(qt_fix_cmake PACKAGE_DIR_TO_FIX PORT_TO_FIX)
             file(WRITE "${cmakefile}" "${_contents}")
         endif()
     endforeach()
-    
+
     #Install cmake files
     if(EXISTS ${PACKAGE_DIR_TO_FIX}/lib/cmake)
         file(MAKE_DIRECTORY ${PACKAGE_DIR_TO_FIX}/share)

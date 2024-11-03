@@ -44,16 +44,16 @@
 #endif
 #define VERSION "3.4.2"
 #if defined AC_APPLE_UNIVERSAL_BUILD
-# if defined __BIG_ENDIAN__
-#  define WORDS_BIGENDIAN 1
-# endif
+#if defined __BIG_ENDIAN__
+#define WORDS_BIGENDIAN 1
+#endif
 #endif
 
 #ifdef HAVE_HIDDEN_VISIBILITY_ATTRIBUTE
 #ifdef LIBFFI_ASM
 #define FFI_HIDDEN(name) .hidden name
 #else
-#define FFI_HIDDEN __attribute__ ((visibility ("hidden")))
+#define FFI_HIDDEN __attribute__((visibility("hidden")))
 #endif
 #else
 #ifdef LIBFFI_ASM
@@ -62,4 +62,3 @@
 #define FFI_HIDDEN
 #endif
 #endif
-

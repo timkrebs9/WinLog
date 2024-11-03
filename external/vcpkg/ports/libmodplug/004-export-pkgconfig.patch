@@ -15,7 +15,7 @@ index 468f1a3..3164fc6 100644
 @@ -141,7 +141,11 @@ if(HAVE_SINF)
    add_definitions(-DHAVE_SINF)
  endif(HAVE_SINF)
- 
+
 -if (NOT WIN32)
 +if(WIN32)
 +  set(LIBS_PRIVATE "-luser32")
@@ -36,11 +36,10 @@ index bbf05f9..e4a43cc 100644
 +++ b/libmodplug.pc.in
 @@ -8,5 +8,5 @@ Description: The ModPlug mod file playing library.
  Version: @VERSION@
- Requires: 
- Libs: -L${libdir} -lmodplug 
+ Requires:
+ Libs: -L${libdir} -lmodplug
 -Libs.private: -lstdc++ -lm
 +Libs.private: @LIBS_PRIVATE@
  Cflags: -I${includedir}
--- 
+--
 2.21.0.windows.1
-

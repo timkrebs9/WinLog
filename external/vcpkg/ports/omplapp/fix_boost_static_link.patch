@@ -5,7 +5,7 @@ index 4b391b5..24d2c66 100644
 @@ -36,10 +36,10 @@ set(OMPL_DEMO_INSTALL_DIR "${CMAKE_INSTALL_DATAROOTDIR}/ompl/demos"
  set(OMPL_CMAKE_UTIL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ompl/CMakeModules"
      CACHE FILEPATH "Path to directory with auxiliary CMake scripts for OMPL")
- 
+
 -if(MSVC)
 +if(false)
      add_definitions(-DBOOST_ALL_NO_LIB)

@@ -11,7 +11,7 @@ file(GLOB_RECURSE libodb_src
     *.cxx)
 add_library(libodb-mysql ${libodb_src})
 target_include_directories(libodb-mysql
-    PUBLIC 
+    PUBLIC
         $<INSTALL_INTERFACE:include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 

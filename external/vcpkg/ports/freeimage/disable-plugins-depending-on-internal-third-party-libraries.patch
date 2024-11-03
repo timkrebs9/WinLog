@@ -31,7 +31,7 @@ index 12182cd..ebd0453 100644
 +	FIF_WEBP	= 34,
 +	FIF_JXR		= 35
  };
- 
+
  /** Image type used in FreeImage.
 @@ -476,6 +480,9 @@ FI_ENUM(FREE_IMAGE_DITHER) {
  /** Lossless JPEG transformations
@@ -48,13 +48,13 @@ index 12182cd..ebd0453 100644
  	FIJPEG_OP_ROTATE_270	= 7		//! 270-degree clockwise (or 90 ccw)
  };
 +#endif
- 
+
  /** Tone mapping operators.
  Constants used in FreeImage_ToneMapping.
 @@ -1089,6 +1097,9 @@ DLL_API const char* DLL_CALLCONV FreeImage_TagToString(FREE_IMAGE_MDMODEL model,
  // JPEG lossless transformation routines
  // --------------------------------------------------------------------------
- 
+
 +/* vcpkg: The JPEGTransform functions are deliberately disabled in our build
 +   of FreeImage, since they require usage of the vendored copy of libjpeg. */
 +#if 0
@@ -67,7 +67,7 @@ index 12182cd..ebd0453 100644
  DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformCombinedFromMemory(FIMEMORY* src_stream, FIMEMORY* dst_stream, FREE_IMAGE_JPEG_OPERATION operation, int* left, int* top, int* right, int* bottom, BOOL perfect FI_DEFAULT(TRUE));
 -
 +#endif
- 
+
  // --------------------------------------------------------------------------
  // Image manipulation toolkit
 diff --git a/Source/FreeImage/Plugin.cpp b/Source/FreeImage/Plugin.cpp

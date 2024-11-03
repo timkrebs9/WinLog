@@ -12,7 +12,7 @@ index def8fce..33dc3de 100644
  option(MDL_LOG_DEPENDENCIES "Prints the list of dependencies during the generation step." OFF)
  option(MDL_LOG_FILE_DEPENDENCIES "Prints the list of files that is copied after a successful build." OFF)
 @@ -148,8 +150,12 @@ add_subdirectory(${MDL_SRC_FOLDER}/prod/bin/mdlm)
- 
+
  # PLUGINS
  #--------------------------------------------------------------------------------------------------
 -add_subdirectory(${MDL_SRC_FOLDER}/shaders/plugin/dds)
@@ -23,7 +23,7 @@ index def8fce..33dc3de 100644
 +if(MDL_BUILD_FREEIMAGE_PLUGIN)
 +    add_subdirectory(${MDL_SRC_FOLDER}/shaders/plugin/freeimage)
 +endif()
- 
+
  # EXAMPLES
  #--------------------------------------------------------------------------------------------------
 diff --git a/cmake/utilities.cmake b/cmake/utilities.cmake

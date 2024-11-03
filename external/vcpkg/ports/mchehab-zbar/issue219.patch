@@ -10,4 +10,3 @@ index 8cfa848..ffb972e 100644
 +    if (n<22) {seq[n]=-1;} /* https://github.com/mchehab/zbar/issues/219 */
      return(fixed < 1);
  }
- 

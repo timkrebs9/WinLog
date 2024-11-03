@@ -18,7 +18,7 @@ index 69c923f..aed0465 100644
 @@ -235,7 +235,7 @@ static void yy_flex_free YY_PROTO(( void * ));
  #define YY_SKIP_YYWRAP
  #define yytext_ptr yytext
- 
+
 -#include <FlexLexer.h>
 +#include "FlexLexer.h"
  int yyFlexLexer::yylex()

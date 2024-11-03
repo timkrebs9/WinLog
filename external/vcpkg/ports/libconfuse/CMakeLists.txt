@@ -79,7 +79,7 @@ configure_file(config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
 flex_target(
     CONFUSE
-    src/lexer.l 
+    src/lexer.l
     ${CMAKE_CURRENT_BINARY_DIR}/lexer.c
     COMPILE_FLAGS -Pcfg_yy
 )

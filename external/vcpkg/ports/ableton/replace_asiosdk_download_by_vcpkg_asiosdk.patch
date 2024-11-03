@@ -4,7 +4,7 @@ diff --git "a/examples/CMakeLists.txt" "b/examples/CMakeLists.txt"
 +++ "b/examples/CMakeLists.txt"
 @@ -9,28 +9,22 @@ project(LinkExamples)
  #
- 
+
  if(WIN32)
 -  function(configure_asio asio_sdk_path_OUT)
 -    # ASIO-related path/file variables
@@ -35,7 +35,7 @@ diff --git "a/examples/CMakeLists.txt" "b/examples/CMakeLists.txt"
 +      endif()
 +      set(asio_working_dir "${ASIOSDK_ROOT_DIR}")
 +      set(asio_output_path "${CMAKE_BINARY_DIR}/modules/asiosdk")
- 
+
 -    # Set the ASIO SDK path for the caller
 -    set(${asio_sdk_path_OUT} "${asio_working_dir}/${asio_dir_name}" PARENT_SCOPE)
 -  endfunction()
@@ -44,5 +44,5 @@ diff --git "a/examples/CMakeLists.txt" "b/examples/CMakeLists.txt"
 +    endfunction()
 +  endif()
  endif()
- 
+
  #     _             _ _
