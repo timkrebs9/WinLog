@@ -87,6 +87,7 @@ elseif(USE_CONAN OR USE_VCPKG)
         include(${CMAKE_BINARY_DIR}/conan_toolchain.cmake)
     elseif(USE_VCPKG)
         message(STATUS "Using VCPKG")
+        set (VCPKG_DIR ${CMAKE_SOURCE_DIR}/external/vcpkg)
         include(
             ${CMAKE_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.cmake)
     endif()
