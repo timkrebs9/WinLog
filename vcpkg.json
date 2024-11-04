@@ -21,6 +21,23 @@
         {
             "name": "catch2",
             "version>=": "3.5.2"
+        },
+        {
+            "name": "opengl"
+        },
+        {
+            "name": "glfw3"
+        },
+        {
+            "name": "imgui",
+            "default-features": false,
+            "features": [
+                "glfw-binding",
+                "opengl3-binding"
+            ]
+        },
+        {
+            "name": "implot"
         }
     ],
     "overrides": [
