@@ -14,6 +14,9 @@ jobs:
     - name: prepare
       run: |
         make prepare
+        cd external
+        git clone https://github.com/Microsoft/vcpkg.git
+        ./vcpkg/bootstrap-vcpkg.sh
     - name: configure
       run: |
         cmake -H. -Bbuild -DCMAKE_BUILD_TYPE="Debug"
