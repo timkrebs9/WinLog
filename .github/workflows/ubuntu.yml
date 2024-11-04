@@ -17,6 +17,7 @@ jobs:
     - name: prepare
       run: |
         make prepare
+        sudo apt install libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev pkg-config
         cd external
         git clone https://github.com/Microsoft/vcpkg.git
         ./vcpkg/bootstrap-vcpkg.sh
