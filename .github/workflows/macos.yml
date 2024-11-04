@@ -11,12 +11,15 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
-    - name: prepare
+    - name: install
       run: |
-        make prepare
         cd external
         git clone https://github.com/Microsoft/vcpkg.git
         ./vcpkg/bootstrap-vcpkg.sh
+        cd ..
+    - name: prepare
+      run: |
+        make prepare
     - name: configure
       run: |
         cmake -H. -Bbuild -DCMAKE_BUILD_TYPE="Debug"
