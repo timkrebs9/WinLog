@@ -17,7 +17,7 @@ jobs:
     - name: prepare
       run: |
         make prepare
-        sudo apt-get update && |
+        sudo apt-get update &&
         apt install libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev pkg-config
         cd external
         git clone https://github.com/Microsoft/vcpkg.git
