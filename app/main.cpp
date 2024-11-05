@@ -31,85 +31,15 @@ static void glfw_error_callback(int error, const char *description);
 
 int main(int argc, char **argv)
 {
-    //std::cout << "JSON: " << NLOHMANN_JSON_VERSION_MAJOR << "."
-    //          << NLOHMANN_JSON_VERSION_MINOR << "."
-    //          << NLOHMANN_JSON_VERSION_PATCH << '\n';
-    //std::cout << "FMT: " << FMT_VERSION << '\n';
-    //std::cout << "CXXOPTS: " << CXXOPTS__VERSION_MAJOR << "."
-    //          << CXXOPTS__VERSION_MINOR << "." << CXXOPTS__VERSION_PATCH
-    //          << '\n';
-    //std::cout << "SPDLOG: " << SPDLOG_VER_MAJOR << "." << SPDLOG_VER_MINOR
-    //          << "." << SPDLOG_VER_PATCH << '\n';
-    //std::cout << "\n\nUsage Example:\n";
-    //
-    //
-    //
-    //const auto welcome_message =
-    //    fmt::format("Welcome to {} v{}\n", project_name, project_version);
-    //spdlog::info(welcome_message);
-    //
-    //cxxopts::Options options(project_name.data(), welcome_message);
-    //
-    //options.add_options("arguments")("h,help", "Print usage")(
-    //    "f,filename",
-    //    "File name",
-    //    cxxopts::value<std::string>())(
-    //    "v,verbose",
-    //    "Verbose output",
-    //    cxxopts::value<bool>()->default_value("false"));
-    //
-    //auto result = options.parse(argc, argv);
-    //
-    //if (argc == 1 || result.count("help"))
-    //{
-    //    std::cout << options.help() << '\n';
-    //    return 0;
-    //}
-    //
-    //// Read files
-    //auto filename = std::string{};
-    //auto verbose = false;
-    //
-    //if (result.count("filename"))
-    //{
-    //    filename = result["filename"].as<std::string>();
-    //}
-    //else
-    //{
-    //    return 1;
-    //}
-    //
-    //verbose = result["verbose"].as<bool>();
-    //
-    //if (verbose)
-    //{
-    //    fmt::print("Opening file: {}\n", filename);
-    //}
-    //
-    //auto ifs = std::ifstream{filename};
-    //
-    //if (!ifs.is_open())
-    //{
-    //    return 1;
-    //}
-    //
-    //const auto parsed_data = nlohmann::json::parse(ifs);
-    //
-    //if (verbose)
-    //{
-    //    const auto name = parsed_data["name"];
-    //    fmt::print("Name: {}\n", name);
-    //}
 
+    bool show_window = false;
+    ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    // Setup window
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
-    {
         return 1;
-    }
 
-// Decide GL+GLSL versions
+        // Decide GL+GLSL versions
 #if defined(IMGUI_IMPL_OPENGL_ES2)
     // GL ES 2.0 + GLSL 100
     const char *glsl_version = "#version 100";
@@ -128,12 +58,14 @@ int main(int argc, char **argv)
     const char *glsl_version = "#version 130";
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+    //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // 3.2+ only
+    //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // 3.0+ only
 #endif
 
     // Create window with graphics context
     auto *window = glfwCreateWindow(static_cast<std::int32_t>(WINDOW_WIDTH),
                                     static_cast<std::int32_t>(WINDOW_HEIGHT),
-                                    "Gui",
+                                    "Winlog",
                                     nullptr,
                                     nullptr);
     if (window == nullptr)
@@ -146,7 +78,16 @@ int main(int argc, char **argv)
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    ImGui::StyleColorsDark();
+    ImGui::StyleColorsDark(); //ImGui::StyleColorsLight();
+
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO &io = ImGui::GetIO();
+    io.ConfigFlags |=
+        ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
+    io.ConfigFlags |=
+        ImGuiConfigFlags_NavEnableGamepad;            // Enable Gamepad Controls
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable; // IF using Docking Branch
 
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(window, true);
@@ -156,7 +97,79 @@ int main(int argc, char **argv)
     style.Colors[ImGuiCol_TableBorderStrong] = ImVec4(1.0, 1.0, 1.0, 1.0);
     style.Colors[ImGuiCol_TableBorderLight] = ImVec4(1.0, 1.0, 1.0, 1.0);
 
-    cycle_function(window);
+    //cycle_function(window);
+    while (!glfwWindowShouldClose(window))
+    {
+        glfwPollEvents();
+
+        // Start the Dear ImGui frame
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+
+
+        ImGui::Begin(
+            "Another Window",
+            &show_window); // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+        ImGui::Text("Hello from another window!");
+        if (ImGui::Button("Close"))
+            show_window = false;
+        ImGui::End();
+
+        // Create a window called "My First Tool", with a menu bar.
+        ImGui::Begin("My First Tool", &show_window, ImGuiWindowFlags_MenuBar);
+        if (ImGui::BeginMenuBar())
+        {
+            if (ImGui::BeginMenu("File"))
+            {
+                if (ImGui::MenuItem("Open..", "Ctrl+O"))
+                { /* Do stuff */
+                }
+                if (ImGui::MenuItem("Save", "Ctrl+S"))
+                { /* Do stuff */
+                }
+                if (ImGui::MenuItem("Close", "Ctrl+W"))
+                {
+                    show_window = false;
+                }
+                ImGui::EndMenu();
+            }
+            ImGui::EndMenuBar();
+        }
+
+        // Edit a color stored as 4 floats
+        //ImGui::ColorEdit4("Color", my_color);
+
+        // Generate samples and plot them
+        float samples[100];
+        for (int n = 0; n < 100; n++)
+            samples[n] = sinf(n * 0.2f + ImGui::GetTime() * 1.5f);
+        ImGui::PlotLines("Samples", samples, 100);
+
+        // Display contents in a scrolling region
+        ImGui::TextColored(ImVec4(1, 1, 0, 1), "Important Stuff");
+        ImGui::BeginChild("Scrolling");
+        for (int n = 0; n < 50; n++)
+            ImGui::Text("%04d: Some text", n);
+        ImGui::EndChild();
+        ImGui::End();
+
+
+        // Rendering
+        ImGui::Render();
+        int display_w, display_h;
+        glfwGetFramebufferSize(window, &display_w, &display_h);
+        glViewport(0, 0, display_w, display_h);
+        glClearColor(clear_color.x * clear_color.w,
+                     clear_color.y * clear_color.w,
+                     clear_color.z * clear_color.w,
+                     clear_color.w);
+        glClear(GL_COLOR_BUFFER_BIT);
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+        glfwSwapBuffers(window);
+    }
+
 
     // Cleanup
     ImGui_ImplOpenGL3_Shutdown();
@@ -168,6 +181,7 @@ int main(int argc, char **argv)
 
     return 0;
 }
+
 
 void glfw_error_callback(int error, const char *description)
 {
