@@ -3,6 +3,7 @@
 ![C++](https://img.shields.io/badge/C%2B%2B-11%2F14%2F17%2F20%2F23-blue)
 ![License](https://img.shields.io/github/license/franneck94/CppProjectTemplate)
 ![Linux Build](https://github.com/franneck94/CppProjectTemplate/workflows/Ubuntu%20CI%20Test/badge.svg)
+[![Windows CI Test](https://github.com/timkrebs9/WinLog/actions/workflows/windows.yml/badge.svg)](https://github.com/timkrebs9/WinLog/actions/workflows/windows.yml)
 
 **This is the final project of my Udemy Course**.
 See here to get the full discount to all of my Udemy Courses: [Link](https://github.com/franneck94/YoutubeVideos/blob/main/EnglishCourses.md)
